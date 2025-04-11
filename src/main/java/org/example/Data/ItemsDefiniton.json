@@ -1,0 +1,19 @@
+{
+  "gold_axe": {
+    "name": "Gold Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 80,
+      "durability": 100,
+      "breakable": true
+    }
+  },
+  "apple": {
+    "name": "Apple",
+    "type": "food",
+    "baseAttributes": {
+      "edible": true,
+      "healing": 10
+    }
+  }
+}
