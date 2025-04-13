@@ -2,6 +2,8 @@ package org.example.Models;
 
 import org.example.Enums.GameConsts.Gender;
 
+import java.util.ArrayList;
+
 /*
     Each user is an object which have its own name, username, email, and many other fields.
  */
@@ -11,6 +13,7 @@ public class User {
     private String password;
     private String email;
     private Gender gender;
+    private ArrayList<GameHistory> history;
 
     public User(String name, String username, String password, String email, Gender gender) {
         this.nickname = name;
@@ -18,6 +21,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.gender = gender;
+        this.history = new ArrayList<>();
     }
 
     public String getEmail() {

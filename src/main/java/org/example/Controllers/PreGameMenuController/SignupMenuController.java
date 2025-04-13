@@ -100,7 +100,7 @@ public class SignupMenuController {
                 userGender = Gender.FEMALE;
             }
             case "other", "" -> {
-                userGender = Gender.OTHER
+                userGender = Gender.OTHER;
             }
             default -> {
                 return "Please enter male, female, or other.\n";
