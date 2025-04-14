@@ -1,4 +1,4 @@
 package org.example.Enums.InGameMenuCommands;
 
-public class InventoryCommands {
+public enum InventoryCommands {
 }

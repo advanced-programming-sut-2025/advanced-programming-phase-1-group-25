@@ -1,18 +1,20 @@
 package org.example.Controllers.PreGameMenuController;
 
+
 import org.example.Enums.GameConsts.Gender;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Models.App;
+import org.example.Models.Question;
 import org.example.Models.User;
-import org.example.Views.PreGameMenus.ExitMenu;
+
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
-import javax.swing.text.html.ListView;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
+
+
+import static org.example.Controllers.PreGameMenuController.SecurityQuestions.askSecurityQuestion;
+import static org.example.Controllers.PreGameMenuController.Validation.*;
 
 public class SignupMenuController {
     public static String changeMenu(String menu) {
@@ -23,7 +25,7 @@ public class SignupMenuController {
                     TerminalAnimation.loadingAnimation("redirecting to login menu");
                     return "\nYou are now in login menu.\n";
                 } catch (InterruptedException e) {
-                    return "Problem redirecting to login menu. please try again later.\n";
+                    return "Problem redirecting to login menu. Please try again later.\n";
                 }
             }
             case "signup menu", "signupmenu", "signup" -> {
@@ -48,15 +50,18 @@ public class SignupMenuController {
     }
 
     public static String showCurrentMenu() {
-        return "You are in sign up menu.\n";
+        return "You are in signup menu.\n";
     }
 
     public static String register(Scanner sc,String username, String password,
                                   String nickname, String email, String gender) {
         String finalUsername = username;
         String finalPassword = password;
-        if (App.hasUser(username)) {
+        if (App.userExists(username)) {
             finalUsername = handleDuplicateUsername(username, sc);
+            if (finalUsername == null) {
+                return "Register failed. please try again.";
+            }
         }
         if (!isUsernameValid(username)) {
             return "Username is not valid.\n";
@@ -65,25 +70,19 @@ public class SignupMenuController {
             return "Email address is not valid.\n";
         }
 
-        ArrayList<String> randomPasswordCommands = new ArrayList<>(Arrays.asList(
-                "random", "random pass", "random password", "randompassword"));
-
-
-        if (randomPasswordCommands.contains(password)) {
+        if (password.equals("random password")) {
             finalPassword = handleRandomPassword(username, sc);
+            if (finalPassword == null) {
+                return "Register failed. please try again.";
+            }
         }
 
-        if (!isPasswordValid(password)) {
+        if (!isPasswordValid(finalPassword)) {
             return "Password is not valid.\n";
         }
-        if (isPasswordWeak(password)) {
-            return handleWeakPassword(password);
-        }
-
-        System.out.printf("Enter your password again.\n");
-        String passwordConfirm = sc.nextLine();
-        if (!passwordConfirm.equals(finalPassword)) {
-            return "Password confirmation doesn't match.\n";
+        int weaknessState;
+        if ((weaknessState = isPasswordWeak(finalPassword)) != -1) {
+            return handleWeakPassword(password, weaknessState);
         }
 
         if (!isNicknameValid(nickname)) {
@@ -107,45 +106,26 @@ public class SignupMenuController {
             }
         }
 
+        System.out.printf("Enter your password again.\n");
+        String passwordConfirm = sc.nextLine();
+        if (!passwordConfirm.equals(finalPassword)) {
+            return "Password confirmation doesn't match.\n";
+        }
+
+        if (!askSecurityQuestion(sc)) return "Register failed. Please try again.";
+        if (!SecurityQuestions.addSecurityQuestions(sc)) return "Register failed. Please try again.";
+
         try {
             TerminalAnimation.loadingAnimation("Creating your account");
         } catch (InterruptedException e) {
-            return "Problem creating your account. Please try again later.\n";
+            return "Problem creating your account. Please try again later.";
         }
-
         User newUser = new User(nickname, finalUsername, finalPassword, email, userGender);
         App.addUser(finalUsername, newUser);
         return "Account has been created successfully.\n";
     }
 
-    private static String handleDuplicateUsername(String username, Scanner sc) {
 
-    }
-    private static boolean isUsernameValid(String username) {
-
-    }
-    private static boolean isEmailValid(String email) {
-
-    }
-    private static boolean isPasswordValid(String password) {
-
-    }
-    private static boolean isPasswordWeak(String password) {
-
-    }
-    private static String handleRandomPassword(String username, Scanner sc) {
-
-    }
-    private static String handleWeakPassword(String password) {
-
-    }
-    private static boolean isNicknameValid(String nickname) {
-
-    }
 }
 
 
-//        case PICK_QUESTION:
-//        System.out.printf(SignupMenuController.pickQuestion(matcher.group("question_number"),
-//                        matcher.group("answer"), matcher.group("answer_confirm")));
-//        }

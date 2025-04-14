@@ -15,6 +15,7 @@ public class Menus {
     public enum PreGameMenus implements Menu {
         SIGNUP_MENU(new SignupMenu()),
         LOGIN_MENU(new LoginMenu()),
+        MAIN_MENU(new MainMenu()),
         PROFILE_MENU(new ProfileMenu()),
         AVATAR_MENU(new AvatarMenu()),
         GAME_MENU(new GameMenu()),

@@ -17,16 +17,16 @@ public class SignupMenu implements AppMenu {
         for (SignupMenuCommands command : SignupMenuCommands.values()) {
             if ((matcher = command.getMatcher(input)) != null) {
                 matched = true;
-                executeCommand(command, matcher);
+                executeCommand(command, matcher, sc);
                 break;
             }
         }
         if (!matched) {
-            System.out.printf("invalid command. please try again.\n");
+            System.out.printf("Invalid command. please try again.\n");
         }
     }
 
-    private static void executeCommand(SignupMenuCommands command, Matcher matcher) {
+    private static void executeCommand(SignupMenuCommands command, Matcher matcher, Scanner sc) {
         switch (command) {
             case CHANGE_MENU:
                 System.out.printf(SignupMenuController.changeMenu(matcher.group("menu")));
@@ -39,15 +39,13 @@ public class SignupMenu implements AppMenu {
                 break;
             case REGISTER:
                 System.out.printf(SignupMenuController.register(
-                        matcher.group("username")
+                        sc
+                        , matcher.group("username")
                         , matcher.group("password")
-                        ,matcher.group("nickname")
-                        ,matcher.group("email")
-                        ,matcher.group("gender")));
+                        , matcher.group("nickname")
+                        , matcher.group("email")
+                        , matcher.group("gender")));
                 break;
-            case PICK_QUESTION:
-                System.out.printf(SignupMenuController.pickQuestion(matcher.group("question_number"),
-                        matcher.group("answer"), matcher.group("answer_confirm")));
         }
     }
 }

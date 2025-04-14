@@ -1,7 +1,9 @@
 package org.example.Models;
 
+import org.example.Controllers.PreGameMenuController.SecurityQuestions;
 import org.example.Enums.GameConsts.Gender;
 
+import java.sql.PseudoColumnUsage;
 import java.util.ArrayList;
 
 /*
@@ -14,6 +16,7 @@ public class User {
     private String email;
     private Gender gender;
     private ArrayList<GameHistory> history;
+    private Question securityQuestion;
 
     public User(String name, String username, String password, String email, Gender gender) {
         this.nickname = name;
@@ -58,5 +61,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setSecurityQuestion(Question securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public Question getSecurityQuestion() {
+        return securityQuestion;
     }
 }
