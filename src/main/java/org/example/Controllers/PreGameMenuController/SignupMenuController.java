@@ -106,21 +106,22 @@ public class SignupMenuController {
             }
         }
 
-        System.out.printf("Enter your password again.\n");
+        System.out.print("Enter your password again.\n");
         String passwordConfirm = sc.nextLine();
         if (!passwordConfirm.equals(finalPassword)) {
             return "Password confirmation doesn't match.\n";
         }
 
         if (!askSecurityQuestion(sc)) return "Register failed. Please try again.";
-        if (!SecurityQuestions.addSecurityQuestions(sc)) return "Register failed. Please try again.";
+        Question userSecurityQuestion;
+        if ((userSecurityQuestion = SecurityQuestions.addSecurityQuestions(sc)) == null) return "Register failed. Please try again.";
 
         try {
             TerminalAnimation.loadingAnimation("Creating your account");
         } catch (InterruptedException e) {
             return "Problem creating your account. Please try again later.";
         }
-        User newUser = new User(nickname, finalUsername, finalPassword, email, userGender);
+        User newUser = new User(nickname, finalUsername, finalPassword, email, userGender, userSecurityQuestion);
         App.addUser(finalUsername, newUser);
         return "Account has been created successfully.\n";
     }

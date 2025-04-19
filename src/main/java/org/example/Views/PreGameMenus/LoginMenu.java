@@ -19,7 +19,6 @@ public class LoginMenu implements AppMenu {
             if ((matcher = command.getMatcher(input)) != null) {
                 matched = true;
                 executeCommand(command, matcher, sc);
-                break;
             }
         }
         if (!matched) {

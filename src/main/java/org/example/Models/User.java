@@ -18,13 +18,14 @@ public class User {
     private ArrayList<GameHistory> history;
     private Question securityQuestion;
 
-    public User(String name, String username, String password, String email, Gender gender) {
+    public User(String name, String username, String password, String email, Gender gender, Question userSecurityQuestion) {
         this.nickname = name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.gender = gender;
         this.history = new ArrayList<>();
+        this.securityQuestion = userSecurityQuestion;
     }
 
     public String getEmail() {
