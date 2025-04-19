@@ -17,6 +17,7 @@ public class User {
     private Gender gender;
     private ArrayList<GameHistory> history;
     private Question securityQuestion;
+    private boolean isInAnyGame;
 
     public User(String name, String username, String password, String email, Gender gender, Question userSecurityQuestion) {
         this.nickname = name;
@@ -26,6 +27,7 @@ public class User {
         this.gender = gender;
         this.history = new ArrayList<>();
         this.securityQuestion = userSecurityQuestion;
+        this.isInAnyGame = false;
     }
 
     public String getEmail() {
@@ -70,5 +72,14 @@ public class User {
 
     public Question getSecurityQuestion() {
         return securityQuestion;
+    }
+    public boolean isInAnyGame() {
+        return isInAnyGame;
+    }
+    public void entersGame() {
+        this.isInAnyGame = true;
+    }
+    public void exitsGame() {
+        this.isInAnyGame = false;
     }
 }
