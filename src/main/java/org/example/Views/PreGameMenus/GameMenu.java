@@ -30,7 +30,7 @@ public class GameMenu implements AppMenu {
     private static void executeCommand(GameMenuCommands command, Matcher matcher, Scanner sc) {
         switch (command) {
             case NEW_GAME:
-                System.out.printf(GameMenuController.newGame(sc));
+                System.out.printf(GameMenuController.makeNewGame(sc));
         }
     }
 }

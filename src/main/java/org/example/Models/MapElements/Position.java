@@ -11,4 +11,11 @@ public class Position {
         this.x = x;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

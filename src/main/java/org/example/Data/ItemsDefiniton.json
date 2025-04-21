@@ -1,19 +1,150 @@
-{
-  "gold_axe": {
-    "name": "Gold Axe",
+[
+  {
+    "itemId": "base_axe",
+    "name": "Base Axe",
     "type": "tool",
     "baseAttributes": {
-      "damage": 80,
-      "durability": 100,
-      "breakable": true
+      "damage": 1,
+      "energyCost": 5,
+      "durability": -1,
+      "upgradeCost": 0
     }
   },
-  "apple": {
-    "name": "Apple",
-    "type": "food",
+
+  {
+    "itemId": "base_watering_can",
+    "name": "Base Watering Can",
+    "type": "tool",
     "baseAttributes": {
-      "edible": true,
-      "healing": 10
+      "durability": 40,
+      "energyCost": 5,
+      "upgradeCost": 0
+    }
+  },
+
+
+  {
+    "itemId": "training fishing_pole",
+    "name": "Training Fishing Pole",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 25,
+      "energyCost": 8
+    }
+  },
+
+
+  {
+    "itemId": "milk_pale",
+    "name": "Milk Pale",
+    "type": "tool",
+    "baseAttributes": {
+      "energyCost": 4,
+      "price": 1000
+    }
+  },
+
+  {
+    "itemId": "shear",
+    "name": "Shear",
+    "type": "tool",
+    "baseAttributes": {
+      "energyCost": 4,
+      "price": 1000
+    }
+  },
+
+  {
+    "itemId": "fishing_pole",
+    "name": "Base Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 1,
+      "energyCost": 5,
+      "durability": -1
+    }
+  },
+
+  {
+    "itemId": "base_trash_can",
+    "name": "Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "upgradeCost": 0,
+      "percentage": 0
+    }
+  },
+
+  {
+    "itemId": "base_trash_can",
+    "name": "Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "upgradeCost": 0,
+      "percentage": 0
+    }
+  },
+
+  {
+    "itemId": "quartz",
+    "name": "Quartz",
+    "type": "foraging",
+    "baseAttributes": {
+      "price": 25,
+      "description": "A clear crystal commonly found in caves and mines."
+    }
+  },
+
+  {
+    "itemId": "blue_jazz",
+    "name": "Blue Jazz",
+    "type": "foraging",
+    "baseAttributes": {
+      "source": "Jazz Seeds",
+      "stages": "1-2-2-2",
+      "totalHarvestTime": 7,
+      "oneTime": true,
+      "regrowthTime": -1,
+      "baseSellPrice": 50,
+      "isEdible": true,
+      "energy": 45,
+      "season": "spring",
+      "canBecomeGiant": false
+    }
+  },
+
+
+  {
+    "itemId": "common_mushroom",
+    "name": "Common Mushroom",
+    "type": "foraging",
+    "baseAttributes": {
+      "season": "special",
+      "baseSellPrice": 40,
+      "energy": 38
+    }
+  },
+
+  {
+    "itemId": "acorns",
+    "name": "Acorns",
+    "type": "foraging",
+    "baseAttributes": {
+      "season": "special"
+    }
+  },
+
+
+  {
+    "itemId": "common_mushroom",
+    "name": "Common Mushroom",
+    "type": "foraging",
+    "baseAttributes": {
+      "season": "special",
+      "baseSellPrice": 40,
+      "energy": 38
     }
   }
-}
+
+
+]

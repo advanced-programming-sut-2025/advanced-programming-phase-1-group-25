@@ -21,4 +21,7 @@ public class Tile {
     public ItemInstance getItem() {
         return item;
     }
+    public Position getPosition() {
+        return position;
+    }
 }
