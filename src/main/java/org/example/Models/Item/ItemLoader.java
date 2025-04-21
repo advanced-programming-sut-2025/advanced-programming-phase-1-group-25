@@ -67,6 +67,19 @@ public class ItemLoader {
                                 }
                             }
                             value = list;
+                        } else if (valueNode.isObject()) {
+                            Map<String, Object> map = new HashMap<>();
+                            valueNode.fields().forEachRemaining(e -> {
+                                JsonNode val = e.getValue();
+                                if (val.isInt()) {
+                                    map.put(e.getKey(), val.asInt());
+                                } else if (val.isDouble()) {
+                                    map.put(e.getKey(), val.asDouble());
+                                } else {
+                                    map.put(e.getKey(), val.asText());
+                                }
+                            });
+                            value = map;
                         } else {
                             value = valueNode.asText();
                         }
@@ -97,4 +110,17 @@ public class ItemLoader {
 
         App.setItemDefinitions(itemDefinitions);
     }
+
+//    public static void testLoadItem() {
+//        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+//            System.out.printf("%s %s %s\n", itemDefinition.getId(), itemDefinition.getType(), itemDefinition.getDisplayName());
+//            for (Map.Entry<ItemAttributes, Object> entry : itemDefinition.getBaseAttributes().entrySet()) {
+//                System.out.printf("%s %s ----", entry.getKey(), entry.getValue());
+//                if (entry.getValue() instanceof Map<?,?>) {
+//                    System.out.println(((Map<?, ?>) entry.getValue()).get("wood") + " and " + ((Map<?, ?>) entry.getValue()).get("stone"));
+//                }
+//            }
+//            System.out.println();
+//        }
+//    }
 }

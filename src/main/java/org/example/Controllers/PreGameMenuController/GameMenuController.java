@@ -27,6 +27,7 @@ public class GameMenuController {
     public static String makeNewGame(Scanner sc) {
         // loading items
         ItemLoader.loadItems();
+//        ItemLoader.testLoadItem();
         // prepare the main map
         GameMap newGameMap = PrepareMap.prepareMap();
 

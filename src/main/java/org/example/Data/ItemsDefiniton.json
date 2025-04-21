@@ -4,6 +4,7 @@
     "name": "",
     "type": "floor",
     "baseAttributes": {
+      "damage": 0
     }
   },
 

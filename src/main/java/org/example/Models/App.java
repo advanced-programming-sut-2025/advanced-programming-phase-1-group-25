@@ -51,5 +51,8 @@ public abstract class App {
         return null;
     }
 
+    public static ArrayList<ItemDefinition> getItemDefinitions() {
+        return App.itemDefinitions;
+    }
 }
 
