@@ -16,11 +16,26 @@ public class ItemDefinition {
     private final String displayName;
     private final Map<ItemAttributes, Object> baseAttributes;
 
-    public ItemDefinition(ItemType type, ItemIDs id, String displayName) {
+    public ItemDefinition(ItemType type, ItemIDs id, String displayName, Map<ItemAttributes, Object> baseAttributes) {
         this.type = type;
         this.id = id;
         this.displayName = displayName;
-        this.baseAttributes = new HashMap<>();
-        // ...
+        this.baseAttributes = baseAttributes;
+    }
+
+    public ItemIDs getId() {
+        return id;
+    }
+
+    public ItemType getType() {
+        return type;
+    }
+
+    public Map<ItemAttributes, Object> getBaseAttributes() {
+        return baseAttributes;
+    }
+
+    public String getDisplayName() {
+        return displayName;
     }
 }

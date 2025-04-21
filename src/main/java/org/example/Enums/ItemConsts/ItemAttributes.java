@@ -14,6 +14,8 @@ public enum ItemAttributes {
     season,
     canBecomeGiant,
     description,
+    price,
+    ;
 
 
 

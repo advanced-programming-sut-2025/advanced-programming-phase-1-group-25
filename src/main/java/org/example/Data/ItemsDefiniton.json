@@ -1,5 +1,13 @@
 [
   {
+    "itemId": "VOID",
+    "name": "",
+    "type": "floor",
+    "baseAttributes": {
+    }
+  },
+
+  {
     "itemId": "base_axe",
     "name": "Base Axe",
     "type": "tool",
@@ -24,7 +32,7 @@
 
 
   {
-    "itemId": "training fishing_pole",
+    "itemId": "training_fishing_pole",
     "name": "Training Fishing Pole",
     "type": "tool",
     "baseAttributes": {

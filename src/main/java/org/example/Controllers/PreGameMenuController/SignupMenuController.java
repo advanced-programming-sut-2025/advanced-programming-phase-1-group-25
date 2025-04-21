@@ -123,6 +123,7 @@ public class SignupMenuController {
         }
         User newUser = new User(nickname, finalUsername, finalPassword, email, userGender, userSecurityQuestion);
         App.addUser(finalUsername, newUser);
+        App.setCurrentMenu(Menus.PreGameMenus.LOGIN_MENU);
         return "Account has been created successfully. You are now in login menu.\n";
     }
 }

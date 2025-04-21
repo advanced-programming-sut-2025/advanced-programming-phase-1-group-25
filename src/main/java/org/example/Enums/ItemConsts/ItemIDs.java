@@ -12,6 +12,10 @@ public enum ItemIDs {
     base_trash_can,
     quartz,
     blue_jazz,
-    common_mushroom
+    common_mushroom,
+    VOID,
+    training_fishing_pole,
+    acorns,
+    ;
 
 }

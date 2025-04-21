@@ -19,5 +19,15 @@ public class ItemInstance {
         this.attributes = new HashMap<>();
     }
 
+    public ItemDefinition getDefinition() {
+        return definition;
+    }
 
+    public Map<ItemAttributes, Object> getAttributes() {
+        return attributes;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
 }

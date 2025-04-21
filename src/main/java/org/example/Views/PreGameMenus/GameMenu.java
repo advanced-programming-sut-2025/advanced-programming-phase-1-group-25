@@ -31,6 +31,7 @@ public class GameMenu implements AppMenu {
         switch (command) {
             case NEW_GAME:
                 System.out.printf(GameMenuController.makeNewGame(sc));
+
         }
     }
 }

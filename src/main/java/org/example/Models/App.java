@@ -2,7 +2,10 @@ package org.example.Models;
 
 import org.example.Enums.GameMenus.Menu;
 import org.example.Enums.GameMenus.Menus;
+import org.example.Models.Item.ItemDefinition;
+import org.example.Models.MapElements.GameMap;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -10,7 +13,8 @@ import java.util.Map;
     Saves some important data during runtime, like current menu, current players, and ...
  */
 public abstract class App {
-    private static Menu currentMenu = Menus.PreGameMenus.LOGIN_MENU;
+    private static ArrayList<ItemDefinition> itemDefinitions = new ArrayList<>();
+    private static Menu currentMenu = Menus.PreGameMenus.GAME_MENU; // temporary
     private static Map<String, User> users = new LinkedHashMap<>();
     private static User currentUser = null;
     public static Menu getCurrentMenu() {
@@ -34,5 +38,18 @@ public abstract class App {
     public static User getCurrentUser() {
         return currentUser;
     }
+
+    public static void setItemDefinitions(ArrayList<ItemDefinition> itemDefinitions) {
+        App.itemDefinitions = itemDefinitions;
+    }
+    public static ItemDefinition getItemDefinition(String itemId) {
+        for (ItemDefinition itemDefinition : App.itemDefinitions) {
+            if (itemDefinition.getId().equals(itemId)) {
+                return itemDefinition;
+            }
+        }
+        return null;
+    }
+
 }
 
