@@ -8,9 +8,10 @@ public enum ProfileMenuCommands {
     Username_Validation("[a-zA-Z0-9\\-]+"),
     Change_NickName("change\\s+nickname\\s+-u\\s+(?<nickname>.+)"),
     Change_Email("change\\s+email\\s+-e\\s+(?<email>.+)"),
-    Email_Validation(""),//TODO
+    Email_Validation("^(?!.*\\.\\.)[a-zA-Z0-9](?:[a-zA-Z0-9._-]*[a-zA-Z0-9])?@(?=[a-zA-Z0-9])" +
+            "[a-zA-Z0-9.-]*[a-zA-Z0-9]\\.[a-zA-Z]{2,}$"),
     Change_Password("change\\s+password\\s+-p\\s+(?<newPassword>.+)\\s+-o\\s+(?<oldPassword>.+)"),
-    Password_Validation(""),//TODO
+    Password_Validation("^[a-zA-Z0-9?><,\"';:/\\\\|\\]\\[}{+=)(*&^%$#!]*$"),
     User_Info("user\\s+info");
 
     private final String pattern;
