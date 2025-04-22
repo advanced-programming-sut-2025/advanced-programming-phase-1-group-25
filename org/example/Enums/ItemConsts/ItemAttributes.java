@@ -15,7 +15,8 @@ public enum ItemAttributes {
     canBecomeGiant,
     description,
     price,
-    ingredients
+    ingredients,
+    capacity
     ;
 
 
