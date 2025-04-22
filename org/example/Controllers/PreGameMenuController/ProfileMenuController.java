@@ -1,8 +1,8 @@
-package advanced.org.example.Controllers.PreGameMenuController;
+package org.example.Controllers.PreGameMenuController;
 
-import advanced.org.example.Models.App;
-import advanced.org.example.Models.GameHistory;
-import advanced.org.example.Models.User;
+import org.example.Models.App;
+import org.example.Models.GameHistory;
+import org.example.Models.User;
 
 import java.util.ArrayList;
 import java.util.Collections;

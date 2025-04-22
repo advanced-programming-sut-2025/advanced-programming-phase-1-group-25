@@ -1,6 +1,6 @@
-package advanced.org.example.Models.Item;
+package org.example.Models.Item;
 
-import advanced.org.example.Enums.ItemConsts.ItemLevels;
+import org.example.Enums.ItemConsts.ItemLevels;
 
 import java.util.ArrayList;
 

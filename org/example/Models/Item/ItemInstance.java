@@ -1,6 +1,6 @@
-package advanced.org.example.Models.Item;
+package org.example.Models.Item;
 
-import advanced.org.example.Enums.ItemConsts.ItemAttributes;
+import org.example.Enums.ItemConsts.ItemAttributes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,5 +19,15 @@ public class ItemInstance {
         this.attributes = new HashMap<>();
     }
 
+    public ItemDefinition getDefinition() {
+        return definition;
+    }
 
+    public Map<ItemAttributes, Object> getAttributes() {
+        return attributes;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
 }

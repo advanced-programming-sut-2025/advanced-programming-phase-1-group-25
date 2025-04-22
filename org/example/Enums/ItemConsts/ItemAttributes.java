@@ -1,6 +1,23 @@
-package advanced.org.example.Enums.ItemConsts;
+package org.example.Enums.ItemConsts;
 
 public enum ItemAttributes {
-//    DAMAGE("damage"),
-    // ...
+    damage, durability, energyCost,
+    upgradeCost, percentage,
+    source,
+    stages,
+    totalHarvestTime,
+    oneTime,
+    regrowthTime,
+    baseSellPrice,
+    isEdible,
+    energy,
+    season,
+    canBecomeGiant,
+    description,
+    price,
+    ingredients
+    ;
+
+
+
 }

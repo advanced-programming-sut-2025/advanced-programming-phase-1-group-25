@@ -1,6 +1,6 @@
-package advanced.org.example;
+package org.example;
 
-import advanced.org.example.Views.AppView;
+import org.example.Views.AppView;
 
 
 /*

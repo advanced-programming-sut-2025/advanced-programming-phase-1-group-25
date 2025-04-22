@@ -1,4 +1,4 @@
-package advanced.org.example.Enums.InGameMenuCommands;
+package org.example.Enums.InGameMenuCommands;
 
 public enum CookingMenuCommands {
 }

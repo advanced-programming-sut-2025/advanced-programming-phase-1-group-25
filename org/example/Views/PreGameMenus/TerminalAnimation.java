@@ -1,4 +1,4 @@
-package advanced.org.example.Views.PreGameMenus;
+package org.example.Views.PreGameMenus;
 
 public class TerminalAnimation {
     public static void loadingAnimation(String text) throws InterruptedException {

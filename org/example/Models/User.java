@@ -1,6 +1,6 @@
-package advanced.org.example.Models;
+package org.example.Models;
 
-import advanced.org.example.Enums.GameConsts.Gender;
+import org.example.Enums.GameConsts.Gender;
 
 import java.util.ArrayList;
 
@@ -15,14 +15,17 @@ public class User {
     private Gender gender;
     private ArrayList<GameHistory> history;
     private Question securityQuestion;
+    private boolean isInAnyGame;
 
-    public User(String name, String username, String password, String email, Gender gender) {
+    public User(String name, String username, String password, String email, Gender gender, Question userSecurityQuestion) {
         this.nickname = name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.gender = gender;
         this.history = new ArrayList<>();
+        this.securityQuestion = userSecurityQuestion;
+        this.isInAnyGame = false;
     }
 
     public ArrayList<GameHistory> getGameHistory() {
@@ -75,5 +78,14 @@ public class User {
 
     public Question getSecurityQuestion() {
         return securityQuestion;
+    }
+    public boolean isInAnyGame() {
+        return isInAnyGame;
+    }
+    public void entersGame() {
+        this.isInAnyGame = true;
+    }
+    public void exitsGame() {
+        this.isInAnyGame = false;
     }
 }

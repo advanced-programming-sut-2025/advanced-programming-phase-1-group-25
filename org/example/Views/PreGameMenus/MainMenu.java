@@ -1,9 +1,9 @@
-package advanced.org.example.Views.PreGameMenus;
+package org.example.Views.PreGameMenus;
 
-import advanced.org.example.Enums.GameMenus.Menus;
-import advanced.org.example.Enums.PreGameMenuCommands.MainMenuCommands;
-import advanced.org.example.Models.App;
-import advanced.org.example.Views.AppMenu;
+import org.example.Enums.GameMenus.Menus;
+import org.example.Enums.PreGameMenuCommands.MainMenuCommands;
+import org.example.Models.App;
+import org.example.Views.AppMenu;
 import java.util.Scanner;
 
 public class MainMenu implements AppMenu {

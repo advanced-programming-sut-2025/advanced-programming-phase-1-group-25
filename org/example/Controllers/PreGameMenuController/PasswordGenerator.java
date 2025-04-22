@@ -1,4 +1,4 @@
-package advanced.org.example.Controllers.PreGameMenuController;
+package org.example.Controllers.PreGameMenuController;
 
 import java.security.SecureRandom;
 import java.util.*;

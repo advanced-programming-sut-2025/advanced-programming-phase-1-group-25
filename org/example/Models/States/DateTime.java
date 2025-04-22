@@ -1,7 +1,7 @@
-package advanced.org.example.Models.States;
+package org.example.Models.States;
 
-import advanced.org.example.Enums.GameConsts.DayOfWeek;
-import advanced.org.example.Enums.GameConsts.Seasons;
+import org.example.Enums.GameConsts.DayOfWeek;
+import org.example.Enums.GameConsts.Seasons;
 
 
 /*

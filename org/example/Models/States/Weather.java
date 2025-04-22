@@ -1,4 +1,4 @@
-package advanced.org.example.Models.States;
+package org.example.Models.States;
 
 /*
     A static class to store current weather state, change and return it when needed.

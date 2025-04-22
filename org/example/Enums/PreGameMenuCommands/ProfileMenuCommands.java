@@ -1,4 +1,4 @@
-package advanced.org.example.Enums.PreGameMenuCommands;
+package org.example.Enums.PreGameMenuCommands;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

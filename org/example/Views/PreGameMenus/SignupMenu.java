@@ -1,8 +1,8 @@
-package advanced.org.example.Views.PreGameMenus;
+package org.example.Views.PreGameMenus;
 
-import advanced.org.example.Controllers.PreGameMenuController.SignupMenuController;
-import advanced.org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
-import advanced.org.example.Views.AppMenu;
+import org.example.Controllers.PreGameMenuController.SignupMenuController;
+import org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
+import org.example.Views.AppMenu;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -18,7 +18,6 @@ public class SignupMenu implements AppMenu {
             if ((matcher = command.getMatcher(input)) != null) {
                 matched = true;
                 executeCommand(command, matcher, sc);
-                break;
             }
         }
         if (!matched) {

@@ -1,4 +1,4 @@
-package advanced.org.example.Enums.GameMenus;
+package org.example.Enums.GameMenus;
 
 import java.util.Scanner;
 

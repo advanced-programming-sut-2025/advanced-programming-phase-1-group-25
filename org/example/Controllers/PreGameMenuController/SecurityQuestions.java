@@ -1,13 +1,13 @@
-package advanced.org.example.Controllers.PreGameMenuController;
+package org.example.Controllers.PreGameMenuController;
 
-import advanced.org.example.Models.App;
-import advanced.org.example.Models.Question;
+import org.example.Models.App;
+import org.example.Models.Question;
 
 import java.util.*;
 
 public class SecurityQuestions {
 
-    public static List<Question> generateQuestions() {
+    public static List<Question> generateSecurityGeneralQuestions() {
         List<Question> questions = new ArrayList<>();
 
         questions.add(new Question("What is 56 + 23?", "79"));
@@ -37,16 +37,15 @@ public class SecurityQuestions {
     public static Map<Integer, String> generateSecurityPersonalQuestions() {
         Map<Integer, String> securityQuestions = new HashMap<>();
 
-
-        securityQuestions.put(1, "What is the name of your first teacher?");
-        securityQuestions.put(2, "What was the model of your first mobile phone?");
-        securityQuestions.put(3, "What is the name of the street you grew up on?");
-        securityQuestions.put(4, "What is your childhood best friend's first name?");
-        securityQuestions.put(5, "What was the name of your first pet?");
-        securityQuestions.put(6, "What city were you in when you had your first kiss?");
-        securityQuestions.put(7, "What is the name of your favorite childhood book?");
-        securityQuestions.put(8, "What was your first gaming console?");
-        securityQuestions.put(9, "What is the middle name of your oldest sibling?");
+        securityQuestions.put(1, " What is the name of your first teacher?");
+        securityQuestions.put(2, " What was the model of your first mobile phone?");
+        securityQuestions.put(3, " What is the name of the street you grew up on?");
+        securityQuestions.put(4, " What is your childhood best friend's first name?");
+        securityQuestions.put(5, " What was the name of your first pet?");
+        securityQuestions.put(6, " What city were you in when you had your first kiss?");
+        securityQuestions.put(7, " What is the name of your favorite childhood book?");
+        securityQuestions.put(8, " What was your first gaming console?");
+        securityQuestions.put(9, " What is the middle name of your oldest sibling?");
         securityQuestions.put(10, "What is the name of the hospital where you were born?");
         securityQuestions.put(11, "What is the name of the company of your first job?");
         securityQuestions.put(12, "What is the nickname your family used to call you?");
@@ -57,10 +56,12 @@ public class SecurityQuestions {
         return securityQuestions;
     }
 
-    public static boolean addSecurityQuestions(Scanner sc) {
+    public static Question addSecurityQuestions(Scanner sc) {
         Map<Integer, String> questions = new HashMap<>(generateSecurityPersonalQuestions());
+        int counter = 1;
         for (Map.Entry<Integer, String> entry : questions.entrySet()) {
-            System.out.printf(entry.getValue() + "\n");
+            System.out.printf(counter + " _ " + entry.getValue() + "\n");
+            counter++;
         }
 
         System.out.printf("\n\nSelect a question. Or \"back\" to exit.\n\n");
@@ -68,7 +69,7 @@ public class SecurityQuestions {
         while (true) {
             String input = sc.nextLine();
             if (input.equals("back")) {
-                return false;
+                return null;
             }
             int number;
             try {
@@ -89,19 +90,18 @@ public class SecurityQuestions {
                 answer = sc.nextLine();
                 numberFails++;
                 if (numberFails >= 3) {
-                    return false;
+                    return null;
                 }
             } while (answer.isEmpty());
 
             Question newQuestion = new Question(questions.get(number), answer);
-            App.getCurrentUser().setSecurityQuestion(newQuestion);
-            return true;
+            return newQuestion;
         }
     }
 
     public static boolean askSecurityQuestion(Scanner sc) {
         int numberOfWrongs = 0;
-        List<Question> questions = generateQuestions();
+        List<Question> questions = generateSecurityGeneralQuestions();
         while (true) {
             Question selected = questions.get(new Random().nextInt(questions.size()));
             System.out.printf("Security Question: " + selected.getQuestion() + "\n");

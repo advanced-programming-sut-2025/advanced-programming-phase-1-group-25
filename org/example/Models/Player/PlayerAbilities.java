@@ -1,4 +1,4 @@
-package advanced.org.example.Models.Player;
+package org.example.Models.Player;
 
 
 /*

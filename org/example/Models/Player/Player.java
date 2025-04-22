@@ -1,9 +1,9 @@
-package advanced.org.example.Models.Player;
+package org.example.Models.Player;
 
-import advanced.org.example.Enums.GameConsts.Gender;
-import advanced.org.example.Models.Item.BackPack;
-import advanced.org.example.Models.MapElements.Position;
-import advanced.org.example.Models.User;
+import org.example.Enums.GameConsts.Gender;
+import org.example.Models.Item.BackPack;
+import org.example.Models.MapElements.Position;
+import org.example.Models.User;
 
 /*
     When a game is made, it has players; and when users enter the game, they become players of that game.

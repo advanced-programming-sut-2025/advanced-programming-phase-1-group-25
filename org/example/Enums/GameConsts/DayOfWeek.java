@@ -1,4 +1,4 @@
-package advanced.org.example.Enums.GameConsts;
+package org.example.Enums.GameConsts;
 
 public enum DayOfWeek {
     MONDAY,

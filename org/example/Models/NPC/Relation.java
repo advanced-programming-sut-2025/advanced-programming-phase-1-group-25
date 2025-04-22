@@ -1,10 +1,10 @@
-package advanced.org.example.Models.NPC;
+package org.example.Models.NPC;
 
 /*
     A class to handle relations between a player and an NPC.
  */
 
-import advanced.org.example.Models.Player.Player;
+import org.example.Models.Player.Player;
 
 public class Relation {
     private Player player;

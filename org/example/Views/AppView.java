@@ -1,7 +1,7 @@
-package advanced.org.example.Views;
+package org.example.Views;
 
-import advanced.org.example.Enums.GameMenus.Menus;
-import advanced.org.example.Models.App;
+import org.example.Enums.GameMenus.Menus;
+import org.example.Models.App;
 
 import java.util.Scanner;
 

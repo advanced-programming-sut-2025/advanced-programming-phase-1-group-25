@@ -1,7 +1,7 @@
-package advanced.org.example.Views.InGameMenus;
+package org.example.Views.InGameMenus;
 
-import advanced.org.example.Models.Shops.Shop;
-import advanced.org.example.Views.AppMenu;
+import org.example.Models.Shops.Shop;
+import org.example.Views.AppMenu;
 
 import java.util.Scanner;
 

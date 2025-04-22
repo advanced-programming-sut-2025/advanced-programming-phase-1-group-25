@@ -1,4 +1,4 @@
-package advanced.org.example.Enums.GameConsts;
+package org.example.Enums.GameConsts;
 
 /*
     Some NPCs have jobs.

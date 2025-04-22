@@ -1,6 +1,6 @@
-package advanced.org.example.Views.InGameMenus;
+package org.example.Views.InGameMenus;
 
-import advanced.org.example.Views.AppMenu;
+import org.example.Views.AppMenu;
 
 import java.util.Scanner;
 

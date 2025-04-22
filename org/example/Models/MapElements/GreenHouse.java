@@ -1,4 +1,4 @@
-package advanced.org.example.Models.MapElements;
+package org.example.Models.MapElements;
 
 public class GreenHouse {
     private Tile[][] area;

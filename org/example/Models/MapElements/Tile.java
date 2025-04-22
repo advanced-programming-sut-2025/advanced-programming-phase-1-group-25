@@ -1,6 +1,6 @@
-package advanced.org.example.Models.MapElements;
+package org.example.Models.MapElements;
 
-import advanced.org.example.Models.Item.ItemInstance;
+import org.example.Models.Item.ItemInstance;
 
 /*
     Game map is consisted of many tiles, each of which has a position and an item to represent.
@@ -20,5 +20,8 @@ public class Tile {
 
     public ItemInstance getItem() {
         return item;
+    }
+    public Position getPosition() {
+        return position;
     }
 }

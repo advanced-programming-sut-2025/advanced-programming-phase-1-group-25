@@ -1,9 +1,9 @@
-package advanced.org.example.Enums.GameMenus;
+package org.example.Enums.GameMenus;
 
-import advanced.org.example.Views.AppMenu;
-import advanced.org.example.Views.InGameMenus.*;
-import advanced.org.example.Views.PreGameMenus.*;
-import advanced.org.example.Views.PreGameMenus.ExitMenu;
+import org.example.Views.AppMenu;
+import org.example.Views.InGameMenus.*;
+import org.example.Views.PreGameMenus.*;
+import org.example.Views.PreGameMenus.ExitMenu;
 
 import java.util.Scanner;
 

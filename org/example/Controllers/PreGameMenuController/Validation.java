@@ -1,6 +1,6 @@
-package advanced.org.example.Controllers.PreGameMenuController;
+package org.example.Controllers.PreGameMenuController;
 
-import advanced.org.example.Models.App;
+import org.example.Models.App;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,16 +84,12 @@ public class Validation {
         return username.matches("^[a-zA-Z0-9-]+$");
     }
     public static boolean isEmailValid(String email) {
-        String emailRegex = "^(?!.*[.]{2})(?!.*[?<>\"';:|\\\\/\\[\\]{}+=()*&^%$#@!])" +
-                "[a-zA-Z0-9](?:[a-zA-Z0-9._-]*[a-zA-Z0-9])?" +
-                "@" +
-                "[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?" +
-                "(?:\\.[a-zA-Z]{2,})+$";
-
+        String emailRegex = "^(?!.*\\.\\.)[a-zA-Z0-9](?:[a-zA-Z0-9._-]*[a-zA-Z0-9])?@(?=[a-zA-Z0-9])[a-zA-Z0-9.-]*[a-zA-Z0-9]\\.[a-zA-Z]{2,}$";
         return email.matches(emailRegex);
     }
     public static boolean isPasswordValid(String password) {
-        return password.matches("^[a-zA-Z0-9?><,\"';:\\/|][}{+=)(*&^%$#!]+$");
+        return password.matches("^[a-zA-Z0-9?><,\"';:/\\\\|\\]\\[}{+=)(*&^%$#!]*$"
+        );
     }
     public static int isPasswordWeak(String password) {
         if (password.length() < 8) return 0;
@@ -119,7 +115,7 @@ public class Validation {
         return -1;
     }
     public static boolean isNicknameValid(String nickname) {
-        return nickname.matches("^[a-zA-Z0-9 -_]$]");
+        return nickname.matches("^[a-zA-Z0-9 -_]+$");
     }
     public static long generateRandomNumber(int length) {
         Random random = new Random();

@@ -1,4 +1,4 @@
-package advanced.org.example.Controllers.UpdateMap;
+package org.example.Controllers.UpdateMap;
 
 /*
     Logins to update the foraging items of the map every morning.

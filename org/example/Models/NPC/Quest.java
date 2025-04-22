@@ -1,4 +1,4 @@
-package advanced.org.example.Models.NPC;
+package org.example.Models.NPC;
 
 /*
     In a relation, we can have quests to do.

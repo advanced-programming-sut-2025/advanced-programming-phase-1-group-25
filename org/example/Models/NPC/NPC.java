@@ -1,10 +1,10 @@
-package advanced.org.example.Models.NPC;
+package org.example.Models.NPC;
 
-import advanced.org.example.Enums.GameConsts.Gender;
-import advanced.org.example.Enums.GameConsts.Professions;
-import advanced.org.example.Models.Item.ItemInstance;
-import advanced.org.example.Models.MapElements.House;
-import advanced.org.example.Models.MapElements.Position;
+import org.example.Enums.GameConsts.Gender;
+import org.example.Enums.GameConsts.Professions;
+import org.example.Models.Item.ItemInstance;
+import org.example.Models.MapElements.House;
+import org.example.Models.MapElements.Position;
 
 import java.util.ArrayList;
 

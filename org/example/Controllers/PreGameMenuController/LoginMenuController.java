@@ -1,12 +1,12 @@
-package advanced.org.example.Controllers.PreGameMenuController;
+package org.example.Controllers.PreGameMenuController;
 
-import advanced.org.example.Enums.GameMenus.Menus;
-import advanced.org.example.Models.App;
-import advanced.org.example.Views.PreGameMenus.TerminalAnimation;
+import org.example.Enums.GameMenus.Menus;
+import org.example.Models.App;
+import org.example.Views.PreGameMenus.TerminalAnimation;
 
 import java.util.Scanner;
 
-import static advanced.org.example.Controllers.PreGameMenuController.SecurityQuestions.askPersonalSecurityQuestion;
+import static org.example.Controllers.PreGameMenuController.SecurityQuestions.askPersonalSecurityQuestion;
 
 public class LoginMenuController {
     public static String changeMenu(String menu) {

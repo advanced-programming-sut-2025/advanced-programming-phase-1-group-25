@@ -1,6 +1,6 @@
-package advanced.org.example.Models.Item;
+package org.example.Models.Item;
 
-import advanced.org.example.Models.Shops.Shop;
+import org.example.Models.Shops.Shop;
 
 /*
     Items that are in the shops.

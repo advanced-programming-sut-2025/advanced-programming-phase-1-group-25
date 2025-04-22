@@ -1,7 +1,7 @@
-package advanced.org.example.Models.Shops;
+package org.example.Models.Shops;
 
-import advanced.org.example.Models.NPC.NPC;
-import advanced.org.example.Models.MapElements.Tile;
+import org.example.Models.NPC.NPC;
+import org.example.Models.MapElements.Tile;
 
 /*
     A super class for shops in the game

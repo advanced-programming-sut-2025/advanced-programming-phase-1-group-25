@@ -1,7 +1,8 @@
-package advanced.org.example.Enums.ItemConsts;
+package org.example.Enums.ItemConsts;
 
 public enum ItemType {
-    TREE,
-    ROCK,
-    // ...
+    tool,
+    foraging,
+    floor,
+    ;
 }

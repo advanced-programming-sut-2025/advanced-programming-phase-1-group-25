@@ -1,4 +1,4 @@
-package advanced.org.example.Models.Item;
+package org.example.Models.Item;
 
 /*
     Inventory items, are the items that are collected or in the inventory from the beginning.

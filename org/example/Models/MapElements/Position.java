@@ -1,4 +1,4 @@
-package advanced.org.example.Models.MapElements;
+package org.example.Models.MapElements;
 
 /*
     Every object in out game has a position specified by y and x values.
@@ -11,4 +11,11 @@ public class Position {
         this.x = x;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

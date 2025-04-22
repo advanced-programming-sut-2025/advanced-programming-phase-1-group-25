@@ -1,4 +1,4 @@
-package advanced.org.example.Models;
+package org.example.Models;
 
 public class Question {
     String question;
