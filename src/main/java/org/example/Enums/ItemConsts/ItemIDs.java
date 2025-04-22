@@ -16,6 +16,8 @@ public enum ItemIDs {
     VOID,
     training_fishing_pole,
     acorns,
+    x,
+
     ;
 
 }
