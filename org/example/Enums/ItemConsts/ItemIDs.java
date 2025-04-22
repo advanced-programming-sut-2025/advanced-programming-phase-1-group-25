@@ -44,6 +44,7 @@ public enum ItemIDs {
     iron_trash_can,
     golden_trash_can,
     iridium_trash_can,
+
     ;
 
 }
