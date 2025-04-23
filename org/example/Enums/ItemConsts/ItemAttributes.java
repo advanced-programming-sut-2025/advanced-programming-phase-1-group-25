@@ -16,7 +16,8 @@ public enum ItemAttributes {
     description,
     price,
     ingredients,
-    capacity
+    capacity,
+    products,
 
     ;
 

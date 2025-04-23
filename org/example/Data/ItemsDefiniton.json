@@ -343,14 +343,15 @@
     "name": "Base Backpack",
     "type": "tool",
     "baseAttributes": {
-        "capacity": 12
+      "capacity": 12
     }
-  }, {
+  },
+  {
     "itemId": "big_backpack",
     "name": "Big Backpack",
     "type": "tool",
     "baseAttributes": {
-        "capacity": 24
+      "capacity": 24
     }
   },
   {
@@ -358,7 +359,7 @@
     "name": "Deluxe Backpack",
     "type": "tool",
     "baseAttributes": {
-        "capacity": -1
+      "capacity": -1
     }
   },
   {
@@ -400,6 +401,566 @@
     "baseAttributes": {
       "percentage": 60
     }
+  },
+  {
+    "itemId": "cherry_bomb",
+    "name": "Cherry Bomb",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "mining": 1
+      },
+      "ingredients": {
+        "copper_ore": 4,
+        "coal": 1
+      },
+      "price": 50
+    }
+  },
+  {
+    "itemId": "bomb",
+    "name": "Bomb",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "mining": 2
+      },
+      "ingredients": {
+        "iron_ore": 4,
+        "coal": 1
+      },
+      "price": 50
+    }
+  },
+  {
+    "itemId": "mega_bomb",
+    "name": "Mega Bomb",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "mining": 3
+      },
+      "ingredients": {
+        "gold_ore": 4,
+        "coal": 1
+      },
+      "price": 50
+    }
+  },
+  {
+    "itemId": "sprinkler",
+    "name": "Sprinkler",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 1
+      },
+      "ingredients": {
+        "copper_bar": 1,
+        "iron_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "quality_sprinkler",
+    "name": "Quality Sprinkler",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 2
+      },
+      "ingredients": {
+        "gold_bar": 1,
+        "iron_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "iridium_sprinkler",
+    "name": "Iridium Sprinkler",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 3
+      },
+      "ingredients": {
+        "gold_bar": 1,
+        "iridium_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "charcoal_klin",
+    "name": "Charcoal Klin",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "foraging": 1
+      },
+      "ingredients": {
+        "wood": 20,
+        "copper_bar": 2
+      }
+    }
+  },
+  {
+    "itemId": "furnace",
+    "name": "Furnace",
+    "type": "crafting",
+    "baseAttributes": {
+      "ingredients": {
+        "copper_ore": 20,
+        "stone": 25
+      }
+    }
+  },
+  {
+    "itemId": "scarecrow",
+    "name": "Scarecrow",
+    "type": "crafting",
+    "baseAttributes": {
+      "ingredients": {
+        "wood": 50,
+        "coal": 1,
+        "fiber": 20
+      }
+    }
+  },
+  {
+    "itemId": "deluxe_scarecrow",
+    "name": "Deluxe Scarecrow",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 2
+      },
+      "ingredients": {
+        "wood": 50,
+        "coal": 1,
+        "fiber": 20,
+        "iridium_ore": 1
+      }
+    }
+  },
+  {
+    "itemId": "bee_house",
+    "name": "Bee House",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 1
+      },
+      "ingredients": {
+        "wood": 40,
+        "coal": 8,
+        "iron_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "cheese_press",
+    "name": "Cheese Press",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 2
+      },
+      "ingredients": {
+        "wood": 45,
+        "stone": 45,
+        "copper_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "keg",
+    "name": "Keg",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 3
+      },
+      "ingredients": {
+        "wood": 30,
+        "copper_bar": 1,
+        "iron_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "loom",
+    "name": "Loom",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 3
+      },
+      "ingredients": {
+        "wood": 60,
+        "fiber": 30
+      }
+    }
+  },
+  {
+    "itemId": "mayonnaise_machine",
+    "name": "Mayonnaise Machine",
+    "type": "crafting",
+    "baseAttributes": {
+      "ingredients": {
+        "wood": 15,
+        "stone": 15,
+        "copper_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "oil_maker",
+    "name": "Oil Maker",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 2
+      },
+      "ingredients": {
+        "wood": 100,
+        "iron_bar": 1,
+        "gold_bar": 1
+      }
+    }
+  },
+  {
+    "itemId": "preserves_jar",
+    "name": "Preserves Jar",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "farming": 2
+      },
+      "ingredients": {
+        "wood": 50,
+        "stone": 40,
+        "coal": 8
+      }
+    }
+  },
+  {
+    "itemId": "dehydrator",
+    "name": "Dehydrator",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "Pierre's General Store": -1
+      },
+      "ingredients": {
+        "wood": 30,
+        "stone": 20,
+        "fiber": 30
+      }
+    }
+  },
+  {
+    "itemId": "fish_smoker",
+    "name": "Fish Smoker",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "Fish Shop": -1
+      },
+      "ingredients": {
+        "wood": 50,
+        "iron_bar": 3,
+        "coal": 10
+      }
+    }
+  },
+  {
+    "itemId": "mystic_tree_seed",
+    "name": "Mystic Tree Seed",
+    "type": "crafting",
+    "baseAttributes": {
+      "source": {
+        "foraging": 4
+      },
+      "ingredients": {
+        "acorn": 5,
+        "maple_seed": 5,
+        "pine_cone": 5,
+        "mahogany_seed": 5
+      },
+      "price": 100
+    }
+  },
+  {
+    "itemId": "hen",
+    "name": "Hen",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 800,
+      "products": {
+        "egg": 50,
+        "big_egg": 95
+      }
+    }
+  },
+  {
+    "itemId": "duck",
+    "name": "Duck",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 1200,
+      "products": {
+        "duck_egg": 95,
+        "duck_feather": 250
+      }
+    }
+  },
+  {
+    "itemId": "rabbit",
+    "name": "Rabbit",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 8000,
+      "products": {
+        "wool": 340,
+        "rabbit_foot": 565
+      }
+    }
+  },
+  {
+    "itemId": "dinosaur",
+    "name": "Dinosaur",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 14000,
+      "products": {
+        "dinosaur_egg": 350
+      }
+    }
+  },
+  {
+    "itemId": "cow",
+    "name": "Cow",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 1500,
+      "products": {
+        "milk": 125,
+        "big_milk": 190
+      }
+    }
+  },
+  {
+    "itemId": "goat",
+    "name": "Goat",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 4000,
+      "products": {
+        "goat_milk": 225,
+        "big_goat_milk": 345
+      }
+    }
+  },
+  {
+    "itemId": "sheep",
+    "name": "Sheep",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 8000,
+      "products": {
+        "wool": 340
+      }
+    }
+  },
+  {
+    "itemId": "pig",
+    "name": "Pig",
+    "type": "animal",
+    "baseAttributes": {
+      "price": 16000,
+      "products": {
+        "truffle": 625
+      }
+    }
+  },
+  {
+    "itemId": "salmon",
+    "name": "Salmon",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 75,
+      "season": "fall"
+    }
+  },
+  {
+    "itemId": "sardine",
+    "name": "Sardine",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 40,
+      "season": "fall"
+    }
+  },
+  {
+    "itemId": "shad",
+    "name": "Shad",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 60,
+      "season": "fall"
+    }
+  },
+  {
+    "itemId": "blue_discus",
+    "name": "Blue Discus",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 120,
+      "season": "fall"
+    }
+  },
+  {
+    "itemId": "midnight_carp",
+    "name": "Midnight Carp",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 150,
+      "season": "winter"
+    }
+  },
+  {
+    "itemId": "squid",
+    "name": "Squid",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 80,
+      "season": "winter"
+    }
+  },
+  {
+    "itemId": "Tuna",
+    "name": "Tuna",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 100,
+      "season": "winter"
+    }
+  },
+  {
+    "itemId": "perch",
+    "name": "Perch",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 55,
+      "season": "winter"
+    }
+  },
+  {
+    "itemId": "flounder",
+    "name": "Flounder",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 100,
+      "season": "spring"
+    }
+  },
+  {
+    "itemId": "lionfish",
+    "name": "Lionfish",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 100,
+      "season": "spring"
+    }
+  },
+  {
+    "itemId": "herring",
+    "name": "Herring",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 30,
+      "season": "spring"
+    }
+  },
+  {
+    "itemId": "ghostfish",
+    "name": "Ghostfish",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 45,
+      "season": "spring"
+    }
+  },
+  {
+    "itemId": "tilapia",
+    "name": "Tilapia",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 75,
+      "season": "summer"
+    }
+  },
+  {
+    "itemId": "dorado",
+    "name": "Dorado",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 100,
+      "season": "summer"
+    }
+  },
+  {
+    "itemId": "sunfish",
+    "name": "Sunfish",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 30,
+      "season": "summer"
+    }
+  },
+  {
+    "itemId": "rainbow_trout",
+    "name": "Rainbow Trout",
+    "type": "fish",
+    "baseAttributes": {
+      "price": 65,
+      "season": "summer"
+    }
+  },
+  {
+    "itemId": "legend",
+    "name": "Legend",
+    "type": "legendary_fish",
+    "baseAttributes": {
+      "price": 5000,
+      "season": "spring"
+    }
+  },
+  {
+    "itemId": "glacierfish",
+    "name": "Glacierfish",
+    "type": "legendary_fish",
+    "baseAttributes": {
+      "price": 1000,
+      "season": "summer"
+    }
+  },
+  {
+    "itemId": "angler",
+    "name": "Angler",
+    "type": "legendary_fish",
+    "baseAttributes": {
+      "price": 900,
+      "season": "fall"
+    }
+  },
+  {
+    "itemId": "crimsonfish",
+    "name": "Crimsonfish",
+    "type": "legendary_fish",
+    "baseAttributes": {
+      "price": 1500,
+      "season": "winter"
+    }
   }
-
 ]
