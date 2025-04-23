@@ -4,7 +4,6 @@ import org.example.Enums.GameMenus.Menus;
 import org.example.Models.App;
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import static org.example.Controllers.PreGameMenuController.SecurityQuestions.askPersonalSecurityQuestion;

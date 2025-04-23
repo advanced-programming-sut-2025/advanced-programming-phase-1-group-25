@@ -4,96 +4,8 @@
     "name": "",
     "type": "floor",
     "baseAttributes": {
-      "damage": 0
     }
   },
-
-  {
-    "itemId": "base_axe",
-    "name": "Base Axe",
-    "type": "tool",
-    "baseAttributes": {
-      "damage": 1,
-      "energyCost": 5,
-      "durability": -1,
-      "upgradeCost": 0
-    }
-  },
-
-  {
-    "itemId": "base_watering_can",
-    "name": "Base Watering Can",
-    "type": "tool",
-    "baseAttributes": {
-      "durability": 40,
-      "energyCost": 5,
-      "upgradeCost": 0
-    }
-  },
-
-
-  {
-    "itemId": "training_fishing_pole",
-    "name": "Training Fishing Pole",
-    "type": "tool",
-    "baseAttributes": {
-      "price": 25,
-      "energyCost": 8
-    }
-  },
-
-
-  {
-    "itemId": "milk_pale",
-    "name": "Milk Pale",
-    "type": "tool",
-    "baseAttributes": {
-      "energyCost": 4,
-      "price": 1000
-    }
-  },
-
-  {
-    "itemId": "shear",
-    "name": "Shear",
-    "type": "tool",
-    "baseAttributes": {
-      "energyCost": 4,
-      "price": 1000
-    }
-  },
-
-  {
-    "itemId": "fishing_pole",
-    "name": "Base Axe",
-    "type": "tool",
-    "baseAttributes": {
-      "damage": 1,
-      "energyCost": 5,
-      "durability": -1
-    }
-  },
-
-  {
-    "itemId": "base_trash_can",
-    "name": "Trash Can",
-    "type": "tool",
-    "baseAttributes": {
-      "upgradeCost": 0,
-      "percentage": 0
-    }
-  },
-
-  {
-    "itemId": "base_trash_can",
-    "name": "Trash Can",
-    "type": "tool",
-    "baseAttributes": {
-      "upgradeCost": 0,
-      "percentage": 0
-    }
-  },
-
   {
     "itemId": "quartz",
     "name": "Quartz",
@@ -103,7 +15,6 @@
       "description": "A clear crystal commonly found in caves and mines."
     }
   },
-
   {
     "itemId": "blue_jazz",
     "name": "Blue Jazz",
@@ -121,8 +32,6 @@
       "canBecomeGiant": false
     }
   },
-
-
   {
     "itemId": "common_mushroom",
     "name": "Common Mushroom",
@@ -133,7 +42,6 @@
       "energy": 38
     }
   },
-
   {
     "itemId": "acorns",
     "name": "Acorns",
@@ -142,8 +50,6 @@
       "season": "special"
     }
   },
-
-
   {
     "itemId": "common_mushroom",
     "name": "Common Mushroom",
@@ -153,5 +59,346 @@
       "baseSellPrice": 40,
       "energy": 38
     }
+  },
+  {
+    "itemId": "base_hoe",
+    "name": "Base Hoe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 1,
+      "energyCost": 5,
+      "durability": -1,
+      "upgradeCost": 0
+    }
+  },
+  {
+    "itemId": "copper_hoe",
+    "name": "Copper Hoe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 2,
+      "energyCost": 4,
+      "durability": 25,
+      "upgradeCost": 10
+    }
+  },
+  {
+    "itemId": "iron_hoe",
+    "name": "Iron Hoe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 3,
+      "energyCost": 3,
+      "durability": 50,
+      "upgradeCost": 20
+    }
+  },
+  {
+    "itemId": "golden_hoe",
+    "name": "Golden Hoe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 4,
+      "energyCost": 2,
+      "durability": 75,
+      "upgradeCost": 30
+    }
+  },
+  {
+    "itemId": "iridium_hoe",
+    "name": "Iridium Hoe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 5,
+      "energyCost": 1,
+      "durability": 100,
+      "upgradeCost": 40
+    }
+  },
+  {
+    "itemId": "base_pickaxe",
+    "name": "Base Pickaxe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 1,
+      "energyCost": 5,
+      "durability": -1,
+      "upgradeCost": 0
+    }
+  },
+  {
+    "itemId": "copper_pickaxe",
+    "name": "Copper Pickaxe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 2,
+      "energyCost": 4,
+      "durability": 25,
+      "upgradeCost": 10
+    }
+  },
+  {
+    "itemId": "iron_pickaxe",
+    "name": "Iron Pickaxe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 3,
+      "energyCost": 3,
+      "durability": 50,
+      "upgradeCost": 20
+    }
+  },
+  {
+    "itemId": "golden_pickaxe",
+    "name": "Golden Pickaxe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 4,
+      "energyCost": 2,
+      "durability": 75,
+      "upgradeCost": 30
+    }
+  },
+  {
+    "itemId": "iridium_pickaxe",
+    "name": "Iridium Pickaxe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 5,
+      "energyCost": 1,
+      "durability": 100,
+      "upgradeCost": 40
+    }
+  },
+  {
+    "itemId": "base_axe",
+    "name": "Base Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 1,
+      "energyCost": 5,
+      "durability": -1,
+      "upgradeCost": 0
+    }
+  },
+  {
+    "itemId": "copper_axe",
+    "name": "Copper Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 2,
+      "energyCost": 4,
+      "durability": 25,
+      "upgradeCost": 10
+    }
+  },
+  {
+    "itemId": "iron_axe",
+    "name": "Iron Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 3,
+      "energyCost": 3,
+      "durability": 50,
+      "upgradeCost": 20
+    }
+  },
+  {
+    "itemId": "golden_axe",
+    "name": "Golden Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 4,
+      "energyCost": 2,
+      "durability": 75,
+      "upgradeCost": 30
+    }
+  },
+  {
+    "itemId": "iridium_axe",
+    "name": "Iridium Axe",
+    "type": "tool",
+    "baseAttributes": {
+      "damage": 5,
+      "energyCost": 1,
+      "durability": 100,
+      "upgradeCost": 40
+    }
+  },
+  {
+    "itemId": "base_watering_can",
+    "name": "Base Watering Can",
+    "type": "tool",
+    "baseAttributes": {
+      "durability": 40,
+      "energyCost": 5,
+      "upgradeCost": 0
+    }
+  },
+  {
+    "itemId": "copper_watering_can",
+    "name": "Copper Watering Can",
+    "type": "tool",
+    "baseAttributes": {
+      "durability": 55,
+      "energyCost": 4,
+      "upgradeCost": 10
+    }
+  },
+  {
+    "itemId": "iron_watering_can",
+    "name": "Iron Watering Can",
+    "type": "tool",
+    "baseAttributes": {
+      "durability": 70,
+      "energyCost": 3,
+      "upgradeCost": 20
+    }
+  },
+  {
+    "itemId": "golden_watering_can",
+    "name": "Golden Watering Can",
+    "type": "tool",
+    "baseAttributes": {
+      "durability": 85,
+      "energyCost": 2,
+      "upgradeCost": 30
+    }
+  },
+  {
+    "itemId": "iridium_watering_can",
+    "name": "Iridium Watering Can",
+    "type": "tool",
+    "baseAttributes": {
+      "durability": 100,
+      "energyCost": 1,
+      "upgradeCost": 40
+    }
+  },
+  {
+    "itemId": "training_fishing_pole",
+    "name": "Training Fishing Pole",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 25,
+      "energyCost": 8
+    }
+  },
+  {
+    "itemId": "bamboo_fishing_pole",
+    "name": "Bamboo Fishing Pole",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 500,
+      "energyCost": 8
+    }
+  },
+  {
+    "itemId": "fiber_glass_fishing_pole",
+    "name": "Fiber Glass Fishing Pole",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 1800,
+      "energyCost": 6
+    }
+  },
+  {
+    "itemId": "iridium_fishing_pole",
+    "name": "Iridium Fishing Pole",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 7500,
+      "energyCost": 4
+    }
+  },
+  {
+    "itemId": "scythe",
+    "name": "Scythe",
+    "type": "tool",
+    "baseAttributes": {
+      "energyCost": 2
+    }
+  },
+  {
+    "itemId": "milk_pale",
+    "name": "Milk Pale",
+    "type": "tool",
+    "baseAttributes": {
+      "price": 1000,
+      "energyCost": 4
+    }
+  },
+  {
+    "itemId": "shear",
+    "name": "Shear",
+    "type": "tool",
+    "baseAttributes": {
+      "energyCost": 4,
+      "price": 1000
+    }
+  },
+  {
+    "itemId": "base_backpack",
+    "name": "Base Backpack",
+    "type": "tool",
+    "baseAttributes": {
+        "capacity": 12
+    }
+  }, {
+    "itemId": "big_backpack",
+    "name": "Big Backpack",
+    "type": "tool",
+    "baseAttributes": {
+        "capacity": 24
+    }
+  },
+  {
+    "itemId": "deluxe_backpack",
+    "name": "Deluxe Backpack",
+    "type": "tool",
+    "baseAttributes": {
+        "capacity": -1
+    }
+  },
+  {
+    "itemId": "base_trash_can",
+    "name": "Base Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "percentage": 0
+    }
+  },
+  {
+    "itemId": "copper_trash_can",
+    "name": "Copper Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "percentage": 15
+    }
+  },
+  {
+    "itemId": "iron_trash_can",
+    "name": "Iron Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "percentage": 30
+    }
+  },
+  {
+    "itemId": "golden_trash_can",
+    "name": "Golden Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "percentage": 45
+    }
+  },
+  {
+    "itemId": "iridium_trash_can",
+    "name": "Iridium Trash Can",
+    "type": "tool",
+    "baseAttributes": {
+      "percentage": 60
+    }
   }
+
 ]

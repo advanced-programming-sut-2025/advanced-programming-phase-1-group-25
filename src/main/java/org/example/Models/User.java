@@ -1,9 +1,7 @@
 package org.example.Models;
 
-import org.example.Controllers.PreGameMenuController.SecurityQuestions;
 import org.example.Enums.GameConsts.Gender;
 
-import java.sql.PseudoColumnUsage;
 import java.util.ArrayList;
 
 /*
@@ -28,6 +26,14 @@ public class User {
         this.history = new ArrayList<>();
         this.securityQuestion = userSecurityQuestion;
         this.isInAnyGame = false;
+    }
+
+    public ArrayList<GameHistory> getGameHistory() {
+        return history;
+    }
+
+    public void setGameHistory(GameHistory history) {
+        this.history.add(history);
     }
 
     public String getEmail() {

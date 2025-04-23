@@ -9,7 +9,6 @@ import org.example.Models.User;
 
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public abstract class App {
     private static ArrayList<ItemDefinition> itemDefinitions = new ArrayList<>();
-    private static Menu currentMenu = Menus.PreGameMenus.GAME_MENU; // temporary
+    private static Menu currentMenu = Menus.PreGameMenus.LOGIN_MENU; // temporary
     private static Map<String, User> users = new LinkedHashMap<>();
     private static User currentUser = null;
     public static Menu getCurrentMenu() {
@@ -38,7 +38,9 @@ public abstract class App {
     public static User getCurrentUser() {
         return currentUser;
     }
-
+    public static Map<String, User> getUsers() {
+        return users;
+    }
     public static void setItemDefinitions(ArrayList<ItemDefinition> itemDefinitions) {
         App.itemDefinitions = itemDefinitions;
     }
@@ -55,4 +57,3 @@ public abstract class App {
         return App.itemDefinitions;
     }
 }
-

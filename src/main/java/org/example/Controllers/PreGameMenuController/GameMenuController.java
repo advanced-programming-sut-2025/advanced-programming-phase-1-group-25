@@ -43,7 +43,7 @@ public class GameMenuController {
 
         Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap);
 
-        Game newGame = new Game(gamePlayers, playerMaps);
+//        Game newGame = new Game(gamePlayers, playerMaps);
 
         return "Game created successfully!\n";
 

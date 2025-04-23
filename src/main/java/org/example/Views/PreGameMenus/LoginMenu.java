@@ -1,9 +1,7 @@
 package org.example.Views.PreGameMenus;
 
 import org.example.Controllers.PreGameMenuController.LoginMenuController;
-import org.example.Controllers.PreGameMenuController.SignupMenuController;
 import org.example.Enums.PreGameMenuCommands.LoginMenuCommands;
-import org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
 import org.example.Views.AppMenu;
 
 import java.util.Scanner;
