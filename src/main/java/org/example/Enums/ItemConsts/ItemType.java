@@ -13,5 +13,11 @@ public enum ItemType {
     shop,
     cave,
     lake,
+    foraging_crops,
+    foraging_seeds,
+    foraging_trees,
+    foraging_minerals,
+    trees,
+    all_crops,
     ;
 }
