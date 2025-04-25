@@ -2,24 +2,20 @@ package org.example.Controllers.PreGameMenuController;
 
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
-import org.example.Enums.MapSizes;
+import org.example.Enums.MapConsts.AnsiColors;
+import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.Game;
-import org.example.Models.Item.ItemInstance;
 import org.example.Models.Item.ItemLoader;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
-import org.example.Models.PrepareMap;
+import org.example.Models.MapElements.PrepareMap;
 import org.example.Models.User;
-import org.example.Views.PreGameMenus.GameMenu;
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
-import java.io.LineNumberReader;
-import java.lang.management.PlatformLoggingMXBean;
-import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 
 public class GameMenuController {
@@ -192,9 +188,10 @@ public class GameMenuController {
             System.out.printf("Map number %d:\n", number);
             for (int y = 0; y < MapSizes.FARM_ROWS.getSize(); y++) {
                 for (int x = 0; x < MapSizes.FARM_COLS.getSize(); x++) {
-                    ItemType itemType = map.getTile(y, x).getItem().getDefinition().getType();
+                    Tile tile = map.getTile(y, x);
+                    ItemType itemType = tile.getItem().getDefinition().getType();
                     String symbol = ItemDisplay.getDisplayByType(itemType);
-                    System.out.print(symbol + " ");
+                    System.out.print(AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor()));
                 }
                 System.out.println();
             }

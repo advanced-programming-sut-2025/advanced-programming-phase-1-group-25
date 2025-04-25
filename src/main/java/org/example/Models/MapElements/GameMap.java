@@ -1,8 +1,6 @@
 package org.example.Models.MapElements;
 
-import org.example.Enums.MapSizes;
-
-import java.util.ArrayList;
+import org.example.Enums.MapConsts.MapSizes;
 
 public class GameMap {
     private Tile[][] map;

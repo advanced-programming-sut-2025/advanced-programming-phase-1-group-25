@@ -21,6 +21,7 @@ public class Main {
         App.addUser("ali2", user2);
         App.addUser("ali3", user3);
         App.addUser("ali4", user4);
+
         AppView appView = new AppView();
         appView.run();
     }
