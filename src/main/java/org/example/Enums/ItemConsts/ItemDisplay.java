@@ -3,6 +3,11 @@ package org.example.Enums.ItemConsts;
 public enum ItemDisplay {
 
     floor("."),
+    home("H"),
+    cottage("C"),
+    lake("L"),
+    quarry("Q"),
+    greenhouse("G"),
     ;
 
     private final String display;

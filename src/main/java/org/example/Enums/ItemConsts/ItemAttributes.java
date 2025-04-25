@@ -18,9 +18,12 @@ public enum ItemAttributes {
     ingredients,
     capacity,
     products,
-
+    fruitHarvestCycle,
+    fruitBaseSellPrice,
+    isFruitEdible,
+    fruitEnergy,
+    fruit,
     ;
-
 
 
 }

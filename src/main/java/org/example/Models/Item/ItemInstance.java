@@ -16,7 +16,7 @@ public class ItemInstance {
     public ItemInstance(ItemDefinition definition) {
         this.definition = definition;
         this.uniqueId = null; // a function will be implemented to generate UUID
-        this.attributes = new HashMap<>();
+        this.attributes = definition.getBaseAttributes();
     }
 
     public ItemDefinition getDefinition() {

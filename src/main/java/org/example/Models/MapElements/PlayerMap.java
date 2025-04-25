@@ -8,14 +8,6 @@ public class PlayerMap {
     }
 
     public Tile getTile(int y, int x) {
-        for (Tile[] row : map) {
-            for (Tile tile : row) {
-                if (tile.getPosition().x == x &&
-                        tile.getPosition().y == y) {
-                    return tile;
-                }
-            }
-        }
-        return null;
+        return map[y][x];
     }
 }
