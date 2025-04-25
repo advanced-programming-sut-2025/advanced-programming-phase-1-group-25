@@ -13,6 +13,7 @@ import java.util.Map;
     Saves some important data during runtime, like current menu, current players, and ...
  */
 public abstract class App {
+    private static Game currentGame = null;
     private static ArrayList<ItemDefinition> itemDefinitions = new ArrayList<>();
     private static Menu currentMenu = Menus.PreGameMenus.GAME_MENU; // temporary
     private static Map<String, User> users = new LinkedHashMap<>();
@@ -55,5 +56,13 @@ public abstract class App {
 
     public static ArrayList<ItemDefinition> getItemDefinitions() {
         return App.itemDefinitions;
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        App.currentGame = currentGame;
     }
 }

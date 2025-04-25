@@ -91,7 +91,12 @@ public enum ItemIDs {
     home,
     shop,
     cave,
-    lake
+    lake,
+    duck,
+    pig,
+    dorado,
+    legend,
+
     ;
 
 }

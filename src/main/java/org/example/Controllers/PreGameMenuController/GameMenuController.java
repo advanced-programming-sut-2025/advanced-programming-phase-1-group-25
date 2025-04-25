@@ -25,10 +25,10 @@ import java.util.*;
 public class GameMenuController {
 
     public static String makeNewGame(Scanner sc) {
-        // loading items
+
         ItemLoader.loadItems();
-//        ItemLoader.testLoadItem();
-        // prepare the main map
+        ItemLoader.testLoadItem();
+
         GameMap newGameMap = PrepareMap.prepareMap();
 
         ArrayList<User> gameUsers = getUsersForNewGame(sc);
@@ -43,7 +43,7 @@ public class GameMenuController {
 
         Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap);
 
-//        Game newGame = new Game(gamePlayers, playerMaps);
+        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0));
 
         return "Game created successfully!\n";
 

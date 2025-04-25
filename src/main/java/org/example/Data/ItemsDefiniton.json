@@ -838,7 +838,7 @@
     }
   },
   {
-    "itemId": "Tuna",
+    "itemId": "tuna",
     "name": "Tuna",
     "type": "fish",
     "baseAttributes": {
