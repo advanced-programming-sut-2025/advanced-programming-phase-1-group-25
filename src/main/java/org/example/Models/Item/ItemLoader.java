@@ -9,7 +9,6 @@ import org.example.Models.App;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.spec.ECField;
 import java.util.*;
 
 public class ItemLoader {
@@ -111,16 +110,16 @@ public class ItemLoader {
         App.setItemDefinitions(itemDefinitions);
     }
 
-//    public static void testLoadItem() {
-//        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-//            System.out.printf("%s %s %s\n", itemDefinition.getId(), itemDefinition.getType(), itemDefinition.getDisplayName());
-//            for (Map.Entry<ItemAttributes, Object> entry : itemDefinition.getBaseAttributes().entrySet()) {
-//                System.out.printf("%s %s ----", entry.getKey(), entry.getValue());
+    public static void testLoadItem() {
+        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+            System.out.printf("%s %s %s\n", itemDefinition.getId(), itemDefinition.getType(), itemDefinition.getDisplayName());
+            for (Map.Entry<ItemAttributes, Object> entry : itemDefinition.getBaseAttributes().entrySet()) {
+                System.out.printf("%s %s ----", entry.getKey(), entry.getValue());
 //                if (entry.getValue() instanceof Map<?,?>) {
 //                    System.out.println(((Map<?, ?>) entry.getValue()).get("wood") + " and " + ((Map<?, ?>) entry.getValue()).get("stone"));
 //                }
-//            }
-//            System.out.println();
-//        }
-//    }
+            }
+            System.out.println();
+        }
+    }
 }

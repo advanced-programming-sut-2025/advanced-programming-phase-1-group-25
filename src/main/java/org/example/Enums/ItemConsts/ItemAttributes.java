@@ -21,7 +21,8 @@ public enum ItemAttributes {
     fruitHarvestCycle,
     fruitBaseSellPrice,
     isFruitEdible,
-    fruitEnergy;
+    fruitEnergy,
+    fruit;
 
 
 }

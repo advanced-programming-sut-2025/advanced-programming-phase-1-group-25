@@ -254,6 +254,8 @@ public enum ItemIDs {
     yam,
     sweet_gem_berry,
     powdermelon,
-    ancient_fruit;
-
+    ancient_fruit,
+    cottage,
+    legend,
+    ;
 }

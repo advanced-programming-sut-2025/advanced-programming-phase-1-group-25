@@ -990,6 +990,12 @@
     "type": "lake",
     "baseAttributes": {
     }
+  },  {
+    "itemId": "cottage",
+    "name": "Cottage",
+    "type": "cottage",
+    "baseAttributes": {
+    }
   },
   {
     "itemId": "fried_egg",
