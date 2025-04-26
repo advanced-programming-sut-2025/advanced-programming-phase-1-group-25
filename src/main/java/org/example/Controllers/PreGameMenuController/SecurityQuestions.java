@@ -60,7 +60,7 @@ public class SecurityQuestions {
         Map<Integer, String> questions = new HashMap<>(generateSecurityPersonalQuestions());
         int counter = 1;
         for (Map.Entry<Integer, String> entry : questions.entrySet()) {
-            System.out.printf(counter + " _ " + entry.getValue() + "\n");
+            System.out.printf(counter + ". " + entry.getValue() + "\n");
             counter++;
         }
 

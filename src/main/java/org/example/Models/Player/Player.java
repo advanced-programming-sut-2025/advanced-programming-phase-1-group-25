@@ -28,4 +28,36 @@ public class Player {
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public BackPack getInventory() {
+        return inventory;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
+
+    public PlayerAbilities getAbilities() {
+        return abilities;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }

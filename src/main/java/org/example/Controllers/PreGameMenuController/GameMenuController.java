@@ -2,33 +2,29 @@ package org.example.Controllers.PreGameMenuController;
 
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
-import org.example.Enums.MapSizes;
+import org.example.Enums.MapConsts.AnsiColors;
+import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.Game;
-import org.example.Models.Item.ItemInstance;
 import org.example.Models.Item.ItemLoader;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
-import org.example.Models.PrepareMap;
+import org.example.Models.MapElements.PrepareMap;
 import org.example.Models.User;
-import org.example.Views.PreGameMenus.GameMenu;
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
-import java.io.LineNumberReader;
-import java.lang.management.PlatformLoggingMXBean;
-import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 
 public class GameMenuController {
 
     public static String makeNewGame(Scanner sc) {
-        // loading items
+
         ItemLoader.loadItems();
 //        ItemLoader.testLoadItem();
-        // prepare the main map
+
         GameMap newGameMap = PrepareMap.prepareMap();
 
         ArrayList<User> gameUsers = getUsersForNewGame(sc);
@@ -43,10 +39,10 @@ public class GameMenuController {
 
         Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap);
 
-        Game newGame = new Game(gamePlayers, playerMaps);
+        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0));
+        App.setCurrentGame(newGame);
 
         return "Game created successfully!\n";
-
     }
 
     private static ArrayList<User> getUsersForNewGame(Scanner sc) {
@@ -113,17 +109,17 @@ public class GameMenuController {
         Map<Player, PlayerMap> playerMaps = new LinkedHashMap<>();
         Map<Integer, PlayerMap> maps = new LinkedHashMap<>();
         // should be edited! TODO
-        maps.put(1, new PlayerMap(getTiles(gameMap)));
-        maps.put(2, new PlayerMap(getTiles(gameMap)));
-        maps.put(3, new PlayerMap(getTiles(gameMap)));
-        maps.put(4, new PlayerMap(getTiles(gameMap)));
+        maps.put(1, new PlayerMap(getTiles(gameMap, 1)));
+        maps.put(2, new PlayerMap(getTiles(gameMap, 2)));
+        maps.put(3, new PlayerMap(getTiles(gameMap, 3)));
+        maps.put(4, new PlayerMap(getTiles(gameMap, 4)));
         // print maps
         printMaps(maps);
 
-        System.out.print("Choose you map.\n");
+        System.out.print("Choose your map.\n");
         int counter = 0;
         while (true) {
-            System.out.printf("Player %s: ", players.get(counter));
+            System.out.printf("Player %s: ", players.get(counter).getName());
             int mapNumber;
             try {
                 mapNumber = Integer.parseInt(sc.nextLine());
@@ -152,11 +148,32 @@ public class GameMenuController {
         }
     }
 
-    private static Tile[][] getTiles(GameMap gameMap) {
+    private static Tile[][] getTiles(GameMap gameMap, int mapNumber) {
+        int yStart;
+        int xStart;
+        switch (mapNumber) {
+            case 1:
+                yStart = 0;
+                xStart = 0;
+                break;
+            case 2:
+                yStart = 0;
+                xStart = 60;
+                break;
+            case 3:
+                yStart = 60;
+                xStart = 0;
+                break;
+            case 4:
+                yStart = 60;
+                xStart = 60;
+                break;
+            default: return null;
+        }
         Tile[][] tiles = new Tile[MapSizes.FARM_ROWS.getSize()][MapSizes.FARM_COLS.getSize()];
-        for (int y = 0; y < MapSizes.FARM_ROWS.getSize(); y++) {
-            for (int x = 0; x < MapSizes.FARM_COLS.getSize(); x++) {
-                tiles[y][x] = gameMap.getTile(y, x);
+        for (int y = yStart; y < MapSizes.FARM_ROWS.getSize() + yStart; y++) {
+            for (int x = xStart; x < MapSizes.FARM_COLS.getSize() + xStart; x++) {
+                tiles[y - yStart][x - xStart] = gameMap.getTile(y, x);
             }
         }
         return tiles;
@@ -167,12 +184,13 @@ public class GameMenuController {
         for (Map.Entry<Integer, PlayerMap> entry : maps.entrySet()) {
             int number = entry.getKey();
             PlayerMap map = entry.getValue();
-            System.out.printf("Map number %d\n: ", number);
+            System.out.printf("Map number %d:\n", number);
             for (int y = 0; y < MapSizes.FARM_ROWS.getSize(); y++) {
                 for (int x = 0; x < MapSizes.FARM_COLS.getSize(); x++) {
-                    ItemType itemType = map.getTile(y, x).getItem().getDefinition().getType();
+                    Tile tile = map.getTile(y, x);
+                    ItemType itemType = tile.getItem().getDefinition().getType();
                     String symbol = ItemDisplay.getDisplayByType(itemType);
-                    System.out.print(symbol);
+                    System.out.print(AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor()));
                 }
                 System.out.println();
             }

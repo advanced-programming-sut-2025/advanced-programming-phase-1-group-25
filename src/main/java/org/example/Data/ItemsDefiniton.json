@@ -971,6 +971,13 @@
     }
   },
   {
+    "itemId": "cottage",
+    "name": "Cottage",
+    "type": "cottage",
+    "baseAttributes": {
+    }
+  },
+  {
     "itemId": "shop",
     "name": "Shop",
     "type": "shop",
@@ -978,9 +985,9 @@
     }
   },
   {
-    "itemId": "cave",
-    "name": "Cave",
-    "type": "cave",
+    "itemId": "quarry",
+    "name": "Quarry",
+    "type": "quarry",
     "baseAttributes": {
     }
   },
@@ -994,6 +1001,13 @@
     "itemId": "cottage",
     "name": "Cottage",
     "type": "cottage",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "greenhouse",
+    "name": "Green House",
+    "type": "greenhouse",
     "baseAttributes": {
     }
   },

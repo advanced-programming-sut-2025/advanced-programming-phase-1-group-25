@@ -1,4 +1,4 @@
-package org.example.Enums;
+package org.example.Enums.MapConsts;
 
 import java.util.Map;
 
