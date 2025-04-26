@@ -43,4 +43,10 @@ public class Tile {
     public AnsiColors getForGroundColor() {
         return forGroundColor;
     }
+    public boolean isEmpty() {
+        return this.item.getDefinition().getId().name().equals("VOID");
+    }
+    public void strikeLightning() {
+        //TODO: implement Lightning logic
+    }
 }

@@ -10,4 +10,8 @@ public class PlayerMap {
     public Tile getTile(int y, int x) {
         return map[y][x];
     }
+
+    public Tile[][] getMap() {
+        return map;
+    }
 }

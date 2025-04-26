@@ -1,7 +1,7 @@
 package org.example.Models.Player;
 
 import org.example.Enums.GameConsts.Gender;
-import org.example.Models.Item.BackPack;
+import org.example.Models.Item.Inventory;
 import org.example.Models.MapElements.Position;
 import org.example.Models.User;
 
@@ -13,8 +13,9 @@ public class Player {
    private String name;
    private Gender gender;
    private int energy;
+   private int energyLimit;
    private int coin;
-   private BackPack inventory;
+   private Inventory inventory;
    private PlayerAbilities abilities;
    private Position position;
 
@@ -22,9 +23,10 @@ public class Player {
         this.user = user;
         this.name = name;
         this.gender = gender;
-        this.energy = 100; // initial energy
+        this.energy = 200; // initial energy
+        this.energyLimit = 200;
         this.coin = 0; // initial coin
-        this.inventory = new BackPack();
+        this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
     }
@@ -37,7 +39,7 @@ public class Player {
         return gender;
     }
 
-    public BackPack getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
@@ -60,4 +62,13 @@ public class Player {
     public User getUser() {
         return user;
     }
+
+    public int getEnergyLimit() {
+        return energyLimit;
+    }
+
+    public void setEnergyLimit(int energyLimit) {
+        this.energyLimit = energyLimit;
+    }
+
 }
