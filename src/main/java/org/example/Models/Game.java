@@ -15,6 +15,7 @@ public class Game {
     private Player currentPlayer;
     private DateTime dateTime;
     private Weather weather;
+
     public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer) {
         this.gamePlayers = gamePlayers;
         this.playerMaps = playerMaps;
@@ -24,9 +25,18 @@ public class Game {
 
     }
 
+    public DateTime getDateTime() {
+        return dateTime;
+    }
+
+    public Weather getWeather() {
+        return weather;
+    }
+
     public PlayerMap getPlayerMap(Player player) {
         return playerMaps.get(player);
     }
+
     public boolean gameHasPlayer(Player player) {
         return gamePlayers.contains(player);
     }

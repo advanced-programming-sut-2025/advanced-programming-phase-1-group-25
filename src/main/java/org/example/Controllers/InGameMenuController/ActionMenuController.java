@@ -5,6 +5,8 @@ import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Player.Player;
 
+import java.util.regex.Matcher;
+
 public class ActionMenuController {
     public String buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
@@ -23,5 +25,32 @@ public class ActionMenuController {
             return "";
         }
     }
+    public String cheatAdvanceTime(Matcher matcher, Game game) {
+        String timeStr = matcher.group("hours");
+        int time;
+        try {
+            time = Integer.parseInt(timeStr);
+        }
+        catch (NumberFormatException e) {
+            return "please enter a valid hour!\n";
+        }
+        game.getDateTime().updateTimeByHour(time);
+        return "";
+    }
+    public String cheatAdvanceDate(Matcher matcher, Game game) {
+        String timeStr = matcher.group("day");
+        int time;
+        try {
+            time = Integer.parseInt(timeStr);
+        }
+        catch (NumberFormatException e) {
+            return "please enter a valid day!\n";
+        }
+        game.getDateTime().updateTimeByDay(time);
+        return "";
+    }
+//    public String cheatWeather(Matcher matcher, Game game) {
+//        String weather = matcher.group("type");
+//    }
 }
 

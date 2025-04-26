@@ -1,8 +1,11 @@
 package org.example.Views.InGameMenus;
 
+import org.example.Controllers.InGameMenuController.ActionMenuController;
 import org.example.Controllers.PreGameMenuController.SignupMenuController;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
+import org.example.Models.App;
+import org.example.Models.Game;
 import org.example.Views.AppMenu;
 
 import java.util.Scanner;
@@ -26,8 +29,122 @@ public class ActionMenu implements AppMenu {
     }
 
     private static void executeCommand(ActionMenuCommands command, Matcher matcher, Scanner sc) {
+        Game game = App.getCurrentGame();
+        ActionMenuController controller = new ActionMenuController();
         switch (command) {
-
+            case NEXT_TURN:
+                break;
+            case TIME:
+                System.out.println(game.getDateTime().getHour());
+                break;
+            case DATE:
+                System.out.println(game.getDateTime().getSeason().toString()
+                        +" "+game.getDateTime().getDay());
+                break;
+            case DATE_TIME:
+                System.out.println(game.getDateTime().getSeason().toString()
+                        +" "+ game.getDateTime().getDay()
+                        + " " + game.getDateTime().getHour());
+                break;
+            case DAY_OF_THE_WEEK:
+                System.out.println(game.getDateTime().getDayOfWeek().toString());
+                break;
+            case CHEAT_ADVANCE_TIME:
+                System.out.println(controller.cheatAdvanceTime(matcher, game));
+                break;
+            case CHEAT_ADVANCE_DATE:
+                System.out.println(controller.cheatAdvanceDate(matcher, game));
+                break;
+            case SEASON:
+                System.out.println(game.getDateTime().getSeason().toString());
+                break;
+            case CHEAT_THOR:
+                break;
+            case WEATHER:
+                System.out.println(game.getWeather().getCurrentWeather().toString());
+                break;
+            case WEATHER_FORECAST:
+                break;
+            case CHEAT_WEATHER_SET:
+                break;
+            case GREENHOUSE_BUILD:
+                break;
+            case WALK:
+                break;
+            case PRINT_MAP:
+                break;
+            case HELP_READING_MAP:
+                break;
+            case ENERGY_SHOW:
+                break;
+            case ENERGY_SET:
+                break;
+            case ENERGY_UNLIMITED:
+                break;
+            case INVENTORY_SHOW:
+                break;
+            case INVENTORY_TRASH:
+                break;
+            case TOOLS_EQUIP:
+                break;
+            case TOOLS_SHOW_CURRENT:
+                break;
+            case TOOLS_SHOW_AVAILABLE:
+                break;
+            case TOOLS_UPGRADE:
+                break;
+            case TOOLS_USE:
+                break;
+            case CRAFT_INFO:
+                break;
+            case PLANT:
+                break;
+            case SHOW_PLANT:
+                break;
+            case FERTILIZE:
+                break;
+            case HOW_MUCH_WATER:
+                break;
+            case CRAFTING_SHOW_RECIPES:
+                break;
+            case CRAFTING_CRAFT:
+                break;
+            case PLACE_ITEM:
+                break;
+            case CHEAT_ADD_ITEM:
+                break;
+            case COOKING_REFRIGERATOR:
+                break;
+            case COOKING_SHOW_RECIPES:
+                break;
+            case COOKING_PREPARE:
+                break;
+            case EAT:
+                break;
+            case BUILD:
+                break;
+            case BUY_ANIMAL:
+                break;
+            case PET:
+                break;
+            case ANIMALS:
+                break;
+            case SHEPHERD_ANIMALS:
+                break;
+            case FEED_HAY:
+                break;
+            case CHEAT_SET_FRIENDSHIP:
+                break;
+            case PRODUCES:
+                break;
+            case COLLECT_PRODUCE:
+                break;
+            case SELL_ANIMAL:
+                break;
+            case FISHING:
+                break;
+            case TRADE:
+                break;
         }
     }
 }
