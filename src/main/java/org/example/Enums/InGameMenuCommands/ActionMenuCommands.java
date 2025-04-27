@@ -89,7 +89,40 @@ public enum ActionMenuCommands {
 
 
     TRADE("^\\s*trade\\s+-u\\s+(?<username>.+?)\\s+-t\\s+(?<type>.+?)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+" +
-            "(?<amount>.+?)\\s+(-p\\s+(?<price>.+?)\\s*)|(-ti\\s+(?<targetItem>.+?)\\s+-ta\\s+(?<targetAmount>.+?)\\s*)$");
+            "(?<amount>.+?)\\s+(-p\\s+(?<price>.+?)\\s*)|(-ti\\s+(?<targetItem>.+?)\\s+-ta\\s+(?<targetAmount>.+?)\\s*)$"),
+    /// npc commands
+    QUESTS_FINISH("^\\s*quests\\s+finish\\s+-i\\s+(?<index>.+?)\\s*$"),
+    QUESTS_LIST("^\\s*quests\\s+list\\s*$"),
+    FRIENDSHIP_NPC_LIST("^\\s*friendship\\s+NPC\\s+list\\s*$"),
+    GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npc_name>.+?)\\s+-i\\s+(?<item>.+?)\\s*$"),
+    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npc_name>>+?)\\s*$"),
+    ///
+    TRADE_HISTORY("^\\s*trade\\s+history\\s*$"),
+    TRADE_RESPONSE("^\\s*trade\\s+response\\s+-(accept|reject)\\s+-i\\s+(?<id>.+?)\\s*$"),
+    TRADE_LIST("^\\s*trade\\s+list\\s*$"),
+    /// TRADE TODO
+    ///
+    START_TRADE("^\\s*start\\s+trade\\s*$"),
+    RESPOND("^\\s*respond\\s+-(accept|reject)\\s+-u\\s+(?<username>.+?)\\s*$"),
+    ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s+-r\\s+(?<ring>.+?)\\s*$"),
+    FLOWER("^\\s*flower\\s+-u\\s+(?<username>.+?)\\s*$"),
+    HUG("^\\s*hug\\s+-u\\s+(?<username>.+?)\\s*"),
+    GIFT_HISTORY("^\\s*gift\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
+    GIFT_RATE("^\\s*gift\\s+rate\\s+-i\\s+(?<gift-number>.+?)\\s+-r\\s+(?<rate>.+?)\\s*$"),
+    GIFT_LIST("^\\s*gift\\s+list\\s*$"),
+    GIFT("^\\s*gift\\s+-u\\s+(?<username>.+?)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>.+?)\\s*$"),
+    TALK_HISTORY("^\\s*talk\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
+    TALK("^\\s*talk\\s+-u\\s+(?<username>.+?)\\s+-m\\s+(?<message>.+?)\\s*$"),
+    FRIENDSHIPS("^\\s*friendships\\s*$"),
+    /// selling and buying
+    SELL("^\\s*sell\\s+(?<product_name>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
+    CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>>+?)\\s+dollars\\s*$"),
+    PURCHASE("^\\s*purchase\\s+(?<product_name>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
+    SHOW_ALL_AVAILABLE_PRODUCTS("^\\s*show\\s+all\\s+available\\s+products\\s*$"),
+    SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),
+    /// faravari
+    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisan_name>.+?)\\s*$"),
+    ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisan_name>.+?)\\s+(?<item1_name>.+?)\\s*$");
     private final String pattern;
 
     ActionMenuCommands(String pattern) {
