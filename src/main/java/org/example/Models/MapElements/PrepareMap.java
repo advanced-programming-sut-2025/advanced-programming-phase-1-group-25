@@ -1,5 +1,7 @@
 package org.example.Models.MapElements;
 
+import org.example.Controllers.UpdateMap.RandomEvents;
+import org.example.Controllers.UpdateMap.spawnRandom;
 import org.example.Enums.MapConsts.FarmElementsPosition;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
@@ -91,7 +93,6 @@ public class PrepareMap {
                                                  FarmElementsPosition.BottomRightFarm.QUARRY.getX());
 
 
-
         playerMaps.add(new PlayerMap(getTiles(gameMap, 1),
                 topLeftGreenHouse, topLeftCottage, topLeftLakes, topLeftQuarries));
         playerMaps.add(new PlayerMap(getTiles(gameMap, 2),
@@ -101,6 +102,8 @@ public class PrepareMap {
         playerMaps.add(new PlayerMap(getTiles(gameMap, 4),
                 bottomRightGreenHouse, bottomRightCottage, bottomRightLakes, bottomRightQuarries));
 
+
+        spawnRandom.spawnRandomElements(playerMaps);
 
         return playerMaps;
     }

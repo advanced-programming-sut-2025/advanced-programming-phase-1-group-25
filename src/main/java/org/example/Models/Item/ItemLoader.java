@@ -100,9 +100,10 @@ public class ItemLoader {
     public static void loadItems() {
         ArrayList<ItemDefinition> itemDefinitions;
         try {
-            itemDefinitions = new ArrayList<>(loader("src/main/java/org/example/Data/ItemsDefiniton.json"));
+            itemDefinitions = new ArrayList<>(loader("org/example/Data/ItemsDefiniton.json"));
         } catch (IOException e) {
             System.err.println("Problem loading the game. Please try again later.");
+            e.printStackTrace();
             System.exit(1);
             return;
         }

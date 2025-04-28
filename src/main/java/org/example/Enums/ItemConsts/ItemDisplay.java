@@ -8,6 +8,10 @@ public enum ItemDisplay {
     lake("L"),
     quarry("Q"),
     greenhouse("G"),
+    rock("R"),
+    wood("W"),
+    fiber("B"),
+    tree("T"),
     ;
 
     private final String display;

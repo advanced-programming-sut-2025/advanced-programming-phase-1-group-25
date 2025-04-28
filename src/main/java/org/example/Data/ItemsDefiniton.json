@@ -10,11 +10,7 @@
   {
     "itemId": "quartz",
     "name": "Quartz",
-<<<<<<< HEAD
     "type": "foraging_minerals",
-=======
-    "type": "foraging_mineral",
->>>>>>> 34d950c511eee35c3a50a5a67f3dbf7e81bd8416
     "baseAttributes": {
       "price": 25,
       "description": "A clear crystal commonly found in caves and mines."
@@ -46,19 +42,6 @@
     }
   },
   {
-<<<<<<< HEAD
-    "itemId": "common_mushroom",
-    "name": "Common Mushroom",
-    "type": "foraging_crops",
-    "baseAttributes": {
-      "season": "special",
-      "baseSellPrice": 40,
-      "energy": 38
-    }
-  },
-  {
-=======
->>>>>>> 34d950c511eee35c3a50a5a67f3dbf7e81bd8416
     "itemId": "base_hoe",
     "name": "Base Hoe",
     "type": "tool",
@@ -3061,6 +3044,27 @@
       "energy": 0,
       "season": ["spring","summer","fall"],
       "canBecomeGiant": false
+    }
+  },
+  {
+    "itemId": "wood",
+    "name": "Wood",
+    "type": "wood",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "fiber",
+    "name": "Fiber",
+    "type": "fiber",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "rock",
+    "name": "Rock",
+    "type": "rock",
+    "baseAttributes": {
     }
   }
 ]
