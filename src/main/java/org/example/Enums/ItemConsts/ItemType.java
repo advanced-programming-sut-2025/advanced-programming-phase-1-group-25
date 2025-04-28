@@ -2,7 +2,6 @@ package org.example.Enums.ItemConsts;
 
 public enum ItemType {
     tool,
-    foraging,
     floor,
     crafting,
     food,
@@ -19,8 +18,7 @@ public enum ItemType {
     foraging_seeds,
     foraging_trees,
     foraging_minerals,
-    all_crops,
     tree,
-
+    all_crops,
     ;
 }

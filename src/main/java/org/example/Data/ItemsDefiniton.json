@@ -10,7 +10,7 @@
   {
     "itemId": "quartz",
     "name": "Quartz",
-    "type": "foraging",
+    "type": "foraging_minerals",
     "baseAttributes": {
       "price": 25,
       "description": "A clear crystal commonly found in caves and mines."
@@ -19,7 +19,7 @@
   {
     "itemId": "blue_jazz",
     "name": "Blue Jazz",
-    "type": "foraging",
+    "type": "foraging_seeds",
     "baseAttributes": {
       "source": "Jazz Seeds",
       "stages": "1-2-2-2",
@@ -34,19 +34,9 @@
     }
   },
   {
-    "itemId": "common_mushroom",
-    "name": "Common Mushroom",
-    "type": "foraging",
-    "baseAttributes": {
-      "season": "special",
-      "baseSellPrice": 40,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "acorns",
     "name": "Acorns",
-    "type": "foraging",
+    "type": "foraging_trees",
     "baseAttributes": {
       "season": "special"
     }
@@ -54,7 +44,7 @@
   {
     "itemId": "common_mushroom",
     "name": "Common Mushroom",
-    "type": "foraging",
+    "type": "foraging_crops",
     "baseAttributes": {
       "season": "special",
       "baseSellPrice": 40,
@@ -995,6 +985,12 @@
     "itemId": "lake",
     "name": "Lake",
     "type": "lake",
+    "baseAttributes": {
+    }
+  },  {
+    "itemId": "cottage",
+    "name": "Cottage",
+    "type": "cottage",
     "baseAttributes": {
     }
   },

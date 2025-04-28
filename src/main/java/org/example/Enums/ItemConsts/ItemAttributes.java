@@ -22,8 +22,7 @@ public enum ItemAttributes {
     fruitBaseSellPrice,
     isFruitEdible,
     fruitEnergy,
-    fruit,
-    ;
+    fruit;
 
 
 }

@@ -75,4 +75,7 @@ public class Player {
         this.energyLimit = energyLimit;
     }
 
+    public void setEnergy(int energy) {
+        this.energy = energy;
+    }
 }

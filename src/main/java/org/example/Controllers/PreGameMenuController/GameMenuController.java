@@ -1,5 +1,6 @@
 package org.example.Controllers.PreGameMenuController;
 
+import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.AnsiColors;
@@ -23,10 +24,9 @@ public class GameMenuController {
     public static String makeNewGame(Scanner sc) {
 
         ItemLoader.loadItems();
-//        ItemLoader.testLoadItem();
 
         GameMap newGameMap = PrepareMap.prepareMap();
-        ArrayList<PlayerMap> playerMaps = PrepareMap.makePlayerMaps(newGameMap);
+        ArrayList<PlayerMap> farms = PrepareMap.makePlayerMaps(newGameMap);
 
 
         ArrayList<User> gameUsers = getUsersForNewGame(sc);
@@ -39,12 +39,12 @@ public class GameMenuController {
             gamePlayers.add(newPlayer);
         }
 
-        Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap);
+        Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap, farms);
 
-        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0));
-
+        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0), newGameMap);
         App.setCurrentGame(newGame);
 
+        App.setCurrentMenu(Menus.InGameMenus.ACTION_MENU);
         return "Game created successfully!\n";
     }
 
@@ -108,11 +108,15 @@ public class GameMenuController {
         return gameUsers;
     }
 
-    private static Map<Player, PlayerMap> getPlayerMaps(Scanner sc, ArrayList<Player> players, GameMap gameMap) {
+    private static Map<Player, PlayerMap> getPlayerMaps(Scanner sc, ArrayList<Player> players, GameMap gameMap, ArrayList<PlayerMap> farms) {
         Map<Player, PlayerMap> playerMaps = new LinkedHashMap<>();
-        Map<Integer, PlayerMap> maps = new LinkedHashMap<>();
+        Map<Integer, PlayerMap> farmsWithNumber = new LinkedHashMap<>();
+        int number = 1;
+        for (PlayerMap playerMap : farms) {
+            farmsWithNumber.put(number++, playerMap);
+        }
 
-        printMaps(maps);
+        printMaps(farmsWithNumber);
 
         System.out.print("Choose your map.\n");
         int counter = 0;
@@ -132,7 +136,7 @@ public class GameMenuController {
                 continue;
             }
 
-            PlayerMap playerMap = maps.get(mapNumber);
+            PlayerMap playerMap = farmsWithNumber.get(mapNumber);
             if (playerMaps.containsValue(playerMap)) {
                 System.out.print("Selected map is already chosen by another player.\n");
                 continue;

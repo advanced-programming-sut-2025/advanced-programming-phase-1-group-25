@@ -9,7 +9,6 @@ import org.example.Models.App;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.spec.ECField;
 import java.util.*;
 
 public class ItemLoader {
@@ -110,7 +109,6 @@ public class ItemLoader {
 
         App.setItemDefinitions(itemDefinitions);
     }
-
 //    public static void testLoadItem() {
 //        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
 //            System.out.printf("%s %s %s\n", itemDefinition.getId(), itemDefinition.getType(), itemDefinition.getDisplayName());

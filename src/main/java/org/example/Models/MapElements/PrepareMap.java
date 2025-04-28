@@ -92,14 +92,17 @@ public class PrepareMap {
 
 
 
-        playerMaps.add(1, new PlayerMap(getTiles(gameMap, 1),
+        playerMaps.add(new PlayerMap(getTiles(gameMap, 1),
                 topLeftGreenHouse, topLeftCottage, topLeftLakes, topLeftQuarries));
-        playerMaps.add(2, new PlayerMap(getTiles(gameMap, 2),
-                topRightGreenHouse, topRightCottage, topRightLakes, topLeftQuarries));
-        playerMaps.add(3, new PlayerMap(getTiles(gameMap, 3),
+        playerMaps.add(new PlayerMap(getTiles(gameMap, 2),
+                topRightGreenHouse, topRightCottage, topRightLakes, topRightQuarries));
+        playerMaps.add(new PlayerMap(getTiles(gameMap, 3),
                 bottomLeftGreenHouse, bottomLeftCottage, bottomLeftLakes, bottomLeftQuarries));
-        playerMaps.add(4, new PlayerMap(getTiles(gameMap, 4),
+        playerMaps.add(new PlayerMap(getTiles(gameMap, 4),
                 bottomRightGreenHouse, bottomRightCottage, bottomRightLakes, bottomRightQuarries));
+
+
+        return playerMaps;
     }
 
     private static Tile[][] getTiles(GameMap gameMap, int mapNumber) {
