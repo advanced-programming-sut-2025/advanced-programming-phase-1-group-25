@@ -10,7 +10,7 @@
   {
     "itemId": "quartz",
     "name": "Quartz",
-    "type": "foraging",
+    "type": "foraging_mineral",
     "baseAttributes": {
       "price": 25,
       "description": "A clear crystal commonly found in caves and mines."
@@ -49,16 +49,6 @@
     "type": "foraging",
     "baseAttributes": {
       "season": "special"
-    }
-  },
-  {
-    "itemId": "common_mushroom",
-    "name": "Common Mushroom",
-    "type": "foraging",
-    "baseAttributes": {
-      "season": "special",
-      "baseSellPrice": 40,
-      "energy": 38
     }
   },
   {

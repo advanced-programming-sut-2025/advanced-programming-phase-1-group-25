@@ -1,16 +1,15 @@
 package org.example.Enums.InGameMenuCommands;
 
-import org.example.Models.Item.Inventory;
+import org.example.Controllers.InGameMenuController.MenuSwitcher;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum InventoryCommands {
-    INVENTORY_SHOW("^\\s*inventory\\s+show\\s*$"),
-    INVENTORY_TRASH("^\\s*inventory\\s+trash\\s+-i\\s+(?<itemName>.+?)(\\s+-n\\s+(?<number>.+?))?\\s*$");
+public enum MenuSwitcherCommands {
+    MENU_ENTER("^\\s*menu\\s+enter\\s+(?<menu>.+?)\\s*$");
     private final String pattern;
 
-    InventoryCommands(String pattern) {
+    MenuSwitcherCommands(String pattern) {
         this.pattern = pattern;
     }
 
