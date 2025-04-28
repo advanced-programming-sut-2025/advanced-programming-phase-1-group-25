@@ -262,5 +262,6 @@ public enum ItemIDs {
     wood,
     fiber,
     rock,
+    tree,
     ;
 }

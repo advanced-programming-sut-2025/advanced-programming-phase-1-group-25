@@ -23,6 +23,5 @@ public enum ItemType {
     wood,
     fiber,
     rock,
-
     ;
 }

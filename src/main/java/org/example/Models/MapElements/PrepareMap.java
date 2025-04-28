@@ -102,9 +102,6 @@ public class PrepareMap {
         playerMaps.add(new PlayerMap(getTiles(gameMap, 4),
                 bottomRightGreenHouse, bottomRightCottage, bottomRightLakes, bottomRightQuarries));
 
-
-        spawnRandom.spawnRandomElements(playerMaps);
-
         return playerMaps;
     }
 
