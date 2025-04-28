@@ -47,6 +47,10 @@ public class Player {
         return coin;
     }
 
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
+
     public int getEnergy() {
         return energy;
     }

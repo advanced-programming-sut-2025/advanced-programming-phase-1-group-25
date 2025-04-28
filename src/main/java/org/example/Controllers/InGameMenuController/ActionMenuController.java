@@ -19,8 +19,11 @@ public class ActionMenuController {
         } else if (playerCoin < 1000) {
             return "You don't have enough coin.\n";
         } else {
-            // TODO : Logic to rebuild the greenhouse.
+            currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
+            currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
+            currentPlayer.getInventory().dropItem("wood", 500);
         }
+        return "Green house has been repaired.";
     }
 }
 
