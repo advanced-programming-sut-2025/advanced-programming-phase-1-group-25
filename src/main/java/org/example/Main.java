@@ -1,10 +1,15 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.Enums.GameConsts.Gender;
 import org.example.Models.App;
 import org.example.Models.Question;
 import org.example.Models.User;
 import org.example.Views.AppView;
+
+import java.io.File;
+import java.io.IOException;
 
 
 /*
@@ -12,7 +17,8 @@ import org.example.Views.AppView;
  */
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         User user1 = new User("ali1", "ali1", "1234", "", Gender.FEMALE, new Question("", ""));
         User user2 = new User("ali2", "ali2", "", "", Gender.FEMALE, new Question("", ""));
         User user3 = new User("ali3", "ali3", "", "", Gender.FEMALE, new Question("", ""));

@@ -20,5 +20,9 @@ public enum ItemType {
     foraging_minerals,
     tree,
     all_crops,
+    wood,
+    fiber,
+    rock,
+
     ;
 }

@@ -6,9 +6,7 @@ import org.example.Models.Player.Player;
 import org.example.Models.States.DateTime;
 import org.example.Models.States.Weather;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 public class Game {
     private ArrayList<Player> gamePlayers;
@@ -56,5 +54,8 @@ public class Game {
 
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
+    }
+    public ArrayList<PlayerMap> getPlayerMaps() {
+        return new ArrayList<>(playerMaps.values());
     }
 }
