@@ -1,6 +1,7 @@
 package org.example.Models.MapElements;
 
 import org.example.Enums.MapConsts.AnsiColors;
+import org.example.Enums.MapConsts.FarmElementsPosition;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.Item.ItemInstance;
@@ -11,32 +12,52 @@ import java.util.Objects;
 
 public class MapDesigner {
     public static void designTopLeft(GameMap map) {
-        map.getTile(5, 25).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
-        map.getTile(5, 10).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
-        map.getTile(0, 15).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(20, 20).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
-        map.getTile(25, 15).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.TopLeftFarm.COTTAGE.getY(),
+                FarmElementsPosition.TopLeftFarm.COTTAGE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
+        map.getTile(FarmElementsPosition.TopLeftFarm.GREENHOUSE.getY(),
+                FarmElementsPosition.TopLeftFarm.GREENHOUSE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
+        map.getTile(FarmElementsPosition.TopLeftFarm.QUARRY.getY(),
+                FarmElementsPosition.TopLeftFarm.QUARRY.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.TopLeftFarm.LAKE_1.getY(),
+                FarmElementsPosition.TopLeftFarm.LAKE_1.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.TopLeftFarm.LAKE_2.getY(),
+                FarmElementsPosition.TopLeftFarm.LAKE_2.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
     }
     public static void designTopRight(GameMap map) {
-        map.getTile(5, 85).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
-        map.getTile(5, 70).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
-        map.getTile(0, 75).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(29, 65).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(20, 80).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.TopRightFarm.COTTAGE.getY(),
+                FarmElementsPosition.TopRightFarm.COTTAGE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
+        map.getTile(FarmElementsPosition.TopRightFarm.GREENHOUSE.getY(),
+                FarmElementsPosition.TopRightFarm.GREENHOUSE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
+        map.getTile(FarmElementsPosition.TopRightFarm.QUARRY_1.getY(),
+                FarmElementsPosition.TopRightFarm.QUARRY_1.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.TopRightFarm.QUARRY_2.getY(),
+                FarmElementsPosition.TopRightFarm.QUARRY_2.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.TopRightFarm.LAKE.getY(),
+                FarmElementsPosition.TopRightFarm.LAKE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
     }
     public static void designBottomLeft(GameMap map) {
-        map.getTile(65, 25).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
-        map.getTile(65, 10).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
-        map.getTile(60, 15).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(89, 5).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(80, 15).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.BottomLeftFarm.COTTAGE.getY(),
+                FarmElementsPosition.BottomLeftFarm.COTTAGE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
+        map.getTile(FarmElementsPosition.BottomLeftFarm.GREENHOUSE.getY(),
+                FarmElementsPosition.BottomLeftFarm.GREENHOUSE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
+        map.getTile(FarmElementsPosition.BottomLeftFarm.QUARRY_1.getY(),
+                FarmElementsPosition.BottomLeftFarm.QUARRY_1.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.BottomLeftFarm.QUARRY_2.getY(),
+                FarmElementsPosition.BottomLeftFarm.QUARRY_2.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.BottomLeftFarm.LAKE.getY(),
+                FarmElementsPosition.BottomLeftFarm.LAKE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
     }
     public static void designBottomRight(GameMap map) {
-        map.getTile(65, 85).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
-        map.getTile(65, 70).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
-        map.getTile(60, 75).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
-        map.getTile(80, 80).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
-        map.getTile(85, 75).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.BottomRightFarm.COTTAGE.getY(),
+                FarmElementsPosition.BottomRightFarm.COTTAGE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("cottage"))));
+        map.getTile(FarmElementsPosition.BottomRightFarm.GREENHOUSE.getY(),
+                FarmElementsPosition.BottomRightFarm.GREENHOUSE.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("greenhouse"))));
+        map.getTile(FarmElementsPosition.BottomRightFarm.QUARRY.getY(),
+                FarmElementsPosition.BottomRightFarm.QUARRY.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("quarry"))));
+        map.getTile(FarmElementsPosition.BottomRightFarm.LAKE_1.getY(),
+                FarmElementsPosition.BottomRightFarm.LAKE_1.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
+        map.getTile(FarmElementsPosition.BottomRightFarm.LAKE_2.getY(),
+                FarmElementsPosition.BottomRightFarm.LAKE_2.getX()).setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("lake"))));
 
     }
 

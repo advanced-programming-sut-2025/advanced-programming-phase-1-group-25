@@ -38,6 +38,7 @@ public class ActionMenu implements AppMenu {
                 controller.changeMenu();
                 break;
             case NEXT_TURN:
+                System.out.println(controller.nextTurn());
                 break;
             case TIME:
                 System.out.println(game.getDateTime().getHour());

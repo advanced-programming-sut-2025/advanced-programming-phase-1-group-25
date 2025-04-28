@@ -50,4 +50,11 @@ public class Game {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
+    public Player getNextPlayer() {
+        return gamePlayers.get((this.gamePlayers.indexOf(this.currentPlayer) + 1) % (this.gamePlayers.size()));
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 }
