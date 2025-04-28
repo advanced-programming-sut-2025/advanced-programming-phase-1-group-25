@@ -1,5 +1,6 @@
 package org.example.Models;
 
+import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.Player.Player;
 import org.example.Models.States.DateTime;
@@ -15,14 +16,19 @@ public class Game {
     private Player currentPlayer;
     private DateTime dateTime;
     private Weather weather;
-
-    public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer) {
+    private GameMap gameMap;
+    public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer, GameMap gameMap) {
         this.gamePlayers = gamePlayers;
         this.playerMaps = playerMaps;
         this.currentPlayer = currentPlayer;
         this.dateTime = new DateTime();
         this.weather = new Weather();
+        this.gameMap = gameMap;
 
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
     }
 
     public DateTime getDateTime() {

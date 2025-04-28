@@ -58,4 +58,8 @@ public class Inventory {
         }
         return target;
     }
+
+    public Map<ItemInstance, Integer> getItems() {
+        return items;
+    }
 }

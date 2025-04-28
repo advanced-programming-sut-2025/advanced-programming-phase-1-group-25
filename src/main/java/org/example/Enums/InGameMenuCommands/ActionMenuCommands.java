@@ -40,7 +40,7 @@ public enum ActionMenuCommands {
 
 
     INVENTORY_SHOW("^\\s*inventory\\s+show\\s*$"),
-    INVENTORY_TRASH("^\\s*inventory\\s+trash(\\s+-i\\s+(?<itemName>.+?))?\\s+-n\\s+(?<number>.+?)\\s*$"),
+    INVENTORY_TRASH("^\\s*inventory\\s+trash\\s+-i\\s+(?<itemName>.+?)(\\s+-n\\s+(?<number>.+?))?\\s*$"),
 
 
     TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<toolName>.+?)\\s*$"),

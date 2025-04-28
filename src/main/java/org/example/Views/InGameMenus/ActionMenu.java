@@ -20,7 +20,7 @@ public class ActionMenu implements AppMenu {
         for (ActionMenuCommands command : ActionMenuCommands.values()) {
             if ((matcher = command.getMatcher(input)) != null) {
                 matched = true;
-                executeCommand(command, matcher, sc);
+                executeCommand(command, matcher, input);
             }
         }
         if (!matched) {
@@ -28,7 +28,7 @@ public class ActionMenu implements AppMenu {
         }
     }
 
-    private static void executeCommand(ActionMenuCommands command, Matcher matcher, Scanner sc) {
+    private static void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
         Game game = App.getCurrentGame();
         ActionMenuController controller = new ActionMenuController();
         switch (command) {
@@ -72,18 +72,24 @@ public class ActionMenu implements AppMenu {
             case WALK:
                 break;
             case PRINT_MAP:
+                System.out.println(controller.printMap(game, matcher));
                 break;
             case HELP_READING_MAP:
                 break;
             case ENERGY_SHOW:
+                System.out.println("Energy: " + game.getCurrentPlayer().getEnergy());
                 break;
             case ENERGY_SET:
+                System.out.println(controller.cheatAdvanceTime(matcher, game));
                 break;
             case ENERGY_UNLIMITED:
+                System.out.println(controller.energyUnlimited(game));
                 break;
             case INVENTORY_SHOW:
+                System.out.println(controller.showInventory(game));
                 break;
             case INVENTORY_TRASH:
+                System.out.println(controller.inventoryTrash(game, matcher, input));
                 break;
             case TOOLS_EQUIP:
                 break;

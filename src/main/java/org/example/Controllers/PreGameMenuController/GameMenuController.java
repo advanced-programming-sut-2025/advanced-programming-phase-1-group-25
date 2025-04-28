@@ -39,7 +39,7 @@ public class GameMenuController {
 
         Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap);
 
-        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0));
+        Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0), newGameMap);
         App.setCurrentGame(newGame);
 
         return "Game created successfully!\n";
