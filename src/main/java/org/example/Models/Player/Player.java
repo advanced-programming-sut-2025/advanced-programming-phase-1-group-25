@@ -2,6 +2,7 @@ package org.example.Models.Player;
 
 import org.example.Enums.GameConsts.Gender;
 import org.example.Models.Item.Inventory;
+import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.Position;
 import org.example.Models.User;
 
@@ -9,15 +10,16 @@ import org.example.Models.User;
     When a game is made, it has players; and when users enter the game, they become players of that game.
  */
 public class Player {
-   private User user;
-   private String name;
-   private Gender gender;
-   private int energy;
-   private int energyLimit;
-   private int coin;
-   private Inventory inventory;
-   private PlayerAbilities abilities;
-   private Position position;
+    private User user;
+    private String name;
+    private Gender gender;
+    private int energy;
+    private int energyLimit;
+    private int coin;
+    private Inventory inventory;
+    private PlayerAbilities abilities;
+    private Position position;
+    private ItemInstance currentTool;
 
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
@@ -29,6 +31,14 @@ public class Player {
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
+    }
+
+    public ItemInstance getCurrentTool() {
+        return currentTool;
+    }
+
+    public void setCurrentTool(ItemInstance currentTool) {
+        this.currentTool = currentTool;
     }
 
     public String getName() {

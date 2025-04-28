@@ -75,6 +75,7 @@ public class ActionMenu implements AppMenu {
             case GREENHOUSE_BUILD:
                 break;
             case WALK:
+//                System.out.println(controller.walk(matcher));
                 break;
             case PRINT_MAP:
                 System.out.println(controller.printMap(game, matcher));
@@ -91,8 +92,10 @@ public class ActionMenu implements AppMenu {
                 System.out.println(controller.energyUnlimited(game));
                 break;
             case TOOLS_EQUIP:
+                System.out.println(controller.equipTool(matcher));
                 break;
             case TOOLS_SHOW_CURRENT:
+                System.out.println(controller.showCurrentTool());
                 break;
             case TOOLS_SHOW_AVAILABLE:
                 break;

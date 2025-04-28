@@ -14,7 +14,7 @@ public class InventoryController {
         for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
             ItemInstance item = entry.getKey();
             Integer value = entry.getValue();
-            inventoryStr.append("name: " + item.getUniqueId() + "number in inventory: " + value + "\n");
+            inventoryStr.append("name: " + item.getDefinition().getDisplayName() + " number in inventory: " + value + "\n");
         }
         return inventoryStr.toString();
     }
@@ -32,7 +32,7 @@ public class InventoryController {
             }
             for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
                 ItemInstance item = entry.getKey();
-                if (item.getUniqueId().equals(itemName)) {
+                if (item.getDefinition().getDisplayName().equals(itemName)) {
                     entry.setValue(number);
                 }
             }
@@ -40,7 +40,7 @@ public class InventoryController {
         } else {
             for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
                 ItemInstance item = entry.getKey();
-                if (item.getUniqueId().equals(itemName)) {
+                if (item.getDefinition().getDisplayName().equals(itemName)) {
                     inventory.getItems().remove(item);
                 }
             }

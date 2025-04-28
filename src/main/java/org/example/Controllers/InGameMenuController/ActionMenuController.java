@@ -4,6 +4,7 @@ import org.example.Enums.GameMenus.Menus;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
+import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
@@ -39,6 +40,9 @@ public class ActionMenuController {
         } catch (NumberFormatException e) {
             return "please enter a valid hour!\n";
         }
+        if (time < 0) {
+            return "time must be a positive number!\n";
+        }
         game.getDateTime().updateTimeByHour(time);
         return "";
     }
@@ -50,6 +54,9 @@ public class ActionMenuController {
             time = Integer.parseInt(timeStr);
         } catch (NumberFormatException e) {
             return "please enter a valid day!\n";
+        }
+        if (time < 0) {
+            return "time must be a positive number!\n";
         }
         game.getDateTime().updateTimeByDay(time);
         return "";
@@ -110,11 +117,61 @@ public class ActionMenuController {
         game.getCurrentPlayer().setEnergy(Integer.MAX_VALUE);
         return "your energy is now unlimited:)\n";
     }
+
     public void changeMenu() {
         App.setCurrentMenu(Menus.InGameMenus.MENU_SWITCHER);
     }
+//
+//    public String walk(Matcher matcher) {
+//        Game game = App.getCurrentGame();
+//        String xStr = matcher.group("x");
+//        String yStr = matcher.group("y");
+//        int currentY = game.getCurrentPlayer().getPosition().getY();
+//        int currentX = game.getCurrentPlayer().getPosition().getX();
+//        int x, y;
+//        try {
+//            x = Integer.parseInt(xStr);
+//            y = Integer.parseInt(yStr);
+//        } catch (NumberFormatException e) {
+//            return "please enter a valid position!\n";
+//        }
+//    }
 
-
-
+    public String equipTool(Matcher matcher) {
+        Game game = App.getCurrentGame();
+        String toolName = matcher.group("toolName").toLowerCase();
+        Inventory inventory = game.getCurrentPlayer().getInventory();
+        boolean found = false;
+        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+            if (itemDefinition.getDisplayName().equals(toolName)) {
+                found = true;
+            }
+        }
+        if (!found) {
+            return "please enter a valid tool name!\n";
+        }
+        found = false;
+        ItemInstance tool = null;
+        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
+            ItemInstance item = entry.getKey();
+            if (item.getDefinition().getDisplayName().equals(toolName)) {
+                found = true;
+                tool = item;
+            }
+        }
+        if (!found) {
+            return "you don't have " + toolName + " in your inventory!\n";
+        }
+        game.getCurrentPlayer().setCurrentTool(tool);
+        return "your current tool has been set to " + toolName + "!\n";
+    }
+    public String showCurrentTool() {
+        Game game = App.getCurrentGame();
+        Player currentPlayer = game.getCurrentPlayer();
+        if(currentPlayer.getCurrentTool() == null) {
+            return "you don't have a current tool!\n";
+        }
+        return currentPlayer.getCurrentTool().getDefinition().getDisplayName();
+    }
 }
 
