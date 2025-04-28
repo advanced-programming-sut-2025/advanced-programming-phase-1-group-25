@@ -1,5 +1,6 @@
 package org.example.Enums.GameMenus;
 
+import org.example.Controllers.InGameMenuController.MenuSwitcher;
 import org.example.Views.AppMenu;
 import org.example.Views.InGameMenus.*;
 import org.example.Views.PreGameMenus.*;
@@ -38,8 +39,9 @@ public class Menus {
         COOKING_MENU(new CookingMenu()),
         ACTION_MENU(new ActionMenu()),
         SHOP_MENU(new ShopMenu()),
-        EXIT_MENU(new ExitMenu());
-
+        EXIT_MENU(new ExitMenu()),
+        INVENTORY_MENU(new InventoryMenu()),
+        MENU_SWITCHER(new MenuSwitcherView());
         private final AppMenu menu;
 
         InGameMenus(AppMenu menu) {

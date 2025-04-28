@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum ActionMenuCommands {
+    SWITCH_MENU("^\\s*menu\\s+enter\\s+()"),
     NEXT_TURN("^\\s*next\\s+turn\\s*$"),
 
 
@@ -39,8 +40,7 @@ public enum ActionMenuCommands {
     ENERGY_UNLIMITED("^\\s*energy\\s+unlimited\\s*$"),
 
 
-    INVENTORY_SHOW("^\\s*inventory\\s+show\\s*$"),
-    INVENTORY_TRASH("^\\s*inventory\\s+trash\\s+-i\\s+(?<itemName>.+?)(\\s+-n\\s+(?<number>.+?))?\\s*$"),
+
 
 
     TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<toolName>.+?)\\s*$"),

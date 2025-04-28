@@ -1,6 +1,7 @@
 package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.ActionMenuController;
+import org.example.Controllers.InGameMenuController.MenuSwitcher;
 import org.example.Controllers.PreGameMenuController.SignupMenuController;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
@@ -32,6 +33,10 @@ public class ActionMenu implements AppMenu {
         Game game = App.getCurrentGame();
         ActionMenuController controller = new ActionMenuController();
         switch (command) {
+            case SWITCH_MENU:
+                System.out.println(MenuSwitcher.printMenus());
+                controller.changeMenu();
+                break;
             case NEXT_TURN:
                 System.out.println(controller.nextTurn());
                 break;
@@ -41,7 +46,7 @@ public class ActionMenu implements AppMenu {
             case DATE:
                 System.out.println(game.getDateTime().getSeason().toString()
                         +" "+game.getDateTime().getDay());
-                break;z
+                break;
             case DATE_TIME:
                 System.out.println(game.getDateTime().getSeason().toString()
                         +" "+ game.getDateTime().getDay()
@@ -71,6 +76,7 @@ public class ActionMenu implements AppMenu {
             case GREENHOUSE_BUILD:
                 break;
             case WALK:
+//                System.out.println(controller.walk(matcher));
                 break;
             case PRINT_MAP:
                 System.out.println(controller.printMap(game, matcher));
@@ -81,20 +87,16 @@ public class ActionMenu implements AppMenu {
                 System.out.println("Energy: " + game.getCurrentPlayer().getEnergy());
                 break;
             case ENERGY_SET:
-                System.out.println(controller.cheatAdvanceTime(matcher, game));
+                System.out.println(controller.cheatSetEnergy(matcher, game));
                 break;
             case ENERGY_UNLIMITED:
                 System.out.println(controller.energyUnlimited(game));
                 break;
-            case INVENTORY_SHOW:
-                System.out.println(controller.showInventory(game));
-                break;
-            case INVENTORY_TRASH:
-                System.out.println(controller.inventoryTrash(game, matcher, input));
-                break;
             case TOOLS_EQUIP:
+                System.out.println(controller.equipTool(matcher));
                 break;
             case TOOLS_SHOW_CURRENT:
+                System.out.println(controller.showCurrentTool());
                 break;
             case TOOLS_SHOW_AVAILABLE:
                 break;
