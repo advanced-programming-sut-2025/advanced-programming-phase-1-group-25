@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import org.example.Enums.GameMenus.Menus;
+import org.example.Enums.ItemConsts.ItemType;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -172,6 +173,18 @@ public class ActionMenuController {
             return "you don't have a current tool!\n";
         }
         return currentPlayer.getCurrentTool().getDefinition().getDisplayName();
+    }
+    public String showInventoryTools() {
+        Game game = App.getCurrentGame();
+        Inventory inventory = game.getCurrentPlayer().getInventory();
+        StringBuilder toolsStr = new StringBuilder();
+        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
+            ItemInstance item = entry.getKey();
+            if(item.getDefinition().getType().equals(ItemType.tool)) {
+                toolsStr.append(item.getDefinition().getDisplayName()).append("\n");
+            }
+        }
+        return toolsStr.toString();
     }
 }
 

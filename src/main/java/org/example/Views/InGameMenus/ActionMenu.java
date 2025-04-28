@@ -98,6 +98,7 @@ public class ActionMenu implements AppMenu {
                 System.out.println(controller.showCurrentTool());
                 break;
             case TOOLS_SHOW_AVAILABLE:
+                System.out.println(controller.showInventoryTools());
                 break;
             case TOOLS_UPGRADE:
                 break;
