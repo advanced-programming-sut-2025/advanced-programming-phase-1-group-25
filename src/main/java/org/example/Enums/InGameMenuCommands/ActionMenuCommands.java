@@ -94,8 +94,8 @@ public enum ActionMenuCommands {
     QUESTS_FINISH("^\\s*quests\\s+finish\\s+-i\\s+(?<index>.+?)\\s*$"),
     QUESTS_LIST("^\\s*quests\\s+list\\s*$"),
     FRIENDSHIP_NPC_LIST("^\\s*friendship\\s+NPC\\s+list\\s*$"),
-    GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npc_name>.+?)\\s+-i\\s+(?<item>.+?)\\s*$"),
-    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npc_name>>+?)\\s*$"),
+    GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npcName>.+?)\\s+-i\\s+(?<item>.+?)\\s*$"),
+    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npcName>>+?)\\s*$"),
     ///
     TRADE_HISTORY("^\\s*trade\\s+history\\s*$"),
     TRADE_RESPONSE("^\\s*trade\\s+response\\s+-(accept|reject)\\s+-i\\s+(?<id>.+?)\\s*$"),
@@ -108,21 +108,21 @@ public enum ActionMenuCommands {
     FLOWER("^\\s*flower\\s+-u\\s+(?<username>.+?)\\s*$"),
     HUG("^\\s*hug\\s+-u\\s+(?<username>.+?)\\s*"),
     GIFT_HISTORY("^\\s*gift\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
-    GIFT_RATE("^\\s*gift\\s+rate\\s+-i\\s+(?<gift-number>.+?)\\s+-r\\s+(?<rate>.+?)\\s*$"),
+    GIFT_RATE("^\\s*gift\\s+rate\\s+-i\\s+(?<giftNumber>.+?)\\s+-r\\s+(?<rate>.+?)\\s*$"),
     GIFT_LIST("^\\s*gift\\s+list\\s*$"),
     GIFT("^\\s*gift\\s+-u\\s+(?<username>.+?)\\s+-i\\s+(?<item>.+?)\\s+-a\\s+(?<amount>.+?)\\s*$"),
     TALK_HISTORY("^\\s*talk\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
     TALK("^\\s*talk\\s+-u\\s+(?<username>.+?)\\s+-m\\s+(?<message>.+?)\\s*$"),
     FRIENDSHIPS("^\\s*friendships\\s*$"),
     /// selling and buying
-    SELL("^\\s*sell\\s+(?<product_name>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
+    SELL("^\\s*sell\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
     CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>>+?)\\s+dollars\\s*$"),
-    PURCHASE("^\\s*purchase\\s+(?<product_name>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
+    PURCHASE("^\\s*purchase\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
     SHOW_ALL_AVAILABLE_PRODUCTS("^\\s*show\\s+all\\s+available\\s+products\\s*$"),
     SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),
     /// faravari
-    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisan_name>.+?)\\s*$"),
-    ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisan_name>.+?)\\s+(?<item1_name>.+?)\\s*$");
+    ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>.+?)\\s*$"),
+    ARTISAN_USE("^\\s*artisan\\s+use\\s+(?<artisanName>.+?)\\s+(?<item1Name>.+?)\\s*$");
     private final String pattern;
 
     ActionMenuCommands(String pattern) {
