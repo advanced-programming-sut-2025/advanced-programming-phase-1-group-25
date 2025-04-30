@@ -3066,5 +3066,12 @@
     "type": "rock",
     "baseAttributes": {
     }
+  },
+  {
+    "itemId": "tree",
+    "name": "Tree",
+    "type": "tree",
+    "baseAttributes": {
+    }
   }
 ]
