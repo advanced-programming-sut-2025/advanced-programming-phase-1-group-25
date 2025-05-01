@@ -104,8 +104,10 @@ public class ActionMenu implements AppMenu {
             case TOOLS_UPGRADE:
                 break;
             case TOOLS_USE:
+                System.out.println(controller.useTool(matcher));
                 break;
             case CRAFT_INFO:
+                System.out.println(controller.craftInfo(matcher));
                 break;
             case PLANT:
                 break;

@@ -1,10 +1,17 @@
 package org.example.Models.Player;
 
 import org.example.Enums.GameConsts.Gender;
+import org.example.Models.App;
+import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemInstance;
+import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
+import org.example.Models.MapElements.Tile;
 import org.example.Models.User;
+
+import java.util.Locale;
+import java.util.Objects;
 
 /*
     When a game is made, it has players; and when users enter the game, they become players of that game.
@@ -31,6 +38,28 @@ public class Player {
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
+    }
+
+    public void changeToolLevel(ItemInstance tool) {
+        String name = tool.getDefinition().getDisplayName().toLowerCase();
+        if (name.contains("hoe")) {
+            changeInventoryTool(tool, "base_hoe");
+        } else if (name.contains("pickaxe")) {
+            changeInventoryTool(tool, "base_pickaxe");
+        } else if (name.contains("axe")) {
+            changeInventoryTool(tool, "base_axe");
+        } else if (name.contains("watering can")) {
+            changeInventoryTool(tool, "base_watering_can");
+        } else if (name.contains("fishing pole")) {
+            changeInventoryTool(tool, "training_fishing_pole");
+        }
+    }
+
+    public void changeInventoryTool(ItemInstance tool, String newToolName) {
+        this.inventory.getItems().remove(tool);
+        ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
+        this.inventory.getItems().put(newTool, 1);
+        this.currentTool = newTool;
     }
 
     public ItemInstance getCurrentTool() {
@@ -87,5 +116,19 @@ public class Player {
 
     public void setEnergy(int energy) {
         this.energy = energy;
+    }
+
+    public Tile getPlayerTile(Game game) {
+        GameMap gameMap = game.getGameMap();
+        return gameMap.getTile(this.position.getY(), this.position.getX());
+    }
+
+    public void reduceEnergy(int ability, ItemInstance tool, Player player) {
+        int x = tool.getDefinition().decreaseDurability();
+        if (x == 0) player.changeToolLevel(tool);
+            if (ability == 4) {
+                this.energy -= (tool.getDefinition().getEnergyCost() - 1);
+            }
+        this.energy -= tool.getDefinition().getEnergyCost();
     }
 }

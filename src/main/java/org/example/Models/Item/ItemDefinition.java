@@ -38,4 +38,13 @@ public class ItemDefinition {
     public String getDisplayName() {
         return displayName;
     }
+    public int getEnergyCost() {
+        return (int)baseAttributes.get(ItemAttributes.energyCost);
+    }
+    public int decreaseDurability() {
+        int x = (int)baseAttributes.get(ItemAttributes.durability);
+        baseAttributes.put(ItemAttributes.durability, x - 1);
+        return x;
+
+    }
 }

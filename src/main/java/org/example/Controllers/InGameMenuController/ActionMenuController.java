@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import org.example.Enums.GameMenus.Menus;
+import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Models.App;
 import org.example.Models.Game;
@@ -9,6 +10,7 @@ import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
+import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 
 import java.util.Map;
@@ -23,6 +25,7 @@ public class ActionMenuController {
 
         return String.format("%s's turn!\n", nextPlayer.getName());
     }
+
     public String buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
         Player currentPlayer = currentGame.getCurrentPlayer();
@@ -146,6 +149,7 @@ public class ActionMenuController {
 //        } catch (NumberFormatException e) {
 //            return "please enter a valid position!\n";
 //        }
+//
 //    }
 
     public String equipTool(Matcher matcher) {
@@ -154,7 +158,7 @@ public class ActionMenuController {
         Inventory inventory = game.getCurrentPlayer().getInventory();
         boolean found = false;
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            if (itemDefinition.getDisplayName().equals(toolName)) {
+            if (itemDefinition.getDisplayName().equalsIgnoreCase(toolName)) {
                 found = true;
             }
         }
@@ -165,7 +169,7 @@ public class ActionMenuController {
         ItemInstance tool = null;
         for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
             ItemInstance item = entry.getKey();
-            if (item.getDefinition().getDisplayName().equals(toolName)) {
+            if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
                 found = true;
                 tool = item;
             }
@@ -176,25 +180,123 @@ public class ActionMenuController {
         game.getCurrentPlayer().setCurrentTool(tool);
         return "your current tool has been set to " + toolName + "!\n";
     }
+
     public String showCurrentTool() {
         Game game = App.getCurrentGame();
         Player currentPlayer = game.getCurrentPlayer();
-        if(currentPlayer.getCurrentTool() == null) {
+        if (currentPlayer.getCurrentTool() == null) {
             return "you don't have a current tool!\n";
         }
-        return currentPlayer.getCurrentTool().getDefinition().getDisplayName();
+        return currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase();
     }
+
     public String showInventoryTools() {
         Game game = App.getCurrentGame();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
         for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
             ItemInstance item = entry.getKey();
-            if(item.getDefinition().getType().equals(ItemType.tool)) {
-                toolsStr.append(item.getDefinition().getDisplayName()).append("\n");
+            if (item.getDefinition().getType().equals(ItemType.tool)) {
+                toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
             }
         }
         return toolsStr.toString();
+    }
+
+    public String craftInfo(Matcher matcher) {
+        String name = matcher.group("craftName");
+        ItemDefinition itemDefinition = null;
+        for (ItemDefinition tmp : App.getItemDefinitions()) {
+            if (tmp.getDisplayName().equalsIgnoreCase(name) && tmp.getType().equals(ItemType.all_crops)) {
+                itemDefinition = tmp;
+            }
+        }
+        if (itemDefinition == null) {
+            return "please select a crop!\n";
+        }
+        StringBuilder info = new StringBuilder();
+        info.append("Name: ").append(itemDefinition.getDisplayName().toLowerCase()).append("\n");
+        for (Map.Entry<ItemAttributes, Object> entry : itemDefinition.getBaseAttributes().entrySet()) {
+            ItemAttributes itemAttributes = entry.getKey();
+            Object object = entry.getValue();
+            info.append(itemAttributes.toString()).append(": ").append(object.toString()).append("\n");
+        }
+        return info.toString();
+    }
+
+    public String useTool(Matcher matcher) {
+        String direction = matcher.group("direction");
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+        Tile tile = player.getPlayerTile(game);
+        ItemInstance tool = player.getCurrentTool();
+        switch (direction) {
+            case "up":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() - 1, tile.getPosition().getX()), player);
+            case "down":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() + 1, tile.getPosition().getX()), player);
+            case "left":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY(), tile.getPosition().getX() - 1), player);
+            case "right":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY(), tile.getPosition().getX() + 1), player);
+            case "up left":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player);
+            case "up right":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player);
+            case "down left":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player);
+            case "down right":
+                return applyTool(tool, game.getGameMap().getTile
+                        (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
+            default:
+                return "please select a valid direction!\n";
+        }
+    }
+
+    public String applyTool(ItemInstance tool, Tile tile, Player player) {
+        String name = tool.getDefinition().getDisplayName().toLowerCase();
+        if (name.contains("hoe")) {
+            if (player.getAbilities().getAbilityLevel(player.getAbilities().getFarmingAbility()) == 4
+                    && player.getEnergy() < tool.getDefinition().getEnergyCost() - 1) {
+                return "you don't have enough energy!";
+            }
+            if (player.getEnergy() < tool.getDefinition().getEnergyCost()) {
+                return "you don't have enough energy!";
+            }
+            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player);
+            if (!tile.isEmpty()) return "this tile is not empty!\n";
+            if (tile.getPlowed()) return "this tile has been plowed!\n";
+            tile.setPlowed(true);
+            return "this tile has been plowed by hoe!\n";
+        } else if (name.contains("pickaxe")) {
+
+        } else if (name.contains("axe")) {
+
+        } else if (name.contains("watering can")) {
+
+        } else if (name.contains("fishing pole")) {
+
+        } else if (name.contains("scythe")) {
+
+        } else if (name.contains("milk pale")) {
+
+        } else if (name.contains("shear")) {
+
+        } else if (name.contains("back pack")) {
+
+        } else if (name.contains("trash can")) {
+
+        } else {
+            return "please select a valid tool!\n";
+        }
+        return "";
     }
 }
 

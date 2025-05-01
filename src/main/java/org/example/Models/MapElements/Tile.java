@@ -11,10 +11,19 @@ public class Tile {
     private ItemInstance item;
     private AnsiColors forGroundColor;
     private AnsiColors backGroundColor;
-
+    private boolean isPlowed;
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
+        this.isPlowed = false;
+    }
+
+    public boolean getPlowed() {
+        return isPlowed;
+    }
+
+    public void setPlowed(boolean plowed) {
+        isPlowed = plowed;
     }
 
     public void setItem(ItemInstance item) {
