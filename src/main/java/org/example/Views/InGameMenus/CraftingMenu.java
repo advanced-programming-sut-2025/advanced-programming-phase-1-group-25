@@ -12,7 +12,7 @@ import org.example.Views.AppMenu;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class CraftingMenu implements AppMenu  {
+public class CraftingMenu implements AppMenu {
     @Override
     public void handleInput(Scanner sc) {
         String input = sc.nextLine();
@@ -34,10 +34,13 @@ public class CraftingMenu implements AppMenu  {
         CraftingMenuController controller = new CraftingMenuController();
         switch (command) {
             case CRAFTING_CRAFT:
-                System.out.println(controller.craftingCraft(matcher.group("itemName"),game ));
+                System.out.println(controller.craftingCraft(matcher.group("itemName"), game));
                 break;
             case CHEAT_ADD_ITEM:
-                System.out.println(controller.cheatAddItem(matcher.group("itemName"),Integer.parseInt(matcher.group("count")),game));
+                System.out.println(controller.cheatAddItem(matcher.group("itemName"), Integer.parseInt(matcher.group("count")), game));
+                break;
+            case PLACE_ITEM:
+                System.out.println(controller.placeItem(matcher.group("direction"), game, matcher.group("itemName"), 1));
                 break;
         }
     }

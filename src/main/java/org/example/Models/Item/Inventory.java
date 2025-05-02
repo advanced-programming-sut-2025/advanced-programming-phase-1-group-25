@@ -38,6 +38,18 @@ public class Inventory {
         }
     }
 
+    public String dropItemByName(String name, int amount) {
+        ItemInstance target = findItemByName(name);
+        if (target == null) return "You don't have " + name + " in your backpack.";
+        int newAmount = Math.max(items.get(target) - amount, 0);
+        if (newAmount == 0) {
+            items.remove(target);
+        } else {
+            items.put(target, newAmount);
+        }
+        return "You dropped " + amount + " of " + name + ".";
+    }
+
     public int getItemAmount(String id) {
         ItemInstance target = findItemById(id);
         if (target == null) return 0;

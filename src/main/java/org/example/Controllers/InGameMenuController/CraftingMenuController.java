@@ -279,9 +279,18 @@ public class CraftingMenuController {
         }
     }
 
-    public String placeItem() {
-        ///  todo
-        return "";
+    public String placeItem(String direction, Game game, String name, int amount) {// Example input
+        if (!direction.matches("^(N|NE|E|SE|S|SW|W|NW)$")) {
+            return ("Invalid direction");
+        }
+        String result = game.getCurrentPlayer().getInventory().dropItemByName(name, amount);
+        if(result.startsWith("You don't")){
+            return result;
+        }
+        else{
+            /// todo : placing the item
+            return result;
+        }
     }
 
     public String craftingShowRecipes() {
