@@ -284,10 +284,9 @@ public class CraftingMenuController {
             return ("Invalid direction");
         }
         String result = game.getCurrentPlayer().getInventory().dropItemByName(name, amount);
-        if(result.startsWith("You don't")){
+        if (result.startsWith("You don't")) {
             return result;
-        }
-        else{
+        } else {
             /// todo : placing the item
             return result;
         }
