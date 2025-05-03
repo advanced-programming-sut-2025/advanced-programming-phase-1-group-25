@@ -55,10 +55,10 @@ public class ActionMenuController {
 
         int energyCost = Walk.calculateWalkEnergyCost(path);
 
-        String input = this.view.prompt(String.format("The best path's energy cost is %d.\n Do you want to go to the destination?\n" +
+        String input = this.view.prompt(String.format("The best path's energy cost is %d. (Your current energy: %d)\nDo you want to go to the destination?\n" +
                 "1. Yes\n" +
                 "2. No\n" +
-                "3. Walk until my energy runs out.", energyCost));
+                "3. Walk until my energy runs out.", energyCost, currentPlayer.getEnergy()));
         int number;
 
         try {

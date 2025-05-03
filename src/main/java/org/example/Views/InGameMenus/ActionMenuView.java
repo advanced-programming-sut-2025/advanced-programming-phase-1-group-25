@@ -83,7 +83,7 @@ public class ActionMenuView implements AppMenu {
                 controller.walk(matcher.group("y"), matcher.group("x"));
                 break;
             case PRINT_MAP:
-                System.out.println(controller.printMap(matcher.group("xStr"), matcher.group("yStr"), matcher.group("sizeStr")));
+                System.out.println(controller.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size")));
                 break;
             case HELP_READING_MAP:
                 break;
