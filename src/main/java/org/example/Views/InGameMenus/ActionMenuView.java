@@ -2,9 +2,7 @@ package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.ActionMenuController;
 import org.example.Controllers.InGameMenuController.MenuSwitcher;
-import org.example.Controllers.PreGameMenuController.SignupMenuController;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
-import org.example.Enums.PreGameMenuCommands.SignupMenuCommands;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Views.AppMenu;
@@ -12,10 +10,14 @@ import org.example.Views.AppMenu;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class ActionMenu implements AppMenu {
+public class ActionMenuView implements AppMenu {
+    Scanner scanner;
+    ActionMenuController controller;
+
     @Override
     public void handleInput(Scanner sc) {
-        String input = sc.nextLine();
+        this.scanner = sc;
+        String input = scanner.nextLine();
         Matcher matcher;
         boolean matched = false;
         for (ActionMenuCommands command : ActionMenuCommands.values()) {
@@ -29,9 +31,11 @@ public class ActionMenu implements AppMenu {
         }
     }
 
-    private static void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
+    private void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
+
         Game game = App.getCurrentGame();
-        ActionMenuController controller = new ActionMenuController();
+        this.controller = new ActionMenuController(this);
+
         switch (command) {
             case SWITCH_MENU:
                 System.out.println(MenuSwitcher.printMenus());
@@ -76,10 +80,10 @@ public class ActionMenu implements AppMenu {
             case GREENHOUSE_BUILD:
                 break;
             case WALK:
-//                System.out.println(controller.walk(matcher));
+                controller.walk(matcher.group("y"), matcher.group("x"));
                 break;
             case PRINT_MAP:
-                System.out.println(controller.printMap(game, matcher));
+                System.out.println(controller.printMap(matcher.group("xStr"), matcher.group("yStr"), matcher.group("sizeStr")));
                 break;
             case HELP_READING_MAP:
                 break;
@@ -156,5 +160,15 @@ public class ActionMenu implements AppMenu {
             case TRADE:
                 break;
         }
+    }
+
+    public String prompt(String message) {
+        System.out.println(message);
+        String input = scanner.nextLine();
+        return input;
+    }
+
+    public void showMessage(String message) {
+        System.out.println(message);
     }
 }

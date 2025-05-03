@@ -7,4 +7,8 @@ public class Cottage {
     public Cottage(Tile tile) {
         this.tile = tile;
     }
+
+    public Tile getTile() {
+        return tile;
+    }
 }

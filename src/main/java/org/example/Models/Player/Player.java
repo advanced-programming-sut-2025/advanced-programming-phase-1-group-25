@@ -73,6 +73,10 @@ public class Player {
         return position;
     }
 
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public User getUser() {
         return user;
     }

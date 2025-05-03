@@ -33,7 +33,6 @@ public class spawnRandom {
                     int x = GenerateRandomNumber.generateRandomNumber(0, MapSizes.FARM_COLS.getSize() - 1);
                     tile = playerMap.getTile(y, x);
                 } while (!tile.isEmpty());
-                System.out.println(id);
                 tile.setItem(new ItemInstance(App.getItemDefinition(id)));
             }
         }
