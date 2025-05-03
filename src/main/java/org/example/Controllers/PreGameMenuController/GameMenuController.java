@@ -1,5 +1,6 @@
 package org.example.Controllers.PreGameMenuController;
 
+import org.example.Controllers.UpdateMap.spawnRandom;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
@@ -40,9 +41,18 @@ public class GameMenuController {
         }
 
         Map<Player, PlayerMap> playerMaps = getPlayerMaps(sc, gamePlayers, newGameMap, farms);
+        for (Map.Entry<Player, PlayerMap> entry : playerMaps.entrySet()) {
+            Player player = entry.getKey();
+            PlayerMap map = entry.getValue();
+            int cottageY = map.getCottage().getTile().getPosition().getY();
+            int cottageX = map.getCottage().getTile().getPosition().getX();
+            player.setPosition(new Position(cottageY, cottageX));
+        }
 
         Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0), newGameMap);
         App.setCurrentGame(newGame);
+
+        spawnRandom.spawnRandomElements();
 
         App.setCurrentMenu(Menus.InGameMenus.ACTION_MENU);
         return "Game created successfully!\n";

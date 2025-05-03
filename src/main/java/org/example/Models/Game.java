@@ -58,4 +58,8 @@ public class Game {
     public ArrayList<PlayerMap> getPlayerMaps() {
         return new ArrayList<>(playerMaps.values());
     }
+
+    public ArrayList<Player> getPlayers() {
+        return gamePlayers;
+    }
 }

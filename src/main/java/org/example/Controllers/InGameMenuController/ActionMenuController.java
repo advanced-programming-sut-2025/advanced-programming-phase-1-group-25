@@ -1,6 +1,8 @@
 package org.example.Controllers.InGameMenuController;
 
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import org.example.Enums.GameMenus.Menus;
+import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Models.App;
@@ -12,12 +14,86 @@ import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
+import org.example.Views.InGameMenus.ActionMenuView;
+import org.example.Views.PreGameMenus.TerminalAnimation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
+    ActionMenuView view;
+    public ActionMenuController(ActionMenuView view) {
+        this.view = view;
+    }
+
+    public void walk(String yString, String xString) {
+        int y, x;
+        try {
+            y = Integer.parseInt(yString);
+            x = Integer.parseInt(xString);
+        } catch (NumberFormatException e) {
+            this.view.showMessage("Please Enter valid Y and X");
+            return;
+        }
+
+        // check whether the player can go to the destination or not
+
+        Game currentGame = App.getCurrentGame();
+        Player currentPlayer = currentGame.getCurrentPlayer();
+        GameMap map = currentGame.getGameMap();
+        int currentPlayerY = currentPlayer.getPosition().getY();
+        int currentPlayerX = currentPlayer.getPosition().getX();
+        Tile start = map.getTile(currentPlayerY, currentPlayerX);
+        Tile goal = map.getTile(y, x);
+
+        List<Tile> path = Walk.findPath(start, goal, map);
+        if (path == null) {
+            this.view.showMessage("No path found.");
+            return;
+        }
+
+        int energyCost = Walk.calculateWalkEnergyCost(path);
+
+        String input = this.view.prompt(String.format("The best path's energy cost is %d. (Your current energy: %d)\nDo you want to go to the destination?\n" +
+                "1. Yes\n" +
+                "2. No\n" +
+                "3. Walk until my energy runs out.", energyCost, currentPlayer.getEnergy()));
+        int number;
+
+        try {
+            number = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            this.view.showMessage("Please enter a valid number");
+            return;
+        }
+
+        int playerEnergy = currentPlayer.getEnergy();
+
+        if (number == 1) {
+            if (playerEnergy < energyCost) {
+                this.view.showMessage("You don't have enough energy.");
+            } else {
+                try {
+                    TerminalAnimation.loadingAnimation("Walking");
+                } catch (InterruptedException e) {
+                    this.view.showMessage("Problem walking to the destination. Please try again.");
+                    return;
+                }
+                Walk.walkToDestination(energyCost, y, x);
+                this.view.showMessage("You are now in destination!");
+            }
+        } else if (number == 2) {
+            this.view.showMessage("Cancelled.");
+        } else if (number == 3) {
+            Position finalPosition = Walk.walkUntilEnergyRunsOut(path);
+            this.view.showMessage(String.format("You final position is y = %d | x = %d", finalPosition.getY(), finalPosition.getX()));
+        } else {
+            this.view.showMessage("Invalid command");
+        }
+    }
 
     public String nextTurn() {
         Game currentGame = App.getCurrentGame();
@@ -80,10 +156,8 @@ public class ActionMenuController {
     //    public String cheatWeather(Matcher matcher, Game game) {
 //        String weather = matcher.group("type");
 //    }
-    public String printMap(Game game, Matcher matcher) {
-        String xStr = matcher.group("x");
-        String yStr = matcher.group("y");
-        String sizeStr = matcher.group("size");
+    public String printMap(String xStr, String yStr, String sizeStr) {
+        Game game = App.getCurrentGame();
         int x, y, size;
         try {
             x = Integer.parseInt(xStr);
@@ -102,18 +176,41 @@ public class ActionMenuController {
 
     public String getMapBySize(Game game, Position position, int size) {
         GameMap map = game.getGameMap();
-        StringBuilder mapStr = new StringBuilder();
+        String[][] mapArray = new String[2 * size][2 * size];
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
             for (int j = position.getX() - size; j < position.getX() + size; j++) {
                 try {
-                    mapStr.append(map.getTile(i, j).getItem().getDefinition().getDisplayName());
+                    ItemType type = map.getTile(i, j).getItem().getDefinition().getType();
+                    String symbol = ItemDisplay.getDisplayByType(type);
+                    mapArray[i - position.getY() + size][j - position.getX() + size] = symbol;
                 } catch (ArrayIndexOutOfBoundsException e) {
                     continue;
                 }
             }
-            mapStr.append("\n");
         }
-        return mapStr.toString();
+
+        ArrayList<Player> players = App.getCurrentGame().getPlayers();
+        int playerNumber = 1;
+        for (Player player : players) {
+            int playerY = player.getPosition().getY();
+            int playerX = player.getPosition().getX();
+
+            if (playerY >= position.getY() - size && playerY < position.getY() + size) {
+                if (playerX >= position.getX() - size && playerX < position.getX() + size) {
+                    mapArray[playerY - position.getY() + size][playerX - position.getX() + size] = Integer.toString(playerNumber);
+                }
+            }
+            playerNumber++;
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < 2 * size; i++) {
+            for (int j = 0; j < 2 * size; j++) {
+                output.append(mapArray[i][j]).append(" ");
+            }
+            output.append("\n");
+        }
+        return output.toString();
     }
 
     public String cheatSetEnergy(Matcher matcher, Game game) {
@@ -136,22 +233,6 @@ public class ActionMenuController {
     public void changeMenu() {
         App.setCurrentMenu(Menus.InGameMenus.MENU_SWITCHER);
     }
-//
-//    public String walk(Matcher matcher) {
-//        Game game = App.getCurrentGame();
-//        String xStr = matcher.group("x");
-//        String yStr = matcher.group("y");
-//        int currentY = game.getCurrentPlayer().getPosition().getY();
-//        int currentX = game.getCurrentPlayer().getPosition().getX();
-//        int x, y;
-//        try {
-//            x = Integer.parseInt(xStr);
-//            y = Integer.parseInt(yStr);
-//        } catch (NumberFormatException e) {
-//            return "please enter a valid position!\n";
-//        }
-//
-//    }
 
     public String equipTool(Matcher matcher) {
         Game game = App.getCurrentGame();
