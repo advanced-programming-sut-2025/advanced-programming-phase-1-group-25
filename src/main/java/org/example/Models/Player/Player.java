@@ -1,6 +1,7 @@
 package org.example.Models.Player;
 
 import org.example.Enums.GameConsts.Gender;
+import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -10,7 +11,6 @@ import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.User;
 
-import java.util.Locale;
 import java.util.Objects;
 
 /*
@@ -27,6 +27,7 @@ public class Player {
     private PlayerAbilities abilities;
     private Position position;
     private ItemInstance currentTool;
+    private int energyPerTurn;
 
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
@@ -38,6 +39,7 @@ public class Player {
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
+        this.energyPerTurn = 50;
     }
 
     public void changeToolLevel(ItemInstance tool) {
@@ -124,11 +126,13 @@ public class Player {
     }
 
     public void reduceEnergy(int ability, ItemInstance tool, Player player) {
+        if (ability == 4) {
+            this.energy -= ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1);
+        } else {
+            this.energy -= (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost);
+        }
         int x = tool.getDefinition().decreaseDurability();
-        if (x == 0) player.changeToolLevel(tool);
-            if (ability == 4) {
-                this.energy -= (tool.getDefinition().getEnergyCost() - 1);
-            }
-        this.energy -= tool.getDefinition().getEnergyCost();
+        if (x == 0)
+            player.changeToolLevel(tool);
     }
 }

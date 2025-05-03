@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum ActionMenuCommands {
-    SWITCH_MENU("^\\s*menu\\s+enter\\s+()"),
+    SWITCH_MENU("^\\s*switch\\s+menu\\s*$"),
     NEXT_TURN("^\\s*next\\s+turn\\s*$"),
 
 

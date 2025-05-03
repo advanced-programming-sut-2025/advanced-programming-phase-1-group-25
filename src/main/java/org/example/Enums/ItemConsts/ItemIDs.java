@@ -263,5 +263,7 @@ public enum ItemIDs {
     fiber,
     rock,
     tree,
+    honey,
+    cheese,
     ;
 }

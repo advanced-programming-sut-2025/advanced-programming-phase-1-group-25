@@ -4,7 +4,6 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /*
@@ -38,8 +37,8 @@ public class ItemDefinition {
     public String getDisplayName() {
         return displayName;
     }
-    public int getEnergyCost() {
-        return (int)baseAttributes.get(ItemAttributes.energyCost);
+    public Object getAttribute(ItemAttributes attributes) {
+        return baseAttributes.get(attributes);
     }
     public int decreaseDurability() {
         int x = (int)baseAttributes.get(ItemAttributes.durability);

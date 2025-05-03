@@ -13,18 +13,23 @@ import java.util.regex.Matcher;
     This is the inventory, and each player has his (or her!) own inventory.
  */
 public class Inventory {
-    private Level level;
+    private ItemLevels.BackPackLevels level;
     private Map<ItemInstance, Integer> items;
+
     public Inventory() {
         this.level = ItemLevels.BackPackLevels.BASIC;
         this.items = new LinkedHashMap<>();
     }
 
-    public void addItem(String id, int amount) {
-        ItemInstance target = findItem(id);
-        if (target == null) return;
+
+    public void addItem(ItemInstance item, int amount) {
+        ItemInstance target = findItem(item.getDefinition().getId().name());
+        if (target == null) {
+            this.items.put(item, amount);
+        }
         int newAmount = items.get(target) + amount;
         this.items.put(target, newAmount);
+
     }
 
     public void dropItem(String id, int amount) {
@@ -44,7 +49,7 @@ public class Inventory {
         return items.get(target);
     }
 
-    public void upgrade(Level upgradedLevel) {
+    public void upgrade(ItemLevels.BackPackLevels upgradedLevel) {
         this.level = upgradedLevel;
     }
 
@@ -61,5 +66,9 @@ public class Inventory {
 
     public Map<ItemInstance, Integer> getItems() {
         return items;
+    }
+
+    public int getCapacity() {
+        return this.level.getLevel();
     }
 }

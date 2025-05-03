@@ -14,6 +14,7 @@ import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
@@ -225,59 +226,64 @@ public class ActionMenuController {
     }
 
     public String useTool(Matcher matcher) {
-        String direction = matcher.group("direction");
+        String direction = matcher.group("direction").trim();
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         Tile tile = player.getPlayerTile(game);
         ItemInstance tool = player.getCurrentTool();
-        switch (direction) {
-            case "up":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() - 1, tile.getPosition().getX()), player);
-            case "down":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() + 1, tile.getPosition().getX()), player);
-            case "left":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY(), tile.getPosition().getX() - 1), player);
-            case "right":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY(), tile.getPosition().getX() + 1), player);
-            case "up left":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player);
-            case "up right":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player);
-            case "down left":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player);
-            case "down right":
-                return applyTool(tool, game.getGameMap().getTile
-                        (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
-            default:
-                return "please select a valid direction!\n";
-        }
+        if (tool == null) return "you don't have a tool in your hand!\n";
+        return switch (direction) {
+            case "up" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player);
+            case "down" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player);
+            case "left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player);
+            case "right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player);
+            case "up left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player);
+            case "up right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player);
+            case "down left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player);
+            case "down right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
+            default -> "please select a valid direction!\n";
+        };
     }
 
     public String applyTool(ItemInstance tool, Tile tile, Player player) {
         String name = tool.getDefinition().getDisplayName().toLowerCase();
         if (name.contains("hoe")) {
-            if (player.getAbilities().getAbilityLevel(player.getAbilities().getFarmingAbility()) == 4
-                    && player.getEnergy() < tool.getDefinition().getEnergyCost() - 1) {
-                return "you don't have enough energy!";
-            }
-            if (player.getEnergy() < tool.getDefinition().getEnergyCost()) {
-                return "you don't have enough energy!";
-            }
+            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
             player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player);
+            if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) return "you can't use hoe in lake!\n";
             if (!tile.isEmpty()) return "this tile is not empty!\n";
-            if (tile.getPlowed()) return "this tile has been plowed!\n";
+            if (tile.getPlowed()) return "this tile has already been plowed!\n";
             tile.setPlowed(true);
-            return "this tile has been plowed by hoe!\n";
+            return "you've successfully plowed the tile!\n";
         } else if (name.contains("pickaxe")) {
-
+            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
+            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player);
+            if (tile.getItem().getDefinition().getType().equals(ItemType.lake))
+                return "you can't use pickaxe in lake!\n";
+            if (tile.isEmpty() && tile.getPlowed()) {
+                tile.setPlowed(false);
+                return "this tile has been successfully unplowed!\n";
+            }
+            tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));//TODO
+            return "item has been successfully removed from the tile!\n";
         } else if (name.contains("axe")) {
+            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
+            player.reduceEnergy(player.getAbilities().getFishingAbility(), tool, player);
+            if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) return "you can't use axe in lake!\n";
+            if (tile.isEmpty()) return "this tile is empty!\n";
+            if(tile.getItem().getDefinition().getType().equals(ItemType.wood)){//TODO
+                player.getInventory().addItem(tile.getItem(), 1);
+                tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+                return "1 wood has been successfully added to the inventory!\n";
+            }
 
         } else if (name.contains("watering can")) {
 
@@ -297,6 +303,17 @@ public class ActionMenuController {
             return "please select a valid tool!\n";
         }
         return "";
+    }
+
+    public boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool) {
+        if (player.getAbilities().getAbilityLevel(player.getAbilities().getFarmingAbility()) == 4
+                && player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1) {
+            return false;
+        }
+        if (player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost)) {
+            return false;
+        }
+        return true;
     }
 }
 

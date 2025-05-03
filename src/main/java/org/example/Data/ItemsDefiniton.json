@@ -3073,5 +3073,30 @@
     "type": "tree",
     "baseAttributes": {
     }
+  },
+  {
+    "itemId": "honey",
+    "name": "Honey",
+    "type": "artisan",
+    "baseAttributes": {
+      "energy": 75,
+      "ingredients": {
+
+      },
+      "price": 350
+    }
+  },
+  {
+    "itemId": "cheese",
+    "name": "Cheese",
+    "type": "artisan",
+    "baseAttributes": {
+      "energy": 100,
+      "ingredients": {
+          "milk": -1,
+          "big_milk": -1
+      },
+      "price": 350
+    }
   }
 ]

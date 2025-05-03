@@ -34,7 +34,7 @@ public class ItemLevels {
         }
 
         public int getLevel() {
-            return level;
+            return (level + 1) * 12;
         }
     }
 
