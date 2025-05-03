@@ -42,7 +42,7 @@
     }
   },
   {
-    "itemId": "base_hoe",
+      "itemId": "base_hoe",
     "name": "Base Hoe",
     "type": "tool",
     "baseAttributes": {
