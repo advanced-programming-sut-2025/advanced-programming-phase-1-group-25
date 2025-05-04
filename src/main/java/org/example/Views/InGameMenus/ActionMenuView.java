@@ -46,16 +46,16 @@ public class ActionMenuView implements AppMenu {
                 System.out.println(game.getDateTime().getHour());
                 break;
             case DATE:
-                System.out.println(game.getDateTime().getSeason().toString()
-                        + " " + game.getDateTime().getDay());
+                System.out.println("season: " + game.getDateTime().getSeason().toString().toLowerCase()
+                        + "\nday: " + game.getDateTime().getDay());
                 break;
             case DATE_TIME:
-                System.out.println(game.getDateTime().getSeason().toString()
-                        + " " + game.getDateTime().getDay()
-                        + " " + game.getDateTime().getHour());
+                System.out.println("season: " + game.getDateTime().getSeason().toString().toLowerCase()
+                        + "\nday: " + game.getDateTime().getDay()
+                        + "\nhour: " + game.getDateTime().getHour());
                 break;
             case DAY_OF_THE_WEEK:
-                System.out.println(game.getDateTime().getDayOfWeek().toString());
+                System.out.println(game.getDateTime().getDayOfWeek().toString().toLowerCase());
                 break;
             case CHEAT_ADVANCE_TIME:
                 controller.cheatAdvanceTime(matcher, game);
@@ -64,12 +64,12 @@ public class ActionMenuView implements AppMenu {
                 controller.cheatAdvanceDate(matcher, game);
                 break;
             case SEASON:
-                System.out.println(game.getDateTime().getSeason().toString());
+                System.out.println(game.getDateTime().getSeason().toString().toLowerCase());
                 break;
             case CHEAT_THOR:
                 break;
             case WEATHER:
-                System.out.println(game.getWeather().getCurrentWeather().toString());
+                System.out.println(game.getWeather().getCurrentWeather().toString().toLowerCase());
                 break;
             case WEATHER_FORECAST:
                 break;

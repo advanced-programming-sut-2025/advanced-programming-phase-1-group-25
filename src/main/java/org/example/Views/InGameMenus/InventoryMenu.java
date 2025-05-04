@@ -47,7 +47,7 @@ public class InventoryMenu implements AppMenu {
 
     public String prompt(String message) {
         System.out.println(message);
-        return scanner.nextLine();  
+        return scanner.nextLine();
     }
 
     public void showMessage(String message) {

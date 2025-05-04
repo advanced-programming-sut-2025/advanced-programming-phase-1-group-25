@@ -74,7 +74,7 @@ public class ToolController {
                 return;
             }
             if (tile.getItem().getDefinition().getType().equals(ItemType.wood)) {//TODO
-                player.getInventory().addItem(tile.getItem(), 1);
+                player.getInventory().addItem(tile.getItem().getDefinition(), 1);
                 tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                 view.showMessage("1 wood has been successfully added to the inventory!");
                 return;
@@ -162,13 +162,13 @@ public class ToolController {
     }
 
     public static void cutFiber(Tile tile, Player player) {
-        player.getInventory().addItem(tile.getItem(), 1);
+        player.getInventory().addItem(tile.getItem().getDefinition(), 1);
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         view.showMessage("you've cute fiber!");
     }
 
     public static void harvestCrop(Tile tile, Player player) {
-        player.getInventory().addItem(tile.getItem(), 1);
+        player.getInventory().addItem(tile.getItem().getDefinition(), 1);
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         view.showMessage("you've harvested crop!");
     }
@@ -176,13 +176,13 @@ public class ToolController {
     public static void milkAnimal(ItemInstance tool, Player player) {
         tool.getDefinition().setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
-                (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))), 1);
+                (Objects.requireNonNull(App.getItemDefinition("milk")), 1);
         view.showMessage("you've milked the animal!");
     }
     public static void cutWool(ItemInstance animal, Player player) {
         animal.getDefinition().setAttribute(ItemAttributes.isCut, true);
         player.getInventory().addItem
-                (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))), 1);
+                (Objects.requireNonNull(App.getItemDefinition("wool")), 1);
         view.showMessage("you've collected sheep wool!");
     }
     public static void removeItemFromInventory(ItemInstance trashCan, Inventory inventory, ItemInstance tool) {

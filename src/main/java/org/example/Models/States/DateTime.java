@@ -21,25 +21,27 @@ public class DateTime {
         this.dayOfWeek = DayOfWeek.MONDAY;
     }
 
-    public void updateTimeByDay(int day) {
+    public DayOfWeek updateTimeByDay(int day) {
         int seasonPassed = (this.day + day) / 21;
-        int newSeasonNumber = ((this.season.getNumberOfSeason() + seasonPassed) % 4) + 1;
+        int newSeasonNumber = ((this.season.getNumberOfSeason() + seasonPassed) % 4);
         Seasons newSeason = Seasons.getSeasonByNumber(newSeasonNumber);
         this.season = newSeason;
 
-        int newDayOfWeekNumber = ((this.dayOfWeek.getNumberOfDayInWeek() + day) % 7) + 1;
+        int newDayOfWeekNumber = ((this.dayOfWeek.getNumberOfDayInWeek() + day) % 7);
         DayOfWeek newDayOfWeek = DayOfWeek.getDayOfWeekByNumber(newDayOfWeekNumber);
         this.dayOfWeek = newDayOfWeek;
 
-        this.day = ((this.day + day) % 21) + 1;
-
+        this.day = ((this.day + day) % 21);
         this.hour = 9;
+        return this.dayOfWeek;
     }
-    public void updateTimeByHour(int hour) {
+
+    public int updateTimeByHour(int hour) {
         int dayPassed = (this.hour - 9 + hour) / 13;
         int newHour = ((this.hour - 9 + hour) % 13) + 9;
         updateTimeByDay(dayPassed);
         this.hour = newHour;
+        return newHour;
     }
 
     public DayOfWeek getDayOfWeek() {

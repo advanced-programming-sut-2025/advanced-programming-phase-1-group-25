@@ -62,7 +62,7 @@ public class Player {
     public void changeInventoryTool(ItemInstance tool, String newToolName) {
         this.inventory.getItems().remove(tool);
         ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
-        this.inventory.getItems().put(newTool, 1);
+        this.inventory.getItems().put(newTool.getDefinition(), 1);
         this.currentTool = newTool;
     }
 
@@ -93,7 +93,9 @@ public class Player {
     public void increaseCoin(int coin) {
         this.coin += coin;
     }
-
+    public void setCoin(int coin) {
+        this.coin = coin;
+    }
     public ItemInstance getTrashCan() {
         return trashCan;
     }

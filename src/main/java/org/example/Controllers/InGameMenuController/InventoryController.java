@@ -4,6 +4,7 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemLevels;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
+import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.Player.Player;
 import org.example.Views.InGameMenus.InventoryMenu;
@@ -13,16 +14,19 @@ import java.util.regex.Matcher;
 
 public class InventoryController {
     InventoryMenu view;
+
     public InventoryController(InventoryMenu view) {
         this.view = view;
     }
+
     public void showInventory(Game game) {
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder inventoryStr = new StringBuilder();
-        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-            ItemInstance item = entry.getKey();
+        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+            ItemDefinition item = entry.getKey();
             Integer value = entry.getValue();
-            inventoryStr.append("name: " + item.getDefinition().getDisplayName() + " number in inventory: " + value + "\n");
+            inventoryStr.append("name: ").append(item.getDisplayName()).append(" number in inventory: ")
+                    .append(value).append("\n");
         }
         view.showMessage(inventoryStr.toString());
     }
@@ -39,18 +43,18 @@ public class InventoryController {
                 view.showMessage("please enter a valid number!");
                 return;
             }
-            for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-                ItemInstance item = entry.getKey();
-                if (item.getDefinition().getDisplayName().equals(itemName)) {
+            for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+                ItemDefinition item = entry.getKey();
+                if (item.getDisplayName().equals(itemName)) {
                     checkTrashCanLevel(item, game.getCurrentPlayer(), game.getCurrentPlayer().getTrashCan(), number);
                     entry.setValue(number);
                 }
             }
             view.showMessage(number + "number of " + itemName + " has been trashed!");
         } else {
-            for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-                ItemInstance item = entry.getKey();
-                if (item.getDefinition().getDisplayName().equals(itemName)) {
+            for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+                ItemDefinition item = entry.getKey();
+                if (item.getDisplayName().equals(itemName)) {
                     checkTrashCanLevel(item, game.getCurrentPlayer(), game.getCurrentPlayer().getTrashCan(), entry.getValue());
                     inventory.getItems().remove(item);
                 }
@@ -59,15 +63,15 @@ public class InventoryController {
         }
     }
 
-    public void checkTrashCanLevel(ItemInstance item, Player player, ItemInstance trashCan, int amount) {
+    public void checkTrashCanLevel(ItemDefinition item, Player player, ItemInstance trashCan, int amount) {
         if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
-            player.increaseCoin((int) ((int) item.getDefinition().getAttribute(ItemAttributes.price) * 0.15 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
-            player.increaseCoin((int) ((int) item.getDefinition().getAttribute(ItemAttributes.price) * 0.3 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
-            player.increaseCoin((int) ((int) item.getDefinition().getAttribute(ItemAttributes.price) * 0.45 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
-            player.increaseCoin((int) ((int) item.getDefinition().getAttribute(ItemAttributes.price) * 0.6 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
         }
     }
 }

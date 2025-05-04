@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
+import org.example.Enums.GameConsts.DayOfWeek;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
@@ -135,7 +136,8 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
-        game.getDateTime().updateTimeByHour(time);
+        int newHour = game.getDateTime().updateTimeByHour(time);
+        this.view.showMessage("time is now " + newHour + "!");
     }
 
     public void cheatAdvanceDate(Matcher matcher, Game game) {
@@ -150,7 +152,8 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
-        game.getDateTime().updateTimeByDay(time);
+        DayOfWeek newDay = game.getDateTime().updateTimeByDay(time);
+        view.showMessage("day is now " + newDay.toString().toLowerCase() + "!");
     }
 
     //    public String cheatWeather(Matcher matcher, Game game) {
@@ -224,6 +227,14 @@ public class ActionMenuController {
             view.showMessage("Please enter a valid energy amount!");
             return;
         }
+        if (energy <= 0) {
+            view.showMessage("energy must be a positive integer!");
+            return;
+        }
+        if (energy > 200) {
+            view.showMessage("energy must be a less than 200!");
+            return;
+        }
         game.getCurrentPlayer().setEnergy(energy);
         view.showMessage("your energy has been set to " + energy + "!");
     }
@@ -251,16 +262,14 @@ public class ActionMenuController {
             view.showMessage("please enter a valid tool name!");
             return;
         }
-        found = false;
         ItemInstance tool = null;
-        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-            ItemInstance item = entry.getKey();
-            if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
-                found = true;
-                tool = item;
+        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+            ItemDefinition item = entry.getKey();
+            if (item.getDisplayName().equalsIgnoreCase(toolName)) {
+                tool = new ItemInstance(item);
             }
         }
-        if (!found) {
+        if (tool == null) {
             view.showMessage("you don't have " + toolName + " in your inventory!");
             return;
         }
@@ -282,10 +291,10 @@ public class ActionMenuController {
         Game game = App.getCurrentGame();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-            ItemInstance item = entry.getKey();
-            if (item.getDefinition().getType().equals(ItemType.tool)) {
-                toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
+        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+            ItemDefinition item = entry.getKey();
+            if (item.getType().equals(ItemType.tool)) {
+                toolsStr.append(item.getDisplayName().toLowerCase()).append("\n");
             }
         }
         view.showMessage(toolsStr.toString());
@@ -341,7 +350,8 @@ public class ActionMenuController {
             case "down right" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
             default -> view.showMessage("please select a valid direction!");
-        };
+        }
+        ;
     }
 
 
