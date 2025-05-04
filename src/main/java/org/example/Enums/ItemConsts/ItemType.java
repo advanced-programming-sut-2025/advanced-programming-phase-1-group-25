@@ -24,5 +24,6 @@ public enum ItemType {
     fiber,
     rock,
     artisan,
+    animal_goods
     ;
 }

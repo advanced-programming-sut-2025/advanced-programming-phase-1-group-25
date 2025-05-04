@@ -12,8 +12,8 @@ public enum ActionMenuCommands {
     DATE("^\\s*date\\s*$"),
     DATE_TIME("^\\s*datetime\\s*$"),
     DAY_OF_THE_WEEK("^\\s*day\\s+of\\s+the\\s+week\\s*$"),
-    CHEAT_ADVANCE_TIME("^\\s*cheat\\s+advance\\s+time\\s+(?<hours>\\.+)\\s*h\\s*$"),
-    CHEAT_ADVANCE_DATE("^\\s*cheat\\s+advance\\s+date\\s+(?<day>\\.+)\\s*d\\s*$"),
+    CHEAT_ADVANCE_TIME("^\\s*cheat\\s+advance\\s+time\\s+(?<hours>.+?)\\s*h\\s*$"),
+    CHEAT_ADVANCE_DATE("^\\s*cheat\\s+advance\\s+date\\s+(?<day>.+?)\\s*d\\s*$"),
 
 
 

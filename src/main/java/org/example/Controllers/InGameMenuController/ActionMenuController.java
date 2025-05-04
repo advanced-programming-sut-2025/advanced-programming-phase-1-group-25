@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
+import org.example.Enums.GameConsts.DayOfWeek;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
@@ -26,6 +27,7 @@ import java.util.regex.Matcher;
 
 public class ActionMenuController {
     ActionMenuView view;
+
     public ActionMenuController(ActionMenuView view) {
         this.view = view;
     }
@@ -96,15 +98,14 @@ public class ActionMenuController {
         }
     }
 
-    public String nextTurn() {
+    public void nextTurn() {
         Game currentGame = App.getCurrentGame();
         Player nextPlayer = currentGame.getNextPlayer();
         currentGame.setCurrentPlayer(nextPlayer);
-
-        return String.format("%s's turn!\n", nextPlayer.getName());
+        view.showMessage(nextPlayer.getName() + "'s turn!");
     }
 
-    public String buildGreenhouse() {
+    public void buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
         Player currentPlayer = currentGame.getCurrentPlayer();
         Inventory playerInventory = currentPlayer.getInventory();
@@ -113,69 +114,73 @@ public class ActionMenuController {
         int playerCoin = currentPlayer.getCoin();
 
         if (playerWood < 500) {
-            return "You don't have enough wood.\n";
+            view.showMessage("You don't have enough wood!");
         } else if (playerCoin < 1000) {
-            return "You don't have enough coin.\n";
+            view.showMessage("You don't have enough coin!");
         } else {
             currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
             currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
             currentPlayer.getInventory().dropItem("wood", 500);
         }
-        return "Green house has been repaired.";
+        view.showMessage("Greenhouse has been repaired!");
     }
 
-    public String cheatAdvanceTime(Matcher matcher, Game game) {
+    public void cheatAdvanceTime(Matcher matcher, Game game) {
         String timeStr = matcher.group("hours");
         int time;
         try {
             time = Integer.parseInt(timeStr);
         } catch (NumberFormatException e) {
-            return "please enter a valid hour!\n";
+            this.view.showMessage("Please enter a valid hour!");
+            return;
         }
         if (time < 0) {
-            return "time must be a positive number!\n";
+            this.view.showMessage("time must be a positive integer!");
         }
-        game.getDateTime().updateTimeByHour(time);
-        return "";
+        int newHour = game.getDateTime().updateTimeByHour(time);
+        this.view.showMessage("time is now " + newHour + "!");
     }
 
-    public String cheatAdvanceDate(Matcher matcher, Game game) {
+    public void cheatAdvanceDate(Matcher matcher, Game game) {
         String timeStr = matcher.group("day");
         int time;
         try {
             time = Integer.parseInt(timeStr);
         } catch (NumberFormatException e) {
-            return "please enter a valid day!\n";
+            this.view.showMessage("Please enter a valid day!");
+            return;
         }
         if (time < 0) {
-            return "time must be a positive number!\n";
+            this.view.showMessage("time must be a positive integer!");
         }
-        game.getDateTime().updateTimeByDay(time);
-        return "";
+        DayOfWeek newDay = game.getDateTime().updateTimeByDay(time);
+        view.showMessage("day is now " + newDay.toString().toLowerCase() + "!");
     }
 
     //    public String cheatWeather(Matcher matcher, Game game) {
 //        String weather = matcher.group("type");
 //    }
-    public String printMap(String xStr, String yStr, String sizeStr) {
+    public void printMap(String xStr, String yStr, String sizeStr) {
         Game game = App.getCurrentGame();
         int x, y, size;
         try {
             x = Integer.parseInt(xStr);
             y = Integer.parseInt(yStr);
         } catch (NumberFormatException e) {
-            return "please enter a valid position!\n";
+            this.view.showMessage("Please enter a valid position!");
+            return;
         }
         try {
             size = Integer.parseInt(sizeStr);
         } catch (NumberFormatException e) {
-            return "please enter a valid size!\n";
+            this.view.showMessage("Please enter a valid size!");
+            return;
         }
         Position position = new Position(y, x);
-        return getMapBySize(game, position, size);
+        getMapBySize(game, position, size);
     }
 
-    public String getMapBySize(Game game, Position position, int size) {
+    public void getMapBySize(Game game, Position position, int size) {
         GameMap map = game.getGameMap();
         String[][] mapArray = new String[2 * size][2 * size];
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
@@ -214,31 +219,40 @@ public class ActionMenuController {
             }
             output.append("\n");
         }
-        return output.toString();
+        view.showMessage(output.toString());
     }
 
-    public String cheatSetEnergy(Matcher matcher, Game game) {
+    public void cheatSetEnergy(Matcher matcher, Game game) {
         String energyStr = matcher.group("value");
         int energy;
         try {
             energy = Integer.parseInt(energyStr);
         } catch (NumberFormatException e) {
-            return "please enter a valid energy amount!\n";
+            view.showMessage("Please enter a valid energy amount!");
+            return;
+        }
+        if (energy <= 0) {
+            view.showMessage("energy must be a positive integer!");
+            return;
+        }
+        if (energy > 200) {
+            view.showMessage("energy must be a less than 200!");
+            return;
         }
         game.getCurrentPlayer().setEnergy(energy);
-        return "your energy has been set to " + energy + "!\n";
+        view.showMessage("your energy has been set to " + energy + "!");
     }
 
-    public String energyUnlimited(Game game) {
+    public void energyUnlimited(Game game) {
         game.getCurrentPlayer().setEnergy(Integer.MAX_VALUE);
-        return "your energy is now unlimited:)\n";
+        view.showMessage("your energy is now unlimited:)");
     }
 
     public void changeMenu() {
         App.setCurrentMenu(Menus.InGameMenus.MENU_SWITCHER);
     }
 
-    public String equipTool(Matcher matcher) {
+    public void equipTool(Matcher matcher) {
         Game game = App.getCurrentGame();
         String toolName = matcher.group("toolName").toLowerCase();
         Inventory inventory = game.getCurrentPlayer().getInventory();
@@ -249,47 +263,48 @@ public class ActionMenuController {
             }
         }
         if (!found) {
-            return "please enter a valid tool name!\n";
+            view.showMessage("please enter a valid tool name!");
+            return;
         }
-        found = false;
         ItemInstance tool = null;
-        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-            ItemInstance item = entry.getKey();
-            if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
-                found = true;
-                tool = item;
+        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+            ItemDefinition item = entry.getKey();
+            if (item.getDisplayName().equalsIgnoreCase(toolName)) {
+                tool = new ItemInstance(item);
             }
         }
-        if (!found) {
-            return "you don't have " + toolName + " in your inventory!\n";
+        if (tool == null) {
+            view.showMessage("you don't have " + toolName + " in your inventory!");
+            return;
         }
         game.getCurrentPlayer().setCurrentTool(tool);
-        return "your current tool has been set to " + toolName + "!\n";
+        view.showMessage("your current tool has been set to " + toolName + "!");
     }
 
-    public String showCurrentTool() {
+    public void showCurrentTool() {
         Game game = App.getCurrentGame();
         Player currentPlayer = game.getCurrentPlayer();
         if (currentPlayer.getCurrentTool() == null) {
-            return "you don't have a current tool!\n";
+            view.showMessage("you don't have a current tool!");
+            return;
         }
-        return currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase();
+        view.showMessage(currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase());
     }
 
-    public String showInventoryTools() {
+    public void showInventoryTools() {
         Game game = App.getCurrentGame();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemInstance, Integer> entry : inventory.getItems().entrySet()) {
-            ItemInstance item = entry.getKey();
-            if (item.getDefinition().getType().equals(ItemType.tool)) {
-                toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
+        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
+            ItemDefinition item = entry.getKey();
+            if (item.getType().equals(ItemType.tool)) {
+                toolsStr.append(item.getDisplayName().toLowerCase()).append("\n");
             }
         }
-        return toolsStr.toString();
+        view.showMessage(toolsStr.toString());
     }
 
-    public String craftInfo(Matcher matcher) {
+    public void craftInfo(Matcher matcher) {
         String name = matcher.group("craftName");
         ItemDefinition itemDefinition = null;
         for (ItemDefinition tmp : App.getItemDefinitions()) {
@@ -298,7 +313,8 @@ public class ActionMenuController {
             }
         }
         if (itemDefinition == null) {
-            return "please select a crop!\n";
+            view.showMessage("please select a crop!");
+            return;
         }
         StringBuilder info = new StringBuilder();
         info.append("Name: ").append(itemDefinition.getDisplayName().toLowerCase()).append("\n");
@@ -307,98 +323,41 @@ public class ActionMenuController {
             Object object = entry.getValue();
             info.append(itemAttributes.toString()).append(": ").append(object.toString()).append("\n");
         }
-        return info.toString();
+        view.showMessage(info.toString());
     }
 
-    public String useTool(Matcher matcher) {
+    public void useTool(Matcher matcher) {
         String direction = matcher.group("direction").trim();
         Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         Tile tile = player.getPlayerTile(game);
         ItemInstance tool = player.getCurrentTool();
-        if (tool == null) return "you don't have a tool in your hand!\n";
-        return switch (direction) {
-            case "up" -> applyTool(tool, game.getGameMap().getTile
+        if (tool == null) {
+            view.showMessage("you don't have a tool in your hand!");
+            return;
+        }
+        switch (direction) {
+            case "up" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() - 1, tile.getPosition().getX()), player);
-            case "down" -> applyTool(tool, game.getGameMap().getTile
+            case "down" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() + 1, tile.getPosition().getX()), player);
-            case "left" -> applyTool(tool, game.getGameMap().getTile
+            case "left" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY(), tile.getPosition().getX() - 1), player);
-            case "right" -> applyTool(tool, game.getGameMap().getTile
+            case "right" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY(), tile.getPosition().getX() + 1), player);
-            case "up left" -> applyTool(tool, game.getGameMap().getTile
+            case "up left" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player);
-            case "up right" -> applyTool(tool, game.getGameMap().getTile
+            case "up right" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player);
-            case "down left" -> applyTool(tool, game.getGameMap().getTile
+            case "down left" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player);
-            case "down right" -> applyTool(tool, game.getGameMap().getTile
+            case "down right" -> ToolController.applyTool(tool, game.getGameMap().getTile
                     (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
-            default -> "please select a valid direction!\n";
-        };
+            default -> view.showMessage("please select a valid direction!");
+        }
+        ;
     }
 
-    public String applyTool(ItemInstance tool, Tile tile, Player player) {
-        String name = tool.getDefinition().getDisplayName().toLowerCase();
-        if (name.contains("hoe")) {
-            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
-            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player);
-            if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) return "you can't use hoe in lake!\n";
-            if (!tile.isEmpty()) return "this tile is not empty!\n";
-            if (tile.getPlowed()) return "this tile has already been plowed!\n";
-            tile.setPlowed(true);
-            return "you've successfully plowed the tile!\n";
-        } else if (name.contains("pickaxe")) {
-            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
-            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player);
-            if (tile.getItem().getDefinition().getType().equals(ItemType.lake))
-                return "you can't use pickaxe in lake!\n";
-            if (tile.isEmpty() && tile.getPlowed()) {
-                tile.setPlowed(false);
-                return "this tile has been successfully unplowed!\n";
-            }
-            tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));//TODO
-            return "item has been successfully removed from the tile!\n";
-        } else if (name.contains("axe")) {
-            if (!checkIfPlayerHasEnoughEnergy(player, tool)) return "you don't have enough energy!\n";
-            player.reduceEnergy(player.getAbilities().getFishingAbility(), tool, player);
-            if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) return "you can't use axe in lake!\n";
-            if (tile.isEmpty()) return "this tile is empty!\n";
-            if(tile.getItem().getDefinition().getType().equals(ItemType.wood)){//TODO
-                player.getInventory().addItem(tile.getItem(), 1);
-                tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
-                return "1 wood has been successfully added to the inventory!\n";
-            }
 
-        } else if (name.contains("watering can")) {
-
-        } else if (name.contains("fishing pole")) {
-
-        } else if (name.contains("scythe")) {
-
-        } else if (name.contains("milk pale")) {
-
-        } else if (name.contains("shear")) {
-
-        } else if (name.contains("back pack")) {
-
-        } else if (name.contains("trash can")) {
-
-        } else {
-            return "please select a valid tool!\n";
-        }
-        return "";
-    }
-
-    public boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool) {
-        if (player.getAbilities().getAbilityLevel(player.getAbilities().getFarmingAbility()) == 4
-                && player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1) {
-            return false;
-        }
-        if (player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost)) {
-            return false;
-        }
-        return true;
-    }
 }
 

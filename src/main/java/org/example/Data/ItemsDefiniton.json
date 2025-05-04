@@ -211,7 +211,8 @@
     "name": "Base Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "durability": 40,
+      "durability": 0,
+      "capacity": 40,
       "energyCost": 5,
       "upgradeCost": 0
     }
@@ -221,7 +222,8 @@
     "name": "Copper Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "durability": 55,
+      "durability": 0,
+      "capacity": 55,
       "energyCost": 4,
       "upgradeCost": 10
     }
@@ -231,7 +233,8 @@
     "name": "Iron Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "durability": 70,
+      "durability": 0,
+      "capacity": 70,
       "energyCost": 3,
       "upgradeCost": 20
     }
@@ -241,7 +244,8 @@
     "name": "Golden Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "durability": 85,
+      "durability": 0,
+      "capacity": 85,
       "energyCost": 2,
       "upgradeCost": 30
     }
@@ -251,7 +255,8 @@
     "name": "Iridium Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "durability": 100,
+      "durability": 0,
+      "capacity": 100,
       "energyCost": 1,
       "upgradeCost": 40
     }
@@ -306,7 +311,8 @@
     "type": "tool",
     "baseAttributes": {
       "price": 1000,
-      "energyCost": 4
+      "energyCost": 4,
+      "isFull": false
     }
   },
   {
@@ -747,6 +753,7 @@
     "type": "animal",
     "baseAttributes": {
       "price": 8000,
+      "isCut": false,
       "products": {
         "wool": 340
       }
@@ -3098,5 +3105,22 @@
       },
       "price": 350
     }
+  },
+  {
+    "itemId": "milk",
+    "name": "Milk",
+    "type": "animal_goods",
+    "baseAttributes": {
+
+      }
+  },
+  {
+    "itemId": "wool",
+    "name": "Wool",
+    "type": "animal_goods",
+    "baseAttributes": {
+
+      }
   }
+
 ]

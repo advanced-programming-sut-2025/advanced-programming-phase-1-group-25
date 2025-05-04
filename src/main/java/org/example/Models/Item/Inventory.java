@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
  */
 public class Inventory {
     private ItemLevels.BackPackLevels level;
-    private Map<ItemInstance, Integer> items;
+    private Map<ItemDefinition, Integer> items;
 
     public Inventory() {
         this.level = ItemLevels.BackPackLevels.BASIC;
@@ -19,8 +19,8 @@ public class Inventory {
     }
 
 
-    public void addItem(ItemInstance item, int amount) {
-        ItemInstance target = findItem(item.getDefinition().getId().name());
+    public void addItem(ItemDefinition item, int amount) {
+        ItemDefinition target = findItem(item.getId().name());
         if (target == null) {
             this.items.put(item, amount);
         }
@@ -30,7 +30,7 @@ public class Inventory {
     }
 
     public void dropItem(String id, int amount) {
-        ItemInstance target = findItem(id);
+        ItemDefinition target = findItem(id);
         if (target == null) return;
         int newAmount = Math.max(items.get(target) - amount, 0);
         if (newAmount == 0) {
@@ -49,7 +49,7 @@ public class Inventory {
         return false;
     }
     public int getItemAmount(String id) {
-        ItemInstance target = findItem(id);
+        ItemDefinition target = findItem(id);
         if (target == null) return 0;
         return items.get(target);
     }
@@ -58,18 +58,22 @@ public class Inventory {
         this.level = upgradedLevel;
     }
 
-    private ItemInstance findItem(String id) {
-        ItemInstance target = null;
-        for (Map.Entry<ItemInstance, Integer> entry : this.items.entrySet()) {
-            ItemInstance item = entry.getKey();
-            if (item.getDefinition().getId().name().equals(id)) {
+    public ItemLevels.BackPackLevels getLevel() {
+        return level;
+    }
+
+    private ItemDefinition findItem(String id) {
+        ItemDefinition target = null;
+        for (Map.Entry<ItemDefinition, Integer> entry : this.items.entrySet()) {
+            ItemDefinition item = entry.getKey();
+            if (item.getId().name().equals(id)) {
                 target = item;
             }
         }
         return target;
     }
 
-    public Map<ItemInstance, Integer> getItems() {
+    public Map<ItemDefinition, Integer> getItems() {
         return items;
     }
 

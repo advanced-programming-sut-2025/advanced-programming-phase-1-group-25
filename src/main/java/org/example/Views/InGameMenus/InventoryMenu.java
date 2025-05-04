@@ -13,6 +13,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class InventoryMenu implements AppMenu {
+    Scanner scanner;
+    InventoryController controller;
+
     @Override
     public void handleInput(Scanner sc) {
         String input = sc.nextLine();
@@ -29,16 +32,25 @@ public class InventoryMenu implements AppMenu {
         }
     }
 
-    private static void executeCommand(InventoryCommands command, Matcher matcher, String input) {
+    private void executeCommand(InventoryCommands command, Matcher matcher, String input) {
         Game game = App.getCurrentGame();
-        InventoryController controller = new InventoryController();
+        this.controller = new InventoryController(this);
         switch (command) {
             case INVENTORY_SHOW:
-                System.out.println(controller.showInventory(game));
+                controller.showInventory(game);
                 break;
             case INVENTORY_TRASH:
-                System.out.println(controller.inventoryTrash(game, matcher, input));
+                controller.inventoryTrash(game, matcher, input);
                 break;
         }
+    }
+
+    public String prompt(String message) {
+        System.out.println(message);
+        return scanner.nextLine();
+    }
+
+    public void showMessage(String message) {
+        System.out.println(message);
     }
 }
