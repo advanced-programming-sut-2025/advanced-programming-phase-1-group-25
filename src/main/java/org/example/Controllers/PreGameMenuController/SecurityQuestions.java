@@ -104,7 +104,7 @@ public class SecurityQuestions {
         List<Question> questions = generateSecurityGeneralQuestions();
         while (true) {
             Question selected = questions.get(new Random().nextInt(questions.size()));
-            System.out.printf("Security Question: " + selected.getQuestion() + "\n");
+            System.out.print("Security Question: " + selected.getQuestion() + "\n");
             System.out.printf("Your Answer: \n");
             String input = sc.nextLine();
 

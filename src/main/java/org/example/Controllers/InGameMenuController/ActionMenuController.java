@@ -5,6 +5,7 @@ import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemType;
+import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -180,9 +181,11 @@ public class ActionMenuController {
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
             for (int j = position.getX() - size; j < position.getX() + size; j++) {
                 try {
-                    ItemType type = map.getTile(i, j).getItem().getDefinition().getType();
+                    Tile tile = map.getTile(i, j);
+                    ItemType type = tile.getItem().getDefinition().getType();
                     String symbol = ItemDisplay.getDisplayByType(type);
-                    mapArray[i - position.getY() + size][j - position.getX() + size] = symbol;
+                    mapArray[i - position.getY() + size][j - position.getX() + size] =
+                    AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor());
                 } catch (ArrayIndexOutOfBoundsException e) {
                     continue;
                 }
@@ -197,7 +200,8 @@ public class ActionMenuController {
 
             if (playerY >= position.getY() - size && playerY < position.getY() + size) {
                 if (playerX >= position.getX() - size && playerX < position.getX() + size) {
-                    mapArray[playerY - position.getY() + size][playerX - position.getX() + size] = Integer.toString(playerNumber);
+                    mapArray[playerY - position.getY() + size][playerX - position.getX() + size] =
+                    AnsiColors.wrap(Integer.toString(playerNumber) + " ", AnsiColors.BLACK, AnsiColors.RED);
                 }
             }
             playerNumber++;
@@ -206,7 +210,7 @@ public class ActionMenuController {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < 2 * size; i++) {
             for (int j = 0; j < 2 * size; j++) {
-                output.append(mapArray[i][j]).append(" ");
+                output.append(mapArray[i][j]);
             }
             output.append("\n");
         }

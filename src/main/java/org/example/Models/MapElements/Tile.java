@@ -12,6 +12,8 @@ public class Tile {
     private AnsiColors forGroundColor;
     private AnsiColors backGroundColor;
     private boolean isPlowed;
+
+
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;

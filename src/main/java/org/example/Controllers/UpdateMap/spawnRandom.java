@@ -15,10 +15,10 @@ import java.util.Map;
 public class spawnRandom {
 
     public static void spawnRandomElements() {
-        spawn(100, 200, "wood");
-        spawn(100, 200, "rock");
-        spawn(50, 100, "tree");
-        spawn(100, 200, "fiber");
+        spawn(60, 100, "wood");
+        spawn(60, 100, "rock");
+        spawn(40, 80, "tree");
+        spawn(60, 100, "fiber");
 
     }
     public static void spawn(int min, int max, String id) {

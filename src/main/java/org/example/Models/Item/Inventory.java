@@ -1,9 +1,6 @@
 package org.example.Models.Item;
 
-import org.example.Enums.ItemConsts.ItemAttributes;
-import org.example.Enums.ItemConsts.ItemIDs;
-import org.example.Enums.ItemConsts.ItemLevels;
-import org.example.Enums.ItemConsts.Level;
+import org.example.Enums.ItemConsts.*;
 
 import java.util.*;
 import java.util.prefs.BackingStoreException;
@@ -43,6 +40,14 @@ public class Inventory {
         }
     }
 
+    public boolean hasItem(String id) {
+        for (ItemInstance item : items.keySet()) {
+            if (item.getDefinition().getId().name().equalsIgnoreCase(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public int getItemAmount(String id) {
         ItemInstance target = findItem(id);
         if (target == null) return 0;

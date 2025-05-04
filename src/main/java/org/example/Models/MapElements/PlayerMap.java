@@ -63,4 +63,14 @@ public class PlayerMap {
     public Quarry[] getQuarries() {
         return quarries;
     }
+    public boolean hasTile(Tile tile){
+        for (Tile[] rows : this.map) {
+            for (Tile rowTile : rows) {
+                if (rowTile == tile) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
