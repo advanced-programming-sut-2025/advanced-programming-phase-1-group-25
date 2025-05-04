@@ -265,5 +265,7 @@ public enum ItemIDs {
     tree,
     honey,
     cheese,
+    milk,
+    wool
     ;
 }

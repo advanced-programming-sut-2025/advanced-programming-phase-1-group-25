@@ -53,6 +53,10 @@ public class Inventory {
         this.level = upgradedLevel;
     }
 
+    public ItemLevels.BackPackLevels getLevel() {
+        return level;
+    }
+
     private ItemInstance findItem(String id) {
         ItemInstance target = null;
         for (Map.Entry<ItemInstance, Integer> entry : this.items.entrySet()) {

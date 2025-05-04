@@ -27,6 +27,7 @@ public class Player {
     private PlayerAbilities abilities;
     private Position position;
     private ItemInstance currentTool;
+    private ItemInstance trashCan;
     private int energyPerTurn;
 
     public Player(User user, String name, Gender gender, Position position) {
@@ -40,6 +41,7 @@ public class Player {
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
         this.energyPerTurn = 50;
+        this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
     }
 
     public void changeToolLevel(ItemInstance tool) {
@@ -88,8 +90,12 @@ public class Player {
         return coin;
     }
 
-    public void setCoin(int coin) {
-        this.coin = coin;
+    public void increaseCoin(int coin) {
+        this.coin += coin;
+    }
+
+    public ItemInstance getTrashCan() {
+        return trashCan;
     }
 
     public int getEnergy() {
@@ -129,14 +135,16 @@ public class Player {
         return gameMap.getTile(this.position.getY(), this.position.getX());
     }
 
-    public void reduceEnergy(int ability, ItemInstance tool, Player player) {
+    public void reduceEnergy(int ability, ItemInstance tool, Player player, boolean canBeDownGraded) {
         if (ability == 4) {
             this.energy -= ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1);
         } else {
             this.energy -= (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost);
         }
-        int x = tool.getDefinition().decreaseDurability();
-        if (x == 0)
-            player.changeToolLevel(tool);
+        if (canBeDownGraded) {
+            int x = tool.getDefinition().decreaseDurability();
+            if (x == 0)
+                player.changeToolLevel(tool);
+        }
     }
 }

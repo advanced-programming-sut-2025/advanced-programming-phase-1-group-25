@@ -32,38 +32,36 @@ public class ActionMenuView implements AppMenu {
     }
 
     private void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
-
         Game game = App.getCurrentGame();
         this.controller = new ActionMenuController(this);
-
         switch (command) {
             case SWITCH_MENU:
                 System.out.println(MenuSwitcher.printMenus());
                 controller.changeMenu();
                 break;
             case NEXT_TURN:
-                System.out.println(controller.nextTurn());
+                controller.nextTurn();
                 break;
             case TIME:
                 System.out.println(game.getDateTime().getHour());
                 break;
             case DATE:
                 System.out.println(game.getDateTime().getSeason().toString()
-                        +" "+game.getDateTime().getDay());
+                        + " " + game.getDateTime().getDay());
                 break;
             case DATE_TIME:
                 System.out.println(game.getDateTime().getSeason().toString()
-                        +" "+ game.getDateTime().getDay()
+                        + " " + game.getDateTime().getDay()
                         + " " + game.getDateTime().getHour());
                 break;
             case DAY_OF_THE_WEEK:
                 System.out.println(game.getDateTime().getDayOfWeek().toString());
                 break;
             case CHEAT_ADVANCE_TIME:
-                System.out.println(controller.cheatAdvanceTime(matcher, game));
+                controller.cheatAdvanceTime(matcher, game);
                 break;
             case CHEAT_ADVANCE_DATE:
-                System.out.println(controller.cheatAdvanceDate(matcher, game));
+                controller.cheatAdvanceDate(matcher, game);
                 break;
             case SEASON:
                 System.out.println(game.getDateTime().getSeason().toString());
@@ -83,7 +81,7 @@ public class ActionMenuView implements AppMenu {
                 controller.walk(matcher.group("y"), matcher.group("x"));
                 break;
             case PRINT_MAP:
-                System.out.println(controller.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size")));
+                controller.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size"));
                 break;
             case HELP_READING_MAP:
                 break;
@@ -91,27 +89,27 @@ public class ActionMenuView implements AppMenu {
                 System.out.println("Energy: " + game.getCurrentPlayer().getEnergy());
                 break;
             case ENERGY_SET:
-                System.out.println(controller.cheatSetEnergy(matcher, game));
+                controller.cheatSetEnergy(matcher, game);
                 break;
             case ENERGY_UNLIMITED:
-                System.out.println(controller.energyUnlimited(game));
+                controller.energyUnlimited(game);
                 break;
             case TOOLS_EQUIP:
-                System.out.println(controller.equipTool(matcher));
+                controller.equipTool(matcher);
                 break;
             case TOOLS_SHOW_CURRENT:
-                System.out.println(controller.showCurrentTool());
+                controller.showCurrentTool();
                 break;
             case TOOLS_SHOW_AVAILABLE:
-                System.out.println(controller.showInventoryTools());
+                controller.showInventoryTools();
                 break;
             case TOOLS_UPGRADE:
                 break;
             case TOOLS_USE:
-                System.out.println(controller.useTool(matcher));
+                controller.useTool(matcher);
                 break;
             case CRAFT_INFO:
-                System.out.println(controller.craftInfo(matcher));
+                controller.craftInfo(matcher);
                 break;
             case PLANT:
                 break;
@@ -166,8 +164,7 @@ public class ActionMenuView implements AppMenu {
 
     public String prompt(String message) {
         System.out.println(message);
-        String input = scanner.nextLine();
-        return input;
+        return scanner.nextLine();
     }
 
     public void showMessage(String message) {
