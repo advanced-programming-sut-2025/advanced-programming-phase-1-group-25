@@ -56,4 +56,23 @@ public class UpdateForaging {
             }
         }
     }
+
+    public static void deleteForaging() {
+        List<PlayerMap> playerMaps = App.getCurrentGame().getPlayerMaps();
+        for (PlayerMap playerMap : playerMaps) {
+            Tile[][] tiles = playerMap.getMap();
+            for (int i = 0; i < tiles.length; i++) {
+                for (int j = 0; j < tiles[i].length; j++) {
+                    Tile tile = tiles[i][j];
+                    ItemType type = tile.getItem().getDefinition().getType();
+                    if (type == ItemType.foraging_seeds
+                            || type == ItemType.foraging_crops
+                            || type == ItemType.foraging_minerals) {
+                        tile.setItem(new ItemInstance(App.getItemDefinition("VOID")));
+                    }
+
+                }
+            }
+        }
+    }
 }

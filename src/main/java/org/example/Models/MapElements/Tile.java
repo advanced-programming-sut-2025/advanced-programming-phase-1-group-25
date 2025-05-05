@@ -12,20 +12,18 @@ public class Tile {
     private AnsiColors forGroundColor;
     private AnsiColors backGroundColor;
     private boolean isPlowed;
+    private int dayPassedFromPlant;
+    private boolean isFertilized;
+    private boolean isWatered;
 
 
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
         this.isPlowed = false;
-    }
-
-    public boolean getPlowed() {
-        return isPlowed;
-    }
-
-    public void setPlowed(boolean plowed) {
-        isPlowed = plowed;
+        this.isWatered = false;
+        this.dayPassedFromPlant = 0;
+        this.isFertilized = false;
     }
 
     public void setItem(ItemInstance item) {
@@ -59,5 +57,38 @@ public class Tile {
     }
     public void strikeLightning() {
         //TODO: implement Lightning logic
+    }
+
+    public void setDayPassedFromPlant(int dayPassedFromPlant) {
+        this.dayPassedFromPlant = dayPassedFromPlant;
+    }
+
+    public int getDayPassedFromPlant() {
+        return dayPassedFromPlant;
+    }
+
+    public void fertilize() {
+        this.isFertilized = true;
+    }
+
+    public void setFertilized(boolean fertilized) {
+        isFertilized = fertilized;
+    }
+
+    public boolean isWatered() {
+        return isWatered;
+    }
+    public void setWatered(boolean watered) {
+        this.isWatered = watered;
+    }
+    public boolean isPlowed() {
+        return isPlowed;
+    }
+
+    public void setPlowed(boolean plowed) {
+        isPlowed = plowed;
+    }
+    public boolean isFertilized() {
+        return isFertilized;
     }
 }

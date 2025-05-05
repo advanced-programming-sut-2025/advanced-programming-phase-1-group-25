@@ -1,5 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
+import org.example.Enums.ItemConsts.ItemDisplay;
+import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
@@ -13,9 +15,11 @@ import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 import org.example.Views.InGameMenus.FarmingView;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class FarmingController {
     FarmingView view;
@@ -23,22 +27,19 @@ public class FarmingController {
         this.view = view;
     }
     public void plow(String dir) {
-        Position tilePos = getPosByDir(dir);
-        if (tilePos == null) return;
-        plowTile(tilePos.getY(), tilePos.getX());
+        Tile tile = getTileByDir(dir);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist");
+            return;
+        }
+        plowTile(tile);
     }
 
 
-    private void plowTile(int y, int x) {
-        Game currentGame = App.getCurrentGame();
-        PlayerMap currentPlayerMap = currentGame.getPlayerMap(App.getCurrentGame().getCurrentPlayer());
-        if (y < 0 || y >= MapSizes.MAP_ROWS.getSize()
-            || x < 0 || x >= MapSizes.MAP_COLS.getSize()) {
-            this.view.showMessage("Tile doesn't exist!");
-            return;
-        }
+    private void plowTile(Tile tile) {
+        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        PlayerMap currentPlayerMap = App.getCurrentGame().getPlayerMap(currentPlayer);
 
-        Tile tile = currentGame.getGameMap().getTile(y, x);
         if (!currentPlayerMap.hasTile(tile)) {
             this.view.showMessage("You can't plow this tile!");
             return;
@@ -55,22 +56,18 @@ public class FarmingController {
     }
 
     public void plant(String seed, String dir) {
-        Position tilePos = getPosByDir(dir);
-        if (tilePos == null) return;
-        plantSeedInTile(seed, tilePos.getY(), tilePos.getX());
+        Tile tile = getTileByDir(dir);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist.");
+            return;
+        }
+        plantSeedInTile(seed, tile);
     }
 
-    private void plantSeedInTile(String seedName, int y, int x) {
+    private void plantSeedInTile(String seedName, Tile tile) {
         Game currentGame = App.getCurrentGame();
         PlayerMap currentPlayerMap = currentGame.getPlayerMap(App.getCurrentGame().getCurrentPlayer());
 
-        if (y < 0 || y >= MapSizes.MAP_ROWS.getSize()
-                || x < 0 || x >= MapSizes.MAP_COLS.getSize()) {
-            this.view.showMessage("Tile doesn't exist!");
-            return;
-        }
-
-        Tile tile = currentGame.getGameMap().getTile(y, x);
         if (!currentPlayerMap.hasTile(tile)) {
             this.view.showMessage("You can't plant in this tile!");
             return;
@@ -89,18 +86,17 @@ public class FarmingController {
         }
 
         Player currentPlayer = currentGame.getCurrentPlayer();
-        if (!currentPlayer.getInventory().hasItem(seedDefinition.getId().name())) {
+        if (!currentPlayer.getInventory().hasItem(seedDefinition.getId())) {
             this.view.showMessage("You don't have this seed.");
             return;
         }
 
-        // plant seed
-//        ItemInstance seed = currentPlayer.getInventory().getItem(seedDefinition.getId().name(), 1);
-//        tile.plantSeed(seed);
-        // decrease energy
+        ItemInstance seed = currentPlayer.getInventory().getItem(seedDefinition.getId());
+        tile.setItem(seed);
+        // decrease energy TODO
     }
 
-    private Position getPosByDir(String dir) {
+    private Tile getTileByDir(String dir) {
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
         int tileY, tileX;
         switch (dir.toLowerCase()) {
@@ -120,22 +116,163 @@ public class FarmingController {
                 tileY = currentPlayer.getPosition().getY();
                 tileX = currentPlayer.getPosition().getX() + 1;
                 break;
+            case "up right":
+                tileY = currentPlayer.getPosition().getY() - 1;
+                tileX = currentPlayer.getPosition().getX() + 1;
+                break;
+            case "up left":
+                tileY = currentPlayer.getPosition().getY() - 1;
+                tileX = currentPlayer.getPosition().getX() - 1;
+                break;
+            case "down right":
+                tileY = currentPlayer.getPosition().getY() + 1;
+                tileX = currentPlayer.getPosition().getX() + 1;
+                break;
+            case "down left":
+                tileY = currentPlayer.getPosition().getY() + 1;
+                tileX = currentPlayer.getPosition().getX() - 1;
+                break;
             default:
                 this.view.showMessage("Please enter a valid direction: up, down, left and right");
                 return null;
         }
 
-        return new Position(tileY, tileX);
-
+        Tile tile;
+        try {
+            tile = App.getCurrentGame().getGameMap().getTile(tileY, tileX);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return  null;
+        }
+        return tile;
     }
 
+    public void showPlant(String yStr, String xStr) {
+        int y, x;
+        try {
+            y = Integer.getInteger(yStr);
+            x = Integer.getInteger(xStr);
+        } catch (NumberFormatException e) {
+            this.view.showMessage("Please enter a valid position.");
+            return;
+        }
 
+        GameMap map = App.getCurrentGame().getGameMap();
+        Tile tile = map.getTile(y, x);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist");
+            return;
+        }
+
+        ItemInstance item = tile.getItem();
+        boolean isSeed = false;
+        String name;
+        String isWateredToday;
+        String isFertilized;
+        int timeRemains = -1;
+
+        if (item.getDefinition().getType() == ItemType.foraging_seeds) {
+            isSeed = true;
+            ItemDefinition plant = getPlantBySeed(item.getDefinition());
+            if (plant == null) {
+                this.view.showMessage("Error occurred (plant for this seed doesn't exist)");
+                return;
+            }
+            name = item.getDefinition().getDisplayName();
+            try {
+                timeRemains = (int) plant.getBaseAttributes().get("totalHarvestTime") - tile.getDayPassedFromPlant();
+            } catch (Exception e) {
+                this.view.showMessage("Error occurred (not have totalHarvestTime");
+                return;
+            }
+
+            isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
+            isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
+            //TODO: stage and quality?!
+        }
+        else if (item.getDefinition().getType() == ItemType.foraging_crops) {
+            name = item.getDefinition().getDisplayName();
+            isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
+            isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
+            //TODO: stage and quality?!
+        }
+        else {
+            this.view.showMessage("Tile doesn't have any plant!");
+            return;
+        }
+
+        StringBuilder output = new StringBuilder();
+        output.append("Tile plant description:\n");
+        output.append("Plant/seed name: " + name + "\n");
+        output.append(isWateredToday + "\n").append(isFertilized);
+        if (isSeed) output.append("Time remains " + timeRemains);
+        this.view.showMessage(output.toString());
+    }
+
+    public void fertilize(String fertilizer, String dir) {
+        Tile tile = getTileByDir(dir);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist.");
+            return;
+        }
+        // TODO: check that the fertilizer exits
+        fertilizeTileWithFertilizer(tile, fertilizer);
+    }
+
+    private void fertilizeTileWithFertilizer(Tile tile, String fertilizer) {
+
+        // TODO: fertilize with fertilizer
+    }
+
+    public void water(String dir) {
+        Tile tile = getTileByDir(dir);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist.");
+            return;
+        }
+        waterTile(tile);
+    }
+
+    private void waterTile(Tile tile) {
+        tile.setWatered(true);
+        // decrease energy
+        // decrease water
+    }
+
+    public void reap(String dir) {
+        Tile tile = getTileByDir(dir);
+        if (tile == null) {
+            this.view.showMessage("Tile doesn't exist.");
+            return;
+        }
+        reapTile(tile);
+    }
+
+    private void reapTile(Tile tile) {
+        ItemInstance item = tile.getItem();
+        if (item.getDefinition().getType() != ItemType.all_crops) {
+            this.view.showMessage("There is no crop here.");
+            return;
+        }
+
+        // decrease energy
+        tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+        // add plant to inventory
+    }
     private ItemDefinition getSeedByName(String name) {
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
             if (itemDefinition.getType() == ItemType.foraging_seeds) {
                 if (name.equalsIgnoreCase(itemDefinition.getDisplayName())) {
                     return itemDefinition;
                 }
+            }
+        }
+        return null;
+    }
+
+    private ItemDefinition getPlantBySeed(ItemDefinition seed) {
+        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+            if (itemDefinition.getBaseAttributes().get("source").equals(seed.getId().name())) {
+                return itemDefinition;
             }
         }
         return null;
