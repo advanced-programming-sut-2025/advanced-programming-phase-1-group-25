@@ -2,6 +2,7 @@ package org.example.Models.MapElements;
 
 import org.example.Controllers.UpdateMap.RandomEvents;
 import org.example.Controllers.UpdateMap.spawnRandom;
+import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Enums.MapConsts.FarmElementsPosition;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
@@ -35,6 +36,36 @@ public class PrepareMap {
     }
 
     public static ArrayList<PlayerMap> makePlayerMaps(GameMap gameMap) {
+
+        int[][] starts = {{0, 0}, {0, 60}, {60, 0}, {60, 60}};
+
+        for (int[] start : starts) {
+            for (int y = start[0]; y < start[0] + MapSizes.FARM_ROWS.getSize(); y++) {
+                for (int x = start[1]; x < start[1] + MapSizes.FARM_COLS.getSize(); x++) {
+                    Tile tile = gameMap.getTile(y, x);
+                    tile.setBackGroundColor(AnsiColors.YELLOW);
+                    tile.setForGroundColor(AnsiColors.BLACK);
+                }
+            }
+        }
+
+        for (int y = 0; y < MapSizes.MAP_ROWS.getSize(); y++) {
+            for (int x = 0; x < MapSizes.MAP_COLS.getSize(); x++) {
+                if (gameMap.getTile(y, x).getBackGroundColor() == null) {
+                    gameMap.getTile(y, x).setBackGroundColor(AnsiColors.GREEN);
+                    gameMap.getTile(y, x).setForGroundColor(AnsiColors.BLACK);
+                }
+            }
+        }
+
+        for (int y = 30; y < 60; y++) {
+            for (int x = 30; x < 60; x++) {
+                gameMap.getTile(y, x).setBackGroundColor(AnsiColors.WHITE);
+                gameMap.getTile(y, x).setForGroundColor(AnsiColors.BLUE);
+            }
+        }
+
+
         ArrayList<PlayerMap> playerMaps = new ArrayList<>();
 
         // prepare greenhouse tiles

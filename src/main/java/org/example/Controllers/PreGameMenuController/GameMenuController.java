@@ -1,5 +1,6 @@
 package org.example.Controllers.PreGameMenuController;
 
+import org.example.Controllers.UpdateMap.UpdateForaging;
 import org.example.Controllers.UpdateMap.spawnRandom;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
@@ -53,6 +54,7 @@ public class GameMenuController {
         App.setCurrentGame(newGame);
 
         spawnRandom.spawnRandomElements();
+        UpdateForaging.updateForaging();
 
         App.setCurrentMenu(Menus.InGameMenus.ACTION_MENU);
         return "Game created successfully!\n";

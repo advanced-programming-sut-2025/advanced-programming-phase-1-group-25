@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import org.example.Enums.ItemConsts.ItemIDs;
+import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.MapElements.GameMap;
@@ -13,8 +14,9 @@ import java.util.*;
 
 public class Walk {
     public static boolean isWalkable(Tile tile) {
-        ItemIDs tileItemId = tile.getItem().getDefinition().getId();
-        return ((tileItemId == ItemIDs.VOID) || (tileItemId == ItemIDs.fiber));
+        ItemType tileItemType = tile.getItem().getDefinition().getType();
+        return ((tileItemType == ItemType.floor) || (tileItemType == ItemType.fiber)
+                || (tileItemType == ItemType.foraging_seeds) || (tileItemType == ItemType.foraging_crops));
     }
 
     public static int heuristic(Tile a, Tile b) {

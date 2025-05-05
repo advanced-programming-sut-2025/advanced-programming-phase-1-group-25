@@ -5,7 +5,9 @@ import org.example.Enums.GameConsts.DayOfWeek;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
+import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
+import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -109,7 +111,7 @@ public class ActionMenuController {
         Player currentPlayer = currentGame.getCurrentPlayer();
         Inventory playerInventory = currentPlayer.getInventory();
 
-        int playerWood = playerInventory.getItemAmount("wood");
+        int playerWood = playerInventory.getItemAmount(ItemIDs.wood);
         int playerCoin = currentPlayer.getCoin();
 
         if (playerWood < 500) {
@@ -119,7 +121,7 @@ public class ActionMenuController {
         } else {
             currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
             currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
-            currentPlayer.getInventory().dropItem("wood", 500);
+            currentPlayer.getInventory().trashItem(ItemIDs.wood, 500);
         }
         view.showMessage("Greenhouse has been repaired!");
     }
@@ -185,9 +187,11 @@ public class ActionMenuController {
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
             for (int j = position.getX() - size; j < position.getX() + size; j++) {
                 try {
-                    ItemType type = map.getTile(i, j).getItem().getDefinition().getType();
+                    Tile tile = map.getTile(i, j);
+                    ItemType type = tile.getItem().getDefinition().getType();
                     String symbol = ItemDisplay.getDisplayByType(type);
-                    mapArray[i - position.getY() + size][j - position.getX() + size] = symbol;
+                    mapArray[i - position.getY() + size][j - position.getX() + size] =
+                    AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor());
                 } catch (ArrayIndexOutOfBoundsException e) {
                     continue;
                 }
@@ -202,7 +206,8 @@ public class ActionMenuController {
 
             if (playerY >= position.getY() - size && playerY < position.getY() + size) {
                 if (playerX >= position.getX() - size && playerX < position.getX() + size) {
-                    mapArray[playerY - position.getY() + size][playerX - position.getX() + size] = Integer.toString(playerNumber);
+                    mapArray[playerY - position.getY() + size][playerX - position.getX() + size] =
+                    AnsiColors.wrap(Integer.toString(playerNumber) + " ", AnsiColors.BLACK, AnsiColors.RED);
                 }
             }
             playerNumber++;
@@ -211,7 +216,7 @@ public class ActionMenuController {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < 2 * size; i++) {
             for (int j = 0; j < 2 * size; j++) {
-                output.append(mapArray[i][j]).append(" ");
+                output.append(mapArray[i][j]);
             }
             output.append("\n");
         }
@@ -263,12 +268,16 @@ public class ActionMenuController {
             return;
         }
         ItemInstance tool = null;
-        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
-            ItemDefinition item = entry.getKey();
-            if (item.getDisplayName().equalsIgnoreCase(toolName)) {
-                tool = new ItemInstance(item);
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
+            ArrayList<ItemInstance> items = entry.getValue();
+            for (ItemInstance item : items) {
+                if(item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
+                    tool = item;
+                }
             }
+
         }
+
         if (tool == null) {
             view.showMessage("you don't have " + toolName + " in your inventory!");
             return;
@@ -291,10 +300,12 @@ public class ActionMenuController {
         Game game = App.getCurrentGame();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
-            ItemDefinition item = entry.getKey();
-            if (item.getType().equals(ItemType.tool)) {
-                toolsStr.append(item.getDisplayName().toLowerCase()).append("\n");
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
+            ArrayList<ItemInstance> items = entry.getValue();
+            for (ItemInstance item : items) {
+                if(item.getDefinition().getType().equals(ItemType.tool)) {
+                    toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
+                }
             }
         }
         view.showMessage(toolsStr.toString());

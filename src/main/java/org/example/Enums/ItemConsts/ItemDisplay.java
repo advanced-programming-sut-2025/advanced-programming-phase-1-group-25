@@ -12,6 +12,9 @@ public enum ItemDisplay {
     wood("W"),
     fiber("B"),
     tree("T"),
+    foraging_seeds("S"),
+    foraging_minerals("R"),
+    foraging_crops("C"),
     ;
 
     private final String display;

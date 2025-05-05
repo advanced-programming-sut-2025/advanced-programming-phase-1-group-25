@@ -57,7 +57,7 @@ public class ToolController {
                 view.showMessage("this tile has been successfully unplowed!");
                 return;
             }
-            if(!tile.getItem().isDroppedByPlayer()) {
+            if (!tile.getItem().isDroppedByPlayer()) {
                 view.showMessage("this item hasn't been dropped by player!");
                 return;
             }
@@ -80,7 +80,7 @@ public class ToolController {
                 return;
             }
             if (tile.getItem().getDefinition().getType().equals(ItemType.wood)) {//TODO
-                player.getInventory().addItem(tile.getItem().getDefinition(), 1);
+                player.getInventory().addItem(tile.getItem());
                 tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                 view.showMessage("1 wood has been successfully added to the inventory!");
                 return;
@@ -168,13 +168,13 @@ public class ToolController {
     }
 
     public static void cutFiber(Tile tile, Player player) {
-        player.getInventory().addItem(tile.getItem().getDefinition(), 1);
+        player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         view.showMessage("you've cute fiber!");
     }
 
     public static void harvestCrop(Tile tile, Player player) {
-        player.getInventory().addItem(tile.getItem().getDefinition(), 1);
+        player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("you've harvested crop!");
@@ -183,17 +183,19 @@ public class ToolController {
     public static void milkAnimal(ItemInstance tool, Player player) {
         tool.setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
-                (Objects.requireNonNull(App.getItemDefinition("milk")), 1);
+                (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("you've milked the animal!");
     }
+
     public static void cutWool(ItemInstance animal, Player player) {
         animal.setAttribute(ItemAttributes.isCut, true);
         player.getInventory().addItem
-                (Objects.requireNonNull(App.getItemDefinition("wool")), 1);
+                (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("you've collected sheep wool!");
     }
+
     public static void removeItemFromInventory(ItemInstance trashCan, Inventory inventory, ItemInstance tool) {
 
     }

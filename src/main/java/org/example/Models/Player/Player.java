@@ -12,6 +12,7 @@ import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.User;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /*
@@ -64,7 +65,9 @@ public class Player {
     public void changeInventoryTool(ItemInstance tool, String newToolName) {
         this.inventory.getItems().remove(tool);
         ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
-        this.inventory.getItems().put(newTool.getDefinition(), 1);
+        ArrayList<ItemInstance> items = new ArrayList<>();
+        items.add(newTool);
+        this.inventory.getItems().put(newTool.getDefinition().getId(), items);
         this.currentTool = newTool;
     }
 
@@ -158,13 +161,13 @@ public class Player {
     }
 
     public void setInventoryTools() {
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_hoe")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_pickaxe")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_axe")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_watering_can")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("scythe")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("milk_pale")), 1);
-        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("shear")), 1);
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_watering_can"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
     }
 }

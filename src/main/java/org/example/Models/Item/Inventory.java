@@ -1,9 +1,7 @@
 package org.example.Models.Item;
 
-import org.example.Enums.ItemConsts.ItemAttributes;
-import org.example.Enums.ItemConsts.ItemIDs;
-import org.example.Enums.ItemConsts.ItemLevels;
-import org.example.Enums.ItemConsts.Level;
+import org.example.Enums.ItemConsts.*;
+import org.example.Models.Player.Player;
 
 import java.util.*;
 import java.util.prefs.BackingStoreException;
@@ -14,7 +12,7 @@ import java.util.regex.Matcher;
  */
 public class Inventory {
     private ItemLevels.BackPackLevels level;
-    private Map<ItemDefinition, Integer> items;
+    private Map<ItemIDs, ArrayList<ItemInstance>> items;
 
     public Inventory() {
         this.level = ItemLevels.BackPackLevels.BASIC;
@@ -22,32 +20,58 @@ public class Inventory {
     }
 
 
-    public void addItem(ItemDefinition item, int amount) {
-        ItemDefinition target = findItem(item.getId().name());
-        if (target == null) {
-            this.items.put(item, amount);
+    public void addItem(ItemInstance item) {
+        ItemIDs id = item.getDefinition().getId();
+        if (id == null) {
             return;
         }
-        int newAmount = items.get(target) + amount;
-        this.items.put(target, newAmount);
-
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                ArrayList<ItemInstance> itemInstances = entry.getValue();
+                itemInstances.add(item);
+                return;
+            }
+        }
+        ArrayList<ItemInstance> newItemsList = new ArrayList<>();
+        newItemsList.add(item);
+        this.items.put(id, newItemsList);
     }
 
-    public void dropItem(String id, int amount) {
-        ItemDefinition target = findItem(id);
-        if (target == null) return;
-        int newAmount = Math.max(items.get(target) - amount, 0);
-        if (newAmount == 0) {
-            items.remove(target);
-        } else {
-            items.put(target, newAmount);
+    public void trashItem(ItemIDs id, int amount) {
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                ArrayList<ItemInstance> itemList = this.items.get(id);
+                for (int i = 0; i < Math.min(amount, itemList.size()); i++) {
+                    itemList.remove(itemList.size() - 1);
+                }
+                return;
+            }
         }
     }
 
-    public int getItemAmount(String id) {
-        ItemDefinition target = findItem(id);
-        if (target == null) return 0;
-        return items.get(target);
+    public void trashItemAll(ItemIDs id) {
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                this.items.remove(id);
+            }
+        }
+    }
+
+    public boolean hasItem(ItemIDs id) {
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public int getItemAmount(ItemIDs id) {
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                return this.items.get(id).size();
+            }
+        }
+        return 0;
     }
 
     public void upgrade(ItemLevels.BackPackLevels upgradedLevel) {
@@ -58,22 +82,23 @@ public class Inventory {
         return level;
     }
 
-    private ItemDefinition findItem(String id) {
-        ItemDefinition target = null;
-        for (Map.Entry<ItemDefinition, Integer> entry : this.items.entrySet()) {
-            ItemDefinition item = entry.getKey();
-            if (item.getId().name().equals(id)) {
-                target = item;
+    public ItemInstance getItem(ItemIDs id) {
+        ItemInstance target = null;
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                ArrayList<ItemInstance> itemList = this.items.get(id);
+                target = itemList.get(itemList.size() - 1);
+                itemList.remove(itemList.size() - 1);
             }
         }
         return target;
     }
 
-    public Map<ItemDefinition, Integer> getItems() {
-        return items;
-    }
-
     public int getCapacity() {
         return this.level.getLevel();
+    }
+
+    public Map<ItemIDs, ArrayList<ItemInstance>> getItems() {
+        return items;
     }
 }
