@@ -26,6 +26,7 @@ public class Inventory {
         ItemDefinition target = findItem(item.getId().name());
         if (target == null) {
             this.items.put(item, amount);
+            return;
         }
         int newAmount = items.get(target) + amount;
         this.items.put(target, newAmount);

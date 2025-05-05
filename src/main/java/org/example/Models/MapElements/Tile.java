@@ -12,10 +12,12 @@ public class Tile {
     private AnsiColors forGroundColor;
     private AnsiColors backGroundColor;
     private boolean isPlowed;
+    private boolean isWatered;
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
         this.isPlowed = false;
+        this.isWatered = false;
     }
 
     public boolean getPlowed() {
@@ -57,5 +59,11 @@ public class Tile {
     }
     public void strikeLightning() {
         //TODO: implement Lightning logic
+    }
+    public boolean isWatered() {
+        return isWatered;
+    }
+    public void setWatered(boolean watered) {
+        isWatered = watered;
     }
 }

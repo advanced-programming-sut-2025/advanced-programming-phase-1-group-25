@@ -40,16 +40,4 @@ public class ItemDefinition {
     public Object getAttribute(ItemAttributes attributes) {
         return baseAttributes.get(attributes);
     }
-    public void setAttribute(ItemAttributes attributes, Object value) {
-        baseAttributes.put(attributes, value);
-    }
-    public int decreaseDurability() {
-        int x = (int)baseAttributes.get(ItemAttributes.durability);
-        baseAttributes.put(ItemAttributes.durability, x - 1);
-        return x;
-
-    }
-    public void increaseDurability(int durability) {
-        baseAttributes.put(ItemAttributes.durability, durability);
-    }
 }

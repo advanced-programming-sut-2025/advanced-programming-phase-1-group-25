@@ -334,26 +334,65 @@ public class ActionMenuController {
         }
         switch (direction) {
             case "up" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player);
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player, game);
             case "down" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player);
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player, game);
             case "left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player);
+                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player, game);
             case "right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player);
+                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player, game);
             case "up left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player);
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player, game);
             case "up right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player);
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player, game);
             case "down left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player);
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player, game);
             case "down right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player);
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player, game);
             default -> view.showMessage("please select a valid direction!");
         }
-        ;
     }
 
+    public void artisanUse(Matcher matcher, Game game) {
+        String artisanName = matcher.group("artisanName").trim().toLowerCase();
+        String itemName = matcher.group("item1Name").trim().toLowerCase();
+        Player player = game.getCurrentPlayer();
+        switch (artisanName) {
+            case "bee house":
+                ArtisanController.beeHouse(itemName, player);
+                break;
+            case "cheese press":
+                ArtisanController.cheesePress(itemName);
+                break;
+            case "keg":
+                ArtisanController.keg(itemName);
+                break;
+            case "dehydrator":
+                ArtisanController.dehydrator(itemName);
+                break;
+            case "charcoal kiln":
+                ArtisanController.charcoalKiln(itemName);
+                break;
+            case "loom":
+                ArtisanController.loom(itemName);
+                break;
+            case "mayonnaise machine":
+                ArtisanController.mayonnaiseMachine(itemName);
+                break;
+            case "oil maker":
+                ArtisanController.oilMaker(itemName);
+                break;
+            case "preserves jar":
+                ArtisanController.preservesJar(itemName);
+                break;
+            case "fish smoker":
+                ArtisanController.fishSmoker(itemName);
+                break;
+            case "furnace":
+                ArtisanController.furnace(itemName);
+                break;
+        }
 
+    }
 }
 

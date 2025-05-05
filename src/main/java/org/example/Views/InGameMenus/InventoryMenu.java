@@ -2,6 +2,7 @@ package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.ActionMenuController;
 import org.example.Controllers.InGameMenuController.InventoryController;
+import org.example.Controllers.InGameMenuController.MenuSwitcher;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Enums.InGameMenuCommands.InventoryCommands;
 import org.example.Models.App;
@@ -36,6 +37,10 @@ public class InventoryMenu implements AppMenu {
         Game game = App.getCurrentGame();
         this.controller = new InventoryController(this);
         switch (command) {
+            case SWITCH_MENU:
+                System.out.println(MenuSwitcher.printMenus());
+                controller.changeMenu();
+                break;
             case INVENTORY_SHOW:
                 controller.showInventory(game);
                 break;

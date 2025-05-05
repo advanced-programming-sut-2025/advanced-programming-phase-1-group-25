@@ -63,6 +63,14 @@ public abstract class App {
         }
         return null;
     }
+    public static ItemDefinition getItemDefinitionByName(String itemName) {
+        for (ItemDefinition itemDefinition : App.itemDefinitions) {
+            if(itemDefinition.getDisplayName().equalsIgnoreCase(itemName)) {
+                return itemDefinition;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<ItemDefinition> getItemDefinitions() {
         return App.itemDefinitions;

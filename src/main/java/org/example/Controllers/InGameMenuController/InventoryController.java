@@ -1,7 +1,9 @@
 package org.example.Controllers.InGameMenuController;
 
+import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemLevels;
+import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemDefinition;
@@ -18,6 +20,9 @@ public class InventoryController {
     public InventoryController(InventoryMenu view) {
         this.view = view;
     }
+    public void changeMenu() {
+        App.setCurrentMenu(Menus.InGameMenus.MENU_SWITCHER);
+    }
 
     public void showInventory(Game game) {
         Inventory inventory = game.getCurrentPlayer().getInventory();
@@ -25,7 +30,7 @@ public class InventoryController {
         for (Map.Entry<ItemDefinition, Integer> entry : inventory.getItems().entrySet()) {
             ItemDefinition item = entry.getKey();
             Integer value = entry.getValue();
-            inventoryStr.append("name: ").append(item.getDisplayName()).append(" number in inventory: ")
+            inventoryStr.append("name: \"").append(item.getDisplayName()).append("\", number in inventory: ")
                     .append(value).append("\n");
         }
         view.showMessage(inventoryStr.toString());

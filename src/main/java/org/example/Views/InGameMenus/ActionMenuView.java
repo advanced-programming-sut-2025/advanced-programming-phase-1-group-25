@@ -159,6 +159,12 @@ public class ActionMenuView implements AppMenu {
                 break;
             case TRADE:
                 break;
+            case ARTISAN_USE:
+
+                break;
+            case ARTISAN_GET:
+                break;
+
         }
     }
 

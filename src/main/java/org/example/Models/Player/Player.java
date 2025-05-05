@@ -1,6 +1,7 @@
 package org.example.Models.Player;
 
 import org.example.Enums.GameConsts.Gender;
+import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Models.App;
 import org.example.Models.Game;
@@ -42,6 +43,7 @@ public class Player {
         this.position = position; // initial position
         this.energyPerTurn = 50;
         this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
+        setInventoryTools();
     }
 
     public void changeToolLevel(ItemInstance tool) {
@@ -93,9 +95,11 @@ public class Player {
     public void increaseCoin(int coin) {
         this.coin += coin;
     }
+
     public void setCoin(int coin) {
         this.coin = coin;
     }
+
     public ItemInstance getTrashCan() {
         return trashCan;
     }
@@ -137,16 +141,30 @@ public class Player {
         return gameMap.getTile(this.position.getY(), this.position.getX());
     }
 
-    public void reduceEnergy(int ability, ItemInstance tool, Player player, boolean canBeDownGraded) {
+    public void reduceEnergy(int ability, ItemInstance tool, Player player, boolean canBeDownGraded, Game game) {
+        double rate = 1;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOW)) rate = 2;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)) rate = 1.5;
         if (ability == 4) {
-            this.energy -= ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1);
+            this.energy -= (int) (rate * ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1));
         } else {
-            this.energy -= (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost);
+            this.energy -= (int) (rate * (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
         }
         if (canBeDownGraded) {
-            int x = tool.getDefinition().decreaseDurability();
+            int x = tool.decreaseDurability();
             if (x == 0)
                 player.changeToolLevel(tool);
         }
+    }
+
+    public void setInventoryTools() {
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_hoe")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_pickaxe")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_axe")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("base_watering_can")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("scythe")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("milk_pale")), 1);
+        this.inventory.addItem(Objects.requireNonNull(App.getItemDefinition("shear")), 1);
     }
 }
