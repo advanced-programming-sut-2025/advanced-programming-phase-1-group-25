@@ -191,7 +191,7 @@ public class ActionMenuController {
                     ItemType type = tile.getItem().getDefinition().getType();
                     String symbol = ItemDisplay.getDisplayByType(type);
                     mapArray[i - position.getY() + size][j - position.getX() + size] =
-                    AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor());
+                            AnsiColors.wrap(symbol + " ", tile.getForGroundColor(), tile.getBackGroundColor());
                 } catch (ArrayIndexOutOfBoundsException e) {
                     continue;
                 }
@@ -207,7 +207,7 @@ public class ActionMenuController {
             if (playerY >= position.getY() - size && playerY < position.getY() + size) {
                 if (playerX >= position.getX() - size && playerX < position.getX() + size) {
                     mapArray[playerY - position.getY() + size][playerX - position.getX() + size] =
-                    AnsiColors.wrap(Integer.toString(playerNumber) + " ", AnsiColors.BLACK, AnsiColors.RED);
+                            AnsiColors.wrap(Integer.toString(playerNumber) + " ", AnsiColors.BLACK, AnsiColors.RED);
                 }
             }
             playerNumber++;
@@ -271,7 +271,7 @@ public class ActionMenuController {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
             ArrayList<ItemInstance> items = entry.getValue();
             for (ItemInstance item : items) {
-                if(item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
+                if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
                     tool = item;
                 }
             }
@@ -303,7 +303,7 @@ public class ActionMenuController {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
             ArrayList<ItemInstance> items = entry.getValue();
             for (ItemInstance item : items) {
-                if(item.getDefinition().getType().equals(ItemType.tool)) {
+                if (item.getDefinition().getType().equals(ItemType.tool)) {
                     toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
                 }
             }
@@ -367,43 +367,46 @@ public class ActionMenuController {
     public void artisanUse(Matcher matcher, Game game) {
         String artisanName = matcher.group("artisanName").trim().toLowerCase();
         String itemName = matcher.group("item1Name").trim().toLowerCase();
+        String ingredient = matcher.group("ingredient").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         switch (artisanName) {
-            case "bee house":
-                ArtisanController.beeHouse(itemName, player);
+            case "bee_house":
+                ArtisanController.beeHouse(itemName, ingredient, player);
                 break;
-            case "cheese press":
-                ArtisanController.cheesePress(itemName);
+            case "cheese_press":
+                ArtisanController.cheesePress(itemName, ingredient, player);
                 break;
             case "keg":
-                ArtisanController.keg(itemName);
+                ArtisanController.keg(itemName, ingredient, player);
                 break;
             case "dehydrator":
-                ArtisanController.dehydrator(itemName);
+                ArtisanController.dehydrator(itemName, ingredient, player);
                 break;
-            case "charcoal kiln":
-                ArtisanController.charcoalKiln(itemName);
+            case "charcoal_kiln":
+                ArtisanController.charcoalKiln(itemName, ingredient, player);
                 break;
             case "loom":
-                ArtisanController.loom(itemName);
+                ArtisanController.loom(itemName, ingredient, player);
                 break;
-            case "mayonnaise machine":
-                ArtisanController.mayonnaiseMachine(itemName);
+            case "mayonnaise_machine":
+                ArtisanController.mayonnaiseMachine(itemName, ingredient, player);
                 break;
-            case "oil maker":
-                ArtisanController.oilMaker(itemName);
+            case "oil_maker":
+                ArtisanController.oilMaker(itemName, ingredient, player);
                 break;
-            case "preserves jar":
-                ArtisanController.preservesJar(itemName);
+            case "preserves_jar":
+                ArtisanController.preservesJar(itemName, ingredient, player);
                 break;
-            case "fish smoker":
-                ArtisanController.fishSmoker(itemName);
+            case "fish_smoker":
+                ArtisanController.fishSmoker(itemName, ingredient, player);
                 break;
             case "furnace":
-                ArtisanController.furnace(itemName);
+                ArtisanController.furnace(itemName, ingredient, player);
+                break;
+            default:
+                view.showMessage("please select a valid machine!");
                 break;
         }
-
     }
 }
 

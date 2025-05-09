@@ -13,28 +13,39 @@ import java.util.regex.Matcher;
 public class Inventory {
     private ItemLevels.BackPackLevels level;
     private Map<ItemIDs, ArrayList<ItemInstance>> items;
+    private ArrayList<ItemInstance> artisan;
 
     public Inventory() {
         this.level = ItemLevels.BackPackLevels.BASIC;
         this.items = new LinkedHashMap<>();
+        this.artisan = new ArrayList<>();
     }
 
+    public ArrayList<ItemInstance> getArtisan() {
+        return artisan;
+    }
 
-    public void addItem(ItemInstance item) {
+    public void setArtisan(ItemInstance artisan) {
+        this.artisan.add(artisan);
+    }
+
+    public boolean addItem(ItemInstance item) {
         ItemIDs id = item.getDefinition().getId();
         if (id == null) {
-            return;
+            return false;
         }
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
             if (entry.getKey() == id) {
                 ArrayList<ItemInstance> itemInstances = entry.getValue();
                 itemInstances.add(item);
-                return;
+                return true;
             }
         }
+        if(!hasCapacity()) return false;
         ArrayList<ItemInstance> newItemsList = new ArrayList<>();
         newItemsList.add(item);
         this.items.put(id, newItemsList);
+        return true;
     }
 
     public void trashItem(ItemIDs id, int amount) {
@@ -43,6 +54,9 @@ public class Inventory {
                 ArrayList<ItemInstance> itemList = this.items.get(id);
                 for (int i = 0; i < Math.min(amount, itemList.size()); i++) {
                     itemList.remove(itemList.size() - 1);
+                }
+                if (itemList.isEmpty()) {
+                    this.items.remove(entry.getKey());
                 }
                 return;
             }
@@ -53,6 +67,7 @@ public class Inventory {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
             if (entry.getKey() == id) {
                 this.items.remove(id);
+                this.items.remove(entry.getKey());
             }
         }
     }
@@ -65,6 +80,7 @@ public class Inventory {
         }
         return false;
     }
+
     public int getItemAmount(ItemIDs id) {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
             if (entry.getKey() == id) {
@@ -100,5 +116,13 @@ public class Inventory {
 
     public Map<ItemIDs, ArrayList<ItemInstance>> getItems() {
         return items;
+    }
+
+    public boolean hasCapacity() {
+        return switch (this.level) {
+            case BASIC -> this.items.size() < 12;
+            case BIG -> this.items.size() < 24;
+            default -> true;
+        };
     }
 }

@@ -160,7 +160,7 @@ public class ActionMenuView implements AppMenu {
             case TRADE:
                 break;
             case ARTISAN_USE:
-
+                controller.artisanUse(matcher, game);
                 break;
             case ARTISAN_GET:
                 break;
