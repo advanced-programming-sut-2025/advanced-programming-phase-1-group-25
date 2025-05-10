@@ -42,7 +42,7 @@
     }
   },
   {
-      "itemId": "base_hoe",
+    "itemId": "base_hoe",
     "name": "Base Hoe",
     "type": "tool",
     "baseAttributes": {
@@ -870,8 +870,8 @@
     }
   },
   {
-    "itemId": "ghostfish",
-    "name": "Ghostfish",
+    "itemId": "ghost_fish",
+    "name": "Ghost Fish",
     "type": "fish",
     "baseAttributes": {
       "price": 45,
@@ -924,8 +924,8 @@
     }
   },
   {
-    "itemId": "glacierfish",
-    "name": "Glacierfish",
+    "itemId": "glacier_fish",
+    "name": "Glacier Fish",
     "type": "legendary_fish",
     "baseAttributes": {
       "price": 1000,
@@ -942,8 +942,8 @@
     }
   },
   {
-    "itemId": "crimsonfish",
-    "name": "Crimsonfish",
+    "itemId": "crimson_fish",
+    "name": "Crimson Fish",
     "type": "legendary_fish",
     "baseAttributes": {
       "price": 1500,
@@ -984,7 +984,8 @@
     "type": "lake",
     "baseAttributes": {
     }
-  },  {
+  },
+  {
     "itemId": "cottage",
     "name": "Cottage",
     "type": "cottage",
@@ -1377,18 +1378,21 @@
     "name": "Common Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["special"],
+      "season": [
+        "special"
+      ],
       "baseSellPrice": 40,
       "energy": 38
     }
   },
-
   {
     "itemId": "daffodil",
     "name": "Daffodil",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 30,
       "energy": 0
     }
@@ -1398,7 +1402,9 @@
     "name": "Dandelion",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 40,
       "energy": 25
     }
@@ -1408,7 +1414,9 @@
     "name": "Leek",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 60,
       "energy": 40
     }
@@ -1418,7 +1426,9 @@
     "name": "Morel",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 150,
       "energy": 20
     }
@@ -1428,7 +1438,9 @@
     "name": "Salmonberry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 5,
       "energy": 25
     }
@@ -1438,7 +1450,9 @@
     "name": "Spring Onion",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 8,
       "energy": 13
     }
@@ -1448,7 +1462,9 @@
     "name": "Wild_Horseradish",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "baseSellPrice": 50,
       "energy": 13
     }
@@ -1458,7 +1474,9 @@
     "name": "Fiddlehead Fern",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "baseSellPrice": 90,
       "energy": 25
     }
@@ -1468,7 +1486,9 @@
     "name": "Grape",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "baseSellPrice": 80,
       "energy": 38
     }
@@ -1478,7 +1498,9 @@
     "name": "Red Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "baseSellPrice": 75,
       "energy": -50
     }
@@ -1488,7 +1510,9 @@
     "name": "Spice Berry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "baseSellPrice": 80,
       "energy": 25
     }
@@ -1498,7 +1522,9 @@
     "name": "Sweet Pea",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "baseSellPrice": 50,
       "energy": 0
     }
@@ -1508,7 +1534,9 @@
     "name": "Blackberry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "baseSellPrice": 25,
       "energy": 25
     }
@@ -1518,7 +1546,9 @@
     "name": "Chanterelle",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "baseSellPrice": 160,
       "energy": 75
     }
@@ -1528,7 +1558,9 @@
     "name": "Hazelnut",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "baseSellPrice": 40,
       "energy": 38
     }
@@ -1538,7 +1570,9 @@
     "name": "Purple Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "baseSellPrice": 90,
       "energy": 30
     }
@@ -1548,7 +1582,9 @@
     "name": "Wild Plum",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "baseSellPrice": 80,
       "energy": 25
     }
@@ -1558,7 +1594,9 @@
     "name": "Crocus",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "baseSellPrice": 60,
       "energy": 0
     }
@@ -1568,7 +1606,9 @@
     "name": "Crystal Fruit",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "baseSellPrice": 150,
       "energy": 63
     }
@@ -1578,7 +1618,9 @@
     "name": "Holly",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "baseSellPrice": 80,
       "energy": -37
     }
@@ -1588,7 +1630,9 @@
     "name": "Snow Yam",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "baseSellPrice": 100,
       "energy": 30
     }
@@ -1598,7 +1642,9 @@
     "name": "Winter Root",
     "type": "foraging_crops",
     "baseAttributes": {
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "baseSellPrice": 70,
       "energy": 25
     }
@@ -1608,7 +1654,9 @@
     "name": "Jazz Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1616,7 +1664,9 @@
     "name": "Carrot Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1624,7 +1674,9 @@
     "name": "Cauliflower Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1632,7 +1684,9 @@
     "name": "Coffee Bean",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1640,7 +1694,9 @@
     "name": "Garlic Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1648,7 +1704,9 @@
     "name": "Bean Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1656,7 +1714,9 @@
     "name": "Kale Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1664,7 +1724,9 @@
     "name": "Parsnip Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1672,7 +1734,9 @@
     "name": "Potato Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1680,7 +1744,9 @@
     "name": "Rhubarb Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1688,7 +1754,9 @@
     "name": "Strawberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1696,7 +1764,9 @@
     "name": "Tulip Bulb",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1704,7 +1774,9 @@
     "name": "Rice Shoot",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["spring"]
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -1712,7 +1784,9 @@
     "name": "Blueberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1720,7 +1794,9 @@
     "name": "Corn Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1728,7 +1804,9 @@
     "name": "Hops Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1736,7 +1814,9 @@
     "name": "Pepper Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1744,7 +1824,9 @@
     "name": "Melon Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1752,7 +1834,9 @@
     "name": "Poppy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1760,7 +1844,9 @@
     "name": "Radish Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1768,7 +1854,9 @@
     "name": "Red Cabbage Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1776,7 +1864,9 @@
     "name": "Starfruit Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1784,7 +1874,9 @@
     "name": "Spangle Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1792,7 +1884,9 @@
     "name": "Summer Squash Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1800,7 +1894,9 @@
     "name": "Sunflower Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1808,7 +1904,9 @@
     "name": "Tomato Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1816,7 +1914,9 @@
     "name": "Wheat Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["summer"]
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -1824,7 +1924,9 @@
     "name": "Amaranth Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1832,7 +1934,9 @@
     "name": "Artichoke Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1840,7 +1944,9 @@
     "name": "Beet Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1848,7 +1954,9 @@
     "name": "Bok Choy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1856,7 +1964,9 @@
     "name": "Broccoli Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1864,7 +1974,9 @@
     "name": "Cranberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1872,7 +1984,9 @@
     "name": "Eggplant Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1880,7 +1994,9 @@
     "name": "Fairy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1888,7 +2004,9 @@
     "name": "Grape Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1896,7 +2014,9 @@
     "name": "Pumpkin Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1904,7 +2024,9 @@
     "name": "Yam Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1912,7 +2034,9 @@
     "name": "Rare Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["fall"]
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -1920,7 +2044,9 @@
     "name": "Powdermelon Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["winter"]
+      "season": [
+        "winter"
+      ]
     }
   },
   {
@@ -1928,7 +2054,9 @@
     "name": "Ancient Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1936,7 +2064,9 @@
     "name": "Mixed Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1944,7 +2074,9 @@
     "name": "Acorns",
     "type": "foraging_trees",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1952,7 +2084,9 @@
     "name": "Maple Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1960,7 +2094,9 @@
     "name": "Pine Cones",
     "type": "foraging_trees",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1968,7 +2104,9 @@
     "name": "Mahogany Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -1976,7 +2114,9 @@
     "name": "Mushroom Tree Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "season": ["special"]
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2137,15 +2277,22 @@
     "name": "Apricot Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "apricot_sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "apricot",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 59,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["spring"]
+      "source": "apricot_sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "apricot",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 59,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -2153,15 +2300,22 @@
     "name": "Cherry Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "cherry-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "cherry",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 80,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["spring"]
+      "source": "cherry-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "cherry",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 80,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "spring"
+      ]
     }
   },
   {
@@ -2169,15 +2323,22 @@
     "name": "Banana Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "banana-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "banana",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 150,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 75,
-      "season" : ["summer"]
+      "source": "banana-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "banana",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 150,
+      "isFruitEdible": true,
+      "fruitEnergy": 75,
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -2185,15 +2346,22 @@
     "name": "Mango Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "mango-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "mango",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 130,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 100,
-      "season" : ["summer"]
+      "source": "mango-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "mango",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 130,
+      "isFruitEdible": true,
+      "fruitEnergy": 100,
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -2201,15 +2369,22 @@
     "name": "Orange Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "orange-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "orange",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 100,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["summer"]
+      "source": "orange-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "orange",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 100,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -2217,15 +2392,22 @@
     "name": "Peach Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "peach-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "peach",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 140,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["summer"]
+      "source": "peach-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "peach",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 140,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "summer"
+      ]
     }
   },
   {
@@ -2233,15 +2415,22 @@
     "name": "Apple Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "apple-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "apple",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 100,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["fall"]
+      "source": "apple-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "apple",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 100,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -2249,15 +2438,22 @@
     "name": "Pomegranate Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "pomegranate-sapling",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "pomegranate",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 140,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["fall"]
+      "source": "pomegranate-sapling",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "pomegranate",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 140,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "fall"
+      ]
     }
   },
   {
@@ -2265,15 +2461,22 @@
     "name": "Oak Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "acorns",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "oak_resin",
-      "fruitHarvestCycle" : 7,
-      "fruitBaseSellPrice" : 150,
-      "isFruitEdible" : false,
-      "fruitEnergy" : 0,
-      "season" : ["special"]
+      "source": "acorns",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "oak_resin",
+      "fruitHarvestCycle": 7,
+      "fruitBaseSellPrice": 150,
+      "isFruitEdible": false,
+      "fruitEnergy": 0,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2281,15 +2484,22 @@
     "name": "Maple Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "maple_seeds",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "maple_syrup",
-      "fruitHarvestCycle" : 9,
-      "fruitBaseSellPrice" : 200,
-      "isFruitEdible" : false,
-      "fruitEnergy" : 0,
-      "season" : ["special"]
+      "source": "maple_seeds",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "maple_syrup",
+      "fruitHarvestCycle": 9,
+      "fruitBaseSellPrice": 200,
+      "isFruitEdible": false,
+      "fruitEnergy": 0,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2297,15 +2507,22 @@
     "name": "Pine Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "pine_cones",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "pine_tar",
-      "fruitHarvestCycle" : 5,
-      "fruitBaseSellPrice" : 100,
-      "isFruitEdible" : false,
-      "fruitEnergy" : 0,
-      "season" : ["special"]
+      "source": "pine_cones",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "pine_tar",
+      "fruitHarvestCycle": 5,
+      "fruitBaseSellPrice": 100,
+      "isFruitEdible": false,
+      "fruitEnergy": 0,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2313,15 +2530,22 @@
     "name": "Mahogany Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "mahogany_seeds",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "sap",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 2,
-      "isFruitEdible" : true,
-      "fruitEnergy" : -2,
-      "season" : ["special"]
+      "source": "mahogany_seeds",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "sap",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 2,
+      "isFruitEdible": true,
+      "fruitEnergy": -2,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2329,15 +2553,22 @@
     "name": "Mushroom Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "mushroom_tree_seeds",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "common_mushroom",
-      "fruitHarvestCycle" : 1,
-      "fruitBaseSellPrice" : 40,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 38,
-      "season" : ["special"]
+      "source": "mushroom_tree_seeds",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "common_mushroom",
+      "fruitHarvestCycle": 1,
+      "fruitBaseSellPrice": 40,
+      "isFruitEdible": true,
+      "fruitEnergy": 38,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2345,15 +2576,22 @@
     "name": "Mystic Tree",
     "type": "tree",
     "baseAttributes": {
-      "source" : "mystic_tree_seeds",
-      "stages" : [7,7,7,7],
-      "totalHarvestTime" : 28,
-      "fruit" : "mystic_syrup",
-      "fruitHarvestCycle" : 7,
-      "fruitBaseSellPrice" : 1000,
-      "isFruitEdible" : true,
-      "fruitEnergy" : 500,
-      "season" : ["special"]
+      "source": "mystic_tree_seeds",
+      "stages": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "totalHarvestTime": 28,
+      "fruit": "mystic_syrup",
+      "fruitHarvestCycle": 7,
+      "fruitBaseSellPrice": 1000,
+      "isFruitEdible": true,
+      "fruitEnergy": 500,
+      "season": [
+        "special"
+      ]
     }
   },
   {
@@ -2362,14 +2600,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "jazz_seeds",
-      "stages": [1,2,2,2],
+      "stages": [
+        1,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 7,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 50,
       "isEdible": true,
       "energy": 45,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2379,14 +2624,20 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "carrot_seeds",
-      "stages": [1,1,1],
+      "stages": [
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 3,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 35,
       "isEdible": true,
       "energy": 75,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2396,14 +2647,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "cauliflower_seeds",
-      "stages": [1,2,4,4,1],
+      "stages": [
+        1,
+        2,
+        4,
+        4,
+        1
+      ],
       "totalHarvestTime": 12,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 175,
       "isEdible": true,
       "energy": 75,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": true
     }
   },
@@ -2413,14 +2672,23 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "coffee_bean",
-      "stages": [1,2,2,3,2],
+      "stages": [
+        1,
+        2,
+        2,
+        3,
+        2
+      ],
       "totalHarvestTime": 10,
       "oneTime": false,
       "regrowthTime": 2,
       "baseSellPrice": 15,
       "isEdible": false,
       "energy": 0,
-      "season": ["spring","summer"],
+      "season": [
+        "spring",
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2430,14 +2698,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "garlic_seeds",
-      "stages": [1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 4,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 60,
       "isEdible": true,
       "energy": 20,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2447,14 +2722,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "bean_starter",
-      "stages": [1,1,1,3,4],
+      "stages": [
+        1,
+        1,
+        1,
+        3,
+        4
+      ],
       "totalHarvestTime": 10,
       "oneTime": false,
       "regrowthTime": 3,
       "baseSellPrice": 40,
       "isEdible": true,
       "energy": 25,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2464,14 +2747,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "kale_seeds",
-      "stages": [1,2,2,1],
+      "stages": [
+        1,
+        2,
+        2,
+        1
+      ],
       "totalHarvestTime": 6,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 110,
       "isEdible": true,
       "energy": 50,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2481,14 +2771,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "parsnip_seeds",
-      "stages": [1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 4,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 35,
       "isEdible": true,
       "energy": 25,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2498,14 +2795,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "potato_seeds",
-      "stages": [1,1,1,2,1],
+      "stages": [
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
       "totalHarvestTime": 6,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 80,
       "isEdible": true,
       "energy": 25,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2515,14 +2820,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "rhubarb_seeds",
-      "stages": [2,2,2,3,4],
+      "stages": [
+        2,
+        2,
+        2,
+        3,
+        4
+      ],
       "totalHarvestTime": 13,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 220,
       "isEdible": false,
       "energy": 0,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2532,14 +2845,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "strawberry_seeds",
-      "stages": [1,1,2,2,2],
+      "stages": [
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 8,
       "oneTime": false,
       "regrowthTime": 4,
       "baseSellPrice": 120,
       "isEdible": true,
       "energy": 50,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2549,14 +2870,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "tulip_bulb",
-      "stages": [1,1,2,2],
+      "stages": [
+        1,
+        1,
+        2,
+        2
+      ],
       "totalHarvestTime": 6,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 30,
       "isEdible": true,
       "energy": 45,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2566,14 +2894,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "bean_starter",
-      "stages": [1,2,2,3],
+      "stages": [
+        1,
+        2,
+        2,
+        3
+      ],
       "totalHarvestTime": 8,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 30,
       "isEdible": true,
       "energy": 3,
-      "season": ["spring"],
+      "season": [
+        "spring"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2583,14 +2918,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "blueberry_seeds",
-      "stages": [1,3,3,4,2],
+      "stages": [
+        1,
+        3,
+        3,
+        4,
+        2
+      ],
       "totalHarvestTime": 13,
       "oneTime": false,
       "regrowthTime": 4,
       "baseSellPrice": 50,
       "isEdible": true,
       "energy": 25,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2600,14 +2943,23 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "corn_seeds",
-      "stages": [2,3,3,3,3],
+      "stages": [
+        2,
+        3,
+        3,
+        3,
+        3
+      ],
       "totalHarvestTime": 14,
       "oneTime": false,
       "regrowthTime": 4,
       "baseSellPrice": 50,
       "isEdible": true,
       "energy": 25,
-      "season": ["summer","fall"],
+      "season": [
+        "summer",
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2617,14 +2969,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "hops_starter",
-      "stages": [1,1,2,3,4],
+      "stages": [
+        1,
+        1,
+        2,
+        3,
+        4
+      ],
       "totalHarvestTime": 11,
       "oneTime": false,
       "regrowthTime": 1,
       "baseSellPrice": 25,
       "isEdible": true,
       "energy": 45,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2634,14 +2994,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "hops_starter",
-      "stages": [1,1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 5,
       "oneTime": false,
       "regrowthTime": 3,
       "baseSellPrice": 40,
       "isEdible": true,
       "energy": 13,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2651,14 +3019,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "melon_seeds",
-      "stages": [1,2,3,3,3],
+      "stages": [
+        1,
+        2,
+        3,
+        3,
+        3
+      ],
       "totalHarvestTime": 12,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 250,
       "isEdible": true,
       "energy": 113,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": true
     }
   },
@@ -2668,14 +3044,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "hops_starter",
-      "stages": [1,2,2,2],
+      "stages": [
+        1,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 7,
       "oneTime": true,
       "regrowthTime": 1,
       "baseSellPrice": 140,
       "isEdible": true,
       "energy": 45,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2685,14 +3068,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "radish_seeds",
-      "stages": [2,1,2,1],
+      "stages": [
+        2,
+        1,
+        2,
+        1
+      ],
       "totalHarvestTime": 6,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 90,
       "isEdible": true,
       "energy": 45,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2702,14 +3092,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "red_cabbage_seeds",
-      "stages": [2,1,2,2,2],
+      "stages": [
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 9,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 260,
       "isEdible": true,
       "energy": 75,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2719,14 +3117,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "starfruit_seeds",
-      "stages": [2,3,2,3,3],
+      "stages": [
+        2,
+        3,
+        2,
+        3,
+        3
+      ],
       "totalHarvestTime": 13,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 750,
       "isEdible": true,
       "energy": 125,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2736,14 +3142,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "spangle_seeds",
-      "stages": [1,2,3,1],
+      "stages": [
+        1,
+        2,
+        3,
+        1
+      ],
       "totalHarvestTime": 8,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 90,
       "isEdible": true,
       "energy": 45,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2753,14 +3166,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "summer_squash_seeds",
-      "stages": [1,1,1,2,1],
+      "stages": [
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
       "totalHarvestTime": 6,
       "oneTime": false,
       "regrowthTime": 3,
       "baseSellPrice": 45,
       "isEdible": true,
       "energy": 63,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2770,14 +3191,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "sunflower_seeds",
-      "stages": [1,2,3,2],
+      "stages": [
+        1,
+        2,
+        3,
+        2
+      ],
       "totalHarvestTime": 8,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 80,
       "isEdible": true,
       "energy": 45,
-      "season": ["summer","fall"],
+      "season": [
+        "summer",
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2787,14 +3216,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "tomato_seeds",
-      "stages": [2,2,2,2,3],
+      "stages": [
+        2,
+        2,
+        2,
+        2,
+        3
+      ],
       "totalHarvestTime": 11,
       "oneTime": false,
       "regrowthTime": 4,
       "baseSellPrice": 60,
       "isEdible": true,
       "energy": 20,
-      "season": ["summer"],
+      "season": [
+        "summer"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2804,14 +3241,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "wheat_seeds",
-      "stages": [1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 4,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 25,
       "isEdible": false,
       "energy": 0,
-      "season": ["summer","fall"],
+      "season": [
+        "summer",
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2821,14 +3266,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "amaranth_seeds",
-      "stages": [1,2,2,2],
+      "stages": [
+        1,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 7,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 150,
       "isEdible": true,
       "energy": 50,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2838,14 +3290,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "artichoke_seeds",
-      "stages": [2,2,1,2,1],
+      "stages": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
       "totalHarvestTime": 8,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 160,
       "isEdible": true,
       "energy": 30,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2855,14 +3315,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "beet_seeds",
-      "stages": [1,1,2,2],
+      "stages": [
+        1,
+        1,
+        2,
+        2
+      ],
       "totalHarvestTime": 6,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 100,
       "isEdible": true,
       "energy": 30,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2872,14 +3339,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "bok_choy_seeds",
-      "stages": [1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 4,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 80,
       "isEdible": true,
       "energy": 25,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2889,14 +3363,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "broccoli_seeds",
-      "stages": [2,2,2,2],
+      "stages": [
+        2,
+        2,
+        2,
+        2
+      ],
       "totalHarvestTime": 8,
       "oneTime": false,
       "regrowthTime": 4,
       "baseSellPrice": 70,
       "isEdible": true,
       "energy": 63,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2906,14 +3387,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "cranberry_seeds",
-      "stages": [1,2,1,1,2],
+      "stages": [
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
       "totalHarvestTime": 7,
       "oneTime": false,
       "regrowthTime": 5,
       "baseSellPrice": 75,
       "isEdible": true,
       "energy": 38,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2923,14 +3412,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "cranberry_seeds",
-      "stages": [1,1,1,1],
+      "stages": [
+        1,
+        1,
+        1,
+        1
+      ],
       "totalHarvestTime": 5,
       "oneTime": false,
       "regrowthTime": 5,
       "baseSellPrice": 60,
       "isEdible": true,
       "energy": 20,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2940,14 +3436,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "fairy_seeds",
-      "stages": [1,4,4,3],
+      "stages": [
+        1,
+        4,
+        4,
+        3
+      ],
       "totalHarvestTime": 12,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 290,
       "isEdible": true,
       "energy": 45,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2957,14 +3460,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "grape_starter",
-      "stages": [1,1,2,3,3],
+      "stages": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
       "totalHarvestTime": 10,
       "oneTime": false,
       "regrowthTime": 3,
       "baseSellPrice": 80,
       "isEdible": true,
       "energy": 38,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -2974,14 +3485,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "pumpkin_seeds",
-      "stages": [1,2,3,4,3],
+      "stages": [
+        1,
+        2,
+        3,
+        4,
+        3
+      ],
       "totalHarvestTime": 13,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 320,
       "isEdible": false,
       "energy": 0,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": true
     }
   },
@@ -2991,14 +3510,21 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "yam_seeds",
-      "stages": [1,3,3,3],
+      "stages": [
+        1,
+        3,
+        3,
+        3
+      ],
       "totalHarvestTime": 10,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 160,
       "isEdible": true,
       "energy": 45,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -3008,14 +3534,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "rare_seed",
-      "stages": [2,4,6,6,6],
+      "stages": [
+        2,
+        4,
+        6,
+        6,
+        6
+      ],
       "totalHarvestTime": 24,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 3000,
       "isEdible": false,
       "energy": 0,
-      "season": ["fall"],
+      "season": [
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -3025,14 +3559,22 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "powdermelon_seeds",
-      "stages": [1,2,1,2,1],
+      "stages": [
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
       "totalHarvestTime": 7,
       "oneTime": true,
       "regrowthTime": -1,
       "baseSellPrice": 60,
       "isEdible": true,
       "energy": 63,
-      "season": ["winter"],
+      "season": [
+        "winter"
+      ],
       "canBecomeGiant": true
     }
   },
@@ -3042,14 +3584,24 @@
     "type": "all_crops",
     "baseAttributes": {
       "source": "ancient_seeds",
-      "stages": [2,7,7,7,5],
+      "stages": [
+        2,
+        7,
+        7,
+        7,
+        5
+      ],
       "totalHarvestTime": 28,
       "oneTime": false,
       "regrowthTime": 7,
       "baseSellPrice": 550,
       "isEdible": false,
       "energy": 0,
-      "season": ["spring","summer","fall"],
+      "season": [
+        "spring",
+        "summer",
+        "fall"
+      ],
       "canBecomeGiant": false
     }
   },
@@ -3088,7 +3640,6 @@
     "baseAttributes": {
       "energy": 75,
       "ingredients": {
-
       },
       "price": 350
     }
@@ -3100,8 +3651,8 @@
     "baseAttributes": {
       "energy": 100,
       "ingredients": {
-          "milk": -1,
-          "big_milk": -1
+        "milk": -1,
+        "big_milk": -1
       },
       "price": 350
     }
@@ -3111,16 +3662,408 @@
     "name": "Milk",
     "type": "animal_goods",
     "baseAttributes": {
-
-      }
+    }
   },
   {
     "itemId": "wool",
     "name": "Wool",
     "type": "animal_goods",
     "baseAttributes": {
-
-      }
+    }
+  },
+  {
+    "itemId": "honey",
+    "name": "Honey",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 75,
+      "price": [
+        350
+      ],
+      "day": 4
+    }
+  },
+  {
+    "itemId": "cheese",
+    "name": "Cheese",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "hour": 3,
+      "price": [
+        230,
+        345
+      ],
+      "energy": 100
+    }
+  },
+  {
+    "itemId": "goat_cheese",
+    "name": "Goat Cheese",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "hour": 3,
+      "price": [
+        400,
+        600
+      ],
+      "energy": 100
+    }
+  },
+  {
+    "itemId": "beer",
+    "name": "Beer",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 50,
+      "price": [
+        200
+      ],
+      "day": 1,
+      "shopPrice": 400,
+      "dailyLimit": -1
+    }
+  },
+  {
+    "itemId": "vinegar",
+    "name": "Vinegar",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 13,
+      "price": [
+        100
+      ],
+      "hour": 10
+    }
+  },
+  {
+    "itemId": "coffee",
+    "name": "Coffee",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 75,
+      "price": [
+        150
+      ],
+      "hour": 2
+    }
+  },
+  {
+    "itemId": "juice",
+    "name": "Juice",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "day": 4
+    }
+  },
+  {
+    "itemId": "mead",
+    "name": "Mead",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 100,
+      "hour": 10,
+      "price": [
+        300
+      ]
+    }
+  },
+  {
+    "itemId": "pale_ale",
+    "name": "Pale Ale",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 50,
+      "day": 3,
+      "price": [
+        300
+      ]
+    }
+  },
+  {
+    "itemId": "wine",
+    "name": "Wine",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "day": 7
+    }
+  },
+  {
+    "itemId": "dried_mushrooms",
+    "name": "Dried Mushrooms",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ]
+    }
+  },
+  {
+    "itemId": "dried_fruit",
+    "name": "Dried Fruit",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ]
+    }
+  },
+  {
+    "itemId": "raisins",
+    "name": "Raisins",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 125,
+      "price": [
+        600
+      ]
+    }
+  },
+  {
+    "itemId": "cloth",
+    "name": "Cloth",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "hour": 4,
+      "energy": 0,
+      "price": [
+        0
+      ]
+    }
+  },
+  {
+    "itemId": "mayonnaise",
+    "name": "Mayonnaise",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 50,
+      "hour": 3,
+      "price": [
+        190,
+        270
+      ]
+    }
+  },
+  {
+    "itemId": "duck_mayonnaise",
+    "name": "Duck Mayonnaise",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 75,
+      "hour": 3,
+      "price": [
+        37
+      ]
+    }
+  },
+  {
+    "itemId": "dinosaur_mayonnaise",
+    "name": "Dinosaur Mayonnaise",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 125,
+      "hour": 3,
+      "price": [
+        800
+      ]
+    }
+  },
+  {
+    "itemId": "truffle_oil",
+    "name": "Truffle Oil",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 38,
+      "hour": 6,
+      "price": [
+        1065
+      ]
+    }
+  },
+  {
+    "itemId": "oil",
+    "name": "Oil",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 13,
+      "price": [
+        100
+      ]
+    }
+  },
+  {
+    "itemId": "pickles",
+    "name": "Pickles",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 6
+    }
+  },
+  {
+    "itemId": "jelly",
+    "name": "Jelly",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "day": 3
+    }
+  },
+  {
+    "itemId": "smoked_fish",
+    "name": "Smoked Fish",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 1
+    }
+  },
+  {
+    "itemId": "copper_bar",
+    "name": "Copper Bar",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 4
+    }
+  },
+  {
+    "itemId": "gold_bar",
+    "name": "Gold Bar",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 4
+    }
+  },
+  {
+    "itemId": "iron_bar",
+    "name": "Iron Bar",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 4
+    }
+  },
+  {
+    "itemId": "iridium_bar",
+    "name": "Iridium Bar",
+    "type": "artisan",
+    "baseAttributes": {
+      "isReady": false,
+      "energy": 0,
+      "price": [
+        0
+      ],
+      "hour": 4
+    }
+  },
+  {
+    "itemId": "large_milk",
+    "name": "Large Milk",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "goat_milk",
+    "name": "Goat Milk",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "large_goat_milk",
+    "name": "Large Goat Milk",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "egg",
+    "name": "Egg",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "large_egg",
+    "name": "Large Egg",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "duck_egg",
+    "name": "Duck Egg",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "dinosaur_egg",
+    "name": "Dinosaur Egg",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "truffle",
+    "name": "Truffle",
+    "type": "animal_goods",
+    "baseAttributes": {
+    }
   }
-
 ]

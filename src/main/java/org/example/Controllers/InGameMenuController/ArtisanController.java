@@ -14,7 +14,7 @@ import java.util.Objects;
 public class ArtisanController {
     static ActionMenuView view = new ActionMenuView();
 
-    public static void beeHouse(String itemName, String ingredient, Player player) {
+    public static void beeHouse(String itemName, Player player) {
         if (itemName.equals("honey")) {
             ItemInstance honey = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("honey")));
             player.getInventory().setArtisan(honey);
@@ -89,7 +89,7 @@ public class ArtisanController {
         }
     }
 
-    public static void dehydrator(String itemName, String ingredient, Player player) {
+    public static void dehydrator(String itemName, Player player) {
         switch (itemName) {
             case "dried_mushroom":
                 break;
@@ -103,7 +103,7 @@ public class ArtisanController {
         }
     }
 
-    public static void charcoalKiln(String itemName, String ingredient, Player player) {
+    public static void charcoalKiln(String itemName, Player player) {
         switch (itemName) {
             case "coal":
                 addArtisanToInventory(player.getInventory(), "wood",
@@ -115,7 +115,7 @@ public class ArtisanController {
         }
     }
 
-    public static void loom(String itemName, String ingredient, Player player) {
+    public static void loom(String itemName, Player player) {
         switch (itemName) {
             case "cloth":
                 addArtisanToInventory(player.getInventory(), "wool",

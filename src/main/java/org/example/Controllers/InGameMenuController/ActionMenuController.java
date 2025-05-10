@@ -1,7 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import org.example.Enums.GameConsts.DayOfWeek;
+import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
@@ -17,13 +17,13 @@ import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
+import org.example.Models.States.Weather;
 import org.example.Views.InGameMenus.ActionMenuView;
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
@@ -364,14 +364,16 @@ public class ActionMenuController {
         }
     }
 
-    public void artisanUse(Matcher matcher, Game game) {
+    public void artisanUse(Matcher matcher, Game game, String command) {
         String artisanName = matcher.group("artisanName").trim().toLowerCase();
         String itemName = matcher.group("item1Name").trim().toLowerCase();
-        String ingredient = matcher.group("ingredient").trim().toLowerCase();
+        String ingredient = "";
+        if (command.contains("-i"))
+            ingredient = matcher.group("ingredient").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         switch (artisanName) {
             case "bee_house":
-                ArtisanController.beeHouse(itemName, ingredient, player);
+                ArtisanController.beeHouse(itemName, player);
                 break;
             case "cheese_press":
                 ArtisanController.cheesePress(itemName, ingredient, player);
@@ -380,13 +382,13 @@ public class ActionMenuController {
                 ArtisanController.keg(itemName, ingredient, player);
                 break;
             case "dehydrator":
-                ArtisanController.dehydrator(itemName, ingredient, player);
+                ArtisanController.dehydrator(itemName, player);
                 break;
             case "charcoal_kiln":
-                ArtisanController.charcoalKiln(itemName, ingredient, player);
+                ArtisanController.charcoalKiln(itemName, player);
                 break;
             case "loom":
-                ArtisanController.loom(itemName, ingredient, player);
+                ArtisanController.loom(itemName, player);
                 break;
             case "mayonnaise_machine":
                 ArtisanController.mayonnaiseMachine(itemName, ingredient, player);
@@ -406,6 +408,114 @@ public class ActionMenuController {
             default:
                 view.showMessage("please select a valid machine!");
                 break;
+        }
+    }
+
+    public void fishing(Matcher matcher, Game game) {
+        String fishingPole = matcher.group("fishingPole").trim().toLowerCase();
+        Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getInventory();
+        ItemInstance pole = inventory.getItem(ItemIDs.valueOf(fishingPole));//TODO
+        if (!isNearLake(player, game)) {
+            view.showMessage("you should be near lake to start fishing!");
+            return;
+        }
+        if (pole == null) {
+            view.showMessage("you don't have" + fishingPole + "!");
+            return;
+        }
+        int skill = player.getAbilities().getAbilityLevel(player.getAbilities().getFishingAbility());
+        ArrayList<ItemDefinition> fish = new ArrayList<>();
+        for (ItemDefinition item : App.getItemDefinitions()) {
+            if (skill != 4) {
+                if (item.getType().equals(ItemType.fish) &&
+                        item.getAttribute(ItemAttributes.season).toString().
+                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
+                    fish.add(item);
+                }
+            } else {
+                if ((item.getType().equals(ItemType.fish)
+                        || item.getType().equals(ItemType.legendary_fish)) &&
+                        item.getAttribute(ItemAttributes.season).toString().
+                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
+                    fish.add(item);
+                }
+            }
+        }
+        int R = GenerateRandomNumber.generateRandomNumber(0, 1);
+        double M = getMBasedOnWeather(game);
+        int x = Math.min(6, (int) (R * M * (skill + 2)));
+        ArrayList<ItemDefinition> caughtFish = new ArrayList<>();
+        int temp = x;
+        while (temp > 0) {
+            caughtFish.add(fish.get(temp));
+            temp--;
+        }
+        switch (fishingPole) {
+            case "training_fishing_pole":
+                int quality1 = calculateQuality(R, M, skill, 0.1);
+                printFish(quality1, x, caughtFish);
+                break;
+            case "bamboo_fishing_pole":
+                int quality2 = calculateQuality(R, M, skill, 0.5);
+                printFish(quality2, x, caughtFish);
+                break;
+            case "fiber_glass_fishing_pole":
+                int quality3 = calculateQuality(R, M, skill, 0.9);
+                printFish(quality3, x, caughtFish);
+                break;
+            case "iridium_fishing_pole":
+                int quality4 = calculateQuality(R, M, skill, 1.2);
+                printFish(quality4, x, caughtFish);
+                break;
+            default:
+                view.showMessage("please select a valid pole!");
+                break;
+        }
+    }
+
+    public boolean isNearLake(Player player, Game game) {
+        Tile playerTile = player.getPlayerTile(game);
+        GameMap gameMap = game.getGameMap();
+        int x = player.getPosition().getX();
+        int y = player.getPosition().getY();
+        return gameMap.getTile(y, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y, x + 1).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y + 1, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y + 1, x).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y + 1, x + 1).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y - 1, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y - 1, x).getItem().getDefinition().getType().equals(ItemType.lake)
+                || gameMap.getTile(y - 1, x + 1).getItem().getDefinition().getType().equals(ItemType.lake);
+    }
+
+    public double getMBasedOnWeather(Game game) {
+        WeatherStates weather = game.getWeather().getCurrentWeather();
+        switch (weather) {
+            case SUNNY -> {
+                return 1.5;
+            }
+            case RAIN -> {
+                return 1.2;
+            }
+            case STORM -> {
+                return 0.5;
+            }
+            default -> {
+                return 1;
+            }
+        }
+    }
+
+    public int calculateQuality(int R, double M, int skill, double pole) {
+        return (int) ((R * pole * (skill + 2)) / (7 - M));
+    }
+
+    public void printFish(int quality, int number, ArrayList<ItemDefinition> caughtFish) {
+        view.showMessage("Quality of fish : " + quality);
+        view.showMessage("number of fish : " + number);
+        for (ItemDefinition fish : caughtFish) {
+            view.showMessage("fish name: " + fish.getDisplayName().toLowerCase() + " type: " + fish.getType().name());
         }
     }
 }

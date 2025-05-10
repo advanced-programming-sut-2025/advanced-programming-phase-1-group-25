@@ -156,11 +156,12 @@ public class ActionMenuView implements AppMenu {
             case SELL_ANIMAL:
                 break;
             case FISHING:
+
                 break;
             case TRADE:
                 break;
             case ARTISAN_USE:
-                controller.artisanUse(matcher, game);
+                controller.artisanUse(matcher, game, input);
                 break;
             case ARTISAN_GET:
                 break;

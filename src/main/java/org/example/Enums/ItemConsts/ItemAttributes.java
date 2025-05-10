@@ -24,7 +24,11 @@ public enum ItemAttributes {
     fruitEnergy,
     fruit,
     isFull,
-    isCut;
+    isCut,
+    hour,
+    day,
+    isReady,
+    ;
 
 
 }

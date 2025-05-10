@@ -3,6 +3,8 @@ package org.example.Models.MapElements;
 import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Models.Item.ItemInstance;
 
+import java.util.ArrayList;
+
 /*
     Game map is consisted of many tiles, each of which has a position and an item to represent.
  */
@@ -15,12 +17,13 @@ public class Tile {
     private int dayPassedFromPlant;
     private boolean isFertilized;
     private boolean isWatered;
-
+    private ArrayList<ItemInstance> fish;
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
         this.isPlowed = false;
         this.isWatered = false;
+        fish = new ArrayList<>();
     }
 
     public boolean getPlowed() {
