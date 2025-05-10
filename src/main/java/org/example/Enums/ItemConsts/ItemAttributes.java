@@ -28,7 +28,9 @@ public enum ItemAttributes {
     hour,
     day,
     isReady,
-    ;
+    shopPrice,
+    dailyLimit,
+    fishingSkill;
 
 
 }
