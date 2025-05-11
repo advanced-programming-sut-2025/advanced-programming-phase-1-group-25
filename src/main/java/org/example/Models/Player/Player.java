@@ -3,11 +3,13 @@ package org.example.Models.Player;
 import org.example.Enums.GameConsts.Gender;
 import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.ItemConsts.ItemAttributes;
+import org.example.Models.Animals.Animal;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
+import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.User;
@@ -31,6 +33,8 @@ public class Player {
     private ItemInstance currentTool;
     private ItemInstance trashCan;
     private int energyPerTurn;
+    private PlayerMap playerMap;
+    private ArrayList<Animal> animals;
 
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
@@ -44,6 +48,7 @@ public class Player {
         this.position = position; // initial position
         this.energyPerTurn = 50;
         this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
+        animals = new ArrayList<>();
         setInventoryTools();
     }
 
@@ -169,5 +174,19 @@ public class Player {
         this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
         this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
         this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
+    }
+
+    public PlayerMap getPlayerMap() {
+        return playerMap;
+    }
+
+    public void setPlayerMap(PlayerMap playerMap) {
+        this.playerMap = playerMap;
+    }
+    public void setAnimal(Animal animal) {
+        this.animals.add(animal);
+    }
+    public ArrayList<Animal> getAnimals() {
+        return animals;
     }
 }

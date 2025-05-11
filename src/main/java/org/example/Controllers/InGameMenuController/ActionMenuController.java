@@ -8,12 +8,17 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.AnsiColors;
+import org.example.Enums.NPCConsts.NPCConst;
+import org.example.Models.Animals.Animal;
+import org.example.Models.Animals.Barn;
+import org.example.Models.Animals.Coop;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
+import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
@@ -24,6 +29,7 @@ import org.example.Views.PreGameMenus.TerminalAnimation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
@@ -473,25 +479,27 @@ public class ActionMenuController {
             case "training_fishing_pole":
                 int quality1 = AnimalController.calculateQuality(R, M, skill, 0.1);
                 AnimalController.printFish(quality1, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality1);
                 break;
             case "bamboo_fishing_pole":
                 int quality2 = AnimalController.calculateQuality(R, M, skill, 0.5);
                 AnimalController.printFish(quality2, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality2);
                 break;
             case "fiber_glass_fishing_pole":
                 int quality3 = AnimalController.calculateQuality(R, M, skill, 0.9);
                 AnimalController.printFish(quality3, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality3);
                 break;
             case "iridium_fishing_pole":
                 int quality4 = AnimalController.calculateQuality(R, M, skill, 1.2);
                 AnimalController.printFish(quality4, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality4);
                 break;
             default:
                 view.showMessage("Please select a valid pole!");
                 break;
         }
     }
-
-
 }
 

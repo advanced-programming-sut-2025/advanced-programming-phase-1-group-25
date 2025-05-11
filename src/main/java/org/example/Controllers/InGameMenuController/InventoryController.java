@@ -34,6 +34,7 @@ public class InventoryController {
             for (ItemInstance item : entry.getValue()) {
                 inventoryStr.append("name: \"").append(item.getDefinition().getDisplayName())
                         .append("\", number in inventory: ").append(entry.getValue().size()).append("\n");
+                break;
             }
         }
         view.showMessage(inventoryStr.toString());

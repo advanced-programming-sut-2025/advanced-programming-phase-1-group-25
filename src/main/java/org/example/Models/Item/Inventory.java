@@ -80,6 +80,14 @@ public class Inventory {
         }
         return false;
     }
+    public boolean hasItem(ItemIDs id, int amount) {
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id && entry.getValue().size() >= amount) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public int getItemAmount(ItemIDs id) {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {

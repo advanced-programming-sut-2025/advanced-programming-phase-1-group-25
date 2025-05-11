@@ -155,6 +155,7 @@ public class GameMenuController {
             }
 
             playerMaps.put(players.get(counter), playerMap);
+            players.get(counter).setPlayerMap(playerMap);
             counter++;
             if (counter == players.size()) {
                 return playerMaps;

@@ -1,6 +1,7 @@
 package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.ActionMenuController;
+import org.example.Controllers.InGameMenuController.AnimalController;
 import org.example.Controllers.InGameMenuController.MenuSwitcher;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Models.App;
@@ -137,24 +138,34 @@ public class ActionMenuView implements AppMenu {
             case EAT:
                 break;
             case BUILD:
+                AnimalController.buildBarnOrCoop(matcher, game);
                 break;
             case BUY_ANIMAL:
+                AnimalController.buyAnimal(matcher, game);
                 break;
             case PET:
+                AnimalController.pet(matcher, game);
                 break;
             case ANIMALS:
+                AnimalController.showAnimals(game);
                 break;
             case SHEPHERD_ANIMALS:
+                AnimalController.shepHerd(matcher, game);
                 break;
             case FEED_HAY:
+                AnimalController.feedHay(matcher, game);
                 break;
             case CHEAT_SET_FRIENDSHIP:
+                AnimalController.setAnimalFriendShip(matcher, game);
                 break;
             case PRODUCES:
+                AnimalController.animalProducts(game);
                 break;
             case COLLECT_PRODUCE:
+                AnimalController.collectAnimalProduct(matcher, game);
                 break;
             case SELL_ANIMAL:
+                AnimalController.sellAnimal(matcher, game);
                 break;
             case FISHING:
                 controller.fishing(matcher, game);

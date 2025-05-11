@@ -37,6 +37,7 @@ public class ItemDefinition {
     public String getDisplayName() {
         return displayName;
     }
+
     public Object getAttribute(ItemAttributes attributes) {
         return baseAttributes.get(attributes);
     }

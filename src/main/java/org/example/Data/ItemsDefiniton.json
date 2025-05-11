@@ -4,7 +4,6 @@
     "name": "",
     "type": "floor",
     "baseAttributes": {
-      "damage": 0
     }
   },
   {
@@ -679,7 +678,7 @@
   {
     "itemId": "hen",
     "name": "Hen",
-    "type": "animal",
+    "type": "coop_animal",
     "baseAttributes": {
       "price": 800,
       "products": {
@@ -691,7 +690,7 @@
   {
     "itemId": "duck",
     "name": "Duck",
-    "type": "animal",
+    "type": "coop_animal",
     "baseAttributes": {
       "price": 1200,
       "products": {
@@ -703,7 +702,7 @@
   {
     "itemId": "rabbit",
     "name": "Rabbit",
-    "type": "animal",
+    "type": "coop_animal",
     "baseAttributes": {
       "price": 8000,
       "products": {
@@ -715,7 +714,7 @@
   {
     "itemId": "dinosaur",
     "name": "Dinosaur",
-    "type": "animal",
+    "type": "coop_animal",
     "baseAttributes": {
       "price": 14000,
       "products": {
@@ -726,7 +725,7 @@
   {
     "itemId": "cow",
     "name": "Cow",
-    "type": "animal",
+    "type": "barn_animal",
     "baseAttributes": {
       "price": 1500,
       "products": {
@@ -738,7 +737,7 @@
   {
     "itemId": "goat",
     "name": "Goat",
-    "type": "animal",
+    "type": "barn_animal",
     "baseAttributes": {
       "price": 4000,
       "products": {
@@ -750,7 +749,7 @@
   {
     "itemId": "sheep",
     "name": "Sheep",
-    "type": "animal",
+    "type": "barn_animal",
     "baseAttributes": {
       "price": 8000,
       "isCut": false,
@@ -762,7 +761,7 @@
   {
     "itemId": "pig",
     "name": "Pig",
-    "type": "animal",
+    "type": "barn_animal",
     "baseAttributes": {
       "price": 16000,
       "products": {

@@ -4,6 +4,7 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemLevels;
 import org.example.Enums.ItemConsts.ItemType;
+import org.example.Models.Animals.Animal;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -126,11 +127,12 @@ public class ToolController {
                 return;
             }
             player.reduceEnergy(0, tool, player, false, game);
-            if (tile.getItem().getDefinition().getType().equals(ItemType.animal)) {
-                milkAnimal(tool, player);
+            if (tile.getItem().getDefinition().getType().equals(ItemType.barn_animal)) {
+                Animal animal = (Animal) tile.getItem();
+                milkAnimal(tool, player, animal);
                 return;
             }
-            view.showMessage("use milk pale on animals!");
+            view.showMessage("use milk pale on cows, sheep or goats!");
 
         } else if (name.contains("shear")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, 0)) {
@@ -139,7 +141,8 @@ public class ToolController {
             }
             player.reduceEnergy(0, tool, player, false, game);
             if (tile.getItem().getDefinition().getId().equals(ItemIDs.sheep)) {
-                cutWool(tile.getItem(), player);
+                Animal animal = (Animal) tile.getItem();
+                cutWool(player, animal);
             }
         } else {
             view.showMessage("please select a valid tool!");
@@ -180,19 +183,21 @@ public class ToolController {
         view.showMessage("you've harvested crop!");
     }
 
-    public static void milkAnimal(ItemInstance tool, Player player) {
+    public static void milkAnimal(ItemInstance tool, Player player, Animal animal) {
         tool.setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
         player.getAbilities().increaseFarmingAbility();
+        animal.increaseFriendShip(5);
         view.showMessage("you've milked the animal!");
     }
 
-    public static void cutWool(ItemInstance animal, Player player) {
+    public static void cutWool(Player player, Animal animal) {
         animal.setAttribute(ItemAttributes.isCut, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
         player.getAbilities().increaseFarmingAbility();
+        animal.increaseFriendShip(5);
         view.showMessage("you've collected sheep wool!");
     }
 

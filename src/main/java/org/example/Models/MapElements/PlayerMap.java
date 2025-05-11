@@ -1,43 +1,57 @@
 package org.example.Models.MapElements;
 
 import com.fasterxml.jackson.databind.type.ClassKey;
+import org.example.Models.Animals.Barn;
+import org.example.Models.Animals.Coop;
 
 import javax.management.Query;
 import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
 
 public class PlayerMap {
-    Tile[][] map;
-    GreenHouse greenHouse;
-    Cottage cottage;
-    Quarry[] quarries;
-    Lake[] lakes;
-
+    private Tile[][] map;
+    private GreenHouse greenHouse;
+    private Cottage cottage;
+    private Quarry[] quarries;
+    private Lake[] lakes;
+    private Position startPosition;
+    private Position endPosition;
+    private Barn barn;
+    private Coop coop;
+    private boolean hacBarn;
+    private boolean hacCoop;
     public PlayerMap(Tile[][] map
-                     , Tile greenHouseTile
-                     , Tile cottageTile
-                     , Tile[] lakeTiles
-                     , Tile[] quarryTiles) {
-            this.map = map;
-            // make farm greenhouse
-            this.greenHouse = new GreenHouse(greenHouseTile);
-            // make farm cottage
-            this.cottage = new Cottage(cottageTile);
-            // make farm quarries
-            try {
-                this.quarries = new Quarry[2];
-                this.quarries[0] = new Quarry(quarryTiles[0]);
-                this.quarries[1] = new Quarry(quarryTiles[1]);
-            } catch (Exception e) {
+            , Tile greenHouseTile
+            , Tile cottageTile
+            , Tile[] lakeTiles
+            , Tile[] quarryTiles
+            , Position startPosition
+            , Position endPosition) {
+        this.map = map;
+        // make farm greenhouse
+        this.greenHouse = new GreenHouse(greenHouseTile);
+        // make farm cottage
+        this.cottage = new Cottage(cottageTile);
+        // make farm quarries
+        try {
+            this.quarries = new Quarry[2];
+            this.quarries[0] = new Quarry(quarryTiles[0]);
+            this.quarries[1] = new Quarry(quarryTiles[1]);
+        } catch (Exception e) {
 
-            }
-            // make farm lakes
-            try {
-                this.lakes = new Lake[2];
-                this.lakes[0] = new Lake(lakeTiles[0]);
-                this.lakes[1] = new Lake(lakeTiles[1]);
-            } catch (Exception e) {
+        }
+        // make farm lakes
+        try {
+            this.lakes = new Lake[2];
+            this.lakes[0] = new Lake(lakeTiles[0]);
+            this.lakes[1] = new Lake(lakeTiles[1]);
+        } catch (Exception e) {
 
-            }
+        }
+        this.startPosition = startPosition;
+        this.endPosition = endPosition;
+        this.hacBarn = false;
+        this.hacCoop = false;
     }
 
     public Tile getTile(int y, int x) {
@@ -63,7 +77,8 @@ public class PlayerMap {
     public Quarry[] getQuarries() {
         return quarries;
     }
-    public boolean hasTile(Tile tile){
+
+    public boolean hasTile(Tile tile) {
         for (Tile[] rows : this.map) {
             for (Tile rowTile : rows) {
                 if (rowTile == tile) {
@@ -72,5 +87,39 @@ public class PlayerMap {
             }
         }
         return false;
+    }
+
+    public Position getEndPosition() {
+        return endPosition;
+    }
+
+    public Position getStartPosition() {
+        return startPosition;
+    }
+
+    public Barn getBarn() {
+        return barn;
+    }
+
+    public void setBarn(Barn barn) {
+        this.barn = barn;
+        this.hacBarn = true;
+    }
+
+    public Coop getCoop() {
+        return coop;
+    }
+
+    public void setCoop(Coop coop) {
+        this.coop = coop;
+        this.hacCoop = true;
+    }
+
+    public boolean hasBarn() {
+        return hacBarn;
+    }
+
+    public boolean hasCoop() {
+        return hacCoop;
     }
 }
