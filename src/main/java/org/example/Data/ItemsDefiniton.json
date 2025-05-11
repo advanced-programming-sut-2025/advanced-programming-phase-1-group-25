@@ -775,7 +775,7 @@
     "name": "Salmon",
     "type": "fish",
     "baseAttributes": {
-      "price": 75,
+      "baseSellPrice": 75,
       "season": "fall"
     }
   },
@@ -784,7 +784,7 @@
     "name": "Sardine",
     "type": "fish",
     "baseAttributes": {
-      "price": 40,
+      "baseSellPrice": 40,
       "season": "fall"
     }
   },
@@ -793,7 +793,7 @@
     "name": "Shad",
     "type": "fish",
     "baseAttributes": {
-      "price": 60,
+      "baseSellPrice": 60,
       "season": "fall"
     }
   },
@@ -802,7 +802,7 @@
     "name": "Blue Discus",
     "type": "fish",
     "baseAttributes": {
-      "price": 120,
+      "baseSellPrice": 120,
       "season": "fall"
     }
   },
@@ -811,7 +811,7 @@
     "name": "Midnight Carp",
     "type": "fish",
     "baseAttributes": {
-      "price": 150,
+      "baseSellPrice": 150,
       "season": "winter"
     }
   },
@@ -820,7 +820,7 @@
     "name": "Squid",
     "type": "fish",
     "baseAttributes": {
-      "price": 80,
+      "baseSellPrice": 80,
       "season": "winter"
     }
   },
@@ -829,7 +829,7 @@
     "name": "Tuna",
     "type": "fish",
     "baseAttributes": {
-      "price": 100,
+      "baseSellPrice": 100,
       "season": "winter"
     }
   },
@@ -838,7 +838,7 @@
     "name": "Perch",
     "type": "fish",
     "baseAttributes": {
-      "price": 55,
+      "baseSellPrice": 55,
       "season": "winter"
     }
   },
@@ -847,7 +847,7 @@
     "name": "Flounder",
     "type": "fish",
     "baseAttributes": {
-      "price": 100,
+      "baseSellPrice": 100,
       "season": "spring"
     }
   },
@@ -856,7 +856,7 @@
     "name": "Lionfish",
     "type": "fish",
     "baseAttributes": {
-      "price": 100,
+      "baseSellPrice": 100,
       "season": "spring"
     }
   },
@@ -865,7 +865,7 @@
     "name": "Herring",
     "type": "fish",
     "baseAttributes": {
-      "price": 30,
+      "baseSellPrice": 30,
       "season": "spring"
     }
   },
@@ -874,7 +874,7 @@
     "name": "Ghost Fish",
     "type": "fish",
     "baseAttributes": {
-      "price": 45,
+      "baseSellPrice": 45,
       "season": "spring"
     }
   },
@@ -883,7 +883,7 @@
     "name": "Tilapia",
     "type": "fish",
     "baseAttributes": {
-      "price": 75,
+      "baseSellPrice": 75,
       "season": "summer"
     }
   },
@@ -892,7 +892,7 @@
     "name": "Dorado",
     "type": "fish",
     "baseAttributes": {
-      "price": 100,
+      "baseSellPrice": 100,
       "season": "summer"
     }
   },
@@ -901,7 +901,7 @@
     "name": "Sunfish",
     "type": "fish",
     "baseAttributes": {
-      "price": 30,
+      "baseSellPrice": 30,
       "season": "summer"
     }
   },
@@ -910,7 +910,7 @@
     "name": "Rainbow Trout",
     "type": "fish",
     "baseAttributes": {
-      "price": 65,
+      "baseSellPrice": 65,
       "season": "summer"
     }
   },
@@ -919,7 +919,7 @@
     "name": "Legend",
     "type": "legendary_fish",
     "baseAttributes": {
-      "price": 5000,
+      "baseSellPrice": 5000,
       "season": "spring"
     }
   },
@@ -928,7 +928,7 @@
     "name": "Glacier Fish",
     "type": "legendary_fish",
     "baseAttributes": {
-      "price": 1000,
+      "baseSellPrice": 1000,
       "season": "summer"
     }
   },
@@ -937,7 +937,7 @@
     "name": "Angler",
     "type": "legendary_fish",
     "baseAttributes": {
-      "price": 900,
+      "baseSellPrice": 900,
       "season": "fall"
     }
   },
@@ -946,7 +946,7 @@
     "name": "Crimson Fish",
     "type": "legendary_fish",
     "baseAttributes": {
-      "price": 1500,
+      "baseSellPrice": 1500,
       "season": "winter"
     }
   },
@@ -3634,30 +3634,6 @@
     }
   },
   {
-    "itemId": "honey",
-    "name": "Honey",
-    "type": "artisan",
-    "baseAttributes": {
-      "energy": 75,
-      "ingredients": {
-      },
-      "price": 350
-    }
-  },
-  {
-    "itemId": "cheese",
-    "name": "Cheese",
-    "type": "artisan",
-    "baseAttributes": {
-      "energy": 100,
-      "ingredients": {
-        "milk": -1,
-        "big_milk": -1
-      },
-      "price": 350
-    }
-  },
-  {
     "itemId": "milk",
     "name": "Milk",
     "type": "animal_goods",
@@ -3681,7 +3657,8 @@
       "price": [
         350
       ],
-      "day": 4
+      "day": 4,
+      "machine": "bee_house"
     }
   },
   {
@@ -3695,7 +3672,8 @@
         230,
         345
       ],
-      "energy": 100
+      "energy": 100,
+      "machine": "cheese_press"
     }
   },
   {
@@ -3709,7 +3687,8 @@
         400,
         600
       ],
-      "energy": 100
+      "energy": 100,
+      "machine": "cheese_press"
     }
   },
   {
@@ -3724,7 +3703,8 @@
       ],
       "day": 1,
       "shopPrice": 400,
-      "dailyLimit": -1
+      "dailyLimit": -1,
+      "machine": "keg"
     }
   },
   {
@@ -3737,7 +3717,8 @@
       "price": [
         100
       ],
-      "hour": 10
+      "hour": 10,
+      "machine": "keg"
     }
   },
   {
@@ -3750,7 +3731,8 @@
       "price": [
         150
       ],
-      "hour": 2
+      "hour": 2,
+      "machine": "keg"
     }
   },
   {
@@ -3763,7 +3745,8 @@
       "price": [
         0
       ],
-      "day": 4
+      "day": 4,
+      "machine": "keg"
     }
   },
   {
@@ -3776,7 +3759,8 @@
       "hour": 10,
       "price": [
         300
-      ]
+      ],
+      "machine": "keg"
     }
   },
   {
@@ -3789,7 +3773,8 @@
       "day": 3,
       "price": [
         300
-      ]
+      ],
+      "machine": "keg"
     }
   },
   {
@@ -3802,7 +3787,8 @@
       "price": [
         0
       ],
-      "day": 7
+      "day": 7,
+      "machine": "keg"
     }
   },
   {
@@ -3814,7 +3800,8 @@
       "energy": 0,
       "price": [
         0
-      ]
+      ],
+      "machine": "dehydrator"
     }
   },
   {
@@ -3826,7 +3813,8 @@
       "energy": 0,
       "price": [
         0
-      ]
+      ],
+      "machine": "dehydrator"
     }
   },
   {
@@ -3838,7 +3826,8 @@
       "energy": 125,
       "price": [
         600
-      ]
+      ],
+      "machine": "dehydrator"
     }
   },
   {
@@ -3851,7 +3840,8 @@
       "energy": 0,
       "price": [
         0
-      ]
+      ],
+      "machine": "loom"
     }
   },
   {
@@ -3865,7 +3855,8 @@
       "price": [
         190,
         270
-      ]
+      ],
+      "machine": "mayonnaise_machine"
     }
   },
   {
@@ -3878,7 +3869,8 @@
       "hour": 3,
       "price": [
         37
-      ]
+      ],
+      "machine": "mayonnaise_machine"
     }
   },
   {
@@ -3891,7 +3883,8 @@
       "hour": 3,
       "price": [
         800
-      ]
+      ],
+      "machine": "mayonnaise_machine"
     }
   },
   {
@@ -3904,7 +3897,8 @@
       "hour": 6,
       "price": [
         1065
-      ]
+      ],
+      "machine": "oil_maker"
     }
   },
   {
@@ -3916,7 +3910,8 @@
       "energy": 13,
       "price": [
         100
-      ]
+      ],
+      "machine": "oil_maker"
     }
   },
   {
@@ -3929,7 +3924,8 @@
       "price": [
         0
       ],
-      "hour": 6
+      "hour": 6,
+      "machine": "preserves_jar"
     }
   },
   {
@@ -3942,7 +3938,8 @@
       "price": [
         0
       ],
-      "day": 3
+      "day": 3,
+      "machine": "preserves_jar"
     }
   },
   {
@@ -3955,7 +3952,8 @@
       "price": [
         0
       ],
-      "hour": 1
+      "hour": 1,
+      "machine": "fish_smoker"
     }
   },
   {
@@ -3968,7 +3966,8 @@
       "price": [
         0
       ],
-      "hour": 4
+      "hour": 4,
+      "machine": "furnace"
     }
   },
   {
@@ -3981,7 +3980,8 @@
       "price": [
         0
       ],
-      "hour": 4
+      "hour": 4,
+      "machine": "furnace"
     }
   },
   {
@@ -3994,7 +3994,8 @@
       "price": [
         0
       ],
-      "hour": 4
+      "hour": 4,
+      "machine": "furnace"
     }
   },
   {
@@ -4007,7 +4008,8 @@
       "price": [
         0
       ],
-      "hour": 4
+      "hour": 4,
+      "machine": "furnace"
     }
   },
   {

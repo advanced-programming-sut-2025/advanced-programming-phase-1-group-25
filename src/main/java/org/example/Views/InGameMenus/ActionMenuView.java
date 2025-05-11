@@ -76,6 +76,7 @@ public class ActionMenuView implements AppMenu {
             case CHEAT_WEATHER_SET:
                 break;
             case GREENHOUSE_BUILD:
+                controller.buildGreenhouse();
                 break;
             case WALK:
                 controller.walk(matcher.group("y"), matcher.group("x"));
@@ -156,7 +157,7 @@ public class ActionMenuView implements AppMenu {
             case SELL_ANIMAL:
                 break;
             case FISHING:
-
+                controller.fishing(matcher, game);
                 break;
             case TRADE:
                 break;
@@ -164,6 +165,7 @@ public class ActionMenuView implements AppMenu {
                 controller.artisanUse(matcher, game, input);
                 break;
             case ARTISAN_GET:
+                controller.artisanGet(matcher, game);
                 break;
 
         }

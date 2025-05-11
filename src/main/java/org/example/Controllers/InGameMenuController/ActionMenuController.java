@@ -411,17 +411,35 @@ public class ActionMenuController {
         }
     }
 
+    public void artisanGet(Matcher matcher, Game game) {
+        String machineName = matcher.group("artisanName").trim().toLowerCase();
+        Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getInventory();
+        for (ItemInstance itemInstance : inventory.getArtisan()) {
+            if (itemInstance.getAttribute(ItemAttributes.isReady).equals(true)
+                    && itemInstance.getAttribute(ItemAttributes.machine).equals(machineName)) {
+                if (!inventory.hasCapacity()) {
+                    view.showMessage("Your back pack is full!");
+                    break;
+                } else {
+                    inventory.addItem(itemInstance);
+                    inventory.getArtisan().remove(itemInstance);
+                }
+            }
+        }
+    }
+
     public void fishing(Matcher matcher, Game game) {
         String fishingPole = matcher.group("fishingPole").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
         ItemInstance pole = inventory.getItem(ItemIDs.valueOf(fishingPole));//TODO
-        if (!isNearLake(player, game)) {
-            view.showMessage("you should be near lake to start fishing!");
+        if (!AnimalController.isNearLake(player, game)) {
+            view.showMessage("You should be near lake to start fishing!");
             return;
         }
         if (pole == null) {
-            view.showMessage("you don't have" + fishingPole + "!");
+            view.showMessage("You don't have" + fishingPole + "!");
             return;
         }
         int skill = player.getAbilities().getAbilityLevel(player.getAbilities().getFishingAbility());
@@ -443,7 +461,7 @@ public class ActionMenuController {
             }
         }
         int R = GenerateRandomNumber.generateRandomNumber(0, 1);
-        double M = getMBasedOnWeather(game);
+        double M = AnimalController.getMBasedOnWeather(game);
         int x = Math.min(6, (int) (R * M * (skill + 2)));
         ArrayList<ItemDefinition> caughtFish = new ArrayList<>();
         int temp = x;
@@ -453,70 +471,27 @@ public class ActionMenuController {
         }
         switch (fishingPole) {
             case "training_fishing_pole":
-                int quality1 = calculateQuality(R, M, skill, 0.1);
-                printFish(quality1, x, caughtFish);
+                int quality1 = AnimalController.calculateQuality(R, M, skill, 0.1);
+                AnimalController.printFish(quality1, x, caughtFish);
                 break;
             case "bamboo_fishing_pole":
-                int quality2 = calculateQuality(R, M, skill, 0.5);
-                printFish(quality2, x, caughtFish);
+                int quality2 = AnimalController.calculateQuality(R, M, skill, 0.5);
+                AnimalController.printFish(quality2, x, caughtFish);
                 break;
             case "fiber_glass_fishing_pole":
-                int quality3 = calculateQuality(R, M, skill, 0.9);
-                printFish(quality3, x, caughtFish);
+                int quality3 = AnimalController.calculateQuality(R, M, skill, 0.9);
+                AnimalController.printFish(quality3, x, caughtFish);
                 break;
             case "iridium_fishing_pole":
-                int quality4 = calculateQuality(R, M, skill, 1.2);
-                printFish(quality4, x, caughtFish);
+                int quality4 = AnimalController.calculateQuality(R, M, skill, 1.2);
+                AnimalController.printFish(quality4, x, caughtFish);
                 break;
             default:
-                view.showMessage("please select a valid pole!");
+                view.showMessage("Please select a valid pole!");
                 break;
         }
     }
 
-    public boolean isNearLake(Player player, Game game) {
-        Tile playerTile = player.getPlayerTile(game);
-        GameMap gameMap = game.getGameMap();
-        int x = player.getPosition().getX();
-        int y = player.getPosition().getY();
-        return gameMap.getTile(y, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y, x + 1).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y + 1, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y + 1, x).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y + 1, x + 1).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y - 1, x - 1).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y - 1, x).getItem().getDefinition().getType().equals(ItemType.lake)
-                || gameMap.getTile(y - 1, x + 1).getItem().getDefinition().getType().equals(ItemType.lake);
-    }
 
-    public double getMBasedOnWeather(Game game) {
-        WeatherStates weather = game.getWeather().getCurrentWeather();
-        switch (weather) {
-            case SUNNY -> {
-                return 1.5;
-            }
-            case RAIN -> {
-                return 1.2;
-            }
-            case STORM -> {
-                return 0.5;
-            }
-            default -> {
-                return 1;
-            }
-        }
-    }
-
-    public int calculateQuality(int R, double M, int skill, double pole) {
-        return (int) ((R * pole * (skill + 2)) / (7 - M));
-    }
-
-    public void printFish(int quality, int number, ArrayList<ItemDefinition> caughtFish) {
-        view.showMessage("Quality of fish : " + quality);
-        view.showMessage("number of fish : " + number);
-        for (ItemDefinition fish : caughtFish) {
-            view.showMessage("fish name: " + fish.getDisplayName().toLowerCase() + " type: " + fish.getType().name());
-        }
-    }
 }
 

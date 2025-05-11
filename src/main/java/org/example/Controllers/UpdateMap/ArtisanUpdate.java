@@ -20,9 +20,7 @@ public class ArtisanUpdate {
             int hour = (int) artisan.getAttribute(ItemAttributes.hour);
             artisan.setAttribute(ItemAttributes.hour, hour - hourPassed);
             if (hour - hourPassed <= 0) {
-                inventory.addItem(artisan);
                 artisan.setAttribute(ItemAttributes.isReady, true);
-                inventory.getArtisan().remove(artisan);
             }
         }
 
@@ -36,9 +34,7 @@ public class ArtisanUpdate {
             int day = (int) artisan.getAttribute(ItemAttributes.day);
             artisan.setAttribute(ItemAttributes.day, day - dayPassed);
             if (day - dayPassed <= 0) {
-                inventory.addItem(artisan);
                 artisan.setAttribute(ItemAttributes.isReady, true);
-                inventory.getArtisan().remove(artisan);
             }
         }
     }
