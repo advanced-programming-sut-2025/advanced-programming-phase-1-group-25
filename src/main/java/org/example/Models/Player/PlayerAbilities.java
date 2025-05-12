@@ -18,18 +18,23 @@ public class PlayerAbilities {
         this.natureAbility = 0;
         this.fishingAbility = 0;
     }
+
     public void increaseFarmingAbility() {
-        this.farmingAbility += 5;
+        this.farmingAbility = Math.max(450, this.farmingAbility + 5);
     }
+
     public void increaseMiningAbility() {
-        this.miningAbility += 10;
+        this.miningAbility = Math.max(450, this.miningAbility + 10);
     }
+
     public void increaseNatureAbility() {
-        this.natureAbility += 10;
+        this.natureAbility = Math.max(450, this.miningAbility + 10);
     }
+
     public void increaseFishingAbility() {
-        this.fishingAbility += 5;
+        this.fishingAbility = Math.max(450, this.farmingAbility + 5);
     }
+
     public int getAbilityLevel(int ability) {
         int x = Math.max(0, ability - 50);
         return x / 100;

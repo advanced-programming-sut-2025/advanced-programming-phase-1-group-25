@@ -32,7 +32,7 @@ public enum ItemAttributes {
     dailyLimit,
     fishingSkill,
     machine,
-    ;
+    quality,;
 
 
 }

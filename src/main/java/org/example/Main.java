@@ -3,6 +3,7 @@ package org.example;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.Enums.GameConsts.Gender;
+import org.example.Enums.GameMenus.Menus;
 import org.example.Models.App;
 import org.example.Models.Question;
 import org.example.Models.User;
@@ -18,7 +19,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+    // test
         User user1 = new User("ali1", "ali1", "1234", "", Gender.FEMALE, new Question("", ""));
         User user2 = new User("ali2", "ali2", "", "", Gender.FEMALE, new Question("", ""));
         User user3 = new User("ali3", "ali3", "", "", Gender.FEMALE, new Question("", ""));
@@ -27,6 +28,9 @@ public class Main {
         App.addUser("ali2", user2);
         App.addUser("ali3", user3);
         App.addUser("ali4", user4);
+        App.setCurrentUser(user1);
+        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
+    // test
 
         AppView appView = new AppView();
         appView.run();

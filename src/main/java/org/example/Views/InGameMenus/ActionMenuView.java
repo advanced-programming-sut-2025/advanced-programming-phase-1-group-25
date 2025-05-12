@@ -2,6 +2,7 @@ package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.ActionMenuController;
 import org.example.Controllers.InGameMenuController.AnimalController;
+import org.example.Controllers.InGameMenuController.FarmingController;
 import org.example.Controllers.InGameMenuController.MenuSwitcher;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Models.App;
@@ -13,8 +14,9 @@ import java.util.regex.Matcher;
 
 public class ActionMenuView implements AppMenu {
     Scanner scanner;
-    ActionMenuController controller;
-
+    ActionMenuController actionController;
+    FarmingController farmingController;
+    AnimalController animalController;
     @Override
     public void handleInput(Scanner sc) {
         this.scanner = sc;
@@ -34,14 +36,16 @@ public class ActionMenuView implements AppMenu {
 
     private void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
         Game game = App.getCurrentGame();
-        this.controller = new ActionMenuController(this);
+        this.actionController = new ActionMenuController(this);
+        this.farmingController = new FarmingController(this);
+        this.animalController = new AnimalController(this);
         switch (command) {
             case SWITCH_MENU:
                 System.out.println(MenuSwitcher.printMenus());
-                controller.changeMenu();
+                actionController.changeMenu();
                 break;
             case NEXT_TURN:
-                controller.nextTurn();
+                actionController.nextTurn();
                 break;
             case TIME:
                 System.out.println(game.getDateTime().getHour());
@@ -53,16 +57,17 @@ public class ActionMenuView implements AppMenu {
             case DATE_TIME:
                 System.out.println("season: " + game.getDateTime().getSeason().toString().toLowerCase()
                         + "\nday: " + game.getDateTime().getDay()
+                        + "\nday of week: " + game.getDateTime().getDayOfWeek().name().toLowerCase()
                         + "\nhour: " + game.getDateTime().getHour());
                 break;
             case DAY_OF_THE_WEEK:
                 System.out.println(game.getDateTime().getDayOfWeek().toString().toLowerCase());
                 break;
             case CHEAT_ADVANCE_TIME:
-                controller.cheatAdvanceTime(matcher, game);
+                actionController.cheatAdvanceTime(matcher, game);
                 break;
             case CHEAT_ADVANCE_DATE:
-                controller.cheatAdvanceDate(matcher, game);
+                actionController.cheatAdvanceDate(matcher, game);
                 break;
             case SEASON:
                 System.out.println(game.getDateTime().getSeason().toString().toLowerCase());
@@ -77,49 +82,54 @@ public class ActionMenuView implements AppMenu {
             case CHEAT_WEATHER_SET:
                 break;
             case GREENHOUSE_BUILD:
-                controller.buildGreenhouse();
+                actionController.buildGreenhouse();
                 break;
             case WALK:
-                controller.walk(matcher.group("y"), matcher.group("x"));
+                actionController.walk(matcher.group("y"), matcher.group("x"));
                 break;
             case PRINT_MAP:
-                controller.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size"));
+                actionController.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size"));
                 break;
             case HELP_READING_MAP:
+
                 break;
             case ENERGY_SHOW:
                 System.out.println("Energy: " + game.getCurrentPlayer().getEnergy());
                 break;
             case ENERGY_SET:
-                controller.cheatSetEnergy(matcher, game);
+                actionController.cheatSetEnergy(matcher, game);
                 break;
             case ENERGY_UNLIMITED:
-                controller.energyUnlimited(game);
+                actionController.energyUnlimited(game);
                 break;
             case TOOLS_EQUIP:
-                controller.equipTool(matcher);
+                actionController.equipTool(matcher);
                 break;
             case TOOLS_SHOW_CURRENT:
-                controller.showCurrentTool();
+                actionController.showCurrentTool();
                 break;
             case TOOLS_SHOW_AVAILABLE:
-                controller.showInventoryTools();
+                actionController.showInventoryTools();
                 break;
             case TOOLS_UPGRADE:
                 break;
             case TOOLS_USE:
-                controller.useTool(matcher);
+                actionController.useTool(matcher);
                 break;
             case CRAFT_INFO:
-                controller.craftInfo(matcher);
+                actionController.craftInfo(matcher);
                 break;
             case PLANT:
+                farmingController.plant(matcher.group("seed"), matcher.group("direction"));
                 break;
             case SHOW_PLANT:
+                farmingController.showPlant(matcher.group("y"), matcher.group("x"));
                 break;
             case FERTILIZE:
+                farmingController.fertilize(matcher.group("fertilizer"), matcher.group("direction"));
                 break;
             case HOW_MUCH_WATER:
+                farmingController.howMuchWater();
                 break;
             case CRAFTING_SHOW_RECIPES:
                 break;
@@ -138,45 +148,45 @@ public class ActionMenuView implements AppMenu {
             case EAT:
                 break;
             case BUILD:
-                AnimalController.buildBarnOrCoop(matcher, game);
+                animalController.buildBarnOrCoop(matcher, game);
                 break;
             case BUY_ANIMAL:
-                AnimalController.buyAnimal(matcher, game);
+                animalController.buyAnimal(matcher, game);
                 break;
             case PET:
-                AnimalController.pet(matcher, game);
+                animalController.pet(matcher, game);
                 break;
             case ANIMALS:
-                AnimalController.showAnimals(game);
+                animalController.showAnimals(game);
                 break;
             case SHEPHERD_ANIMALS:
-                AnimalController.shepHerd(matcher, game);
+                animalController.shepHerd(matcher, game);
                 break;
             case FEED_HAY:
-                AnimalController.feedHay(matcher, game);
+                animalController.feedHay(matcher, game);
                 break;
             case CHEAT_SET_FRIENDSHIP:
-                AnimalController.setAnimalFriendShip(matcher, game);
+                animalController.setAnimalFriendShip(matcher, game);
                 break;
             case PRODUCES:
-                AnimalController.animalProducts(game);
+                animalController.animalProducts(game);
                 break;
             case COLLECT_PRODUCE:
-                AnimalController.collectAnimalProduct(matcher, game);
+                animalController.collectAnimalProduct(matcher, game);
                 break;
             case SELL_ANIMAL:
-                AnimalController.sellAnimal(matcher, game);
+                animalController.sellAnimal(matcher, game);
                 break;
             case FISHING:
-                controller.fishing(matcher, game);
+                animalController.fishing(matcher, game);
                 break;
             case TRADE:
                 break;
             case ARTISAN_USE:
-                controller.artisanUse(matcher, game, input);
+                actionController.artisanUse(matcher, game, input);
                 break;
             case ARTISAN_GET:
-                controller.artisanGet(matcher, game);
+                actionController.artisanGet(matcher, game);
                 break;
 
         }

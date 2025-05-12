@@ -1,11 +1,13 @@
 package org.example.Controllers.InGameMenuController;
 
+import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.Game;
+import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
@@ -13,6 +15,7 @@ import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
+import org.example.Views.InGameMenus.ActionMenuView;
 import org.example.Views.InGameMenus.FarmingView;
 
 import javax.swing.*;
@@ -22,10 +25,12 @@ import java.util.Map;
 import java.util.Objects;
 
 public class FarmingController {
-    FarmingView view;
-    public FarmingController(FarmingView view) {
+    ActionMenuView view;
+
+    public FarmingController(ActionMenuView view) {
         this.view = view;
     }
+
     public void plow(String dir) {
         Tile tile = getTileByDir(dir);
         if (tile == null) {
@@ -141,7 +146,7 @@ public class FarmingController {
         try {
             tile = App.getCurrentGame().getGameMap().getTile(tileY, tileX);
         } catch (ArrayIndexOutOfBoundsException e) {
-            return  null;
+            return null;
         }
         return tile;
     }
@@ -149,8 +154,8 @@ public class FarmingController {
     public void showPlant(String yStr, String xStr) {
         int y, x;
         try {
-            y = Integer.getInteger(yStr);
-            x = Integer.getInteger(xStr);
+            y = Integer.parseInt(yStr);
+            x = Integer.parseInt(xStr);
         } catch (NumberFormatException e) {
             this.view.showMessage("Please enter a valid position.");
             return;
@@ -188,14 +193,12 @@ public class FarmingController {
             isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
             isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
             //TODO: stage and quality?!
-        }
-        else if (item.getDefinition().getType() == ItemType.foraging_crops) {
+        } else if (item.getDefinition().getType() == ItemType.foraging_crops) {
             name = item.getDefinition().getDisplayName();
             isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
             isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
             //TODO: stage and quality?!
-        }
-        else {
+        } else {
             this.view.showMessage("Tile doesn't have any plant!");
             return;
         }
@@ -258,6 +261,7 @@ public class FarmingController {
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         // add plant to inventory
     }
+
     private ItemDefinition getSeedByName(String name) {
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
             if (itemDefinition.getType() == ItemType.foraging_seeds) {
@@ -271,10 +275,31 @@ public class FarmingController {
 
     private ItemDefinition getPlantBySeed(ItemDefinition seed) {
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            if (itemDefinition.getBaseAttributes().get("source").equals(seed.getId().name())) {
+//            if (itemDefinition.getBaseAttributes().get("source").equals(seed.getDisplayName())) {
+//                return itemDefinition;
+//            }
+            if(itemDefinition.getAttribute(ItemAttributes.source) == null) {
+                view.showMessage("@@@@@@@@@@@@");
                 return itemDefinition;
             }
+            if(itemDefinition.getAttribute(ItemAttributes.source).toString().equalsIgnoreCase(seed.getDisplayName())) {}
         }
         return null;
+    }
+    public void howMuchWater(){
+        Game game = App.getCurrentGame();
+        Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getInventory();
+        for(Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()){
+            ItemIDs itemID = entry.getKey();
+            ArrayList<ItemInstance> items = entry.getValue();
+            for (ItemInstance item : items) {
+                if(item.getDefinition().getId().name().contains("watering_can")){
+                    int water = (int) item.getAttribute(ItemAttributes.durability);
+                    view.showMessage("You have " + water + " in your watering can");
+                    return;
+                }
+            }
+        }
     }
 }

@@ -8,10 +8,6 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.AnsiColors;
-import org.example.Enums.NPCConsts.NPCConst;
-import org.example.Models.Animals.Animal;
-import org.example.Models.Animals.Barn;
-import org.example.Models.Animals.Coop;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -122,8 +118,10 @@ public class ActionMenuController {
 
         if (playerWood < 500) {
             view.showMessage("You don't have enough wood!");
+            return;
         } else if (playerCoin < 1000) {
             view.showMessage("You don't have enough coin!");
+            return;
         } else {
             currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
             currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
@@ -160,8 +158,7 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
-        DayOfWeek newDay = game.getDateTime().updateTimeByDay(time);
-        view.showMessage("day is now " + newDay.toString().toLowerCase() + "!");
+        view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
     }
 
     //    public String cheatWeather(Matcher matcher, Game game) {
@@ -435,71 +432,6 @@ public class ActionMenuController {
         }
     }
 
-    public void fishing(Matcher matcher, Game game) {
-        String fishingPole = matcher.group("fishingPole").trim().toLowerCase();
-        Player player = game.getCurrentPlayer();
-        Inventory inventory = player.getInventory();
-        ItemInstance pole = inventory.getItem(ItemIDs.valueOf(fishingPole));//TODO
-        if (!AnimalController.isNearLake(player, game)) {
-            view.showMessage("You should be near lake to start fishing!");
-            return;
-        }
-        if (pole == null) {
-            view.showMessage("You don't have" + fishingPole + "!");
-            return;
-        }
-        int skill = player.getAbilities().getAbilityLevel(player.getAbilities().getFishingAbility());
-        ArrayList<ItemDefinition> fish = new ArrayList<>();
-        for (ItemDefinition item : App.getItemDefinitions()) {
-            if (skill != 4) {
-                if (item.getType().equals(ItemType.fish) &&
-                        item.getAttribute(ItemAttributes.season).toString().
-                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
-                    fish.add(item);
-                }
-            } else {
-                if ((item.getType().equals(ItemType.fish)
-                        || item.getType().equals(ItemType.legendary_fish)) &&
-                        item.getAttribute(ItemAttributes.season).toString().
-                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
-                    fish.add(item);
-                }
-            }
-        }
-        int R = GenerateRandomNumber.generateRandomNumber(0, 1);
-        double M = AnimalController.getMBasedOnWeather(game);
-        int x = Math.min(6, (int) (R * M * (skill + 2)));
-        ArrayList<ItemDefinition> caughtFish = new ArrayList<>();
-        int temp = x;
-        while (temp > 0) {
-            caughtFish.add(fish.get(temp));
-            temp--;
-        }
-        switch (fishingPole) {
-            case "training_fishing_pole":
-                int quality1 = AnimalController.calculateQuality(R, M, skill, 0.1);
-                AnimalController.printFish(quality1, x, caughtFish);
-                AnimalController.putFishInInventory(player, caughtFish, quality1);
-                break;
-            case "bamboo_fishing_pole":
-                int quality2 = AnimalController.calculateQuality(R, M, skill, 0.5);
-                AnimalController.printFish(quality2, x, caughtFish);
-                AnimalController.putFishInInventory(player, caughtFish, quality2);
-                break;
-            case "fiber_glass_fishing_pole":
-                int quality3 = AnimalController.calculateQuality(R, M, skill, 0.9);
-                AnimalController.printFish(quality3, x, caughtFish);
-                AnimalController.putFishInInventory(player, caughtFish, quality3);
-                break;
-            case "iridium_fishing_pole":
-                int quality4 = AnimalController.calculateQuality(R, M, skill, 1.2);
-                AnimalController.printFish(quality4, x, caughtFish);
-                AnimalController.putFishInInventory(player, caughtFish, quality4);
-                break;
-            default:
-                view.showMessage("Please select a valid pole!");
-                break;
-        }
-    }
+
 }
 

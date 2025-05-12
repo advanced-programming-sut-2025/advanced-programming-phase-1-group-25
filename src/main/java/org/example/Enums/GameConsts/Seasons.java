@@ -4,14 +4,14 @@ package org.example.Enums.GameConsts;
     We have just 4 seasons in the game.
  */
 public enum Seasons {
-    SPRING(1),
-    SUMMER(2),
-    FALL(3),
-    WINTER(4);
+    SPRING(0),
+    SUMMER(1),
+    FALL(2),
+    WINTER(3);
 
     private final int numberOfSeason;
 
-    Seasons(int  numberOfSeason) {
+    Seasons(int numberOfSeason) {
         this.numberOfSeason = numberOfSeason;
     }
 

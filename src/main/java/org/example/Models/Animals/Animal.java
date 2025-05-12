@@ -19,6 +19,7 @@ public class Animal extends ItemInstance {
     private boolean isOutside;
     private boolean hasProduct;
     private Map<ItemInstance, Integer> products;
+
     public Animal(ItemDefinition definition, String name, Player owner, Position position) {
         super(definition);
         this.name = name;
@@ -45,11 +46,9 @@ public class Animal extends ItemInstance {
     }
 
     public void setFriendShip(int friendShip) {
-        this.friendShip = friendShip;
+        this.friendShip = Math.min(1000, this.friendShip + friendShip);
     }
-    public void increaseFriendShip(int friendShip) {
-        this.friendShip += friendShip;
-    }
+
     public Player getOwner() {
         return owner;
     }

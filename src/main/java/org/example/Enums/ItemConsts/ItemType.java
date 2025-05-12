@@ -28,5 +28,6 @@ public enum ItemType {
     animal_goods,
     shopItem,
     shopRecipe,
+    building,
     ;
 }

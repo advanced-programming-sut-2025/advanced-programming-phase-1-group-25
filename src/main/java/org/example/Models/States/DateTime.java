@@ -24,7 +24,7 @@ public class DateTime {
     }
 
     public DayOfWeek updateTimeByDay(int day) {
-//        ArtisanUpdate.artisanWithDay(day);
+        ArtisanUpdate.artisanWithDay(day);
         int seasonPassed = (this.day + day) / 21;
         int newSeasonNumber = ((this.season.getNumberOfSeason() + seasonPassed) % 4);
         Seasons newSeason = Seasons.getSeasonByNumber(newSeasonNumber);
@@ -38,7 +38,7 @@ public class DateTime {
     }
 
     public int updateTimeByHour(int hour) {
-//        ArtisanUpdate.artisanWithHour(hour);
+        ArtisanUpdate.artisanWithHour(hour);
         int dayPassed = (this.hour - 9 + hour) / 13;
         int newHour = ((this.hour - 9 + hour) % 13) + 9;
         updateTimeByDay(dayPassed);

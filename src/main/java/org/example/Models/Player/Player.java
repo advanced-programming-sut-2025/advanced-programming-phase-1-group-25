@@ -49,7 +49,7 @@ public class Player {
         this.energyPerTurn = 50;
         this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
         animals = new ArrayList<>();
-        setInventoryTools();
+        this.inventory.setInventoryTools();
     }
 
     public void changeToolLevel(ItemInstance tool) {
@@ -165,16 +165,7 @@ public class Player {
         }
     }
 
-    public void setInventoryTools() {
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_watering_can"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
-    }
+
 
     public PlayerMap getPlayerMap() {
         return playerMap;

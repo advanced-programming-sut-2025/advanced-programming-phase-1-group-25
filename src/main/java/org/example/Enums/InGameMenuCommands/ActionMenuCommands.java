@@ -56,7 +56,7 @@ public enum ActionMenuCommands {
     PLANT("^\\s*plant\\s+-s\\s+(?<seed>.+?)\\s+-d\\s+(?<direction>.+?)\\s*$"),
     SHOW_PLANT("^\\s*showplant\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     FERTILIZE("^\\s*fertilize\\s+-f\\s+(?<fertilizer>.+?)\\s+-d\\s+(?<direction>.+?)\\s*$"),
-    HOW_MUCH_WATER("^\\s*howmuch\\s+wate\\s*$"),
+    HOW_MUCH_WATER("^\\s*howmuch\\s+water\\s*$"),
 
 
     CRAFTING_SHOW_RECIPES("^\\s*crafting\\s+show\\s+recipes\\s*$"),
@@ -79,9 +79,9 @@ public enum ActionMenuCommands {
     BUY_ANIMAL("^\\s*buy\\s+animal\\s+-a\\s+(?<animal>.+?)\\s+-n\\s+(?<name>.+?)\\s*$"),
     PET("^\\s*pet\\s+-n\\s+(?<name>.+?)\\s*$"),
     ANIMALS("^\\s*animals\\s*$"),
-    SHEPHERD_ANIMALS("^\\s*shepherd\\s+animals\\s+-n\\s+(<animalName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
+    SHEPHERD_ANIMALS("^\\s*shepherd\\s+animals\\s+-n\\s+(?<animalName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     FEED_HAY("^\\s*feed\\s+hay\\s+-n\\s+(?<animalName>.+?)\\s*$"),
-    CHEAT_SET_FRIENDSHIP("^\\s*cheat\\s+set\\s+friendship\\s+-n\\s+(?<animalName>.+?)\\s+-c\\s+(<amount>.+?)\\s*$"),
+    CHEAT_SET_FRIENDSHIP("^\\s*cheat\\s+set\\s+friendship\\s+-n\\s+(?<animalName>.+?)\\s+-c\\s+(?<amount>.+?)\\s*$"),
     PRODUCES("^\\s*produces\\s*$"),
     COLLECT_PRODUCE("^\\s*collect\\s+produce\\s+-n\\s+(?<name>.+?)\\s*$"),
     SELL_ANIMAL("^\\s*sell\\s+animal\\s+-n\\s+(?<name>.+?)\\s*$"),

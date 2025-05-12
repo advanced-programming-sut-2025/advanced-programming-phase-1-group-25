@@ -12,6 +12,7 @@ public class Coop extends ItemInstance {
     public Coop(ItemDefinition definition, Position position) {
         super(definition);
         this.position = position;
+        animals = new ArrayList<>();
     }
     public int getX(){
         return position.getX();
