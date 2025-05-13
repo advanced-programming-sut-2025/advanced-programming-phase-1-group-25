@@ -52,29 +52,6 @@ public class Player {
         this.inventory.setInventoryTools();
     }
 
-    public void changeToolLevel(ItemInstance tool) {
-        String name = tool.getDefinition().getDisplayName().toLowerCase();
-        if (name.contains("hoe")) {
-            changeInventoryTool(tool, "base_hoe");
-        } else if (name.contains("pickaxe")) {
-            changeInventoryTool(tool, "base_pickaxe");
-        } else if (name.contains("axe")) {
-            changeInventoryTool(tool, "base_axe");
-        } else if (name.contains("watering can")) {
-            changeInventoryTool(tool, "base_watering_can");
-        } else if (name.contains("fishing pole")) {
-            changeInventoryTool(tool, "training_fishing_pole");
-        }
-    }
-
-    public void changeInventoryTool(ItemInstance tool, String newToolName) {
-        this.inventory.getItems().remove(tool);
-        ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
-        ArrayList<ItemInstance> items = new ArrayList<>();
-        items.add(newTool);
-        this.inventory.getItems().put(newTool.getDefinition().getId(), items);
-        this.currentTool = newTool;
-    }
 
     public ItemInstance getCurrentTool() {
         return currentTool;
@@ -144,19 +121,50 @@ public class Player {
         this.energy = energy;
     }
 
+    public PlayerMap getPlayerMap() {
+        return playerMap;
+    }
+
+    public void setPlayerMap(PlayerMap playerMap) {
+        this.playerMap = playerMap;
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animals.add(animal);
+    }
+
+    public ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public int getEnergyPerTurn() {
+        return energyPerTurn;
+    }
+
+    public void setEnergyPerTurn(int energyPerTurn) {
+        this.energyPerTurn = energyPerTurn;
+    }
+
     public Tile getPlayerTile(Game game) {
         GameMap gameMap = game.getGameMap();
         return gameMap.getTile(this.position.getY(), this.position.getX());
     }
 
-    public void reduceEnergy(int ability, ItemInstance tool, Player player, boolean canBeDownGraded, Game game) {
+    public void decreaseEnergy(int deltaEnergy) {
+        this.energy = Math.max(0, this.energy - deltaEnergy);
+        this.energyPerTurn = Math.max(0, this.energyPerTurn - deltaEnergy);
+    }
+
+    public void reduceEnergy(int ability, ItemInstance tool, Player player,
+                             boolean canBeDownGraded, Game game, int energyCost) {
         double rate = 1;
         if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOW)) rate = 2;
-        if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)) rate = 1.5;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)
+                || game.getWeather().getCurrentWeather().equals(WeatherStates.STORM)) rate = 1.5;
         if (ability == 4) {
-            this.energy -= (int) (rate * ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1));
+            decreaseEnergy((int) rate * (energyCost - 1));
         } else {
-            this.energy -= (int) (rate * (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            decreaseEnergy((int) rate * energyCost);
         }
         if (canBeDownGraded) {
             int x = tool.decreaseDurability();
@@ -165,19 +173,27 @@ public class Player {
         }
     }
 
-
-
-    public PlayerMap getPlayerMap() {
-        return playerMap;
+    public void changeToolLevel(ItemInstance tool) {
+        String name = tool.getDefinition().getDisplayName().toLowerCase();
+        if (name.contains("hoe")) {
+            changeInventoryTool(tool, "base_hoe");
+        } else if (name.contains("pickaxe")) {
+            changeInventoryTool(tool, "base_pickaxe");
+        } else if (name.contains("axe")) {
+            changeInventoryTool(tool, "base_axe");
+        } else if (name.contains("watering can")) {
+            changeInventoryTool(tool, "base_watering_can");
+        } else if (name.contains("fishing pole")) {
+            changeInventoryTool(tool, "training_fishing_pole");
+        }
     }
 
-    public void setPlayerMap(PlayerMap playerMap) {
-        this.playerMap = playerMap;
-    }
-    public void setAnimal(Animal animal) {
-        this.animals.add(animal);
-    }
-    public ArrayList<Animal> getAnimals() {
-        return animals;
+    public void changeInventoryTool(ItemInstance tool, String newToolName) {
+        this.inventory.getItems().remove(tool);
+        ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
+        ArrayList<ItemInstance> items = new ArrayList<>();
+        items.add(newTool);
+        this.inventory.getItems().put(newTool.getDefinition().getId(), items);
+        this.currentTool = newTool;
     }
 }

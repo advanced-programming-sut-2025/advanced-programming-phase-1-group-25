@@ -15,6 +15,7 @@ public class Game {
     private DateTime dateTime;
     private Weather weather;
     private GameMap gameMap;
+
     public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer, GameMap gameMap) {
         this.gamePlayers = gamePlayers;
         this.playerMaps = playerMaps;
@@ -48,6 +49,7 @@ public class Game {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
+
     public Player getNextPlayer() {
         return gamePlayers.get((this.gamePlayers.indexOf(this.currentPlayer) + 1) % (this.gamePlayers.size()));
     }
@@ -55,11 +57,16 @@ public class Game {
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
+
     public ArrayList<PlayerMap> getPlayerMaps() {
         return new ArrayList<>(playerMaps.values());
     }
 
     public ArrayList<Player> getPlayers() {
         return gamePlayers;
+    }
+
+    public boolean isPlayerActive(Player player) {
+        return player.getEnergyPerTurn() > 0;
     }
 }

@@ -16,13 +16,11 @@ public enum ActionMenuCommands {
     CHEAT_ADVANCE_DATE("^\\s*cheat\\s+advance\\s+date\\s+(?<day>.+?)\\s*d\\s*$"),
 
 
-
     SEASON("^\\s*season\\s*$"),
     CHEAT_THOR("^\\s*cheat\\s+Thor\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     WEATHER("^\\s*weather\\s*$"),
     WEATHER_FORECAST("^\\s*weather\\s+forecast\\s*$"),
     CHEAT_WEATHER_SET("^\\s*cheat\\s+weather\\s+set\\s+(?<type>.+?)\\s*$"),
-
 
 
     GREENHOUSE_BUILD("^\\s*greenhouse\\s+build\\s*$"),
@@ -40,16 +38,11 @@ public enum ActionMenuCommands {
     ENERGY_UNLIMITED("^\\s*energy\\s+unlimited\\s*$"),
 
 
-
-
-
     TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<toolName>.+?)\\s*$"),
     TOOLS_SHOW_CURRENT("^\\s*tools\\s+show\\s+current\\s*$"),
     TOOLS_SHOW_AVAILABLE("^\\s*tools\\s+show\\s+available\\s*$"),
     TOOLS_UPGRADE("^\\s*tools\\s+upgrade\\s+(?<toolName>.+?)\\s*$"),
     TOOLS_USE("^\\s*tools\\s+use\\s+-d\\s+(?<direction>.+?)\\s*$"),
-
-
 
 
     CRAFT_INFO("^\\s*craft\\s+info\\s+-n\\s+(?<craftName>.+?)\\s*$"),
@@ -69,10 +62,6 @@ public enum ActionMenuCommands {
     COOKING_SHOW_RECIPES("^\\s*cooking\\s+show\\s+recipes\\s*$"),
     COOKING_PREPARE("^\\s*cooking\\s+prepare\\s+(?<recipeName>.+?)\\s*$"),
     EAT("^\\s*eat\\s+(?<foodName>.+?)\\s*$"),
-
-
-
-
 
 
     BUILD("^\\s*build\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
@@ -101,7 +90,6 @@ public enum ActionMenuCommands {
     TRADE_RESPONSE("^\\s*trade\\s+response\\s+-(accept|reject)\\s+-i\\s+(?<id>.+?)\\s*$"),
     TRADE_LIST("^\\s*trade\\s+list\\s*$"),
     /// TRADE TODO
-    ///
     START_TRADE("^\\s*start\\s+trade\\s*$"),
     RESPOND("^\\s*respond\\s+-(accept|reject)\\s+-u\\s+(?<username>.+?)\\s*$"),
     ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s+-r\\s+(?<ring>.+?)\\s*$"),
@@ -122,8 +110,8 @@ public enum ActionMenuCommands {
     SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),
     /// faravari
     ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>.+?)\\s*$"),
-    ARTISAN_USE("^\\s*artisan\\s+use\\s+-r\\s+(?<artisanName>.+?)\\s+" +
-            "-n\\s+(?<item1Name>.+?)(\\s+-i\\s+(?<ingredient>.+?))?\\s*$");
+    ARTISAN_USE("^\\s*artisan\\s+use\\s+-r\\s+(?<artisanName>.+?)\\s+-n\\s+(?<item1Name>.+?)" +
+            "(\\s+-i\\s+(?<ingredient>.+?))?\\s*$");
     private final String pattern;
 
     ActionMenuCommands(String pattern) {

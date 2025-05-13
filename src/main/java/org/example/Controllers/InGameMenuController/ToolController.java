@@ -27,7 +27,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, true, game);
+            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, true, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 view.showMessage("You can't use hoe in lake!");
                 return;
@@ -48,7 +49,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player, true, game);
+            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player, true, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 view.showMessage("You can't use pickaxe in lake!");
                 return;
@@ -76,7 +78,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getNatureAbility(), tool, player, true, game);
+            player.reduceEnergy(player.getAbilities().getNatureAbility(), tool, player, true, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 view.showMessage("You can't use axe in lake!");
                 return;
@@ -99,7 +102,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, false, game);
+            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, false, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 addWaterToWateringCan(tool);
                 return;
@@ -116,7 +120,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game);
+            player.reduceEnergy(0, tool, player, false, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.fiber)) {
                 cutFiber(tile, player);
                 return;
@@ -131,7 +136,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game);
+            player.reduceEnergy(0, tool, player, false, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getType().equals(ItemType.barn_animal)) {
                 Animal animal = (Animal) tile.getItem();
                 milkAnimal(tool, player, animal);
@@ -144,7 +150,8 @@ public class ToolController {
                 view.showMessage("You don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game);
+            player.reduceEnergy(0, tool, player, false, game,
+                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
             if (tile.getItem().getDefinition().getId().equals(ItemIDs.sheep)) {
                 Animal animal = (Animal) tile.getItem();
                 cutWool(player, animal);

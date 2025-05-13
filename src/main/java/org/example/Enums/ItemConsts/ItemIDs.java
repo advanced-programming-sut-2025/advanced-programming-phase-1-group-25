@@ -359,5 +359,18 @@ public enum ItemIDs {
     quality_retaining_soil,
     large_pack,
     deluxe_pack,
+    apricot,
+    cherry,
+    banana,
+    mango,
+    orange,
+    peach,
+    apple,
+    pomegranate,
+    oak_resin,
+    maple_syrup,
+    pine_tar,
+    sap,
+    mystic_syrup
     ;
 }

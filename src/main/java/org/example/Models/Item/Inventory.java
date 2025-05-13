@@ -114,7 +114,6 @@ public class Inventory {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
             if (entry.getKey() == id) {
                 ArrayList<ItemInstance> itemList = this.items.get(id);
-                System.out.println("itemListSize: " + itemList.size());
                 target = itemList.get(itemList.size() - 1);
                 itemList.remove(itemList.size() - 1);
             }
@@ -126,7 +125,6 @@ public class Inventory {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
             if (entry.getKey() == id) {
                 ArrayList<ItemInstance> itemList = this.items.get(id);
-                System.out.println("itemListSize: " + itemList.size());
                 target = itemList.get(itemList.size() - 1);
             }
         }

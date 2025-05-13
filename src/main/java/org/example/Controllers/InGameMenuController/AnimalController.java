@@ -33,6 +33,10 @@ public class AnimalController {
     }
 
     public void fishing(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String fishingPole = matcher.group("fishingPole").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
@@ -188,6 +192,10 @@ public class AnimalController {
     }
 
     public void buildBarnOrCoop(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         PlayerMap playerMap = player.getPlayerMap();
         String buildingName = matcher.group("buildingName").trim().toLowerCase();
@@ -231,13 +239,13 @@ public class AnimalController {
                 if (key.equals("wood")) {
                     if (!inventory.hasItem(ItemIDs.wood, (int) value)) {
                         view.showMessage("You don't have enough wood!");
-//                        return;
+                        return;
                     }
                 }
                 if (key.equals("stone")) {
                     if (!inventory.hasItem(ItemIDs.stone, (int) value)) {
                         view.showMessage("You don't have enough stone!");
-//                        return;
+                        return;
                     }
                 }
             }
@@ -246,7 +254,7 @@ public class AnimalController {
         }
         if (player.getCoin() < (int) building.getAttribute(ItemAttributes.shopPrice)) {
             view.showMessage("You don't have enough coin!");
-//            return;
+            return;
         }
         ItemInstance item = new ItemInstance(building);
         tile.setItem(item);
@@ -262,7 +270,10 @@ public class AnimalController {
     }
 
     public void buyAnimal(Matcher matcher, Game game) {
-
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String animalStr = matcher.group("animal").trim().toLowerCase();
         String name = matcher.group("name").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
@@ -298,13 +309,13 @@ public class AnimalController {
         ItemDefinition animalDef = Objects.requireNonNull(App.getItemDefinition(animalStr));
         if (player.getCoin() < (int) animalDef.getAttribute(ItemAttributes.price)) {
             view.showMessage("You don't have enough coin!");
-//            return;
+            return;
         }
 
         if (animalDef.getType().equals(ItemType.coop_animal)) {
             if (!playerMap.hasCoop()) {
                 view.showMessage("You haven't built a coop!");
-//                return;
+                return;
             }
             player.setCoin(player.getCoin() - (int) animalDef.getAttribute(ItemAttributes.price));
             Animal animal = new Animal(animalDef, name, player, playerMap.getCoop().getPosition());
@@ -325,6 +336,10 @@ public class AnimalController {
     }
 
     public void pet(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         PlayerMap playerMap = player.getPlayerMap();
         String animalName = matcher.group("name").trim().toLowerCase();
@@ -353,6 +368,10 @@ public class AnimalController {
     }
 
     public void setAnimalFriendShip(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         String animalName = matcher.group("animalName").trim().toLowerCase();
         String amountStr = matcher.group("amount");
@@ -378,6 +397,10 @@ public class AnimalController {
     }
 
     public void showAnimals(Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         if (player.getAnimals().isEmpty()) {
             view.showMessage("You currently have no animal!");
@@ -390,6 +413,10 @@ public class AnimalController {
     }
 
     public void shepHerd(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String animalName = matcher.group("animalName").trim().toLowerCase();
         String xStr = matcher.group("x").trim();
         String yStr = matcher.group("y").trim();
@@ -464,6 +491,10 @@ public class AnimalController {
     }
 
     public void feedHay(Matcher matcher, Game game) {//TODO decrease yonjeh
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String animalName = matcher.group("animalName").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         Animal animal = null;
@@ -485,6 +516,10 @@ public class AnimalController {
     }
 
     public void animalProducts(Game game) {//TODO add product to each animal in game flow
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         if (player.getAnimals().isEmpty()) {
             view.showMessage("You don't have any animal in your farm!");
@@ -502,6 +537,10 @@ public class AnimalController {
     }
 
     public void collectAnimalProduct(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         String animalName = matcher.group("name").trim().toLowerCase();
         Animal animal = null;
@@ -532,6 +571,10 @@ public class AnimalController {
     }
 
     public void sellAnimal(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         String animalName = matcher.group("name").trim().toLowerCase();
         PlayerMap playerMap = player.getPlayerMap();

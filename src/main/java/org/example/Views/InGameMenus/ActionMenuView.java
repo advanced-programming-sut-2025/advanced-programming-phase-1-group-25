@@ -17,6 +17,7 @@ public class ActionMenuView implements AppMenu {
     ActionMenuController actionController;
     FarmingController farmingController;
     AnimalController animalController;
+
     @Override
     public void handleInput(Scanner sc) {
         this.scanner = sc;
@@ -91,7 +92,7 @@ public class ActionMenuView implements AppMenu {
                 actionController.printMap(matcher.group("x"), matcher.group("y"), matcher.group("size"));
                 break;
             case HELP_READING_MAP:
-
+                actionController.helpReadingMap();
                 break;
             case ENERGY_SHOW:
                 System.out.println("Energy: " + game.getCurrentPlayer().getEnergy());
@@ -117,16 +118,16 @@ public class ActionMenuView implements AppMenu {
                 actionController.useTool(matcher);
                 break;
             case CRAFT_INFO:
-                actionController.craftInfo(matcher);
+                actionController.craftInfo(matcher, game);
                 break;
             case PLANT:
-                farmingController.plant(matcher.group("seed"), matcher.group("direction"));
+                farmingController.plant(matcher.group("seed"), matcher.group("direction"), game);
                 break;
             case SHOW_PLANT:
-                farmingController.showPlant(matcher.group("y"), matcher.group("x"));
+                farmingController.showPlant(matcher.group("y"), matcher.group("x"), game);
                 break;
             case FERTILIZE:
-                farmingController.fertilize(matcher.group("fertilizer"), matcher.group("direction"));
+                farmingController.fertilize(matcher.group("fertilizer"), matcher.group("direction"), game);
                 break;
             case HOW_MUCH_WATER:
                 farmingController.howMuchWater();
@@ -188,7 +189,6 @@ public class ActionMenuView implements AppMenu {
             case ARTISAN_GET:
                 actionController.artisanGet(matcher, game);
                 break;
-
         }
     }
 

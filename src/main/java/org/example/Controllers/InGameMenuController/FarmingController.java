@@ -60,7 +60,11 @@ public class FarmingController {
         this.view.showMessage("Tile plowed!");
     }
 
-    public void plant(String seed, String dir) {
+    public void plant(String seed, String dir, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Tile tile = getTileByDir(dir);
         if (tile == null) {
             this.view.showMessage("Tile doesn't exist.");
@@ -151,7 +155,11 @@ public class FarmingController {
         return tile;
     }
 
-    public void showPlant(String yStr, String xStr) {
+    public void showPlant(String yStr, String xStr, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         int y, x;
         try {
             y = Integer.parseInt(yStr);
@@ -211,7 +219,11 @@ public class FarmingController {
         this.view.showMessage(output.toString());
     }
 
-    public void fertilize(String fertilizer, String dir) {
+    public void fertilize(String fertilizer, String dir, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Tile tile = getTileByDir(dir);
         if (tile == null) {
             this.view.showMessage("Tile doesn't exist.");
@@ -279,7 +291,6 @@ public class FarmingController {
 //                return itemDefinition;
 //            }
             if(itemDefinition.getAttribute(ItemAttributes.source) == null) {
-                view.showMessage("@@@@@@@@@@@@");
                 return itemDefinition;
             }
             if(itemDefinition.getAttribute(ItemAttributes.source).toString().equalsIgnoreCase(seed.getDisplayName())) {}
@@ -288,6 +299,10 @@ public class FarmingController {
     }
     public void howMuchWater(){
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
         for(Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()){

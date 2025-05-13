@@ -28,6 +28,10 @@ public class InventoryController {
     }
 
     public void showInventory(Game game) {
+        if (game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder inventoryStr = new StringBuilder();
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
@@ -41,6 +45,10 @@ public class InventoryController {
     }
 
     public void inventoryTrash(Game game, Matcher matcher, String input) {
+        if (game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String itemName = matcher.group("itemName");
         Inventory inventory = game.getCurrentPlayer().getInventory();
         if (input.contains("-n")) {

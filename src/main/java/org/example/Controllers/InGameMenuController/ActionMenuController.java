@@ -1,7 +1,5 @@
 package org.example.Controllers.InGameMenuController;
 
-import org.example.Enums.GameConsts.DayOfWeek;
-import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
@@ -14,18 +12,14 @@ import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.GameMap;
-import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
-import org.example.Models.States.Weather;
 import org.example.Views.InGameMenus.ActionMenuView;
 import org.example.Views.PreGameMenus.TerminalAnimation;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
@@ -36,6 +30,12 @@ public class ActionMenuController {
     }
 
     public void walk(String yString, String xString) {
+        Game currentGame = App.getCurrentGame();
+        Player currentPlayer = currentGame.getCurrentPlayer();
+        if (!currentGame.isPlayerActive(currentPlayer)) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         int y, x;
         try {
             y = Integer.parseInt(yString);
@@ -47,8 +47,6 @@ public class ActionMenuController {
 
         // check whether the player can go to the destination or not
 
-        Game currentGame = App.getCurrentGame();
-        Player currentPlayer = currentGame.getCurrentPlayer();
         GameMap map = currentGame.getGameMap();
         int currentPlayerY = currentPlayer.getPosition().getY();
         int currentPlayerX = currentPlayer.getPosition().getX();
@@ -103,6 +101,7 @@ public class ActionMenuController {
 
     public void nextTurn() {
         Game currentGame = App.getCurrentGame();
+        currentGame.getCurrentPlayer().setEnergyPerTurn(50);
         Player nextPlayer = currentGame.getNextPlayer();
         currentGame.setCurrentPlayer(nextPlayer);
         view.showMessage(nextPlayer.getName() + "'s turn!");
@@ -111,6 +110,10 @@ public class ActionMenuController {
     public void buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
         Player currentPlayer = currentGame.getCurrentPlayer();
+        if (!currentGame.isPlayerActive(currentPlayer)) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Inventory playerInventory = currentPlayer.getInventory();
 
         int playerWood = playerInventory.getItemAmount(ItemIDs.wood);
@@ -131,6 +134,10 @@ public class ActionMenuController {
     }
 
     public void cheatAdvanceTime(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String timeStr = matcher.group("hours");
         int time;
         try {
@@ -147,6 +154,10 @@ public class ActionMenuController {
     }
 
     public void cheatAdvanceDate(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String timeStr = matcher.group("day");
         int time;
         try {
@@ -166,6 +177,10 @@ public class ActionMenuController {
 //    }
     public void printMap(String xStr, String yStr, String sizeStr) {
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         int x, y, size;
         try {
             x = Integer.parseInt(xStr);
@@ -185,6 +200,10 @@ public class ActionMenuController {
     }
 
     public void getMapBySize(Game game, Position position, int size) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         GameMap map = game.getGameMap();
         String[][] mapArray = new String[2 * size][2 * size];
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
@@ -225,8 +244,17 @@ public class ActionMenuController {
         }
         view.showMessage(output.toString());
     }
+    public void helpReadingMap() {
+        for (ItemDisplay value : ItemDisplay.values()) {
+            view.showMessage(value.name() + " : " + value.getDisplay());
+        }
+    }
 
     public void cheatSetEnergy(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String energyStr = matcher.group("value");
         int energy;
         try {
@@ -248,6 +276,10 @@ public class ActionMenuController {
     }
 
     public void energyUnlimited(Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         game.getCurrentPlayer().setEnergy(Integer.MAX_VALUE);
         view.showMessage("your energy is now unlimited:)");
     }
@@ -258,11 +290,15 @@ public class ActionMenuController {
 
     public void equipTool(Matcher matcher) {
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String toolName = matcher.group("toolName").toLowerCase();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         boolean found = false;
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            if (itemDefinition.getDisplayName().equalsIgnoreCase(toolName)) {
+            if (itemDefinition.getId().name().equalsIgnoreCase(toolName)) {
                 found = true;
             }
         }
@@ -274,7 +310,7 @@ public class ActionMenuController {
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
             ArrayList<ItemInstance> items = entry.getValue();
             for (ItemInstance item : items) {
-                if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
+                if (item.getDefinition().getId().name().equalsIgnoreCase(toolName)) {
                     tool = item;
                 }
             }
@@ -291,6 +327,10 @@ public class ActionMenuController {
 
     public void showCurrentTool() {
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Player currentPlayer = game.getCurrentPlayer();
         if (currentPlayer.getCurrentTool() == null) {
             view.showMessage("you don't have a current tool!");
@@ -301,6 +341,10 @@ public class ActionMenuController {
 
     public void showInventoryTools() {
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
@@ -314,7 +358,11 @@ public class ActionMenuController {
         view.showMessage(toolsStr.toString());
     }
 
-    public void craftInfo(Matcher matcher) {
+    public void craftInfo(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String name = matcher.group("craftName");
         ItemDefinition itemDefinition = null;
         for (ItemDefinition tmp : App.getItemDefinitions()) {
@@ -337,8 +385,12 @@ public class ActionMenuController {
     }
 
     public void useTool(Matcher matcher) {
-        String direction = matcher.group("direction").trim();
         Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
+        String direction = matcher.group("direction").trim();
         Player player = game.getCurrentPlayer();
         Tile tile = player.getPlayerTile(game);
         ItemInstance tool = player.getCurrentTool();
@@ -368,6 +420,10 @@ public class ActionMenuController {
     }
 
     public void artisanUse(Matcher matcher, Game game, String command) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String artisanName = matcher.group("artisanName").trim().toLowerCase();
         String itemName = matcher.group("item1Name").trim().toLowerCase();
         String ingredient = "";
@@ -415,6 +471,10 @@ public class ActionMenuController {
     }
 
     public void artisanGet(Matcher matcher, Game game) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
         String machineName = matcher.group("artisanName").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
@@ -431,7 +491,5 @@ public class ActionMenuController {
             }
         }
     }
-
-
 }
 

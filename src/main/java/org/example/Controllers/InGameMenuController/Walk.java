@@ -106,7 +106,7 @@ public class Walk {
     public static void walkToDestination(int energyCost, int goalY, int goalX) {
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
         currentPlayer.setPosition(new Position(goalY, goalX));
-        currentPlayer.setEnergy(currentPlayer.getEnergy() - energyCost);
+        currentPlayer.decreaseEnergy(energyCost);
         // checkEnergy(); a method that we can call every time we decrease the player's energy
     }
 

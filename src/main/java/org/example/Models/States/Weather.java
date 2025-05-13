@@ -19,4 +19,5 @@ public class Weather {
     public void setCurrentWeather(WeatherStates weather) {
         this.currentWeather = weather;
     }
+
 }

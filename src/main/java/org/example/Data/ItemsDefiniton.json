@@ -2500,6 +2500,16 @@
     }
   },
   {
+    "itemId": "apricot",
+    "name": "Apricot",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 59,
+      "isEdible": true,
+      "energy": 38
+    }
+  },
+  {
     "itemId": "cherry_tree",
     "name": "Cherry Tree",
     "type": "tree",
@@ -2521,6 +2531,16 @@
       "season": [
         "spring"
       ]
+    }
+  },
+  {
+    "itemId": "cherry",
+    "name": "Cherry",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 80,
+      "isEdible": true,
+      "energy": 38
     }
   },
   {
@@ -2548,6 +2568,16 @@
     }
   },
   {
+    "itemId": "banana",
+    "name": "Banana",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 150,
+      "isEdible": true,
+      "energy": 75
+    }
+  },
+  {
     "itemId": "mango_tree",
     "name": "Mango Tree",
     "type": "tree",
@@ -2569,6 +2599,16 @@
       "season": [
         "summer"
       ]
+    }
+  },
+  {
+    "itemId": "mango",
+    "name": "Mango",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 130,
+      "isEdible": true,
+      "energy": 100
     }
   },
   {
@@ -2596,6 +2636,16 @@
     }
   },
   {
+    "itemId": "orange",
+    "name": "Orange",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 100,
+      "isEdible": true,
+      "energy": 38
+    }
+  },
+  {
     "itemId": "peach_tree",
     "name": "Peach Tree",
     "type": "tree",
@@ -2617,6 +2667,16 @@
       "season": [
         "summer"
       ]
+    }
+  },
+  {
+    "itemId": "peach",
+    "name": "Peach",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 140,
+      "isEdible": true,
+      "energy": 38
     }
   },
   {
@@ -2644,6 +2704,16 @@
     }
   },
   {
+    "itemId": "apple",
+    "name": "Apple",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 100,
+      "isEdible": true,
+      "energy": 38
+    }
+  },
+  {
     "itemId": "pomegranate_tree",
     "name": "Pomegranate Tree",
     "type": "tree",
@@ -2665,6 +2735,16 @@
       "season": [
         "fall"
       ]
+    }
+  },
+  {
+    "itemId": "pomegranate",
+    "name": "Pomegranate",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 140,
+      "isEdible": true,
+      "energy": 38
     }
   },
   {
@@ -2692,6 +2772,16 @@
     }
   },
   {
+    "itemId": "oak_resin",
+    "name": "Oak Resin",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 150,
+      "isEdible": false,
+      "energy": 0
+    }
+  },
+  {
     "itemId": "maple_tree",
     "name": "Maple Tree",
     "type": "tree",
@@ -2713,6 +2803,16 @@
       "season": [
         "special"
       ]
+    }
+  },
+  {
+    "itemId": "maple_syrup",
+    "name": "Maple Syrup",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 200,
+      "isEdible": false,
+      "energy": 0
     }
   },
   {
@@ -2740,6 +2840,16 @@
     }
   },
   {
+    "itemId": "pine_tar",
+    "name": "Pine Tar",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 100,
+      "isEdible": false,
+      "energy": 0
+    }
+  },
+  {
     "itemId": "mahogany_tree",
     "name": "Mahogany Tree",
     "type": "tree",
@@ -2761,6 +2871,16 @@
       "season": [
         "special"
       ]
+    }
+  },
+  {
+    "itemId": "sap",
+    "name": "Sap",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 2,
+      "isEdible": true,
+      "energy": -2
     }
   },
   {
@@ -2788,6 +2908,16 @@
     }
   },
   {
+    "itemId": "common_mushroom",
+    "name": "Common Mushroom",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 40,
+      "isEdible": true,
+      "energy": 38
+    }
+  },
+  {
     "itemId": "mystic_tree",
     "name": "Mystic Tree",
     "type": "tree",
@@ -2809,6 +2939,16 @@
       "season": [
         "special"
       ]
+    }
+  },
+  {
+    "itemId": "mystic_syrup",
+    "name": "Mystic Syrup",
+    "type": "fruit",
+    "baseAttributes": {
+      "baseSellPrice": 1000,
+      "isEdible": true,
+      "energy": 500
     }
   },
   {
@@ -4478,6 +4618,39 @@
       },
       "shopPrice": 25000,
       "dailyLimit": 1
+    }
+  },
+  {
+    "itemId": "copper_ore",
+    "name": "Copper Ore",
+    "type": "ore",
+    "baseAttributes": {
+      "quality": "regular",
+      "baseSellPrice": 75,
+      "description": "A common ore that can be smelted into bars.",
+      "dailyLimit": -1
+    }
+  },
+  {
+    "itemId": "iron_ore",
+    "name": "Iron Ore",
+    "type": "ore",
+    "baseAttributes": {
+      "quality": "regular",
+      "baseSellPrice": 150,
+      "description": "A fairly common ore that can be smelted into bars.",
+      "dailyLimit": -1
+    }
+  },
+  {
+    "itemId": "gold_ore",
+    "name": "Gold Ore",
+    "type": "ore",
+    "baseAttributes": {
+      "quality": "regular",
+      "baseSellPrice": 400,
+      "description": "A precious ore that can be smelted into bars.",
+      "dailyLimit": -1
     }
   }
 ]

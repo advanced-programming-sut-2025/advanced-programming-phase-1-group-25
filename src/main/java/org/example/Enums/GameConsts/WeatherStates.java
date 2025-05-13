@@ -4,8 +4,24 @@ package org.example.Enums.GameConsts;
     We have only 4 possible weather states:
  */
 public enum WeatherStates {
-    SUNNY,
-    RAIN,
-    STORM,
-    SNOW;
+    SUNNY(1),
+    RAIN(2),
+    STORM(3),
+    SNOW(4);
+    private final int value;
+
+    WeatherStates(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public WeatherStates getWeatherByValue(int value) {
+        for (WeatherStates weatherStates : WeatherStates.values()) {
+            if (weatherStates.getValue() == value) return weatherStates;
+        }
+        return null;
+    }
 }
