@@ -72,7 +72,7 @@ public class LoginMenuController {
         if (!App.userExists(username)) {
             return "User not found.\n";
         }
-        System.out.printf("Enter you email address.\n");
+        System.out.printf("Enter your email address.\n");
         String email = sc.nextLine();
         String correctEmail = App.getUser(username).getEmail();
         if (!email.equals(correctEmail)) {

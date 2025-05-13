@@ -15,7 +15,7 @@ public enum ProfileMenuCommands {
     Current_Menu("show\\s+current\\s+menu"),
     Menu_Exit("menu\\s+exit"),
     Go_To_MainMenu("menu\\s+enter\\s+main\\s+menu"),
-
+    Exit_Menu("menu\\s+exit"),
     User_Info("user\\s+info");
 
     private final String pattern;

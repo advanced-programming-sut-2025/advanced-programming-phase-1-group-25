@@ -29,6 +29,10 @@ public class ToolController {
             }
             player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, true, game,
                     (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            if (tile.getPlowed()) {
+                view.showMessage("This tile has been plowed!");
+                return;
+            }
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 view.showMessage("You can't use hoe in lake!");
                 return;
@@ -60,7 +64,7 @@ public class ToolController {
                 view.showMessage("This tile has been successfully unplowed!");
                 return;
             }
-            if(tile.getItem().getDefinition().getType().equals(ItemType.rock)){
+            if (tile.getItem().getDefinition().getType().equals(ItemType.rock)) {
                 tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                 view.showMessage("You've removed rock from this tile!");
                 return;

@@ -16,19 +16,18 @@ public class MainMenu implements AppMenu {
         MainMenuController controller = new MainMenuController();
         if (MainMenuCommands.Current_Menu.getMatcher(command) != null) {
             System.out.println("you are in main menu");
-        } else if (MainMenuCommands.Go_TO_AvatarMenu.getMatcher(command) != null) {
-            System.out.println("redirecting to avatar menu...");
-            controller.changeMenu(Menus.PreGameMenus.AVATAR_MENU);
+        } else if (MainMenuCommands.Go_To_AvatarMenu.getMatcher(command) != null) {
+            controller.changeMenu(Menus.PreGameMenus.AVATAR_MENU, "avatar menu");
         } else if (MainMenuCommands.Go_To_GameMenu.getMatcher(command) != null) {
-            System.out.println("redirecting to game menu...");
-            controller.changeMenu(Menus.PreGameMenus.GAME_MENU);
+            controller.changeMenu(Menus.PreGameMenus.GAME_MENU, "game menu");
         } else if (MainMenuCommands.Go_To_ProfileMenu.getMatcher(command) != null) {
-            System.out.println("redirecting to profile menu...");
-            controller.changeMenu(Menus.PreGameMenus.PROFILE_MENU);
+            controller.changeMenu(Menus.PreGameMenus.PROFILE_MENU, "profile menu");
         } else if (MainMenuCommands.User_Logout.getMatcher(command) != null) {
-            System.out.println("User logged out successfully");
             controller.userLogout();
-        } else {
+        }else if(MainMenuCommands.Exit_Menu.getMatcher(command) != null) {
+            controller.changeMenu(Menus.PreGameMenus.LOGIN_MENU, "login menu");
+        }
+        else {
             System.out.println("Invalid command");
         }
     }

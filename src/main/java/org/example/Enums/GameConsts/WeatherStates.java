@@ -7,7 +7,9 @@ public enum WeatherStates {
     SUNNY(1),
     RAIN(2),
     STORM(3),
-    SNOWY(4);
+    SNOWY
+
+            (4);
     private final int value;
 
     WeatherStates(int value) {

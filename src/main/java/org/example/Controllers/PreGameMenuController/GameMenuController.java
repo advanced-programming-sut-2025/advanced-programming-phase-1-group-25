@@ -2,6 +2,7 @@ package org.example.Controllers.PreGameMenuController;
 
 import org.example.Controllers.UpdateMap.UpdateForaging;
 import org.example.Controllers.UpdateMap.spawnRandom;
+import org.example.Enums.GameMenus.Menu;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
@@ -179,5 +180,15 @@ public class GameMenuController {
             }
             System.out.print("\n\n");
         }
+    }
+    public static void changeMenu(Menu menu, String menuName) {
+        try {
+            TerminalAnimation.loadingAnimation("redirecting to " + menuName + " menu");
+        }
+        catch (InterruptedException e) {
+
+        }
+        App.setCurrentMenu(menu);
+        System.out.println("Your are now in " + menuName);
     }
 }
