@@ -7,7 +7,7 @@ public enum WeatherStates {
     SUNNY(1),
     RAIN(2),
     STORM(3),
-    SNOW(4);
+    SNOWY(4);
     private final int value;
 
     WeatherStates(int value) {
@@ -18,7 +18,7 @@ public enum WeatherStates {
         return value;
     }
 
-    public WeatherStates getWeatherByValue(int value) {
+    public static WeatherStates getWeatherByValue(int value) {
         for (WeatherStates weatherStates : WeatherStates.values()) {
             if (weatherStates.getValue() == value) return weatherStates;
         }

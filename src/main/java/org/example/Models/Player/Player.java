@@ -158,7 +158,7 @@ public class Player {
     public void reduceEnergy(int ability, ItemInstance tool, Player player,
                              boolean canBeDownGraded, Game game, int energyCost) {
         double rate = 1;
-        if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOW)) rate = 2;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOWY)) rate = 2;
         if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)
                 || game.getWeather().getCurrentWeather().equals(WeatherStates.STORM)) rate = 1.5;
         if (ability == 4) {

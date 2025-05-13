@@ -79,8 +79,10 @@ public class ActionMenuView implements AppMenu {
                 System.out.println(game.getWeather().getCurrentWeather().toString().toLowerCase());
                 break;
             case WEATHER_FORECAST:
+                actionController.weatherForecast(game);
                 break;
             case CHEAT_WEATHER_SET:
+                actionController.cheatWeather(matcher, game);
                 break;
             case GREENHOUSE_BUILD:
                 actionController.buildGreenhouse();

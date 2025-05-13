@@ -1,5 +1,6 @@
 package org.example.Controllers.InGameMenuController;
 
+import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemAttributes;
@@ -15,8 +16,10 @@ import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
+import org.example.Models.States.Weather;
 import org.example.Views.InGameMenus.ActionMenuView;
 import org.example.Views.PreGameMenus.TerminalAnimation;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -172,9 +175,35 @@ public class ActionMenuController {
         view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
     }
 
-    //    public String cheatWeather(Matcher matcher, Game game) {
-//        String weather = matcher.group("type");
-//    }
+    public void weatherForecast(Game game) {
+        if (game.getTomorrowWeather() != null) {
+            view.showMessage("Tomorrow's weather is " + game.getTomorrowWeather().
+                    getCurrentWeather().name().toLowerCase() + "!");
+            return;
+        }
+        game.setTomorrowWeather(new Weather());
+        int x = GenerateRandomNumber.generateRandomNumber(1, 4);
+        WeatherStates weatherStates = WeatherStates.getWeatherByValue(x);
+        if (weatherStates == null) return;
+        game.getTomorrowWeather().setCurrentWeather(weatherStates);//TODO set tomorrow's weather in game flow
+        view.showMessage("Tomorrow's weather is " + weatherStates.name().toLowerCase() + "!");
+    }
+
+    public void cheatWeather(Matcher matcher, Game game) {
+        String weather = matcher.group("type");
+        if (game.getTomorrowWeather() == null) {
+            game.setTomorrowWeather(new Weather());
+        }
+        for (WeatherStates value : WeatherStates.values()) {
+            if (weather.equalsIgnoreCase(value.name())) {
+                game.getTomorrowWeather().setCurrentWeather(value);
+                view.showMessage("Tomorrow's weather has been set to " + value.name().toLowerCase() + "!");
+                return;
+            }
+        }
+        view.showMessage("Please enter a valid weather!");
+    }
+
     public void printMap(String xStr, String yStr, String sizeStr) {
         Game game = App.getCurrentGame();
         if (!game.isPlayerActive(game.getCurrentPlayer())) {
@@ -244,6 +273,7 @@ public class ActionMenuController {
         }
         view.showMessage(output.toString());
     }
+
     public void helpReadingMap() {
         for (ItemDisplay value : ItemDisplay.values()) {
             view.showMessage(value.name() + " : " + value.getDisplay());

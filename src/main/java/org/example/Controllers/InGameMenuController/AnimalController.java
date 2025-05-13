@@ -477,7 +477,7 @@ public class AnimalController {
             return;
         }
         WeatherStates weatherStates = game.getWeather().getCurrentWeather();
-        if (weatherStates.equals(WeatherStates.SNOW)
+        if (weatherStates.equals(WeatherStates.SNOWY)
                 || weatherStates.equals(WeatherStates.RAIN)
                 || weatherStates.equals(WeatherStates.STORM)) {
             view.showMessage("Animals must stat inside, the weather is fucked up(" + weatherStates.name() + ")!");

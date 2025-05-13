@@ -15,7 +15,7 @@ public class Game {
     private DateTime dateTime;
     private Weather weather;
     private GameMap gameMap;
-
+    private Weather tomorrowWeather;
     public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer, GameMap gameMap) {
         this.gamePlayers = gamePlayers;
         this.playerMaps = playerMaps;
@@ -23,7 +23,14 @@ public class Game {
         this.dateTime = new DateTime();
         this.weather = new Weather();
         this.gameMap = gameMap;
+    }
 
+    public Weather getTomorrowWeather() {
+        return tomorrowWeather;
+    }
+
+    public void setTomorrowWeather(Weather tomorrowWeather) {
+        this.tomorrowWeather = tomorrowWeather;
     }
 
     public GameMap getGameMap() {
