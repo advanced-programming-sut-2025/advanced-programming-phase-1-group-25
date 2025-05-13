@@ -100,4 +100,7 @@ public class Animal extends ItemInstance {
     public Map<ItemInstance, Integer> getProducts() {
         return products;
     }
+    public void setProduct(ItemInstance product, int quantity) {
+        this.products.put(product, quantity);
+    }
 }

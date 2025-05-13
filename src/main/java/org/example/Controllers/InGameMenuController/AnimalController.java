@@ -43,8 +43,7 @@ public class AnimalController {
         ItemInstance pole = null;
         try {
             pole = inventory.useItem(ItemIDs.valueOf(fishingPole));//TODO
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             view.showMessage("Please enter a valid fishing pole.");
             return;
         }
@@ -597,5 +596,59 @@ public class AnimalController {
             playerMap.getBarn().getAnimals().remove(animal);
         }
         view.showMessage("You've sold " + animalName + " for " + price + "g!");
+    }
+
+    public void addProductToAnimal(Game game) {
+        Player player = game.getCurrentPlayer();
+        for (Animal animal : player.getAnimals()) {
+            Object product = animal.getAttribute(ItemAttributes.products);
+            if (animal.isFed()) {
+                if (product instanceof Map<?, ?>) {
+                    double random = GenerateRandomNumber.generateRandomDoubleNumber(0.5, 1.5);
+                    int x = (animal.getFriendShip() + (int) (random * 150)) / 500;
+                    double rate = 1;
+                    double R = GenerateRandomNumber.generateRandomDoubleNumber(0, 1);
+                    double quality = ((double) animal.getFriendShip() / 1000) * (0.5 + 0.5 * R);
+                    Map<String, Integer> products = (Map<String, Integer>) product;
+                    int i = 1;
+                    for (Map.Entry<String, Integer> entry : products.entrySet()) {
+                        String key = entry.getKey();
+                        Integer value = entry.getValue();
+                        if (products.size() == 2 && animal.getFriendShip() >= 100 && x >= 1 && i == 2) {
+                            ItemDefinition itemDefinition = App.getItemDefinition(key);
+                            if (itemDefinition == null) return;
+                            ItemInstance itemInstance = new ItemInstance(itemDefinition);
+                            rate = getQuality(key, quality, value, animal, itemInstance);
+                            animal.setProduct(itemInstance, (int) (value * rate));
+                        } else {
+                            if (i == 1) {
+                                ItemDefinition itemDefinition = App.getItemDefinition(key);
+                                if (itemDefinition == null) return;
+                                ItemInstance itemInstance = new ItemInstance(itemDefinition);
+                                rate = getQuality(key, quality, value, animal, itemInstance);
+                                animal.setProduct(itemInstance, (int) (value * rate));
+                            }
+                        }
+                        i++;
+                    }
+                }
+            } else animal.setFriendShip(-20);
+            if (animal.isOutside()) animal.setFriendShip(-20);
+            if (!animal.isPet()) animal.setFriendShip(-10);
+        }
+    }
+
+    public double getQuality(String key, double quality, int value, Animal animal, ItemInstance itemInstance) {
+        if (0.5 <= quality && quality < 0.7) {
+            itemInstance.setAttribute(ItemAttributes.quality, "silver");
+            return 1.25;
+        } else if (0.7 <= quality && quality < 0.9) {
+            itemInstance.setAttribute(ItemAttributes.quality, "golden");
+            return 1.5;
+        } else if (0.9 <= quality) {
+            itemInstance.setAttribute(ItemAttributes.quality, "iridium");
+            return 2;
+        }
+        return 1;
     }
 }
