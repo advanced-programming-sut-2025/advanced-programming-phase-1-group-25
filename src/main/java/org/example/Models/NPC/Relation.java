@@ -11,16 +11,18 @@ public class Relation {
     private NPC npc;
     private int friendShipLevel;
     private int friendShipPoints;
-    private boolean areMarried; // are two sides of this relation married?
-    private Quest activeQuest;
+    private boolean firstMeetInDay;
+    private boolean firstGiftInDay;
+    private int availableQuestNumber;
 
     public Relation(Player player, NPC npc) {
         this.player = player;
         this.npc = npc;
         this.friendShipLevel = 0;
         this.friendShipPoints = 0;
-        this.areMarried = false;
-        this.activeQuest = null;
+        this.firstMeetInDay = true;
+        this.firstGiftInDay = true;
+        this.availableQuestNumber = 1;
     }
 
     public Player getPlayer() {
@@ -32,11 +34,7 @@ public class Relation {
     }
 
     public int getFriendShipLevel() {
-        return friendShipLevel;
-    }
-
-    public void setFriendShipLevel(int friendShipLevel) {
-        this.friendShipLevel = friendShipLevel;
+        return this.friendShipPoints / 200;
     }
 
     public int getFriendShipPoints() {
@@ -44,22 +42,34 @@ public class Relation {
     }
 
     public void setFriendShipPoints(int friendShipPoints) {
-        this.friendShipPoints = friendShipPoints;
-    }
-
-    public Quest getActiveQuest() {
-        return activeQuest;
-    }
-
-    public void setActiveQuest(Quest activeQuest) {
-        this.activeQuest = activeQuest;
+        this.friendShipPoints = Math.min(friendShipPoints, 799);
     }
 
     public boolean areMarried() {
         return areMarried();
     }
 
-    public void setAreMarried(boolean areMarried) {
-        this.areMarried = areMarried;
+    public void setFirstMeetInDay(boolean firstMeetInDay) {
+        this.firstMeetInDay = firstMeetInDay;
+    }
+
+    public void setFirstGiftInDay(boolean firstGiftInDay) {
+        this.firstGiftInDay = firstGiftInDay;
+    }
+
+    public boolean isFirstMeetInDay() {
+        return firstMeetInDay;
+    }
+
+    public boolean isFirstGiftInDay() {
+        return firstGiftInDay;
+    }
+
+    public void setAvailableQuestNumber(int availableQuestNumber) {
+        this.availableQuestNumber = availableQuestNumber;
+    }
+
+    public int getAvailableQuestNumber() {
+        return availableQuestNumber;
     }
 }

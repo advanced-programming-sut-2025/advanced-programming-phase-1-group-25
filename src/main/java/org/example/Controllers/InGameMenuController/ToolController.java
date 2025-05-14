@@ -14,87 +14,13 @@ import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 import org.example.Views.InGameMenus.ActionMenuView;
 
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ToolController {
-    ActionMenuView view;
+    static ActionMenuView view = new ActionMenuView();
 
-    public ToolController(ActionMenuView view) {
-        this.view = view;
-    }
-
-    public void showCurrentTool() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Player currentPlayer = game.getCurrentPlayer();
-        if (currentPlayer.getCurrentTool() == null) {
-            view.showMessage("you don't have a current tool!");
-            return;
-        }
-        view.showMessage(currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase());
-    }
-
-    public void showInventoryTools() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Inventory inventory = game.getCurrentPlayer().getInventory();
-        StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-            ArrayList<ItemInstance> items = entry.getValue();
-            for (ItemInstance item : items) {
-                if (item.getDefinition().getType().equals(ItemType.tool)) {
-                    toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
-                }
-            }
-        }
-        view.showMessage(toolsStr.toString());
-    }
-
-    public void useTool(Matcher matcher) {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        String direction = matcher.group("direction").trim();
-        Player player = game.getCurrentPlayer();
-        Tile tile = player.getPlayerTile(game);
-        ItemInstance tool = player.getCurrentTool();
-        if (tool == null) {
-            view.showMessage("you don't have a tool in your hand!");
-            return;
-        }
-        switch (direction) {
-            case "up" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player, game);
-            case "down" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player, game);
-            case "left" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player, game);
-            case "right" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player, game);
-            case "up left" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player, game);
-            case "up right" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player, game);
-            case "down left" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player, game);
-            case "down right" -> applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player, game);
-            default -> view.showMessage("please select a valid direction!");
-        }
-    }
-
-    public void applyTool(ItemInstance tool, Tile tile, Player player, Game game) {
+    public static void applyTool(ItemInstance tool, Tile tile, Player player, Game game) {
         String name = tool.getDefinition().getDisplayName().toLowerCase();
         ActionMenuController controller = new ActionMenuController(view);
         if (name.contains("hoe")) {
@@ -135,7 +61,7 @@ public class ToolController {
                 view.showMessage("You can't use pickaxe in lake!");
                 return;
             }
-            if (tile.isEmpty() && tile.getPlowed()) {
+            if (tile.isEmpty() && tile.isPlowed()) {
                 tile.setPlowed(false);
                 view.showMessage("This tile has been successfully unplowed!");
                 return;
@@ -206,9 +132,15 @@ public class ToolController {
                 cutFiber(tile, player);
                 return;
             }
-            if (tile.getItem().getDefinition().getType().equals(ItemType.all_crops)) {
-                harvestCrop(tile, player);
-                return;
+            ItemInstance item = tile.getItem();
+            if (item.getDefinition().getType().equals(ItemType.all_crops)) {
+                if (((int) item.getAttribute(ItemAttributes.totalHarvestTime)) <= tile.getDayPassedFromPlant()) {
+                    harvestCrop(tile, player);
+                    return;
+                } else {
+                    view.showMessage("This plant isn't harvestable yet!");
+                    return;
+                }
             }
             view.showMessage("Use scythe for crops or fibers!");
         } else if (name.contains("milk pale")) {
@@ -241,7 +173,7 @@ public class ToolController {
         }
     }
 
-    public boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool, int ability) {
+    public static boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool, int ability) {
         if (ability == 4 && player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1) {
             return false;
         }
@@ -251,7 +183,7 @@ public class ToolController {
         return true;
     }
 
-    public void addWaterToWateringCan(ItemInstance tool) {
+    public static void addWaterToWateringCan(ItemInstance tool) {
         int capacity = (int) tool.getDefinition().getAttribute(ItemAttributes.capacity);
         int durability = (int) tool.getDefinition().getAttribute(ItemAttributes.durability);
         if (durability + 1 > capacity) {
@@ -263,20 +195,20 @@ public class ToolController {
         view.showMessage("Your can has " + finalDurability + " water");
     }
 
-    public void cutFiber(Tile tile, Player player) {
+    public static void cutFiber(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         view.showMessage("You've cut fiber!");
     }
 
-    public void harvestCrop(Tile tile, Player player) {
+    public static void harvestCrop(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("You've harvested crop!");
     }
 
-    public void milkAnimal(ItemInstance tool, Player player, Animal animal) {
+    public static void milkAnimal(ItemInstance tool, Player player, Animal animal) {
         tool.setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
@@ -285,7 +217,7 @@ public class ToolController {
         view.showMessage("You've milked the animal!");
     }
 
-    public void cutWool(Player player, Animal animal) {
+    public static void cutWool(Player player, Animal animal) {
         animal.setAttribute(ItemAttributes.isCut, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
@@ -396,7 +328,5 @@ public class ToolController {
     }
 
     public void removeItemFromInventory(ItemInstance trashCan, Inventory inventory, ItemInstance tool) {
-
     }
-
 }

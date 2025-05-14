@@ -1,14 +1,14 @@
 [
   {
-    "shopName": "Blacksmith",
+    "shopName": "BlackSmith",
     "items": [
       {
         "itemId": "copper_ore",
         "name": "Copper Ore",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 75,
+          "price": 75,
           "description": "A common ore that can be smelted into bars.",
           "dailyLimit": -1
         }
@@ -16,10 +16,10 @@
       {
         "itemId": "iron_ore",
         "name": "Iron Ore",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 150,
+          "price": 150,
           "description": "A fairly common ore that can be smelted into bars.",
           "dailyLimit": -1
         }
@@ -27,10 +27,10 @@
       {
         "itemId": "gold_ore",
         "name": "Gold Ore",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 400,
+          "price": 400,
           "description": "A precious ore that can be smelted into bars.",
           "dailyLimit": -1
         }
@@ -38,10 +38,10 @@
       {
         "itemId": "coal",
         "name": "Coal",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 150,
+          "price": 150,
           "description": "A combustible rock that is useful for crafting and smelting.",
           "dailyLimit": -1
         }
@@ -49,10 +49,10 @@
       {
         "itemId": "copper_tool",
         "name": "Copper Tool",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 2000,
+          "price": 2000,
           "ingredients": {
             "copper_bar": 5
           },
@@ -62,10 +62,10 @@
       {
         "itemId": "steel_tool",
         "name": "Steel Tool",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 5000,
+          "price": 5000,
           "ingredients": {
             "iron_bar": 5
           },
@@ -75,10 +75,10 @@
       {
         "itemId": "gold_tool",
         "name": "Gold Tool",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 10000,
+          "price": 10000,
           "ingredients": {
             "gold_bar": 5
           },
@@ -88,10 +88,10 @@
       {
         "itemId": "iridium_tool",
         "name": "Gold Tool",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 25000,
+          "price": 25000,
           "ingredients": {
             "iridium_bar": 5
           },
@@ -101,10 +101,10 @@
       {
         "itemId": "copper_trash_can",
         "name": "Copper Trash Can",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 1000,
+          "price": 1000,
           "ingredients": {
             "copper_bar": 5
           },
@@ -114,10 +114,10 @@
       {
         "itemId": "steel_trash_can",
         "name": "Steel Trash Can",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 2500,
+          "price": 2500,
           "ingredients": {
             "iron_bar": 5
           },
@@ -127,10 +127,10 @@
       {
         "itemId": "gold_trash_can",
         "name": "Gold Trash Can",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 5000,
+          "price": 5000,
           "ingredients": {
             "gold_bar": 5
           },
@@ -140,10 +140,10 @@
       {
         "itemId": "iridium_trash_can",
         "name": "Iridium Trash Can",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
-          "shopPrice": 12500,
+          "price": 12500,
           "ingredients": {
             "iridium_bar": 5
           },
@@ -158,44 +158,44 @@
       {
         "itemId": "hay",
         "name": "Hay",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Dried grass used as animal food.",
-          "shopPrice": 50,
+          "price": 50,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "milk_pail",
         "name": "Milk Pail",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Gather milk from your animals.",
-          "shopPrice": 1000,
+          "price": 1000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "shears",
         "name": "Shears",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Use this to collect wool from sheep",
-          "shopPrice": 1000,
+          "price": 1000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "chicken",
         "name": "Chicken",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Well cared-for chickens lay eggs every day. Lives in the coop.",
-          "shopPrice": 800,
+          "price": 800,
           "building": "coop",
           "dailyLimit": 2
         }
@@ -203,11 +203,11 @@
       {
         "itemId": "cow",
         "name": "Cow",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Can be milked daily. A milk pail is required to harvest the milk. Lives in the barn.",
-          "shopPrice": 1500,
+          "price": 1500,
           "building": "barn",
           "dailyLimit": 2
         }
@@ -215,11 +215,11 @@
       {
         "itemId": "goat",
         "name": "Goat",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Happy provide goat milk every other day. A milk pail is required to harvest the milk. Lives in the barn.",
-          "shopPrice": 4000,
+          "price": 4000,
           "building": "big_barn",
           "dailyLimit": 2
         }
@@ -227,11 +227,11 @@
       {
         "itemId": "duck",
         "name": "Duck",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Happy lay duck eggs every other day. Lives in the coop.",
-          "shopPrice": 1200,
+          "price": 1200,
           "building": "big_coop",
           "dailyLimit": 2
         }
@@ -239,11 +239,11 @@
       {
         "itemId": "sheep",
         "name": "Sheep",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Can be shorn for wool. A pair of shears is required to harvest the wool. Lives in the barn.",
-          "shopPrice": 8000,
+          "price": 8000,
           "building": "deluxe_barn",
           "dailyLimit": 2
         }
@@ -251,11 +251,11 @@
       {
         "itemId": "rabbit",
         "name": "Rabbit",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "These are wooly rabbits! They shed precious wool every few days. Lives in the coop.",
-          "shopPrice": 8000,
+          "price": 8000,
           "building": "deluxe_coop",
           "dailyLimit": 2
         }
@@ -263,11 +263,11 @@
       {
         "itemId": "dinosaur",
         "name": "Dinosaur",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "The Dinosaur is a farm animal that lives in a Big Coop",
-          "shopPrice": 14000,
+          "price": 14000,
           "building": "big_coop",
           "dailyLimit": 2
         }
@@ -275,11 +275,11 @@
       {
         "itemId": "pig",
         "name": "Pig",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "These pigs are trained to find truffles! Lives in the barn.",
-          "shopPrice": 16000,
+          "price": 16000,
           "building": "deluxe_barn",
           "dailyLimit": 2
         }
@@ -292,199 +292,199 @@
       {
         "itemId": "beer",
         "name": "Beer",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Drink in moderation.",
-          "shopPrice": 400,
+          "price": 400,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "salad",
         "name": "Salad",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A healthy garden salad.",
-          "shopPrice": 220,
+          "price": 220,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "bread",
         "name": "Bread",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A crusty baguette.",
-          "shopPrice": 120,
+          "price": 120,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "spaghetti",
         "name": "Spaghetti",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "An old favorite.",
-          "shopPrice": 240,
+          "price": 240,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "pizza",
         "name": "Pizza",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "It's popular for all the right reasons.",
-          "shopPrice": 600,
+          "price": 600,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "coffee",
         "name": "Coffee",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "It smells delicious. This is sure to give you a boost.",
-          "shopPrice": 300,
+          "price": 300,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "hashbrowns_recipe",
         "name": "Hashbrowns Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Hashbrowns",
-          "shopPrice": 50,
+          "price": 50,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "omelet_recipe",
         "name": "Omelet Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Omelet",
-          "shopPrice": 100,
+          "price": 100,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "pancakes_recipe",
         "name": "Pancakes Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Pancakes",
-          "shopPrice": 100,
+          "price": 100,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "bread_recipe",
         "name": "Bread Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Bread",
-          "shopPrice": 100,
+          "price": 100,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "tortilla_recipe",
         "name": "Tortilla Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Tortilla",
-          "shopPrice": 100,
+          "price": 100,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "pizza_recipe",
         "name": "Pizza Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Pizza",
-          "shopPrice": 150,
+          "price": 150,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "maki_roll_recipe",
         "name": "Maki Roll Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Maki Roll",
-          "shopPrice": 300,
+          "price": 300,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "triple_shot_espresso_recipe",
         "name": "Triple Shot Espresso Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Triple Shot Espresso",
-          "shopPrice": 5000,
+          "price": 5000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "cookie_recipe",
         "name": "Cookie Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Cookie",
-          "shopPrice": 300,
+          "price": 300,
           "dailyLimit": 1
         }
       }
     ]
   },
   {
-    "shopName": "carpenter'sShop",
+    "shopName": "Carpenter's Shop",
     "items": [
       {
         "itemId": "wood",
         "name": "Wood",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A sturdy, yet flexible plant material with a wide variety of uses.",
-          "shopPrice": 10,
+          "price": 10,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "stone",
         "name": "Stone",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A common material with many uses in crafting and building.",
-          "shopPrice": 20,
+          "price": 20,
           "dailyLimit": -1
         }
       },
       {
         "itemId": "barn",
         "name": "Barn",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 4 barn-dwelling animals.",
@@ -496,14 +496,14 @@
               4
             ]
           },
-          "shopPrice": 6000,
+          "price": 6000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "big_barn",
         "name": "Big Barn",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 8 barn-dwelling animals. Unlocks goats.",
@@ -515,14 +515,14 @@
               4
             ]
           },
-          "shopPrice": 12000,
+          "price": 12000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "deluxe_barn",
         "name": "Deluxe Barn",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 12 barn-dwelling animals. Unlocks sheep and pigs.",
@@ -534,14 +534,14 @@
               4
             ]
           },
-          "shopPrice": 25000,
+          "price": 25000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "coop",
         "name": "Coop",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 4 coop-dwelling animals.",
@@ -553,14 +553,14 @@
               3
             ]
           },
-          "shopPrice": 4000,
+          "price": 4000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "big_coop",
         "name": "Big Coop",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 8 coop-dwelling animals. Unlocks ducks.",
@@ -572,14 +572,14 @@
               3
             ]
           },
-          "shopPrice": 10000,
+          "price": 10000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "deluxe_coop",
         "name": "Deluxe Coop",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 12 coop-dwelling animals. Unlocks rabbits.",
@@ -591,14 +591,14 @@
               3
             ]
           },
-          "shopPrice": 20000,
+          "price": 20000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "well",
         "name": "Well",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Houses 12 coop-dwelling animals. Unlocks rabbits.",
@@ -609,14 +609,14 @@
               3
             ]
           },
-          "shopPrice": 1000,
+          "price": 1000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "shipping_bin",
         "name": "Shipping Bin",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Items placed in it will be included in the nightly shipment.",
@@ -627,23 +627,23 @@
               1
             ]
           },
-          "shopPrice": 250,
+          "price": 250,
           "dailyLimit": -1
         }
       }
     ]
   },
   {
-    "shopName": "fishShop",
+    "shopName": "fish Shop",
     "items": [
       {
         "itemId": "fish_smoker_recipe",
         "name": "Fish Smoker Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Fish Smoker",
-          "shopPrice": 10000,
+          "price": 10000,
           "fishingSkill": 0,
           "dailyLimit": 1
         }
@@ -651,11 +651,11 @@
       {
         "itemId": "trout_soup",
         "name": "Trout Soup",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Pretty salty.",
-          "shopPrice": 250,
+          "price": 250,
           "fishingSkill": 0,
           "dailyLimit": 1
         }
@@ -663,11 +663,11 @@
       {
         "itemId": "bamboo_pole",
         "name": "Bamboo Pole",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Use in the water to catch fish.",
-          "shopPrice": 500,
+          "price": 500,
           "fishingSkill": 0,
           "dailyLimit": 1
         }
@@ -675,11 +675,11 @@
       {
         "itemId": "training_rod",
         "name": "Training Rod",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "It's a lot easier to use than other rods, but can only catch basic fish.",
-          "shopPrice": 25,
+          "price": 25,
           "fishingSkill": 0,
           "dailyLimit": 1
         }
@@ -687,11 +687,11 @@
       {
         "itemId": "fiberglass_rod",
         "name": "Fiberglass Rod",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Use in the water to catch fish.",
-          "shopPrice": 1800,
+          "price": 1800,
           "fishingSkill": 2,
           "dailyLimit": 1
         }
@@ -699,11 +699,11 @@
       {
         "itemId": "iridium_rod",
         "name": "Iridium Rod",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Use in the water to catch fish.",
-          "shopPrice": 7500,
+          "price": 7500,
           "fishingSkill": 4,
           "dailyLimit": 1
         }
@@ -711,16 +711,16 @@
     ]
   },
   {
-    "shopName": "jojaMart",
+    "shopName": "JojaMart",
     "items": [
       {
         "itemId": "joja_cola",
         "name": "Joja Cola",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "The flagship product of Joja corporation.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "spring",
             "summer",
@@ -733,11 +733,11 @@
       {
         "itemId": "ancient_seed",
         "name": "Ancient Seed",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Could these still grow?",
-          "shopPrice": 500,
+          "price": 500,
           "season": [
             "spring",
             "summer",
@@ -750,11 +750,11 @@
       {
         "itemId": "grass_starter",
         "name": "Grass Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Place this on your farm to start a new patch of grass.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "spring",
             "summer",
@@ -767,11 +767,11 @@
       {
         "itemId": "sugar",
         "name": "Sugar",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Adds sweetness to pastries and candies. Too much can be unhealthy.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "spring",
             "summer",
@@ -784,11 +784,11 @@
       {
         "itemId": "wheat_flour",
         "name": "Wheat Flour",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A common cooking ingredient made from crushed wheat seeds.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "spring",
             "summer",
@@ -801,11 +801,11 @@
       {
         "itemId": "rice",
         "name": "Rice",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A basic grain often served under vegetables.",
-          "shopPrice": 250,
+          "price": 250,
           "season": [
             "spring",
             "summer",
@@ -818,11 +818,11 @@
       {
         "itemId": "parsnip_seeds",
         "name": "Parsnip Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 4 days to mature.",
-          "shopPrice": 25,
+          "price": 25,
           "season": [
             "spring"
           ],
@@ -832,11 +832,11 @@
       {
         "itemId": "bean_starter",
         "name": "Bean Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "spring"
           ],
@@ -846,11 +846,11 @@
       {
         "itemId": "cauliflower_seeds",
         "name": "Cauliflower Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring"
           ],
@@ -860,11 +860,11 @@
       {
         "itemId": "potato_seeds",
         "name": "Potato Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
-          "shopPrice": 62,
+          "price": 62,
           "season": [
             "spring"
           ],
@@ -874,11 +874,11 @@
       {
         "itemId": "strawberry_seeds",
         "name": "Strawberry Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in spring. Takes 8 days to mature, and keeps producing strawberries after that.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring"
           ],
@@ -888,11 +888,11 @@
       {
         "itemId": "tulip_bulb",
         "name": "Tulip Bulb",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
-          "shopPrice": 25,
+          "price": 25,
           "season": [
             "spring"
           ],
@@ -902,11 +902,11 @@
       {
         "itemId": "kale_seeds",
         "name": "Kale seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
-          "shopPrice": 87,
+          "price": 87,
           "season": [
             "spring"
           ],
@@ -916,11 +916,11 @@
       {
         "itemId": "coffee_beans",
         "name": "Coffe Beans",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer or spring. Takes 10 days to grow, Then produces coffee Beans every other day.",
-          "shopPrice": 200,
+          "price": 200,
           "season": [
             "spring",
             "summer"
@@ -931,11 +931,11 @@
       {
         "itemId": "carrot_seeds",
         "name": "Carrot Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in the spring. Takes 3 days to grow.",
-          "shopPrice": 5,
+          "price": 5,
           "season": [
             "spring"
           ],
@@ -945,11 +945,11 @@
       {
         "itemId": "rhubarb_seeds",
         "name": "Rhubarb Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 13 days to mature.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring"
           ],
@@ -959,11 +959,11 @@
       {
         "itemId": "jazz_seeds",
         "name": "Jazz Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
-          "shopPrice": 37,
+          "price": 37,
           "season": [
             "spring"
           ],
@@ -973,11 +973,11 @@
       {
         "itemId": "tomato_seeds",
         "name": "Tomato Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 62,
+          "price": 62,
           "season": [
             "summer"
           ],
@@ -987,11 +987,11 @@
       {
         "itemId": "pepper_seeds",
         "name": "Pepper Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 50,
+          "price": 50,
           "season": [
             "summer"
           ],
@@ -1001,11 +1001,11 @@
       {
         "itemId": "wheat_seeds",
         "name": "Wheat Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
-          "shopPrice": 12,
+          "price": 12,
           "season": [
             "summer",
             "fall"
@@ -1016,11 +1016,11 @@
       {
         "itemId": "summer_squash_seeds",
         "name": "Summer Squash Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in the summer. Takes 6 days to grow, and continues to produce after first harvest.",
-          "shopPrice": 10,
+          "price": 10,
           "season": [
             "summer"
           ],
@@ -1030,11 +1030,11 @@
       {
         "itemId": "radish_seeds",
         "name": "Radish Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 6 days to mature.",
-          "shopPrice": 50,
+          "price": 50,
           "season": [
             "summer"
           ],
@@ -1044,11 +1044,11 @@
       {
         "itemId": "melon_seeds",
         "name": "Melon Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 12 days to mature.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "summer"
           ],
@@ -1058,11 +1058,11 @@
       {
         "itemId": "hops_starter",
         "name": "Hops Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "summer"
           ],
@@ -1072,11 +1072,11 @@
       {
         "itemId": "poppy_seeds",
         "name": "Poppy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer. Produces a bright red flower in 7 days.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "summer"
           ],
@@ -1086,11 +1086,11 @@
       {
         "itemId": "spangle_seeds",
         "name": "Spangle Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
-          "shopPrice": 62,
+          "price": 62,
           "season": [
             "summer"
           ],
@@ -1100,11 +1100,11 @@
       {
         "itemId": "starfruit_seeds",
         "name": "Starfruit Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 13 days to mature.",
-          "shopPrice": 400,
+          "price": 400,
           "season": [
             "summer"
           ],
@@ -1114,11 +1114,11 @@
       {
         "itemId": "sunflower_seeds",
         "name": "Sunflower Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "summer",
             "fall"
@@ -1129,11 +1129,11 @@
       {
         "itemId": "corn_seeds",
         "name": "Corn Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 187,
+          "price": 187,
           "season": [
             "fall"
           ],
@@ -1143,11 +1143,11 @@
       {
         "itemId": "eggplant_seeds",
         "name": "Eggplant Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 25,
+          "price": 25,
           "season": [
             "fall"
           ],
@@ -1157,11 +1157,11 @@
       {
         "itemId": "pumpkin_seeds",
         "name": "Pumpkin Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 13 days to mature.",
-          "shopPrice": 125,
+          "price": 125,
           "season": [
             "fall"
           ],
@@ -1171,11 +1171,11 @@
       {
         "itemId": "broccoli_seeds",
         "name": "Broccoli Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in the fall. Takes 8 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 15,
+          "price": 15,
           "season": [
             "fall"
           ],
@@ -1185,11 +1185,11 @@
       {
         "itemId": "amaranth_seeds",
         "name": "Amaranth Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 7 days to grow. Harvest with the scythe.",
-          "shopPrice": 87,
+          "price": 87,
           "season": [
             "fall"
           ],
@@ -1199,11 +1199,11 @@
       {
         "itemId": "grape_starter",
         "name": "Grape Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "fall"
           ],
@@ -1213,11 +1213,11 @@
       {
         "itemId": "beet_seeds",
         "name": "Beet Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 6 days to mature.",
-          "shopPrice": 20,
+          "price": 20,
           "season": [
             "fall"
           ],
@@ -1227,11 +1227,11 @@
       {
         "itemId": "yam_seeds",
         "name": "Yam Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 10 days to mature.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "fall"
           ],
@@ -1241,11 +1241,11 @@
       {
         "itemId": "bok_choy_seeds",
         "name": "Bok Choy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 4 days to mature.",
-          "shopPrice": 62,
+          "price": 62,
           "season": [
             "fall"
           ],
@@ -1255,11 +1255,11 @@
       {
         "itemId": "cranberry_seeds",
         "name": "Cranberry Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 7 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 300,
+          "price": 300,
           "season": [
             "fall"
           ],
@@ -1269,11 +1269,11 @@
       {
         "itemId": "fairy_seeds",
         "name": "Fairy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in fall. Takes 12 days to produce a mysterious flower. Assorted Colors.",
-          "shopPrice": 250,
+          "price": 250,
           "season": [
             "fall"
           ],
@@ -1283,11 +1283,11 @@
       {
         "itemId": "rare_seeds",
         "name": "Rare Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Sow in fall. Takes all season to grow.",
-          "shopPrice": 1000,
+          "price": 1000,
           "season": [
             "fall"
           ],
@@ -1297,11 +1297,11 @@
       {
         "itemId": "powdermelon_seeds",
         "name": "Powdermelon Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "This special melon grows in the winter. Takes 7 days to grow.",
-          "shopPrice": 20,
+          "price": 20,
           "season": [
             "winter"
           ],
@@ -1316,11 +1316,11 @@
       {
         "itemId": "rice",
         "name": "Rice",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A basic grain often served under vegetables.",
-          "shopPrice": 200,
+          "price": 200,
           "season": [
             "spring",
             "summer",
@@ -1333,11 +1333,11 @@
       {
         "itemId": "wheat_flour",
         "name": "Wheat Flour",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A common cooking ingredient made from crushed wheat seeds.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring",
             "summer",
@@ -1350,11 +1350,11 @@
       {
         "itemId": "bouquet",
         "name": "Bouquet",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "A gift that shows your romantic interest.",
-          "shopPrice": 1000,
+          "price": 1000,
           "season": [
             "spring",
             "summer",
@@ -1367,11 +1367,11 @@
       {
         "itemId": "wedding_ring",
         "name": "Wedding Ring",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "It's used to ask for another farmer's hand in marriage.",
-          "shopPrice": 10000,
+          "price": 10000,
           "season": [
             "spring",
             "summer",
@@ -1384,7 +1384,7 @@
       {
         "itemId": "dehydrator_recipe",
         "name": "Dehydrator Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Dehydrator",
@@ -1394,14 +1394,14 @@
             "fall",
             "winter"
           ],
-          "shopPrice": 10000,
+          "price": 10000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "grass_starter_recipe",
         "name": "Grape Starter Recipe",
-        "type": "shopRecipe",
+        "type": "shop_recipe",
         "baseAttributes": {
           "quality": "regular",
           "description": "A recipe to make Grass Starter",
@@ -1411,18 +1411,18 @@
             "fall",
             "winter"
           ],
-          "shopPrice": 1000,
+          "price": 1000,
           "dailyLimit": 1
         }
       },
       {
         "itemId": "sugar",
         "name": "Sugar",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Adds sweetness to pastries and candies. Too much can be unhealthy.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring",
             "summer",
@@ -1435,11 +1435,11 @@
       {
         "itemId": "oil",
         "name": "Oil",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "All purpose cooking oil.",
-          "shopPrice": 200,
+          "price": 200,
           "season": [
             "spring",
             "summer",
@@ -1452,11 +1452,11 @@
       {
         "itemId": "vinegar",
         "name": "Vinegar",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "An aged fermented liquid used in many cooking recipes.",
-          "shopPrice": 200,
+          "price": 200,
           "season": [
             "spring",
             "summer",
@@ -1469,11 +1469,11 @@
       {
         "itemId": "deluxe_retaining_soil",
         "name": "Deluxe Retaining Soil",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
-          "shopPrice": 150,
+          "price": 150,
           "season": [
             "spring",
             "summer",
@@ -1486,11 +1486,11 @@
       {
         "itemId": "grass_starter",
         "name": "Grass Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Place this on your farm to start a new patch of grass.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring",
             "summer",
@@ -1503,11 +1503,11 @@
       {
         "itemId": "speed_gro",
         "name": "Speed Gro",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Makes the plants grow 1 day earlier.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring",
             "summer",
@@ -1520,11 +1520,11 @@
       {
         "itemId": "apple_sapling",
         "name": "Apple Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 4000,
+          "price": 4000,
           "season": [
             "spring",
             "summer",
@@ -1537,11 +1537,11 @@
       {
         "itemId": "apricot_sapling",
         "name": "Apricot Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 2000,
+          "price": 2000,
           "season": [
             "spring",
             "summer",
@@ -1554,11 +1554,11 @@
       {
         "itemId": "cherry_sapling",
         "name": "Cherry Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 3400,
+          "price": 3400,
           "season": [
             "spring",
             "summer",
@@ -1571,11 +1571,11 @@
       {
         "itemId": "orange_sapling",
         "name": "Orange Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Orange tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 4000,
+          "price": 4000,
           "season": [
             "spring",
             "summer",
@@ -1588,11 +1588,11 @@
       {
         "itemId": "peach_sapling",
         "name": "Peach Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 6000,
+          "price": 6000,
           "season": [
             "spring",
             "summer",
@@ -1605,11 +1605,11 @@
       {
         "itemId": "pomegranate_sapling",
         "name": "Pomegranate Sapling",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
-          "shopPrice": 6000,
+          "price": 6000,
           "season": [
             "spring",
             "summer",
@@ -1622,11 +1622,11 @@
       {
         "itemId": "basic_retaining_soil",
         "name": "Basic Retaining Soil",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "This soil has a chance of staying watered overnight. Mix into tilled soil.",
-          "shopPrice": 100,
+          "price": 100,
           "season": [
             "spring",
             "summer",
@@ -1639,11 +1639,11 @@
       {
         "itemId": "quality_retaining_soil",
         "name": "Quality Retaining Soil",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
-          "shopPrice": 150,
+          "price": 150,
           "season": [
             "spring",
             "summer",
@@ -1656,11 +1656,11 @@
       {
         "itemId": "large_pack",
         "name": "Large Pack",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Unlocks the 2nd row of inventory (12 more slots, total 24).",
-          "shopPrice": 2000,
+          "price": 2000,
           "season": [
             "spring",
             "summer",
@@ -1673,11 +1673,11 @@
       {
         "itemId": "deluxe_pack",
         "name": "Deluxe Pack",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Unlocks the 3rd row of inventory (infinite slots).",
-          "shopPrice": 10000,
+          "price": 10000,
           "season": [
             "spring",
             "summer",
@@ -1690,11 +1690,11 @@
       {
         "itemId": "parsnip_seeds",
         "name": "Parsnip Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 4 days to mature.",
-          "shopPrice": 30,
+          "price": 30,
           "season": [
             "spring"
           ],
@@ -1704,11 +1704,11 @@
       {
         "itemId": "bean_starter",
         "name": "Bean Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 10 days to mature, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 90,
+          "price": 90,
           "season": [
             "spring"
           ],
@@ -1718,11 +1718,11 @@
       {
         "itemId": "cauliflower_seeds",
         "name": "Cauliflower Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
-          "shopPrice": 120,
+          "price": 120,
           "season": [
             "spring"
           ],
@@ -1732,11 +1732,11 @@
       {
         "itemId": "potato_seeds",
         "name": "Potato Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 6 days to mature, and has a chance of yielding multiple potatoes at harvest.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "spring"
           ],
@@ -1746,11 +1746,11 @@
       {
         "itemId": "cauliflower_seeds",
         "name": "Cauliflower Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 12 days to produce a large cauliflower.",
-          "shopPrice": 120,
+          "price": 120,
           "season": [
             "spring"
           ],
@@ -1760,11 +1760,11 @@
       {
         "itemId": "tulip_bulb",
         "name": "Tulip Bulb",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in spring. Takes 6 days to produce a colorful flower. Assorted colors.",
-          "shopPrice": 30,
+          "price": 30,
           "season": [
             "spring"
           ],
@@ -1774,11 +1774,11 @@
       {
         "itemId": "kale_seeds",
         "name": "Kale seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 6 days to mature. Harvest with the scythe.",
-          "shopPrice": 105,
+          "price": 105,
           "season": [
             "spring"
           ],
@@ -1788,11 +1788,11 @@
       {
         "itemId": "jazz_seeds",
         "name": "Jazz Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in spring. Takes 7 days to produce a blue puffball flower.",
-          "shopPrice": 45,
+          "price": 45,
           "season": [
             "spring"
           ],
@@ -1802,11 +1802,11 @@
       {
         "itemId": "garlic_seeds",
         "name": "Garlic Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 4 days to mature.",
-          "shopPrice": 60,
+          "price": 60,
           "season": [
             "spring"
           ],
@@ -1816,11 +1816,11 @@
       {
         "itemId": "rice_shoot",
         "name": "Rice Shoot",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the spring. Takes 8 days to mature. Grows faster if planted near a body of water. Harvest with the scythe.",
-          "shopPrice": 60,
+          "price": 60,
           "season": [
             "spring"
           ],
@@ -1830,11 +1830,11 @@
       {
         "itemId": "melon_seeds",
         "name": "Melon Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 12 days to mature.",
-          "shopPrice": 120,
+          "price": 120,
           "season": [
             "summer"
           ],
@@ -1844,11 +1844,11 @@
       {
         "itemId": "tomato_seeds",
         "name": "Tomato Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 11 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "summer"
           ],
@@ -1858,11 +1858,11 @@
       {
         "itemId": "blueberry_seeds",
         "name": "Blueberry Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 13 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 120,
+          "price": 120,
           "season": [
             "summer"
           ],
@@ -1872,11 +1872,11 @@
       {
         "itemId": "pepper_seeds",
         "name": "Pepper Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 5 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 60,
+          "price": 60,
           "season": [
             "summer"
           ],
@@ -1886,11 +1886,11 @@
       {
         "itemId": "wheat_seeds",
         "name": "Wheat Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer or fall. Takes 4 days to mature. Harvest with the scythe.",
-          "shopPrice": 15,
+          "price": 15,
           "season": [
             "summer"
           ],
@@ -1900,11 +1900,11 @@
       {
         "itemId": "radish_seeds",
         "name": "Radish Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 6 days to mature.",
-          "shopPrice": 60,
+          "price": 60,
           "season": [
             "summer"
           ],
@@ -1914,11 +1914,11 @@
       {
         "itemId": "poppy_seeds",
         "name": "Poppy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer. Produces a bright red flower in 7 days.",
-          "shopPrice": 150,
+          "price": 150,
           "season": [
             "summer"
           ],
@@ -1928,11 +1928,11 @@
       {
         "itemId": "spangle_seeds",
         "name": "Spangle Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer. Takes 8 days to produce a vibrant tropical flower. Assorted colors.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "summer"
           ],
@@ -1942,11 +1942,11 @@
       {
         "itemId": "hops_starter",
         "name": "Hops Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 11 days to grow, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 90,
+          "price": 90,
           "season": [
             "summer"
           ],
@@ -1956,11 +1956,11 @@
       {
         "itemId": "corn_seeds",
         "name": "Corn Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer or fall. Takes 14 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 225,
+          "price": 225,
           "season": [
             "summer",
             "fall"
@@ -1971,11 +1971,11 @@
       {
         "itemId": "sunflower_seeds",
         "name": "Sunflower Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in summer or fall. Takes 8 days to produce a large sunflower. Yields more seeds at harvest.",
-          "shopPrice": 300,
+          "price": 300,
           "season": [
             "summer",
             "fall"
@@ -1986,11 +1986,11 @@
       {
         "itemId": "red_cabbage_seeds",
         "name": "Red Cabbage Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the summer. Takes 9 days to mature.",
-          "shopPrice": 150,
+          "price": 150,
           "season": [
             "summer"
           ],
@@ -2000,11 +2000,11 @@
       {
         "itemId": "eggplant_seeds",
         "name": "Eggplant Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 30,
+          "price": 30,
           "season": [
             "fall"
           ],
@@ -2014,11 +2014,11 @@
       {
         "itemId": "eggplant_seeds",
         "name": "Eggplant Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 5 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 30,
+          "price": 30,
           "season": [
             "fall"
           ],
@@ -2028,11 +2028,11 @@
       {
         "itemId": "pumpkin_seeds",
         "name": "Pumpkin Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 13 days to mature.",
-          "shopPrice": 150,
+          "price": 150,
           "season": [
             "fall"
           ],
@@ -2042,11 +2042,11 @@
       {
         "itemId": "bok_choy_seeds",
         "name": "Bok Choy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 4 days to mature.",
-          "shopPrice": 75,
+          "price": 75,
           "season": [
             "fall"
           ],
@@ -2056,11 +2056,11 @@
       {
         "itemId": "yam_seeds",
         "name": "Yam Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 10 days to mature.",
-          "shopPrice": 90,
+          "price": 90,
           "season": [
             "fall"
           ],
@@ -2070,11 +2070,11 @@
       {
         "itemId": "cranberry_seeds",
         "name": "Cranberry Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 7 days to mature, and continues to produce after first harvest.",
-          "shopPrice": 360,
+          "price": 360,
           "season": [
             "fall"
           ],
@@ -2084,11 +2084,11 @@
       {
         "itemId": "fairy_seeds",
         "name": "Fairy Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant in fall. Takes 12 days to produce a mysterious flower. Assorted Colors.",
-          "shopPrice": 300,
+          "price": 300,
           "season": [
             "fall"
           ],
@@ -2098,11 +2098,11 @@
       {
         "itemId": "amaranth_seeds",
         "name": "Amaranth Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 7 days to grow. Harvest with the scythe.",
-          "shopPrice": 105,
+          "price": 105,
           "season": [
             "fall"
           ],
@@ -2112,11 +2112,11 @@
       {
         "itemId": "grape_starter",
         "name": "Grape Starter",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 10 days to grow, but keeps producing after that. Grows on a trellis.",
-          "shopPrice": 90,
+          "price": 90,
           "season": [
             "fall"
           ],
@@ -2126,11 +2126,11 @@
       {
         "itemId": "artichoke_seeds",
         "name": "Artichoke Seeds",
-        "type": "shopItem",
+        "type": "shop_item",
         "baseAttributes": {
           "quality": "regular",
           "description": "Plant these in the fall. Takes 8 days to mature.",
-          "shopPrice": 45,
+          "price": 45,
           "season": [
             "fall"
           ],

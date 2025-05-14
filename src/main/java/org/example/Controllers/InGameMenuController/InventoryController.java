@@ -28,7 +28,7 @@ public class InventoryController {
     }
 
     public void showInventory(Game game) {
-        if (game.isPlayerActive(game.getCurrentPlayer())) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
             view.showMessage("You are ran out of energy for this turn!");
             return;
         }
@@ -45,7 +45,7 @@ public class InventoryController {
     }
 
     public void inventoryTrash(Game game, Matcher matcher, String input) {
-        if (game.isPlayerActive(game.getCurrentPlayer())) {
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
             view.showMessage("You are ran out of energy for this turn!");
             return;
         }

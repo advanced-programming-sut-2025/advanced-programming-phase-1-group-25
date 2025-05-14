@@ -35,6 +35,7 @@ public enum ActionMenuCommands {
 
     ENERGY_SHOW("^\\s*energy\\s+show\\s*$"),
     ENERGY_SET("^\\s*energy\\s+set\\s+-v\\s+(?<value>.+?)\\s*$"),
+    ENERGY_REFILL("^\\s*energy\\s+refill\\s*$"),
     ENERGY_UNLIMITED("^\\s*energy\\s+unlimited\\s*$"),
 
 
@@ -84,7 +85,8 @@ public enum ActionMenuCommands {
     QUESTS_LIST("^\\s*quests\\s+list\\s*$"),
     FRIENDSHIP_NPC_LIST("^\\s*friendship\\s+NPC\\s+list\\s*$"),
     GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npcName>.+?)\\s+-i\\s+(?<item>.+?)\\s*$"),
-    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npcName>>+?)\\s*$"),
+    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npcName>.+?)\\s*$"),
+    GET_QUEST("^\\s*get\\s+quest\\s+NPC\\s+(?<npcName>.+?)\\s*$"),
     ///
     TRADE_HISTORY("^\\s*trade\\s+history\\s*$"),
     TRADE_RESPONSE("^\\s*trade\\s+response\\s+-(accept|reject)\\s+-i\\s+(?<id>.+?)\\s*$"),
@@ -92,7 +94,7 @@ public enum ActionMenuCommands {
     /// TRADE TODO
     START_TRADE("^\\s*start\\s+trade\\s*$"),
     RESPOND("^\\s*respond\\s+-(accept|reject)\\s+-u\\s+(?<username>.+?)\\s*$"),
-    ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s+-r\\s+(?<ring>.+?)\\s*$"),
+    ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s*$"),
     FLOWER("^\\s*flower\\s+-u\\s+(?<username>.+?)\\s*$"),
     HUG("^\\s*hug\\s+-u\\s+(?<username>.+?)\\s*"),
     GIFT_HISTORY("^\\s*gift\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
@@ -104,7 +106,7 @@ public enum ActionMenuCommands {
     FRIENDSHIPS("^\\s*friendships\\s*$"),
     /// selling and buying
     SELL("^\\s*sell\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
-    CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>>+?)\\s+dollars\\s*$"),
+    CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>.+?)\\s+dollars\\s*$"),
     PURCHASE("^\\s*purchase\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
     SHOW_ALL_AVAILABLE_PRODUCTS("^\\s*show\\s+all\\s+available\\s+products\\s*$"),
     SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),

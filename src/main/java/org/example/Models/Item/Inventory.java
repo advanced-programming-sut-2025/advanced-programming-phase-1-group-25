@@ -131,9 +131,25 @@ public class Inventory {
         return target;
     }
 
+    public ArrayList<ItemInstance> getItem(ItemIDs id, int amount) {
+        ArrayList<ItemInstance> items = new ArrayList<>();
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+            if (entry.getKey() == id) {
+                ArrayList<ItemInstance> itemList = this.items.get(id);
+                for (int i = 0; i < Math.min(itemList.size(), amount); i++) {
+                    ItemInstance target = itemList.get(itemList.size() - 1);
+                    itemList.remove(itemList.size() - 1);
+                    itemList.add(target);
+                }
+            }
+        }
+        return items;
+    }
+
     public int getCapacity() {
         return this.level.getLevel();
     }
+
 
     public Map<ItemIDs, ArrayList<ItemInstance>> getItems() {
         return items;
@@ -147,7 +163,7 @@ public class Inventory {
         };
     }
 
-    public void setInventoryTools() {
+    public void setInventoryTools () {
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
@@ -158,42 +174,42 @@ public class Inventory {
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
     }
 
-    public void bagaDadanInventoryPlus() {
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
+        public void bagaDadanInventoryPlus () {
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
+            for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+                this.addItem(new ItemInstance(itemDefinition));
+            }
         }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-    }
 }

@@ -1,6 +1,11 @@
 package org.example.Controllers.UpdateMap;
 
+import java.io.UTFDataFormatException;
+
 public class MorningUpdate {
-//    UpdateForaging.deleteForaging();
-//    UpdateForaging.updateForaging();
+    public static void morningUpdate() {
+        UpdateForaging.deleteForaging();
+        UpdateForaging.updateForaging();
+    }
+
 }

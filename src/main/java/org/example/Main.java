@@ -19,6 +19,10 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
+        System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off");
+        System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "warn");
+
     // test
         User user1 = new User("ali1", "ali1", "1234", "", Gender.FEMALE, new Question("", ""));
         User user2 = new User("ali2", "ali2", "", "", Gender.FEMALE, new Question("", ""));
@@ -32,6 +36,8 @@ public class Main {
 //        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
     // test
 
+        App.setCurrentUser(user1);
+        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
         AppView appView = new AppView();
         appView.run();
     }

@@ -87,6 +87,11 @@ public class FarmingController {
             return;
         }
 
+        if (!tile.isPlowed()) {
+            this.view.showMessage("Tile is not plowed.");
+            return;
+        }
+
         // find seed
         ItemDefinition seedDefinition = getSeedByName(seedName);
         if (seedDefinition == null) {
@@ -100,9 +105,14 @@ public class FarmingController {
             return;
         }
 
-        ItemInstance seed = currentPlayer.getInventory().getItem(seedDefinition.getId());
-        tile.setItem(seed);
-        // decrease energy TODO
+        ItemInstance plant = new ItemInstance(getPlantBySeed(seedDefinition));
+        tile.setItem(plant);
+        tile.setDayPassedFromPlant(0);
+        this.view.showMessage("You have planted the seed successfully.");
+        // decrease energy
+        currentPlayer.decreaseEnergy(5);
+        // increase ability
+        currentPlayer.getAbilities().increaseFarmingAbility();
     }
 
     private Tile getTileByDir(String dir) {
@@ -177,35 +187,17 @@ public class FarmingController {
         }
 
         ItemInstance item = tile.getItem();
-        boolean isSeed = false;
         String name;
         String isWateredToday;
         String isFertilized;
         int timeRemains = -1;
 
-        if (item.getDefinition().getType() == ItemType.foraging_seeds) {
-            isSeed = true;
-            ItemDefinition plant = getPlantBySeed(item.getDefinition());
-            if (plant == null) {
-                this.view.showMessage("Error occurred (plant for this seed doesn't exist)");
-                return;
-            }
-            name = item.getDefinition().getDisplayName();
-            try {
-                timeRemains = (int) plant.getBaseAttributes().get("totalHarvestTime") - tile.getDayPassedFromPlant();
-            } catch (Exception e) {
-                this.view.showMessage("Error occurred (not have totalHarvestTime");
-                return;
-            }
 
-            isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
-            isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
-            //TODO: stage and quality?!
-        } else if (item.getDefinition().getType() == ItemType.foraging_crops) {
+       if (item.getDefinition().getType() == ItemType.all_crops) {
             name = item.getDefinition().getDisplayName();
             isWateredToday = tile.isWatered() ? "is watered today" : "is not watered today";
             isFertilized = tile.isFertilized() ? "is fertilized" : "is not fertilized";
-            //TODO: stage and quality?!
+            timeRemains = ((int) item.getAttribute(ItemAttributes.totalHarvestTime)) - tile.getDayPassedFromPlant();
         } else {
             this.view.showMessage("Tile doesn't have any plant!");
             return;
@@ -213,9 +205,9 @@ public class FarmingController {
 
         StringBuilder output = new StringBuilder();
         output.append("Tile plant description:\n");
-        output.append("Plant/seed name: " + name + "\n");
-        output.append(isWateredToday + "\n").append(isFertilized);
-        if (isSeed) output.append("Time remains " + timeRemains);
+        output.append("Plant/seed name: ").append(name).append("\n");
+        output.append(isWateredToday).append("\n").append(isFertilized).append("\n");
+        output.append(timeRemains <= 0 ? "is ready to harvest!" : timeRemains + " remains to harvest.");
         this.view.showMessage(output.toString());
     }
 
@@ -238,21 +230,6 @@ public class FarmingController {
         // TODO: fertilize with fertilizer
     }
 
-    public void water(String dir) {
-        Tile tile = getTileByDir(dir);
-        if (tile == null) {
-            this.view.showMessage("Tile doesn't exist.");
-            return;
-        }
-        waterTile(tile);
-    }
-
-    private void waterTile(Tile tile) {
-        tile.setWatered(true);
-        // decrease energy
-        // decrease water
-    }
-
     public void reap(String dir) {
         Tile tile = getTileByDir(dir);
         if (tile == null) {
@@ -269,9 +246,13 @@ public class FarmingController {
             return;
         }
 
+
+
         // decrease energy
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
-        // add plant to inventory
+        Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
+        currentPlayer.getInventory().addItem(item);
+        this.view.showMessage("Plant harvested successfully.");
     }
 
     private ItemDefinition getSeedByName(String name) {
@@ -287,13 +268,10 @@ public class FarmingController {
 
     private ItemDefinition getPlantBySeed(ItemDefinition seed) {
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-//            if (itemDefinition.getBaseAttributes().get("source").equals(seed.getDisplayName())) {
-//                return itemDefinition;
-//            }
-            if(itemDefinition.getAttribute(ItemAttributes.source) == null) {
+            if((itemDefinition.getType() == ItemType.all_crops) &&
+               ((String)itemDefinition.getAttribute(ItemAttributes.source)).equalsIgnoreCase(seed.getId().name())) {
                 return itemDefinition;
             }
-            if(itemDefinition.getAttribute(ItemAttributes.source).toString().equalsIgnoreCase(seed.getDisplayName())) {}
         }
         return null;
     }

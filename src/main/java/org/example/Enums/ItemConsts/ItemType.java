@@ -26,10 +26,13 @@ public enum ItemType {
     rock,
     artisan,
     animal_goods,
+    money,
+    friendship_level,
     shopItem,
-    shopRecipe,
+    shop_recipe,
     building,
     ore,
     fruit,
+    shop_item,
     ;
 }

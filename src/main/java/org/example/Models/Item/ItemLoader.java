@@ -110,16 +110,4 @@ public class ItemLoader {
 
         App.setItemDefinitions(itemDefinitions);
     }
-//    public static void testLoadItem() {
-//        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-//            System.out.printf("%s %s %s\n", itemDefinition.getId(), itemDefinition.getType(), itemDefinition.getDisplayName());
-//            for (Map.Entry<ItemAttributes, Object> entry : itemDefinition.getBaseAttributes().entrySet()) {
-//                System.out.printf("%s %s ----", entry.getKey(), entry.getValue());
-//            }
-//            System.out.println();
-//        }
-//        System.out.println("testing App.getItemDefinition:");
-//        ItemDefinition newItemDefinition = App.getItemDefinition("VOID");
-//        System.out.println(newItemDefinition.getId());
-//    }
 }

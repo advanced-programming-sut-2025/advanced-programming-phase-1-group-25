@@ -15,6 +15,7 @@ public enum ItemDisplay {
     foraging_seeds("S"),
     foraging_minerals("R"),
     foraging_crops("C"),
+    shop("S"),
     barn_animal("b"),
     coop_animal("c"),
     all_crops("P"),

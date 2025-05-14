@@ -28,6 +28,16 @@ public class GameMenu implements AppMenu {
         }
     }
 
+    @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
+    public String prompt(String message) {
+        return "";
+    }
+
     private static void executeCommand(GameMenuCommands command, Matcher matcher, Scanner sc) {
         switch (command) {
             case NEW_GAME:

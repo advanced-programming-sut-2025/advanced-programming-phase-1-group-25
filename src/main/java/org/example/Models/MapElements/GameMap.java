@@ -9,8 +9,8 @@ public class GameMap {
         this.map = new Tile[MapSizes.MAP_ROWS.getSize()][MapSizes.MAP_COLS.getSize()];
     }
 
-    public void getMap() {
-
+    public Tile[][] getMap() {
+        return map;
     }
 
     public void addTile(Tile tile) {

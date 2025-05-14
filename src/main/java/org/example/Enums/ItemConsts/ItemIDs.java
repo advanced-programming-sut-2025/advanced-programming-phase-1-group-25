@@ -267,6 +267,11 @@ public enum ItemIDs {
     cheese,
     milk,
     wool,
+    gold_coin,
+    friendship_level,
+    shipping_bin,
+    wedding_ring,
+    flower,
     goat_cheese,
     beer,
     vinegar,
@@ -329,7 +334,6 @@ public enum ItemIDs {
     big_coop,
     deluxe_coop,
     well,
-    shipping_bin,
     fish_smoker_recipe,
     trout_soup,
     bamboo_pole,
@@ -344,7 +348,6 @@ public enum ItemIDs {
     rice,
     coffee_beans,
     bouquet,
-    wedding_ring,
     dehydrator_recipe,
     grass_starter_recipe,
     deluxe_retaining_soil,
@@ -372,6 +375,6 @@ public enum ItemIDs {
     pine_tar,
     sap,
     mystic_syrup,
-    rabbit_foot
+    rabbit_food,
     ;
 }

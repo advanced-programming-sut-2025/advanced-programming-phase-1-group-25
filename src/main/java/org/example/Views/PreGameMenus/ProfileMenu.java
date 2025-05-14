@@ -84,4 +84,14 @@ public class ProfileMenu implements AppMenu {
             System.out.println("Invalid command!");
         }
     }
+
+    @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
+    public String prompt(String message) {
+        return "";
+    }
 }
