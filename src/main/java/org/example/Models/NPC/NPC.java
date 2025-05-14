@@ -1,8 +1,9 @@
 package org.example.Models.NPC;
 
 import org.example.Enums.GameConsts.Gender;
-import org.example.Enums.NPCConsts.NPCConst;
-import org.example.Models.Item.ItemDefinition;
+import org.example.Enums.GameConsts.Professions;
+import org.example.Models.Item.ItemInstance;
+import org.example.Models.MapElements.House;
 import org.example.Models.MapElements.Position;
 
 import java.util.ArrayList;
@@ -13,92 +14,27 @@ import java.util.ArrayList;
 public class NPC {
     private String name;
     private Gender gender;
-    private NPCConst.Professions profession;
+    private Professions profession;
     private Position position;
-    private Position placePosition;
-    private ArrayList<ItemDefinition> favorites;
+    private House house;
+    private ArrayList<ItemInstance> favorites;
     private ArrayList<Quest> quests;
 
     public NPC(String name, Gender gender,
-               NPCConst.Professions profession,
-               ArrayList<ItemDefinition> favorites,
+               Professions profession,
+               ArrayList<ItemInstance> favorites,
                ArrayList<Quest> quests,
-               Position placePosition) {
+               House house) {
         this.name = name;
         this.gender = gender;
         this.profession = profession;
-        this.placePosition = placePosition;
-        this.position = new Position(placePosition.getY(), placePosition.getX() + 1);
+        this.house = house;
         this.favorites = favorites;
         this.quests = quests;
     }
 
-    public Position getPosition() {
-        return position;
-    }
 
-    public Gender getGender() {
-        return gender;
-    }
 
-    public String getName() {
-        return name;
-    }
+    // setter and getters ...
 
-    public ArrayList<ItemDefinition> getFavorites() {
-        return favorites;
-    }
-
-    public ArrayList<Quest> getQuests() {
-        return quests;
-    }
-
-    public Position getHomePosition() {
-        return placePosition;
-    }
-
-    public NPCConst.Professions getProfession() {
-        return profession;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setFavorites(ArrayList<ItemDefinition> favorites) {
-        this.favorites = favorites;
-    }
-
-    public void setHomePosition(Position homePosition) {
-        this.placePosition = homePosition;
-    }
-
-    public void setProfession(NPCConst.Professions profession) {
-        this.profession = profession;
-    }
-
-    public void setQuests(ArrayList<Quest> quests) {
-        this.quests = quests;
-    }
-    public boolean hasFavorite(ItemDefinition itemDefinition) {
-        return favorites.contains(itemDefinition);
-    }
-    public Quest getQuest(int number) {
-        try {
-            return this.quests.get(number - 1);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return null;
-        }
-    }
-    public void finishQuest(Quest quest) {
-        this.quests.remove(quest);
-    }
 }

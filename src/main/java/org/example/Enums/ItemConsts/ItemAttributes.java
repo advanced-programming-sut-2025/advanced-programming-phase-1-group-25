@@ -25,7 +25,6 @@ public enum ItemAttributes {
     fruit,
     isFull,
     isCut,
-    quality,
     hour,
     day,
     isReady,
@@ -33,7 +32,7 @@ public enum ItemAttributes {
     dailyLimit,
     fishingSkill,
     machine,
-    building
-;
+    building;
+
 
 }

@@ -4,12 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum MainMenuCommands {
-    Go_To_AvatarMenu("menu\\s+enter\\s+avatar\\s+menu"),
+    Go_TO_AvatarMenu("menu\\s+enter\\s+avatar\\s+menu"),
     Go_To_ProfileMenu("menu\\s+enter\\s+profile\\s+menu"),
     Go_To_GameMenu("menu\\s+enter\\s+game\\s+menu"),
     Current_Menu("show\\s+current\\s+menu"),
-    User_Logout("user\\s+logout"),
-    Exit_Menu("menu\\s+exit");
+    User_Logout("user\\s+logout");
 
     private final String pattern;
 

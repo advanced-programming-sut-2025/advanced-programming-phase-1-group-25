@@ -28,10 +28,6 @@ public class InventoryController {
     }
 
     public void showInventory(Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder inventoryStr = new StringBuilder();
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
@@ -45,10 +41,6 @@ public class InventoryController {
     }
 
     public void inventoryTrash(Game game, Matcher matcher, String input) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String itemName = matcher.group("itemName");
         Inventory inventory = game.getCurrentPlayer().getInventory();
         if (input.contains("-n")) {
@@ -85,13 +77,13 @@ public class InventoryController {
     }
     public void checkTrashCanLevel(ItemDefinition item, Player player, ItemInstance trashCan, int amount) {
         if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
+            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
         }
     }
 }

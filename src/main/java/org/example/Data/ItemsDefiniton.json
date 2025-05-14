@@ -4,7 +4,6 @@
     "name": "",
     "type": "floor",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -12,9 +11,25 @@
     "name": "Quartz",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 25,
       "description": "A clear crystal commonly found in caves and mines."
+    }
+  },
+  {
+    "itemId": "blue_jazz",
+    "name": "Blue Jazz",
+    "type": "foraging_seeds",
+    "baseAttributes": {
+      "source": "Jazz Seeds",
+      "stages": "1-2-2-2",
+      "totalHarvestTime": 7,
+      "oneTime": true,
+      "regrowthTime": -1,
+      "baseSellPrice": 50,
+      "isEdible": true,
+      "energy": 45,
+      "season": "spring",
+      "canBecomeGiant": false
     }
   },
   {
@@ -22,7 +37,6 @@
     "name": "Acorns",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": "special"
     }
   },
@@ -31,7 +45,6 @@
     "name": "Base Hoe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
@@ -43,7 +56,6 @@
     "name": "Copper Hoe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
@@ -55,7 +67,6 @@
     "name": "Iron Hoe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
@@ -67,7 +78,6 @@
     "name": "Golden Hoe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
@@ -79,7 +89,6 @@
     "name": "Iridium Hoe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 5,
       "energyCost": 1,
       "durability": 100,
@@ -91,7 +100,6 @@
     "name": "Base Pickaxe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
@@ -103,7 +111,6 @@
     "name": "Copper Pickaxe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
@@ -115,7 +122,6 @@
     "name": "Iron Pickaxe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
@@ -127,7 +133,6 @@
     "name": "Golden Pickaxe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
@@ -139,7 +144,6 @@
     "name": "Iridium Pickaxe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 5,
       "energyCost": 1,
       "durability": 100,
@@ -151,7 +155,6 @@
     "name": "Base Axe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
@@ -163,7 +166,6 @@
     "name": "Copper Axe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
@@ -175,7 +177,6 @@
     "name": "Iron Axe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
@@ -187,7 +188,6 @@
     "name": "Golden Axe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
@@ -199,7 +199,6 @@
     "name": "Iridium Axe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "damage": 5,
       "energyCost": 1,
       "durability": 100,
@@ -211,7 +210,6 @@
     "name": "Base Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "durability": 0,
       "capacity": 40,
       "energyCost": 5,
@@ -223,7 +221,6 @@
     "name": "Copper Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "durability": 0,
       "capacity": 55,
       "energyCost": 4,
@@ -235,7 +232,6 @@
     "name": "Iron Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "durability": 0,
       "capacity": 70,
       "energyCost": 3,
@@ -247,7 +243,6 @@
     "name": "Golden Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "durability": 0,
       "capacity": 85,
       "energyCost": 2,
@@ -259,7 +254,6 @@
     "name": "Iridium Watering Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "durability": 0,
       "capacity": 100,
       "energyCost": 1,
@@ -271,7 +265,6 @@
     "name": "Training Fishing Pole",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "price": 25,
       "energyCost": 8
     }
@@ -281,7 +274,6 @@
     "name": "Bamboo Fishing Pole",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "price": 500,
       "energyCost": 8
     }
@@ -291,7 +283,6 @@
     "name": "Fiber Glass Fishing Pole",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "price": 1800,
       "energyCost": 6
     }
@@ -301,7 +292,6 @@
     "name": "Iridium Fishing Pole",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "price": 7500,
       "energyCost": 4
     }
@@ -311,7 +301,6 @@
     "name": "Scythe",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "energyCost": 2
     }
   },
@@ -320,7 +309,6 @@
     "name": "Milk Pale",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "price": 1000,
       "energyCost": 4,
       "isFull": false
@@ -331,7 +319,6 @@
     "name": "Shear",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "energyCost": 4,
       "price": 1000
     }
@@ -341,7 +328,6 @@
     "name": "Base Backpack",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "capacity": 12
     }
   },
@@ -350,7 +336,6 @@
     "name": "Big Backpack",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "capacity": 24
     }
   },
@@ -359,7 +344,6 @@
     "name": "Deluxe Backpack",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "capacity": -1
     }
   },
@@ -368,7 +352,6 @@
     "name": "Base Trash Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "percentage": 0
     }
   },
@@ -377,7 +360,6 @@
     "name": "Copper Trash Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "percentage": 15
     }
   },
@@ -386,7 +368,6 @@
     "name": "Iron Trash Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "percentage": 30
     }
   },
@@ -395,7 +376,6 @@
     "name": "Golden Trash Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "percentage": 45
     }
   },
@@ -404,7 +384,6 @@
     "name": "Iridium Trash Can",
     "type": "tool",
     "baseAttributes": {
-      "quality": "regular",
       "percentage": 60
     }
   },
@@ -413,7 +392,6 @@
     "name": "Cherry Bomb",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "mining": 1
       },
@@ -429,7 +407,6 @@
     "name": "Bomb",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "mining": 2
       },
@@ -445,7 +422,6 @@
     "name": "Mega Bomb",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "mining": 3
       },
@@ -461,7 +437,6 @@
     "name": "Sprinkler",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 1
       },
@@ -476,7 +451,6 @@
     "name": "Quality Sprinkler",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 2
       },
@@ -491,7 +465,6 @@
     "name": "Iridium Sprinkler",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 3
       },
@@ -506,7 +479,6 @@
     "name": "Charcoal Klin",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "foraging": 1
       },
@@ -521,7 +493,6 @@
     "name": "Furnace",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "copper_ore": 20,
         "stone": 25
@@ -533,7 +504,6 @@
     "name": "Scarecrow",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wood": 50,
         "coal": 1,
@@ -546,7 +516,6 @@
     "name": "Deluxe Scarecrow",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 2
       },
@@ -563,7 +532,6 @@
     "name": "Bee House",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 1
       },
@@ -579,7 +547,6 @@
     "name": "Cheese Press",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 2
       },
@@ -595,7 +562,6 @@
     "name": "Keg",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 3
       },
@@ -611,7 +577,6 @@
     "name": "Loom",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 3
       },
@@ -626,7 +591,6 @@
     "name": "Mayonnaise Machine",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wood": 15,
         "stone": 15,
@@ -639,7 +603,6 @@
     "name": "Oil Maker",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 2
       },
@@ -655,7 +618,6 @@
     "name": "Preserves Jar",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "farming": 2
       },
@@ -669,9 +631,8 @@
   {
     "itemId": "dehydrator",
     "name": "Dehydrator",
-    "type": "crafting",
+    "type": "shop_recipe",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "Pierre's General Store": -1
       },
@@ -683,11 +644,24 @@
     }
   },
   {
+    "itemId": "grass_starter",
+    "name": "Grass Starter",
+    "type": "shop_recipe",
+    "baseAttributes": {
+      "source": {
+        "Pierre's General Store": -1
+      },
+      "ingredients": {
+        "wood": 1,
+        "fiber": 1
+      }
+    }
+  },
+  {
     "itemId": "fish_smoker",
     "name": "Fish Smoker",
-    "type": "crafting",
+    "type": "shop_recipe",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "Fish Shop": -1
       },
@@ -703,7 +677,6 @@
     "name": "Mystic Tree Seed",
     "type": "crafting",
     "baseAttributes": {
-      "quality": "regular",
       "source": {
         "foraging": 4
       },
@@ -721,7 +694,6 @@
     "name": "Hen",
     "type": "coop_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 800,
       "products": {
         "egg": 50,
@@ -734,7 +706,6 @@
     "name": "Duck",
     "type": "coop_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 1200,
       "products": {
         "duck_egg": 95,
@@ -747,7 +718,6 @@
     "name": "Rabbit",
     "type": "coop_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 8000,
       "products": {
         "wool": 340,
@@ -760,7 +730,6 @@
     "name": "Dinosaur",
     "type": "coop_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 14000,
       "products": {
         "dinosaur_egg": 350
@@ -772,7 +741,6 @@
     "name": "Cow",
     "type": "barn_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 1500,
       "products": {
         "milk": 125,
@@ -785,7 +753,6 @@
     "name": "Goat",
     "type": "barn_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 4000,
       "products": {
         "goat_milk": 225,
@@ -798,7 +765,6 @@
     "name": "Sheep",
     "type": "barn_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 8000,
       "isCut": false,
       "products": {
@@ -811,7 +777,6 @@
     "name": "Pig",
     "type": "barn_animal",
     "baseAttributes": {
-      "quality": "regular",
       "price": 16000,
       "products": {
         "truffle": 625
@@ -823,7 +788,6 @@
     "name": "Salmon",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 75,
       "season": "fall"
     }
@@ -833,7 +797,6 @@
     "name": "Sardine",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 40,
       "season": "fall"
     }
@@ -843,7 +806,6 @@
     "name": "Shad",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 60,
       "season": "fall"
     }
@@ -853,7 +815,6 @@
     "name": "Blue Discus",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 120,
       "season": "fall"
     }
@@ -863,7 +824,6 @@
     "name": "Midnight Carp",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 150,
       "season": "winter"
     }
@@ -873,7 +833,6 @@
     "name": "Squid",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 80,
       "season": "winter"
     }
@@ -883,7 +842,6 @@
     "name": "Tuna",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 100,
       "season": "winter"
     }
@@ -893,7 +851,6 @@
     "name": "Perch",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 55,
       "season": "winter"
     }
@@ -903,7 +860,6 @@
     "name": "Flounder",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 100,
       "season": "spring"
     }
@@ -913,7 +869,6 @@
     "name": "Lionfish",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 100,
       "season": "spring"
     }
@@ -923,7 +878,6 @@
     "name": "Herring",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 30,
       "season": "spring"
     }
@@ -933,7 +887,6 @@
     "name": "Ghost Fish",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 45,
       "season": "spring"
     }
@@ -943,7 +896,6 @@
     "name": "Tilapia",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 75,
       "season": "summer"
     }
@@ -953,7 +905,6 @@
     "name": "Dorado",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 100,
       "season": "summer"
     }
@@ -963,7 +914,6 @@
     "name": "Sunfish",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 30,
       "season": "summer"
     }
@@ -973,7 +923,6 @@
     "name": "Rainbow Trout",
     "type": "fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 65,
       "season": "summer"
     }
@@ -983,7 +932,6 @@
     "name": "Legend",
     "type": "legendary_fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 5000,
       "season": "spring"
     }
@@ -993,7 +941,6 @@
     "name": "Glacier Fish",
     "type": "legendary_fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 1000,
       "season": "summer"
     }
@@ -1003,7 +950,6 @@
     "name": "Angler",
     "type": "legendary_fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 900,
       "season": "fall"
     }
@@ -1013,7 +959,6 @@
     "name": "Crimson Fish",
     "type": "legendary_fish",
     "baseAttributes": {
-      "quality": "regular",
       "baseSellPrice": 1500,
       "season": "winter"
     }
@@ -1023,7 +968,6 @@
     "name": "Home",
     "type": "home",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1031,7 +975,6 @@
     "name": "Cottage",
     "type": "cottage",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1039,7 +982,6 @@
     "name": "Shop",
     "type": "shop",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1047,7 +989,6 @@
     "name": "Quarry",
     "type": "quarry",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1055,7 +996,6 @@
     "name": "Lake",
     "type": "lake",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1063,7 +1003,6 @@
     "name": "Cottage",
     "type": "cottage",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1071,7 +1010,6 @@
     "name": "Green House",
     "type": "greenhouse",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -1079,7 +1017,6 @@
     "name": "Fried Egg",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "egg": 1
       },
@@ -1095,7 +1032,6 @@
     "name": "Baked Fish",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "sardine": 1,
         "salmon": 1,
@@ -1113,7 +1049,6 @@
     "name": "Salad",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "leek": 1,
         "dandelion": 1
@@ -1130,7 +1065,6 @@
     "name": "Omelet",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "egg": 1,
         "milk": 1
@@ -1147,7 +1081,6 @@
     "name": "Pumpkin Pie",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "pumpking": 1,
         "wheat_flour": 1,
@@ -1156,7 +1089,7 @@
       },
       "energy": 225,
       "source": {
-        "stardrop_saloon": -1
+        "starter": -1
       },
       "price": 385
     }
@@ -1166,14 +1099,13 @@
     "name": "Spaghetti",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wheat_flour": 1,
         "tomato": 1
       },
       "energy": 75,
       "source": {
-        "stardrop_saloon": -1
+        "starter": -1
       },
       "price": 120
     }
@@ -1183,7 +1115,6 @@
     "name": "Pizza",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wheat_flour": 1,
         "tomato": 1,
@@ -1201,7 +1132,6 @@
     "name": "Tortilla",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "corn": 1
       },
@@ -1217,7 +1147,6 @@
     "name": "Maki Roll",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "any_fish": 1,
         "rice": 1,
@@ -1235,7 +1164,6 @@
     "name": "Triple Shot Espresso",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "coffee": 3
       },
@@ -1251,10 +1179,9 @@
     "name": "Cookie",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wheat_flour": 1,
-        "suger": 1,
+        "sugar": 1,
         "egg": 1
       },
       "energy": 90,
@@ -1269,7 +1196,6 @@
     "name": "Hash Brown",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "potato": 1,
         "oil": 1
@@ -1286,7 +1212,6 @@
     "name": "Pancakes",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wheat_flour": 1,
         "egg": 1
@@ -1303,7 +1228,6 @@
     "name": "Fruit Salad",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "blueberry": 1,
         "melon": 1,
@@ -1311,7 +1235,7 @@
       },
       "energy": 263,
       "source": {
-        "stardrop_saloon": -1
+        "starter": -1
       },
       "price": 450
     }
@@ -1321,7 +1245,6 @@
     "name": "Red Plate",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "red_cabbage": 1,
         "radish": 1
@@ -1338,7 +1261,6 @@
     "name": "Bread",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "wheat_flour": 1
       },
@@ -1354,7 +1276,6 @@
     "name": "Salmon Dinner",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "salmon": 1,
         "amaranth": 1,
@@ -1372,7 +1293,6 @@
     "name": "Vegetable Medley",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "tomato": 1,
         "beet": 1
@@ -1389,7 +1309,6 @@
     "name": "Farmers Lunch",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "omelet": 1,
         "parsnip": 1
@@ -1406,7 +1325,6 @@
     "name": "Survival Burger",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "bread": 1,
         "carrot": 1,
@@ -1424,7 +1342,6 @@
     "name": "Dish O The Sea",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "sardine": 2,
         "hash_brown": 1
@@ -1441,7 +1358,6 @@
     "name": "Seaform Pudding",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "flounder": 1,
         "midnight_carp": 1
@@ -1458,7 +1374,6 @@
     "name": "Miners Treat",
     "type": "food",
     "baseAttributes": {
-      "quality": "regular",
       "ingredients": {
         "carrot": 2,
         "suger": 1,
@@ -1476,7 +1391,6 @@
     "name": "Common Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ],
@@ -1489,7 +1403,6 @@
     "name": "Daffodil",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1502,7 +1415,6 @@
     "name": "Dandelion",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1515,7 +1427,6 @@
     "name": "Leek",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1528,7 +1439,6 @@
     "name": "Morel",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1541,7 +1451,6 @@
     "name": "Salmonberry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1554,7 +1463,6 @@
     "name": "Spring Onion",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1567,7 +1475,6 @@
     "name": "Wild_Horseradish",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ],
@@ -1580,7 +1487,6 @@
     "name": "Fiddlehead Fern",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ],
@@ -1593,7 +1499,6 @@
     "name": "Grape",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ],
@@ -1606,7 +1511,6 @@
     "name": "Red Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ],
@@ -1619,7 +1523,6 @@
     "name": "Spice Berry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ],
@@ -1632,7 +1535,6 @@
     "name": "Sweet Pea",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ],
@@ -1645,7 +1547,6 @@
     "name": "Blackberry",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ],
@@ -1658,7 +1559,6 @@
     "name": "Chanterelle",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ],
@@ -1671,7 +1571,6 @@
     "name": "Hazelnut",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ],
@@ -1684,7 +1583,6 @@
     "name": "Purple Mushroom",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ],
@@ -1697,7 +1595,6 @@
     "name": "Wild Plum",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ],
@@ -1710,7 +1607,6 @@
     "name": "Crocus",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ],
@@ -1723,7 +1619,6 @@
     "name": "Crystal Fruit",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ],
@@ -1736,7 +1631,6 @@
     "name": "Holly",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ],
@@ -1749,7 +1643,6 @@
     "name": "Snow Yam",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ],
@@ -1762,7 +1655,6 @@
     "name": "Winter Root",
     "type": "foraging_crops",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ],
@@ -1775,7 +1667,6 @@
     "name": "Jazz Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1786,7 +1677,6 @@
     "name": "Carrot Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1797,7 +1687,6 @@
     "name": "Cauliflower Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1808,7 +1697,6 @@
     "name": "Coffee Bean",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1819,7 +1707,6 @@
     "name": "Garlic Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1830,7 +1717,6 @@
     "name": "Bean Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1841,7 +1727,6 @@
     "name": "Kale Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1852,7 +1737,6 @@
     "name": "Parsnip Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1863,7 +1747,6 @@
     "name": "Potato Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1874,7 +1757,6 @@
     "name": "Rhubarb Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1885,7 +1767,6 @@
     "name": "Strawberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1896,7 +1777,6 @@
     "name": "Tulip Bulb",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1907,7 +1787,6 @@
     "name": "Rice Shoot",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "spring"
       ]
@@ -1918,7 +1797,6 @@
     "name": "Blueberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1929,7 +1807,6 @@
     "name": "Corn Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1940,7 +1817,6 @@
     "name": "Hops Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1951,7 +1827,6 @@
     "name": "Pepper Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1962,7 +1837,6 @@
     "name": "Melon Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1973,7 +1847,6 @@
     "name": "Poppy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1984,7 +1857,6 @@
     "name": "Radish Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -1995,7 +1867,6 @@
     "name": "Red Cabbage Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2006,7 +1877,6 @@
     "name": "Starfruit Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2017,7 +1887,6 @@
     "name": "Spangle Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2028,7 +1897,6 @@
     "name": "Summer Squash Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2039,7 +1907,6 @@
     "name": "Sunflower Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2050,7 +1917,6 @@
     "name": "Tomato Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2061,7 +1927,6 @@
     "name": "Wheat Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "summer"
       ]
@@ -2072,7 +1937,6 @@
     "name": "Amaranth Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2083,7 +1947,6 @@
     "name": "Artichoke Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2094,7 +1957,6 @@
     "name": "Beet Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2105,7 +1967,6 @@
     "name": "Bok Choy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2116,7 +1977,6 @@
     "name": "Broccoli Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2127,7 +1987,6 @@
     "name": "Cranberry Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2138,7 +1997,6 @@
     "name": "Eggplant Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2149,7 +2007,6 @@
     "name": "Fairy Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2160,7 +2017,6 @@
     "name": "Grape Starter",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2171,7 +2027,6 @@
     "name": "Pumpkin Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2182,7 +2037,6 @@
     "name": "Yam Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2193,7 +2047,6 @@
     "name": "Rare Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "fall"
       ]
@@ -2204,7 +2057,6 @@
     "name": "Powdermelon Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "winter"
       ]
@@ -2215,7 +2067,6 @@
     "name": "Ancient Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2226,7 +2077,6 @@
     "name": "Mixed Seeds",
     "type": "foraging_seeds",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2237,7 +2087,6 @@
     "name": "Acorns",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2248,7 +2097,6 @@
     "name": "Maple Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2259,7 +2107,6 @@
     "name": "Pine Cones",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2270,7 +2117,6 @@
     "name": "Mahogany Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2281,7 +2127,6 @@
     "name": "Mushroom Tree Seeds",
     "type": "foraging_trees",
     "baseAttributes": {
-      "quality": "regular",
       "season": [
         "special"
       ]
@@ -2292,7 +2137,6 @@
     "name": "Quartz",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 25,
       "description": "A clear crystal commonly found in caves and mines."
     }
@@ -2302,7 +2146,6 @@
     "name": "Earth Crystal",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 50,
       "description": "A resinous substance found near the surface."
     }
@@ -2312,7 +2155,6 @@
     "name": "Frozen Tear",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 75,
       "description": "A crystal fabled to be the frozen tears of a yeti."
     }
@@ -2322,7 +2164,6 @@
     "name": "Fire Quartz",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 100,
       "description": "A glowing red crystal commonly found near hot lava."
     }
@@ -2332,7 +2173,6 @@
     "name": "Emerald",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 250,
       "description": "A precious stone with a brilliant green color."
     }
@@ -2342,7 +2182,6 @@
     "name": "Aquamarine",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 180,
       "description": "A shimmery blue-green gem."
     }
@@ -2352,7 +2191,6 @@
     "name": "Ruby",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 250,
       "description": "A precious stone that is sought after for its rich color and beautiful luster."
     }
@@ -2362,7 +2200,6 @@
     "name": "Amethyst",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 100,
       "description": "A purple variant of quartz."
     }
@@ -2372,7 +2209,6 @@
     "name": "Topaz",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 80,
       "description": "Fairly common but still prized for its beauty."
     }
@@ -2382,7 +2218,6 @@
     "name": "Jade",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 200,
       "description": "A pale green ornamental stone."
     }
@@ -2392,7 +2227,6 @@
     "name": "Diamond",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 750,
       "description": "A rare and valuable gem."
     }
@@ -2402,7 +2236,6 @@
     "name": "Prismatic Shard",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 2000,
       "description": "A very rare and powerful substance with unknown origins."
     }
@@ -2412,7 +2245,6 @@
     "name": "Copper",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 5,
       "description": "A common ore that can be smelted into bars."
     }
@@ -2422,7 +2254,6 @@
     "name": "Iron",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 10,
       "description": "A fairly common ore that can be smelted into bars."
     }
@@ -2432,33 +2263,15 @@
     "name": "Gold",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 25,
       "description": "A precious ore that can be smelted into bars."
     }
   },
   {
-    "itemId": "gold_coin",
-    "name": "Gold Coin",
-    "type": "money",
-    "baseAttributes": {
-    }
-  },
-  {
     "itemId": "iriduim",
     "name": "Iriduim",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "price": 100,
-      "description": "An exotic ore with many curious properties. Can be smelted into bars."
-    }
-  },
-  {
-    "itemId": "iriduim",
-    "name": "Iriduim",
-    "type": "foraging_minerals",
-    "baseAttributes": {
-      "quality": "regular",
       "price": 100,
       "description": "An exotic ore with many curious properties. Can be smelted into bars."
     }
@@ -2468,7 +2281,6 @@
     "name": "Coal",
     "type": "foraging_minerals",
     "baseAttributes": {
-      "quality": "regular",
       "price": 15,
       "description": "A combustible rock that is useful for crafting and smelting."
     }
@@ -2478,7 +2290,6 @@
     "name": "Apricot Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "apricot_sapling",
       "stages": [
         7,
@@ -2498,21 +2309,10 @@
     }
   },
   {
-    "itemId": "apricot",
-    "name": "Apricot",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 59,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "cherry_tree",
     "name": "Cherry Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "cherry-sapling",
       "stages": [
         7,
@@ -2532,21 +2332,10 @@
     }
   },
   {
-    "itemId": "cherry",
-    "name": "Cherry",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 80,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "banana_tree",
     "name": "Banana Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "banana-sapling",
       "stages": [
         7,
@@ -2566,21 +2355,10 @@
     }
   },
   {
-    "itemId": "banana",
-    "name": "Banana",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 150,
-      "isEdible": true,
-      "energy": 75
-    }
-  },
-  {
     "itemId": "mango_tree",
     "name": "Mango Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "mango-sapling",
       "stages": [
         7,
@@ -2600,21 +2378,10 @@
     }
   },
   {
-    "itemId": "mango",
-    "name": "Mango",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 130,
-      "isEdible": true,
-      "energy": 100
-    }
-  },
-  {
     "itemId": "orange_tree",
     "name": "Orange Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "orange-sapling",
       "stages": [
         7,
@@ -2634,21 +2401,10 @@
     }
   },
   {
-    "itemId": "orange",
-    "name": "Orange",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 100,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "peach_tree",
     "name": "Peach Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "peach-sapling",
       "stages": [
         7,
@@ -2668,21 +2424,10 @@
     }
   },
   {
-    "itemId": "peach",
-    "name": "Peach",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 140,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "apple_tree",
     "name": "Apple Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "apple-sapling",
       "stages": [
         7,
@@ -2702,21 +2447,10 @@
     }
   },
   {
-    "itemId": "apple",
-    "name": "Apple",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 100,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "pomegranate_tree",
     "name": "Pomegranate Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "pomegranate-sapling",
       "stages": [
         7,
@@ -2736,21 +2470,10 @@
     }
   },
   {
-    "itemId": "pomegranate",
-    "name": "Pomegranate",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 140,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "oak_tree",
     "name": "Oak Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "acorns",
       "stages": [
         7,
@@ -2770,21 +2493,10 @@
     }
   },
   {
-    "itemId": "oak_resin",
-    "name": "Oak Resin",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 150,
-      "isEdible": false,
-      "energy": 0
-    }
-  },
-  {
     "itemId": "maple_tree",
     "name": "Maple Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "maple_seeds",
       "stages": [
         7,
@@ -2804,21 +2516,10 @@
     }
   },
   {
-    "itemId": "maple_syrup",
-    "name": "Maple Syrup",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 200,
-      "isEdible": false,
-      "energy": 0
-    }
-  },
-  {
     "itemId": "pine_tree",
     "name": "Pine Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "pine_cones",
       "stages": [
         7,
@@ -2838,21 +2539,10 @@
     }
   },
   {
-    "itemId": "pine_tar",
-    "name": "Pine Tar",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 100,
-      "isEdible": false,
-      "energy": 0
-    }
-  },
-  {
     "itemId": "mahogany_tree",
     "name": "Mahogany Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "mahogany_seeds",
       "stages": [
         7,
@@ -2872,21 +2562,10 @@
     }
   },
   {
-    "itemId": "sap",
-    "name": "Sap",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 2,
-      "isEdible": true,
-      "energy": -2
-    }
-  },
-  {
     "itemId": "mushroom_tree",
     "name": "Mushroom Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "mushroom_tree_seeds",
       "stages": [
         7,
@@ -2906,21 +2585,10 @@
     }
   },
   {
-    "itemId": "common_mushroom",
-    "name": "Common Mushroom",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 40,
-      "isEdible": true,
-      "energy": 38
-    }
-  },
-  {
     "itemId": "mystic_tree",
     "name": "Mystic Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular",
       "source": "mystic_tree_seeds",
       "stages": [
         7,
@@ -2940,21 +2608,10 @@
     }
   },
   {
-    "itemId": "mystic_syrup",
-    "name": "Mystic Syrup",
-    "type": "fruit",
-    "baseAttributes": {
-      "baseSellPrice": 1000,
-      "isEdible": true,
-      "energy": 500
-    }
-  },
-  {
     "itemId": "blue_jazz",
     "name": "Blue Jazz",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "jazz_seeds",
       "stages": [
         1,
@@ -2979,7 +2636,6 @@
     "name": "Carrot",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "carrot_seeds",
       "stages": [
         1,
@@ -3003,7 +2659,6 @@
     "name": "Cauliflower",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "cauliflower_seeds",
       "stages": [
         1,
@@ -3029,7 +2684,6 @@
     "name": "Coffee Bean",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "coffee_bean",
       "stages": [
         1,
@@ -3056,7 +2710,6 @@
     "name": "garlic",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "garlic_seeds",
       "stages": [
         1,
@@ -3081,7 +2734,6 @@
     "name": "Green Bean",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "bean_starter",
       "stages": [
         1,
@@ -3107,7 +2759,6 @@
     "name": "Kale",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "kale_seeds",
       "stages": [
         1,
@@ -3132,7 +2783,6 @@
     "name": "Parsnip",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "parsnip_seeds",
       "stages": [
         1,
@@ -3157,7 +2807,6 @@
     "name": "Potato",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "potato_seeds",
       "stages": [
         1,
@@ -3183,7 +2832,6 @@
     "name": "Rhubarb",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "rhubarb_seeds",
       "stages": [
         2,
@@ -3209,7 +2857,6 @@
     "name": "Strawberry",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "strawberry_seeds",
       "stages": [
         1,
@@ -3235,7 +2882,6 @@
     "name": "Tulip",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "tulip_bulb",
       "stages": [
         1,
@@ -3260,7 +2906,6 @@
     "name": "Unmilled Rice",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "bean_starter",
       "stages": [
         1,
@@ -3285,7 +2930,6 @@
     "name": "Blueberry",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "blueberry_seeds",
       "stages": [
         1,
@@ -3311,7 +2955,6 @@
     "name": "Corn",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "corn_seeds",
       "stages": [
         2,
@@ -3338,7 +2981,6 @@
     "name": "Hops",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "hops_starter",
       "stages": [
         1,
@@ -3364,7 +3006,6 @@
     "name": "Hot Pepper",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "hops_starter",
       "stages": [
         1,
@@ -3390,7 +3031,6 @@
     "name": "Melon",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "melon_seeds",
       "stages": [
         1,
@@ -3416,7 +3056,6 @@
     "name": "Poppy",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "hops_starter",
       "stages": [
         1,
@@ -3441,7 +3080,6 @@
     "name": "Radish",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "radish_seeds",
       "stages": [
         2,
@@ -3466,7 +3104,6 @@
     "name": "Red Cabbage",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "red_cabbage_seeds",
       "stages": [
         2,
@@ -3492,7 +3129,6 @@
     "name": "Starfruit",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "starfruit_seeds",
       "stages": [
         2,
@@ -3518,7 +3154,6 @@
     "name": "Summer Spangle",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "spangle_seeds",
       "stages": [
         1,
@@ -3543,7 +3178,6 @@
     "name": "Summer Squash",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "summer_squash_seeds",
       "stages": [
         1,
@@ -3569,7 +3203,6 @@
     "name": "Sunflower",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "sunflower_seeds",
       "stages": [
         1,
@@ -3595,7 +3228,6 @@
     "name": "Tomato",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "tomato_seeds",
       "stages": [
         2,
@@ -3621,7 +3253,6 @@
     "name": "Wheat",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "wheat_seeds",
       "stages": [
         1,
@@ -3647,7 +3278,6 @@
     "name": "Amaranth",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "amaranth_seeds",
       "stages": [
         1,
@@ -3672,7 +3302,6 @@
     "name": "Artichoke",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "artichoke_seeds",
       "stages": [
         2,
@@ -3698,7 +3327,6 @@
     "name": "Beet",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "beet_seeds",
       "stages": [
         1,
@@ -3723,7 +3351,6 @@
     "name": "Bok Choy",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "bok_choy_seeds",
       "stages": [
         1,
@@ -3748,7 +3375,6 @@
     "name": "Broccoli",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "broccoli_seeds",
       "stages": [
         2,
@@ -3773,7 +3399,6 @@
     "name": "Cranberries",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "cranberry_seeds",
       "stages": [
         1,
@@ -3799,7 +3424,6 @@
     "name": "Eggplant",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "cranberry_seeds",
       "stages": [
         1,
@@ -3824,7 +3448,6 @@
     "name": "Fairy Rose",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "fairy_seeds",
       "stages": [
         1,
@@ -3849,7 +3472,6 @@
     "name": "Grape",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "grape_starter",
       "stages": [
         1,
@@ -3875,7 +3497,6 @@
     "name": "Pumpkin",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "pumpkin_seeds",
       "stages": [
         1,
@@ -3901,7 +3522,6 @@
     "name": "Yam",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "yam_seeds",
       "stages": [
         1,
@@ -3926,7 +3546,6 @@
     "name": "Sweet Gem Berry",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "rare_seed",
       "stages": [
         2,
@@ -3952,7 +3571,6 @@
     "name": "Powdermelon",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "powdermelon_seeds",
       "stages": [
         1,
@@ -3978,7 +3596,6 @@
     "name": "Ancient Fruit",
     "type": "all_crops",
     "baseAttributes": {
-      "quality": "regular",
       "source": "ancient_seeds",
       "stages": [
         2,
@@ -4006,7 +3623,6 @@
     "name": "Wood",
     "type": "wood",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -4014,7 +3630,6 @@
     "name": "Fiber",
     "type": "fiber",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -4022,7 +3637,6 @@
     "name": "Rock",
     "type": "rock",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -4030,7 +3644,6 @@
     "name": "Tree",
     "type": "tree",
     "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -4038,8 +3651,6 @@
     "name": "Milk",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 125
     }
   },
   {
@@ -4047,8 +3658,6 @@
     "name": "Wool",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 340
     }
   },
   {
@@ -4056,7 +3665,6 @@
     "name": "Honey",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 75,
       "price": [
@@ -4071,7 +3679,6 @@
     "name": "Cheese",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "hour": 3,
       "price": [
@@ -4087,7 +3694,6 @@
     "name": "Goat Cheese",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "hour": 3,
       "price": [
@@ -4103,7 +3709,6 @@
     "name": "Beer",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 50,
       "price": [
@@ -4120,7 +3725,6 @@
     "name": "Vinegar",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 13,
       "price": [
@@ -4135,7 +3739,6 @@
     "name": "Coffee",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 75,
       "price": [
@@ -4150,7 +3753,6 @@
     "name": "Juice",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4165,7 +3767,6 @@
     "name": "Mead",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 100,
       "hour": 10,
@@ -4180,7 +3781,6 @@
     "name": "Pale Ale",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 50,
       "day": 3,
@@ -4195,7 +3795,6 @@
     "name": "Wine",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4210,7 +3809,6 @@
     "name": "Dried Mushrooms",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4224,7 +3822,6 @@
     "name": "Dried Fruit",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4238,7 +3835,6 @@
     "name": "Raisins",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 125,
       "price": [
@@ -4252,7 +3848,6 @@
     "name": "Cloth",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "hour": 4,
       "energy": 0,
@@ -4267,7 +3862,6 @@
     "name": "Mayonnaise",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 50,
       "hour": 3,
@@ -4283,7 +3877,6 @@
     "name": "Duck Mayonnaise",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 75,
       "hour": 3,
@@ -4298,7 +3891,6 @@
     "name": "Dinosaur Mayonnaise",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 125,
       "hour": 3,
@@ -4313,7 +3905,6 @@
     "name": "Truffle Oil",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 38,
       "hour": 6,
@@ -4328,7 +3919,6 @@
     "name": "Oil",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 13,
       "price": [
@@ -4342,7 +3932,6 @@
     "name": "Pickles",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4357,7 +3946,6 @@
     "name": "Jelly",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4372,7 +3960,6 @@
     "name": "Smoked Fish",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4387,7 +3974,6 @@
     "name": "Copper Bar",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4402,7 +3988,6 @@
     "name": "Gold Bar",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4417,7 +4002,6 @@
     "name": "Iron Bar",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4432,7 +4016,6 @@
     "name": "Iridium Bar",
     "type": "artisan",
     "baseAttributes": {
-      "quality": "regular",
       "isReady": false,
       "energy": 0,
       "price": [
@@ -4447,14 +4030,6 @@
     "name": "Large Milk",
     "type": "animal_goods",
     "baseAttributes": {
-      }
-  },
-  {
-    "itemId": "friendship_level",
-    "name": "Friendship Level",
-    "type": "friendship_level",
-    "baseAttributes": {
-      "quality": "regular"
     }
   },
   {
@@ -4462,8 +4037,6 @@
     "name": "Goat Milk",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 225
     }
   },
   {
@@ -4471,8 +4044,6 @@
     "name": "Large Goat Milk",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 345
     }
   },
   {
@@ -4480,8 +4051,6 @@
     "name": "Egg",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 50
     }
   },
   {
@@ -4489,8 +4058,6 @@
     "name": "Large Egg",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 95
     }
   },
   {
@@ -4498,8 +4065,6 @@
     "name": "Duck Egg",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 95
     }
   },
   {
@@ -4507,8 +4072,6 @@
     "name": "Dinosaur Egg",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 250
     }
   },
   {
@@ -4516,163 +4079,649 @@
     "name": "Truffle",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 625
     }
-  },  {
-    "itemId": "rabbit_food",
-    "name": "Rabbit Food",
-    "type": "animal_goods",
+  },
+
+
+
+
+
+
+
+  {
+    "itemId" : "copper_ore",
+    "name" : "Copper Ore",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 565
+      "shopPrice" : 75,
+      "description":"A common ore that can be smelted into bars.",
+      "dailyLimit" : -1
     }
   },
   {
-  "itemId": "coop",
-  "name": "Coop",
-  "type": "building",
-  "baseAttributes": {
-  "quality": "regular",
-  "description": "Houses 4 coop-dwelling animals.",
-  "ingredients": {
-    "wood": 300,
-    "stone": 100,
-    "size": [
-      6,
-      3
-    ]
-  },
-  "shopPrice": 4000,
-  "dailyLimit": 1
-}
+    "itemId" : "iron_ore",
+    "name" : "Iron Ore",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "shopPrice" : 150,
+      "description":"A fairly common ore that can be smelted into bars.",
+      "dailyLimit" : -1
+    }
   },
   {
-    "itemId": "big_coop",
-    "name": "Big Coop",
-    "type": "building",
+    "itemId" : "gold_ore",
+    "name" : "Gold Ore",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "description": "Houses 8 coop-dwelling animals. Unlocks ducks.",
+      "shopPrice" : 400,
+      "description":"A precious ore that can be smelted into bars.",
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "hay",
+    "name" : "Hay",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Dried grass used as animal food.",
+      "shopPrice" : 50,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "milk_pail",
+    "name" : "Milk Pail",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Gather milk from your animals.",
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId" : "shears",
+    "name" : "Shears",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Use this to collect wool from sheep",
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId" : "chicken",
+    "name" : "Chicken",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Well cared-for chickens lay eggs every day. Lives in the coop.",
+      "shopPrice" : 800,
+      "building" : "coop",
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "hashbrowns_recipe",
+    "name" : "Hashbrowns Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Hashbrowns",
+      "shopPrice" : 50,
       "ingredients": {
-        "wood": 400,
-        "stone": 150,
-        "size": [
-          6,
-          3
-        ]
+        "potato": 1,
+        "oil": 1
       },
-      "shopPrice": 10000,
-      "dailyLimit": 1
+      "dailyLimit" : 1
     }
   },
   {
-    "itemId": "deluxe_coop",
-    "name": "Deluxe Coop",
-    "type": "building",
+    "itemId": "omelet_recipe",
+    "name" : "Omelet Recipe",
+    "type" : "shop_recipe",
     "baseAttributes": {
-      "quality": "regular",
-      "description": "Houses 12 coop-dwelling animals. Unlocks rabbits.",
       "ingredients": {
-        "wood": 500,
-        "stone": 200,
-        "size": [
-          6,
-          3
-        ]
+        "egg": 1,
+        "milk": 1
       },
-      "shopPrice": 20000,
-      "dailyLimit": 1
+      "description" : "A recipe to make Omelet",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
     }
   },
   {
-  "itemId": "barn",
-  "name": "Barn",
-  "type": "building",
-  "baseAttributes": {
-  "quality": "regular",
-  "description": "Houses 4 barn-dwelling animals.",
-  "ingredients": {
-    "wood": 350,
-    "stone": 150,
-    "size": [
-      7,
-      4
-    ]
+    "itemId": "pancakes_recipe",
+    "name" : "Pancakes Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "ingredients": {
+        "wheat_flour": 1,
+        "egg": 1
+      },
+      "description" : "A recipe to make Pancakes",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
   },
-  "shopPrice": 6000,
-  "dailyLimit": 1
-}
+  {
+    "itemId": "bread_recipe",
+    "name" : "Bread Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "ingredients": {
+        "wheat_flour": 1
+      },
+      "description" : "A recipe to make Bread",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "tortilla_recipe",
+    "name" : "Tortilla Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Tortilla",
+      "ingredients": {
+        "corn": 1
+      },
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "pizza_recipe",
+    "name" : "Pizza Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Pizza",
+      "ingredients": {
+        "wheat_flour": 1,
+        "tomato": 1,
+        "cheese": 1
+      },
+      "shopPrice" : 150,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "maki_roll_recipe",
+    "name" : "Maki Roll Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Maki Roll",
+      "ingredients": {
+        "any_fish": 1,
+        "rice": 1,
+        "fiber": 1
+      },
+      "shopPrice" : 300,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "triple_shot_espresso_recipe",
+    "name" : "Triple Shot Espresso Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Triple Shot Espresso",
+      "ingredients": {
+        "coffee": 3
+      },
+      "shopPrice" : 5000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "cookie_recipe",
+    "name" : "Cookie Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Cookie",
+      "ingredients": {
+        "wheat_flour": 1,
+        "sugar": 1,
+        "egg": 1
+      },
+      "shopPrice" : 300,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "wood",
+    "name" : "Wood",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A sturdy, yet flexible plant material with a wide variety of uses.",
+      "shopPrice" : 10,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "stone",
+    "name" : "Stone",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A common material with many uses in crafting and building.",
+      "shopPrice" : 20,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "barn",
+    "name" : "Barn",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 4 barn-dwelling animals.",
+      "ingredients": {
+        "wood":350,
+        "stone":150,
+        "size": [7,4]
+      },
+      "shopPrice" : 6000,
+      "dailyLimit" : 1
+    }
   },
   {
     "itemId": "big_barn",
-    "name": "Big Barn",
-    "type": "building",
+    "name" : "Big Barn",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "description": "Houses 8 barn-dwelling animals. Unlocks goats.",
+      "description" : "Houses 8 barn-dwelling animals. Unlocks goats.",
       "ingredients": {
-        "wood": 450,
-        "stone": 200,
-        "size": [
-          7,
-          4
-        ]
+        "wood":450,
+        "stone":200,
+        "size": [7,4]
       },
-      "shopPrice": 12000,
-      "dailyLimit": 1
+      "shopPrice" : 12000,
+      "dailyLimit" : 1
     }
   },
   {
     "itemId": "deluxe_barn",
-    "name": "Deluxe Barn",
-    "type": "building",
+    "name" : "Deluxe Barn",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "description": "Houses 12 barn-dwelling animals. Unlocks sheep and pigs.",
+      "description" : "Houses 12 barn-dwelling animals. Unlocks sheep and pigs.",
       "ingredients": {
-        "wood": 550,
-        "stone": 300,
-        "size": [
-          7,
-          4
-        ]
+        "wood":550,
+        "stone":300,
+        "size": [7,4]
       },
-      "shopPrice": 25000,
-      "dailyLimit": 1
+      "shopPrice" : 25000,
+      "dailyLimit" : 1
     }
   },
   {
-    "itemId": "copper_ore",
-    "name": "Copper Ore",
-    "type": "ore",
+    "itemId": "coop",
+    "name" : "Coop",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "baseSellPrice": 75,
-      "description": "A common ore that can be smelted into bars.",
-      "dailyLimit": -1
+      "description" : "Houses 4 coop-dwelling animals.",
+      "ingredients": {
+        "wood":300,
+        "stone":100,
+        "size": [6,3]
+      },
+      "shopPrice" : 4000,
+      "dailyLimit" : 1
     }
   },
   {
-    "itemId": "iron_ore",
-    "name": "Iron Ore",
-    "type": "ore",
+    "itemId": "big_coop",
+    "name" : "Big Coop",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "baseSellPrice": 150,
-      "description": "A fairly common ore that can be smelted into bars.",
-      "dailyLimit": -1
+      "description" : "Houses 8 coop-dwelling animals. Unlocks ducks.",
+      "ingredients": {
+        "wood":400,
+        "stone":150,
+        "size": [6,3]
+      },
+      "shopPrice" : 10000,
+      "dailyLimit" : 1
     }
   },
   {
-    "itemId": "gold_ore",
-    "name": "Gold Ore",
-    "type": "ore",
+    "itemId": "deluxe_coop",
+    "name" : "Deluxe Coop",
+    "type" : "shop_item",
     "baseAttributes": {
-      "quality": "regular",
-      "baseSellPrice": 400,
-      "description": "A precious ore that can be smelted into bars.",
-      "dailyLimit": -1
+      "description" : "Houses 12 coop-dwelling animals. Unlocks rabbits.",
+      "ingredients": {
+        "wood":500,
+        "stone":200,
+        "size": [6,3]
+      },
+      "shopPrice" : 20000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "well",
+    "name" : "Well",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 12 coop-dwelling animals. Unlocks rabbits.",
+      "ingredients": {
+        "stone":75,
+        "size": [3,3]
+      },
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "shipping_bin",
+    "name" : "Shipping Bin",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Items placed in it will be included in the nightly shipment.",
+      "ingredients": {
+        "wood":150,
+        "size": [1,1]
+      },
+      "shopPrice" : 250,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "fish_smoker_recipe",
+    "name" : "Fish Smoker Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Fish Smoker",
+      "ingredients": {
+        "wood": 50,
+        "iron_bar": 3,
+        "coal": 10
+      },
+      "shopPrice" : 10000,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "trout_soup",
+    "name" : "Trout Soup",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Pretty salty.",
+      "shopPrice" : 250,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "bamboo_pole",
+    "name" : "Bamboo Pole",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 500,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "training_rod",
+    "name" : "Training Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "It's a lot easier to use than other rods, but can only catch basic fish.",
+      "shopPrice" : 25,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "fiberglass_rod",
+    "name" : "Fiberglass Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 1800,
+      "fishingSkill": 2,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "iridium_rod",
+    "name" : "Iridium Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 7500,
+      "fishingSkill": 4,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "joja_cola",
+    "name" : "Joja Cola",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "The flagship product of Joja corporation.",
+      "shopPrice" : 75,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "sugar",
+    "name" : "Sugar",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Adds sweetness to pastries and candies. Too much can be unhealthy.",
+      "shopPrice" : 125,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "wheat_flour",
+    "name" : "Wheat Flour",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A common cooking ingredient made from crushed wheat seeds.",
+      "shopPrice" : 125,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "rice",
+    "name" : "Rice",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A basic grain often served under vegetables.",
+      "shopPrice" : 250,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "bouquet",
+    "name" : "Bouquet",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A gift that shows your romantic interest.",
+      "shopPrice" : 1000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "wedding_ring",
+    "name" : "Wedding Ring",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "It's used to ask for another farmer's hand in marriage.",
+      "shopPrice" : 10000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "dehydrator_recipe",
+    "name" : "Dehydrator Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Dehydrator",
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "ingredients": {
+        "wood": 30,
+        "stone": 20,
+        "fiber": 30
+      },
+      "shopPrice" : 10000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "grass_starter_recipe",
+    "name" : "Grape Starter Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Grass Starter",
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "ingredients": {
+        "wood": 1,
+        "fiber": 1
+      },
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_retaining_soil",
+    "name" : "Deluxe Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 150,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+
+  {
+    "itemId": "speed_gro",
+    "name" : "Speed Gro",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Makes the plants grow 1 day earlier.",
+      "shopPrice" : 100,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "apple_sapling",
+    "name" : "Apple Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 4000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "apricot_sapling",
+    "name" : "Apricot Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 2000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "cherry_sapling",
+    "name" : "Cherry Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 3400,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "orange_sapling",
+    "name" : "Orange Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Orange tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 4000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "peach_sapling",
+    "name" : "Peach Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 6000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "pomegranate_sapling",
+    "name" : "Pomegranate Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 6000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "basic_retaining_soil",
+    "name" : "Basic Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 100,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "quality_retaining_soil",
+    "name" : "Quality Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 150,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "large_pack",
+    "name" : "Large Pack",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Unlocks the 2nd row of inventory (12 more slots, total 24).",
+      "shopPrice" : 2000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_pack",
+    "name" : "Deluxe Pack",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Unlocks the 3rd row of inventory (infinite slots).",
+      "shopPrice" : 10000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 1
     }
   }
 ]

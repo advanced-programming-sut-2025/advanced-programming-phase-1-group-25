@@ -24,72 +24,60 @@ public class ToolController {
         if (name.contains("hoe")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, player.getAbilities().getAbilityLevel
                     (player.getAbilities().getFarmingAbility()))) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, true, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
-            if (tile.getPlowed()) {
-                view.showMessage("This tile has been plowed!");
-                return;
-            }
+            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, true, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
-                view.showMessage("You can't use hoe in lake!");
+                view.showMessage("you can't use hoe in lake!");
                 return;
             }
             if (!tile.isEmpty()) {
-                view.showMessage("This tile is not empty!");
+                view.showMessage("this tile is not empty!");
                 return;
             }
             if (tile.getPlowed()) {
-                view.showMessage("This tile has already been plowed!");
+                view.showMessage("this tile has already been plowed!");
                 return;
             }
             tile.setPlowed(true);
-            view.showMessage("You've successfully plowed the tile!");
+            view.showMessage("you've successfully plowed the tile!");
         } else if (name.contains("pickaxe")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, player.getAbilities().getAbilityLevel
                     (player.getAbilities().getMiningAbility()))) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player, true, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            player.reduceEnergy(player.getAbilities().getMiningAbility(), tool, player, true, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
-                view.showMessage("You can't use pickaxe in lake!");
+                view.showMessage("you can't use pickaxe in lake!");
                 return;
             }
-            if (tile.isEmpty() && tile.isPlowed()) {
+            if (tile.isEmpty() && tile.getPlowed()) {
                 tile.setPlowed(false);
-                view.showMessage("This tile has been successfully unplowed!");
-                return;
-            }
-            if (tile.getItem().getDefinition().getType().equals(ItemType.rock)) {
-                tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
-                view.showMessage("You've removed rock from this tile!");
+                view.showMessage("this tile has been successfully unplowed!");
                 return;
             }
             if (!tile.getItem().isDroppedByPlayer()) {
-                view.showMessage("This item hasn't been dropped by player!");
+                view.showMessage("this item hasn't been dropped by player!");
                 return;
             }
             tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
             player.getAbilities().increaseMiningAbility();
-            view.showMessage("Item has been successfully removed from the tile!");
+            view.showMessage("item has been successfully removed from the tile!");
         } else if (name.contains("axe")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, player.getAbilities().getAbilityLevel
                     (player.getAbilities().getNatureAbility()))) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getNatureAbility(), tool, player, true, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            player.reduceEnergy(player.getAbilities().getNatureAbility(), tool, player, true, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
-                view.showMessage("You can't use axe in lake!");
+                view.showMessage("you can't use axe in lake!");
                 return;
             }
             if (tile.isEmpty()) {
-                view.showMessage("This tile is empty!");
+                view.showMessage("this tile is empty!");
                 return;
             }
             if (tile.getItem().getDefinition().getType().equals(ItemType.wood)) {//TODO
@@ -99,15 +87,14 @@ public class ToolController {
                 return;
             }
 
-            view.showMessage("Use axe in a proper tile");
+            view.showMessage("use axe in a proper tile");
         } else if (name.contains("watering can")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, player.getAbilities().getAbilityLevel
                     (player.getAbilities().getFarmingAbility()))) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, false, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            player.reduceEnergy(player.getAbilities().getFarmingAbility(), tool, player, false, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.lake)) {
                 addWaterToWateringCan(tool);
                 return;
@@ -116,58 +103,49 @@ public class ToolController {
                 tile.setWatered(true);
                 return;
             }
-            view.showMessage("Use the can for lake or plants!");
+            view.showMessage("use the can for lake or plants!");
         } else if (name.contains("fishing pole")) {
 
         } else if (name.contains("scythe")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, 0)) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            player.reduceEnergy(0, tool, player, false, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.fiber)) {
                 cutFiber(tile, player);
                 return;
             }
-            ItemInstance item = tile.getItem();
-            if (item.getDefinition().getType().equals(ItemType.all_crops)) {
-                if (((int) item.getAttribute(ItemAttributes.totalHarvestTime)) <= tile.getDayPassedFromPlant()) {
-                    harvestCrop(tile, player);
-                    return;
-                } else {
-                    view.showMessage("This plant isn't harvestable yet!");
-                    return;
-                }
-            }
-            view.showMessage("Use scythe for crops or fibers!");
-        } else if (name.contains("milk pale")) {
-            if (!checkIfPlayerHasEnoughEnergy(player, tool, 0)) {
-                view.showMessage("You don't have enough energy!");
+            if (tile.getItem().getDefinition().getType().equals(ItemType.all_crops)) {
+                harvestCrop(tile, player);
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            view.showMessage("use scythe for crops or fibers!");
+        } else if (name.contains("milk pale")) {
+            if (!checkIfPlayerHasEnoughEnergy(player, tool, 0)) {
+                view.showMessage("you don't have enough energy!");
+                return;
+            }
+            player.reduceEnergy(0, tool, player, false, game);
             if (tile.getItem().getDefinition().getType().equals(ItemType.barn_animal)) {
                 Animal animal = (Animal) tile.getItem();
                 milkAnimal(tool, player, animal);
                 return;
             }
-            view.showMessage("Use milk pale on cows, sheep or goats!");
+            view.showMessage("use milk pale on cows, sheep or goats!");
 
         } else if (name.contains("shear")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, 0)) {
-                view.showMessage("You don't have enough energy!");
+                view.showMessage("you don't have enough energy!");
                 return;
             }
-            player.reduceEnergy(0, tool, player, false, game,
-                    (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+            player.reduceEnergy(0, tool, player, false, game);
             if (tile.getItem().getDefinition().getId().equals(ItemIDs.sheep)) {
                 Animal animal = (Animal) tile.getItem();
                 cutWool(player, animal);
             }
         } else {
-            view.showMessage("Please select a valid tool!");
+            view.showMessage("please select a valid tool!");
         }
     }
 
@@ -184,26 +162,25 @@ public class ToolController {
     public static void addWaterToWateringCan(ItemInstance tool) {
         int capacity = (int) tool.getDefinition().getAttribute(ItemAttributes.capacity);
         int durability = (int) tool.getDefinition().getAttribute(ItemAttributes.durability);
-        if (durability + 1 > capacity) {
+        if (durability == capacity) {
             view.showMessage("your can is full!");
             return;
         }
         tool.increaseDurability(durability + 1);
-        int finalDurability = durability + 1;
-        view.showMessage("Your can has " + finalDurability + " water");
+        view.showMessage("your can has " + durability + 1 + " water");
     }
 
     public static void cutFiber(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
-        view.showMessage("You've cut fiber!");
+        view.showMessage("you've cute fiber!");
     }
 
     public static void harvestCrop(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         player.getAbilities().increaseFarmingAbility();
-        view.showMessage("You've harvested crop!");
+        view.showMessage("you've harvested crop!");
     }
 
     public static void milkAnimal(ItemInstance tool, Player player, Animal animal) {
@@ -211,8 +188,8 @@ public class ToolController {
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
         player.getAbilities().increaseFarmingAbility();
-        animal.setFriendShip(5);
-        view.showMessage("You've milked the animal!");
+        animal.increaseFriendShip(5);
+        view.showMessage("you've milked the animal!");
     }
 
     public static void cutWool(Player player, Animal animal) {
@@ -220,8 +197,8 @@ public class ToolController {
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
         player.getAbilities().increaseFarmingAbility();
-        animal.setFriendShip(5);
-        view.showMessage("You've collected sheep wool!");
+        animal.increaseFriendShip(5);
+        view.showMessage("you've collected sheep wool!");
     }
 
     public static void removeItemFromInventory(ItemInstance trashCan, Inventory inventory, ItemInstance tool) {

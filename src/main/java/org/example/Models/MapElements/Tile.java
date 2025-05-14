@@ -101,5 +101,4 @@ public class Tile {
     public boolean isFertilized() {
         return isFertilized;
     }
-
 }

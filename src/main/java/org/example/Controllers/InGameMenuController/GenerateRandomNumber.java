@@ -6,8 +6,4 @@ public class GenerateRandomNumber {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
-    public static double generateRandomDoubleNumber(double min, double max) {
-        Random random = new Random();
-        return random.nextDouble() * (max - min) + min;
-    }
 }

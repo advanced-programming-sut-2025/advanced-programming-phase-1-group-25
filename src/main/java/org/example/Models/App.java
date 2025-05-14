@@ -4,7 +4,6 @@ import org.example.Enums.GameMenus.Menu;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Models.Item.ItemDefinition;
 import org.example.Models.MapElements.GameMap;
-import org.example.Models.Player.PlayerRelation;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -16,7 +15,6 @@ import java.util.Map;
 public abstract class App {
     private static Game currentGame = null;
     private static ArrayList<ItemDefinition> itemDefinitions = new ArrayList<>();
-    private static ArrayList<ItemDefinition> shopItemDefinitions = new ArrayList<>();
     private static Menu currentMenu = Menus.PreGameMenus.LOGIN_MENU; // temporary
     private static Map<String, User> users = new LinkedHashMap<>();
     private static User currentUser = null;

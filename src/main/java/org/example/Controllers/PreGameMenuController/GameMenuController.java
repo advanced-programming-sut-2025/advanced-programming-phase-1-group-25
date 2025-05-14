@@ -2,7 +2,6 @@ package org.example.Controllers.PreGameMenuController;
 
 import org.example.Controllers.UpdateMap.UpdateForaging;
 import org.example.Controllers.UpdateMap.spawnRandom;
-import org.example.Enums.GameMenus.Menu;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
 import org.example.Enums.ItemConsts.ItemType;
@@ -11,15 +10,10 @@ import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.ItemLoader;
-import org.example.Models.Item.ShopItemLoader;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
-import org.example.Models.NPC.MakeNPC;
-import org.example.Models.NPC.MakeRelation;
-import org.example.Models.NPC.MakeShops;
-import org.example.Models.Player.MakePlayerRelations;
 import org.example.Models.Player.Player;
 import org.example.Models.MapElements.PrepareMap;
 import org.example.Models.User;
@@ -30,9 +24,9 @@ import java.util.*;
 public class GameMenuController {
 
     public static String makeNewGame(Scanner sc) {
-        // load items
+
         ItemLoader.loadItems();
-        // prepare map
+
         GameMap newGameMap = PrepareMap.prepareMap();
         ArrayList<PlayerMap> farms = PrepareMap.makePlayerMaps(newGameMap);
 
@@ -53,9 +47,7 @@ public class GameMenuController {
             PlayerMap map = entry.getValue();
             int cottageY = map.getCottage().getTile().getPosition().getY();
             int cottageX = map.getCottage().getTile().getPosition().getX();
-            Position cottagePosition = new Position(cottageY, cottageX);
-            player.setCottagePosition(cottagePosition);
-            player.setPosition(cottagePosition);
+            player.setPosition(new Position(cottageY, cottageX));
         }
 
         Game newGame = new Game(gamePlayers, playerMaps, gamePlayers.get(0), newGameMap);
@@ -63,15 +55,6 @@ public class GameMenuController {
 
         spawnRandom.spawnRandomElements();
         UpdateForaging.updateForaging();
-        // make NPCs
-        MakeNPC.makeNPC();
-        // make shops
-        MakeShops.makeShops();
-        ShopItemLoader.loadShopItems();
-        // make relations
-        MakeRelation.makeRelations(newGame);
-        // make player relations
-        MakePlayerRelations.makePlayerRelations();
 
         App.setCurrentMenu(Menus.InGameMenus.ACTION_MENU);
         return "Game created successfully!\n";
@@ -196,15 +179,5 @@ public class GameMenuController {
             }
             System.out.print("\n\n");
         }
-    }
-    public static void changeMenu(Menu menu, String menuName) {
-        try {
-            TerminalAnimation.loadingAnimation("redirecting to " + menuName + " menu");
-        }
-        catch (InterruptedException e) {
-
-        }
-        App.setCurrentMenu(menu);
-        System.out.println("Your are now in " + menuName);
     }
 }
