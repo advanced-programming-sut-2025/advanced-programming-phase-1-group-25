@@ -1,11 +1,9 @@
-package org.example.Controllers.InGameMenuController;
+package org.example.Controllers.InGameMenuController.Walk;
 
-import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.MapSizes;
 import org.example.Models.App;
 import org.example.Models.MapElements.GameMap;
-import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
@@ -112,15 +110,15 @@ public class Walk {
 
     public static Position walkUntilEnergyRunsOut(List<Tile> path) {
         Player currentPlayer = App.getCurrentGame().getCurrentPlayer();
-        int playerEnergy = currentPlayer.getEnergy();
         for (Tile tile : path) {
             currentPlayer.setPosition(tile.getPosition());
-            playerEnergy--;
-            if (playerEnergy == 0) {
+            currentPlayer.decreaseEnergy(1);
+            if (currentPlayer.getEnergy() == 0) {
+                currentPlayer.setFainted(true);
                 return currentPlayer.getPosition();
             }
         }
-        // checkEnergy(); a method that we can call every time we decrease the player's energy
+
         return currentPlayer.getPosition();
     }
 }

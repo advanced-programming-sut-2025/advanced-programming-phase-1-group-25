@@ -61,4 +61,8 @@ public class DateTime {
     public Seasons getSeason() {
         return season;
     }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
 }

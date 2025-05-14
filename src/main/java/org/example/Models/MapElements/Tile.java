@@ -1,6 +1,5 @@
 package org.example.Models.MapElements;
 
-import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Models.Item.ItemInstance;
 
@@ -69,9 +68,6 @@ public class Tile {
 
     public void strikeLightning() {
         //TODO: implement Lightning logic
-        if(this.item.getDefinition().getType().equals(ItemType.all_crops)) {
-
-        }
     }
 
     public void setDayPassedFromPlant(int dayPassedFromPlant) {
@@ -105,4 +101,5 @@ public class Tile {
     public boolean isFertilized() {
         return isFertilized;
     }
+
 }

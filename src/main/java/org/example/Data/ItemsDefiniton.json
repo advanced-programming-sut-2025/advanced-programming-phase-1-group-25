@@ -35,7 +35,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 2000
+      "upgradeCost": 0
     }
   },
   {
@@ -47,7 +47,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 5000
+      "upgradeCost": 10
     }
   },
   {
@@ -59,7 +59,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 10000
+      "upgradeCost": 20
     }
   },
   {
@@ -71,7 +71,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 250000
+      "upgradeCost": 30
     }
   },
   {
@@ -95,7 +95,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 2000
+      "upgradeCost": 0
     }
   },
   {
@@ -107,7 +107,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 5000
+      "upgradeCost": 10
     }
   },
   {
@@ -119,7 +119,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 10000
+      "upgradeCost": 20
     }
   },
   {
@@ -131,7 +131,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 25000
+      "upgradeCost": 30
     }
   },
   {
@@ -155,7 +155,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 2000
+      "upgradeCost": 0
     }
   },
   {
@@ -167,7 +167,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 5000
+      "upgradeCost": 10
     }
   },
   {
@@ -179,7 +179,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 10000
+      "upgradeCost": 20
     }
   },
   {
@@ -191,7 +191,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 25000
+      "upgradeCost": 30
     }
   },
   {
@@ -215,7 +215,7 @@
       "durability": 0,
       "capacity": 40,
       "energyCost": 5,
-      "upgradeCost": 2000
+      "upgradeCost": 0
     }
   },
   {
@@ -227,7 +227,7 @@
       "durability": 0,
       "capacity": 55,
       "energyCost": 4,
-      "upgradeCost": 5000
+      "upgradeCost": 10
     }
   },
   {
@@ -239,7 +239,7 @@
       "durability": 0,
       "capacity": 70,
       "energyCost": 3,
-      "upgradeCost": 10000
+      "upgradeCost": 20
     }
   },
   {
@@ -251,7 +251,7 @@
       "durability": 0,
       "capacity": 85,
       "energyCost": 2,
-      "upgradeCost": 25000
+      "upgradeCost": 30
     }
   },
   {
@@ -273,8 +273,7 @@
     "baseAttributes": {
       "quality": "regular",
       "price": 25,
-      "energyCost": 8,
-      "upgradeCost": 1800
+      "energyCost": 8
     }
   },
   {
@@ -284,8 +283,7 @@
     "baseAttributes": {
       "quality": "regular",
       "price": 500,
-      "energyCost": 8,
-      "upgradeCost": 7500
+      "energyCost": 8
     }
   },
   {
@@ -344,8 +342,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "capacity": 12,
-      "upgradeCost": 2000
+      "capacity": 12
     }
   },
   {
@@ -354,9 +351,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "capacity": 24,
-      "upgradeCost": 10000
-
+      "capacity": 24
     }
   },
   {
@@ -374,8 +369,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 0,
-      "upgradeCost": 1000
+      "percentage": 0
     }
   },
   {
@@ -384,9 +378,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 15,
-      "upgradeCost": 2500
-
+      "percentage": 15
     }
   },
   {
@@ -395,8 +387,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 30,
-      "upgradeCost": 5000
+      "percentage": 30
     }
   },
   {
@@ -405,8 +396,7 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 45,
-      "upgradeCost": 12500
+      "percentage": 45
     }
   },
   {
@@ -2448,6 +2438,22 @@
     }
   },
   {
+    "itemId": "gold_coin",
+    "name": "Gold Coin",
+    "type": "money",
+    "baseAttributes": {
+    }
+  },
+  {
+    "itemId": "iriduim",
+    "name": "Iriduim",
+    "type": "foraging_minerals",
+    "baseAttributes": {
+      "price": 100,
+      "description": "An exotic ore with many curious properties. Can be smelted into bars."
+    }
+  },
+  {
     "itemId": "iriduim",
     "name": "Iriduim",
     "type": "foraging_minerals",
@@ -4441,8 +4447,14 @@
     "name": "Large Milk",
     "type": "animal_goods",
     "baseAttributes": {
-      "quality": "regular",
-      "price": 190
+      }
+  },
+  {
+    "itemId": "friendship_level",
+    "name": "Friendship Level",
+    "type": "friendship_level",
+    "baseAttributes": {
+      "quality": "regular"
     }
   },
   {

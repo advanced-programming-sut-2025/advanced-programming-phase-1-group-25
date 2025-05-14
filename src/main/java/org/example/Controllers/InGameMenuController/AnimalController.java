@@ -110,7 +110,6 @@ public class AnimalController {
     }
 
     public boolean isNearLake(Player player, Game game) {
-        Tile playerTile = player.getPlayerTile(game);
         GameMap gameMap = game.getGameMap();
         int x = player.getPosition().getX();
         int y = player.getPosition().getY();

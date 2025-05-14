@@ -12,9 +12,9 @@ import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
+import org.example.Models.NPC.Quest;
 import org.example.Models.User;
 
-import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -34,31 +34,36 @@ public class Player {
     private ItemInstance currentTool;
     private ItemInstance trashCan;
     private int energyPerTurn;
+    private ArrayList<Quest> activeQuests;
+    private ArrayList<Gift> giftsReceived;
+    private ArrayList<String> messages;
     private PlayerMap playerMap;
     private ArrayList<Animal> animals;
-    private ArrayList<String> messages;
+    private boolean isFainted;
+    private Position cottagePosition;
+    private Player spouse;
+
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
         this.name = name;
         this.gender = gender;
         this.energy = 200; // initial energy
         this.energyLimit = 200;
-        this.wallet = new Wallet(0);
+        this.wallet = new Wallet(0); // initial coin
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
+        this.activeQuests = new ArrayList<>();
         this.position = position; // initial position
         this.energyPerTurn = 50;
         this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
+        this.giftsReceived = new ArrayList<>();
+        this.messages = new ArrayList<>();
         animals = new ArrayList<>();
         this.inventory.setInventoryTools();
+        this.isFainted = false;
+        this.spouse = null;
     }
 
-    public ArrayList<String> getMessages() {
-        return messages;
-    }
-    public void addMessage(String message) {
-        messages.add(message);
-    }
 
     public ItemInstance getCurrentTool() {
         return currentTool;
@@ -80,6 +85,13 @@ public class Player {
         return inventory;
     }
 
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
 
     public ItemInstance getTrashCan() {
         return trashCan;
@@ -141,10 +153,6 @@ public class Player {
         this.energyPerTurn = energyPerTurn;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
-
     public Tile getPlayerTile(Game game) {
         GameMap gameMap = game.getGameMap();
         return gameMap.getTile(this.position.getY(), this.position.getX());
@@ -153,6 +161,9 @@ public class Player {
     public void decreaseEnergy(int deltaEnergy) {
         this.energy = Math.max(0, this.energy - deltaEnergy);
         this.energyPerTurn = Math.max(0, this.energyPerTurn - deltaEnergy);
+        if (this.energy <= 0) {
+            this.isFainted = true;
+        }
     }
 
     public void reduceEnergy(int ability, ItemInstance tool, Player player,
@@ -172,6 +183,53 @@ public class Player {
                 player.changeToolLevel(tool);
         }
     }
+
+    public void addQuest(Quest quest) {
+        this.activeQuests.add(quest);
+    }
+
+    public ArrayList<Quest> getActiveQuests() {
+        return activeQuests;
+    }
+
+    public Quest getActiveQuest(int number) {
+        try {
+            return this.activeQuests.get(number - 1);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
+    }
+
+    public void addGift(Gift gift) {
+        this.giftsReceived.add(gift);
+    }
+
+    public ArrayList<Gift> getGiftsReceived() {
+        return giftsReceived;
+    }
+
+    public ArrayList<String> getMessages() {
+        return messages;
+    }
+
+    public void addMessage(String message) {
+        this.messages.add(message);
+    }
+    public void setInventoryTools() {
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_watering_can"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
+    }
+
+    public void finishQuest(Quest quest) {
+        this.activeQuests.remove(quest);
+    }
+
 
     public void changeToolLevel(ItemInstance tool) {
         String name = tool.getDefinition().getDisplayName().toLowerCase();
@@ -195,5 +253,29 @@ public class Player {
         items.add(newTool);
         this.inventory.getItems().put(newTool.getDefinition().getId(), items);
         this.currentTool = newTool;
+    }
+
+    public boolean isFainted() {
+        return isFainted;
+    }
+
+    public void setFainted(boolean fainted) {
+        isFainted = fainted;
+    }
+
+    public void setCottagePosition(Position cottagePosition) {
+        this.cottagePosition = cottagePosition;
+    }
+
+    public Position getCottagePosition() {
+        return cottagePosition;
+    }
+
+    public Player getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Player spouse) {
+        this.spouse = spouse;
     }
 }

@@ -9,4 +9,14 @@ public class ExitMenu implements AppMenu {
     public void handleInput(Scanner sc) {
 
     }
+
+    @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
+    public String prompt(String message) {
+        return "";
+    }
 }

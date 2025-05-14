@@ -1,5 +1,7 @@
 package org.example.Models.MapElements;
 
+import edu.stanford.nlp.parser.lexparser.Item;
+import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Enums.MapConsts.FarmElementsPosition;
 import org.example.Enums.MapConsts.MapSizes;
@@ -72,9 +74,25 @@ public class MapDesigner {
                         Tile tile = map.getTile(y, x);
                         tile.setForGroundColor(AnsiColors.BLACK);
                         tile.setBackGroundColor(AnsiColors.GREEN);
+                        if (tile.getItem().getDefinition().getId() == ItemIDs.lake) {
+                            tile.setBackGroundColor(AnsiColors.BLUE);
+                        }
+                        if (tile.getItem().getDefinition().getId() == ItemIDs.cottage) {
+                            tile.setBackGroundColor(AnsiColors.BLACK);
+                            tile.setForGroundColor(AnsiColors.WHITE);
+                        }
+                        if (tile.getItem().getDefinition().getId() == ItemIDs.quarry) {
+                            tile.setBackGroundColor(AnsiColors.BLACK);
+                            tile.setForGroundColor(AnsiColors.WHITE);
+                        }
+                        if (tile.getItem().getDefinition().getId() == ItemIDs.greenhouse){
+                            tile.setBackGroundColor(AnsiColors.RED);
+                        }
                     }
                 }
             }
         }
+
+        map.getTile(30, 59).setBackGroundColor(AnsiColors.BLACK);
     }
 }

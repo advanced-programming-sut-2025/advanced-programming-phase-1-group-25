@@ -4,14 +4,14 @@ import org.example.Controllers.InGameMenuController.*;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Models.App;
 import org.example.Models.Game;
+import org.example.Models.Player.PlayerRelation;
 import org.example.Views.AppMenu;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
 public class ActionMenuView implements AppMenu {
-    Scanner scanner;
-
+    private Scanner scanner;
 
     @Override
     public void handleInput(Scanner sc) {
@@ -35,7 +35,9 @@ public class ActionMenuView implements AppMenu {
         ActionMenuController actionController = new ActionMenuController(this);
         FarmingController farmingController = new FarmingController(this);
         AnimalController animalController = new AnimalController(this);
-        ToolController toolController = new ToolController(this);
+        NPCController npcController = new NPCController(this);
+        PlayerRelationController playerRelationController = new PlayerRelationController(this);
+
         switch (command) {
             case SWITCH_MENU:
                 System.out.println(MenuSwitcher.printMenus());
@@ -70,7 +72,6 @@ public class ActionMenuView implements AppMenu {
                 System.out.println(game.getDateTime().getSeason().toString().toLowerCase());
                 break;
             case CHEAT_THOR:
-                actionController.cheatThor(matcher, game);
                 break;
             case WEATHER:
                 System.out.println(game.getWeather().getCurrentWeather().toString().toLowerCase());
@@ -99,6 +100,9 @@ public class ActionMenuView implements AppMenu {
             case ENERGY_SET:
                 actionController.cheatSetEnergy(matcher, game);
                 break;
+            case ENERGY_REFILL:
+                actionController.cheatRefillTurnEnergy();
+                break;
             case ENERGY_UNLIMITED:
                 actionController.energyUnlimited(game);
                 break;
@@ -106,16 +110,15 @@ public class ActionMenuView implements AppMenu {
                 actionController.equipTool(matcher);
                 break;
             case TOOLS_SHOW_CURRENT:
-                toolController.showCurrentTool();
+                actionController.showCurrentTool();
                 break;
             case TOOLS_SHOW_AVAILABLE:
-                toolController.showInventoryTools();
+                actionController.showInventoryTools();
                 break;
             case TOOLS_UPGRADE:
-                toolController.upgradeTool(matcher);
                 break;
             case TOOLS_USE:
-                toolController.useTool(matcher);
+                actionController.useTool(matcher);
                 break;
             case CRAFT_INFO:
                 actionController.craftInfo(matcher, game);
@@ -188,6 +191,55 @@ public class ActionMenuView implements AppMenu {
                 break;
             case ARTISAN_GET:
                 actionController.artisanGet(matcher, game);
+                break;
+            case MEET_NPC:
+                npcController.meetNPC(matcher.group("npcName"));
+                break;
+            case GIFT_NPC:
+                npcController.giftNPC(matcher.group("npcName"), matcher.group("item"));
+                break;
+            case FRIENDSHIP_NPC_LIST:
+                npcController.friendshipNPCList();
+                break;
+            case QUESTS_LIST:
+                npcController.questsList();
+                break;
+            case GET_QUEST:
+                npcController.getQuestFromNPC(matcher.group("npcName"));
+                break;
+            case QUESTS_FINISH:
+                npcController.questFinish(matcher.group("index"));
+                break;
+            case FRIENDSHIPS:
+                playerRelationController.friendships();
+                break;
+            case TALK:
+                playerRelationController.talk(matcher.group("username"), matcher.group("message"));
+                break;
+            case TALK_HISTORY:
+                playerRelationController.talkHistory(matcher.group("username"));
+                break;
+            case GIFT:
+                playerRelationController.gift(
+                        matcher.group("username"), matcher.group("item"), matcher.group("amount"));
+                break;
+            case GIFT_LIST:
+                playerRelationController.giftList();
+                break;
+            case GIFT_RATE:
+                playerRelationController.giftRate(matcher.group("giftNumber"), matcher.group("rate"));
+                break;
+            case GIFT_HISTORY:
+                playerRelationController.giftHistory(matcher.group("username"));
+                break;
+            case HUG:
+                playerRelationController.hug(matcher.group("username"));
+                break;
+            case FLOWER:
+                playerRelationController.flower(matcher.group("username"));
+                break;
+            case ASK_MARRIAGE:
+                playerRelationController.askMarriage(matcher.group("username"));
                 break;
         }
     }

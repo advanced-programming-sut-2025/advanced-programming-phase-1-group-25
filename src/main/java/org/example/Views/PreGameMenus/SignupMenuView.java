@@ -8,9 +8,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 
-public class SignupMenu implements AppMenu {
+public class SignupMenuView implements AppMenu {
+
+    Scanner scanner;
+
     @Override
     public void handleInput(Scanner sc) {
+        this.scanner = sc;
+
         String input = sc.nextLine();
         Matcher matcher;
         boolean matched = false;
@@ -21,30 +26,42 @@ public class SignupMenu implements AppMenu {
             }
         }
         if (!matched) {
-            System.out.printf("Invalid command. please try again.\n");
+            System.out.print("Invalid command. please try again.\n");
         }
     }
 
-    private static void executeCommand(SignupMenuCommands command, Matcher matcher, Scanner sc) {
+    private void executeCommand(SignupMenuCommands command, Matcher matcher, Scanner sc) {
+
+        SignupMenuController controller = new SignupMenuController(this);
+
         switch (command) {
             case CHANGE_MENU:
-                System.out.printf(SignupMenuController.changeMenu(matcher.group("menu")));
+                controller.changeMenu(matcher.group("menu"));
                 break;
             case MENU_EXIT:
-                System.out.printf(SignupMenuController.exitMenu());
+                controller.exitMenu();
                 break;
             case SHOW_CURRENT_MENU:
-                System.out.printf(SignupMenuController.showCurrentMenu());
+                controller.showCurrentMenu();
                 break;
             case REGISTER:
-                System.out.printf(SignupMenuController.register(
+                controller.register(
                         sc
                         , matcher.group("username")
                         , matcher.group("password")
                         , matcher.group("nickname")
                         , matcher.group("email")
-                        , matcher.group("gender")));
+                        , matcher.group("gender"));
                 break;
         }
+    }
+
+    public String prompt(String message) {
+        System.out.println(message);
+        return scanner.nextLine();
+    }
+
+    public void showMessage(String message) {
+        System.out.println(message);
     }
 }

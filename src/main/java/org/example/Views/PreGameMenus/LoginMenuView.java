@@ -7,9 +7,12 @@ import org.example.Views.AppMenu;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 
-public class LoginMenu implements AppMenu {
+public class LoginMenuView implements AppMenu {
+    private LoginMenuController controller;
+    private Scanner scanner;
     @Override
     public void handleInput(Scanner sc) {
+        this.scanner = sc;
         String input = sc.nextLine();
         Matcher matcher;
         boolean matched = false;
@@ -24,29 +27,42 @@ public class LoginMenu implements AppMenu {
         }
     }
 
-    private static void executeCommand(LoginMenuCommands command, Matcher matcher, Scanner sc) {
+    private void executeCommand(LoginMenuCommands command, Matcher matcher, Scanner sc) {
+        controller = new LoginMenuController(this);
         switch (command) {
             case CHANGE_MENU:
-                System.out.printf(LoginMenuController.changeMenu(matcher.group("menu")));
+                controller.changeMenu(matcher.group("menu"));
                 break;
             case MENU_EXIT:
-                System.out.printf(LoginMenuController.exitMenu());
+                controller.exitMenu();
                 break;
             case SHOW_CURRENT_MENU:
-                System.out.printf(LoginMenuController.showCurrentMenu());
+                controller.showCurrentMenu();
                 break;
             case LOGIN:
                 boolean stayLoggedIn = matcher.group("stayLoggedIn") != null;
-                System.out.printf(LoginMenuController.login(
+                controller.login(
                         sc
                         , matcher.group("username")
                         , matcher.group("password")
-                        , stayLoggedIn));
+                        , stayLoggedIn);
                 break;
             case FORGET_PASSWORD:
-                System.out.printf(LoginMenuController.forgetPassword(sc, matcher.group("username")));
+                controller.forgetPassword(sc, matcher.group("username"));
                 break;
         }
+    }
+
+
+    @Override
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public String prompt(String message) {
+        System.out.println(message);
+        return scanner.nextLine();
     }
 }
 
