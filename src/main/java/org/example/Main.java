@@ -18,6 +18,7 @@ import java.io.IOException;
  */
 
 public class Main {
+    
     public static void main(String[] args) throws IOException {
     // test
         User user1 = new User("ali1", "ali1", "1234", "", Gender.FEMALE, new Question("", ""));
