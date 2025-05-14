@@ -8,6 +8,5 @@ import java.util.Scanner;
  */
 public interface AppMenu {
     void handleInput(Scanner sc);
-    void showMessage(String message);
-    String prompt(String message);
 }
+

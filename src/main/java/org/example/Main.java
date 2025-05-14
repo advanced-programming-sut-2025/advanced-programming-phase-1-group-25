@@ -3,7 +3,6 @@ package org.example;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.Enums.GameConsts.Gender;
-import org.example.Enums.GameMenus.Menus;
 import org.example.Models.App;
 import org.example.Models.Question;
 import org.example.Models.User;
@@ -31,12 +30,7 @@ public class Main {
         App.addUser("ali2", user2);
         App.addUser("ali3", user3);
         App.addUser("ali4", user4);
-        App.setCurrentUser(user1);
-//        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
-    // test
 
-        App.setCurrentUser(user1);
-        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
         AppView appView = new AppView();
         appView.run();
     }

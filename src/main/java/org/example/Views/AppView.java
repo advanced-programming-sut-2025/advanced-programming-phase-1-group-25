@@ -10,7 +10,7 @@ import java.util.Scanner;
     Main loop of the program!
  */
 public class AppView {
-    public void run() {
+    public static void run() {
         Scanner sc = new Scanner(System.in);
         do {
             App.getCurrentMenu().check(sc);

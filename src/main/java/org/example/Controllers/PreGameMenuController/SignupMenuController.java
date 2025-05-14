@@ -7,7 +7,6 @@ import org.example.Models.App;
 import org.example.Models.Question;
 import org.example.Models.User;
 
-import org.example.Views.PreGameMenus.SignupMenuView;
 import org.example.Views.PreGameMenus.TerminalAnimation;
 
 import java.util.Scanner;
@@ -17,92 +16,76 @@ import static org.example.Controllers.PreGameMenuController.SecurityQuestions.as
 import static org.example.Controllers.PreGameMenuController.Validation.*;
 
 public class SignupMenuController {
-
-    SignupMenuView view;
-
-    public SignupMenuController(SignupMenuView view) {
-        this.view = view;
-    }
-
-    public void changeMenu(String menu) {
+    public static String changeMenu(String menu) {
         switch (menu.toLowerCase()) {
             case "login menu", "loginmenu", "login" -> {
                 App.setCurrentMenu(Menus.PreGameMenus.LOGIN_MENU);
                 try {
                     TerminalAnimation.loadingAnimation("redirecting to login menu");
-                    this.view.showMessage("You are now in login menu.");
+                    return "\nYou are now in login menu.\n";
                 } catch (InterruptedException e) {
-                    this.view.showMessage("Problem redirecting to login menu. Please try again later.");
+                    return "Problem redirecting to login menu. Please try again later.\n";
                 }
             }
             case "signup menu", "signupmenu", "signup" -> {
-                this.view.showMessage("You are in signup menu now!");
+                return "You are in signup menu now!\n";
             }
             default -> {
-                this.view.showMessage("You only have access to login and signup menus right now.");
+                return "You only have access to login and signup menus right now.\n";
             }
         }
     }
 
-    public void exitMenu() {
+    public static String exitMenu() {
         try {
             TerminalAnimation.loadingAnimation("Exiting the game\n");
         } catch (InterruptedException e) {
-            this.view.showMessage("Problem exiting the game. Please try again later.");
-            return;
+            return "Problem exiting the game. Please try again later.\n";
         }
 
         // logics to end the program.
-
         App.setCurrentMenu(Menus.PreGameMenus.EXIT_MENU);
-        return;
+        return "";
     }
 
-    public void showCurrentMenu() {
-        this.view.showMessage("You are in signup menu.");
+    public static String showCurrentMenu() {
+        return "You are in signup menu.\n";
     }
 
-    public void register(Scanner sc,String username, String password,
+    public static String register(Scanner sc,String username, String password,
                                   String nickname, String email, String gender) {
         String finalUsername = username;
         String finalPassword = password;
         if (App.userExists(username)) {
             finalUsername = handleDuplicateUsername(username, sc);
             if (finalUsername == null) {
-                this.view.showMessage("Register failed. please try again.");
-                return;
+                return "Register failed. please try again.";
             }
         }
         if (!isUsernameValid(username)) {
-            this.view.showMessage("Username is not valid.");
-            return;
+            return "Username is not valid.\n";
         }
         if (!isEmailValid(email)) {
-            this.view.showMessage("Email address is not valid.");
-            return;
+            return "Email address is not valid.\n";
         }
 
         if (password.equals("random password")) {
             finalPassword = handleRandomPassword(username, sc);
             if (finalPassword == null) {
-                this.view.showMessage("Register failed. please try again.");
-                return;
+                return "Register failed. please try again.";
             }
         }
 
         if (!isPasswordValid(finalPassword)) {
-            this.view.showMessage("Password is not valid.");
-            return;
+            return "Password is not valid.\n";
         }
         int weaknessState;
         if ((weaknessState = isPasswordWeak(finalPassword)) != -1) {
-            this.view.showMessage(handleWeakPassword(password, weaknessState));
-            return;
+            return handleWeakPassword(password, weaknessState);
         }
 
         if (!isNicknameValid(nickname)) {
-            this.view.showMessage("Nickname is not valid.");
-            return;
+            return "Nickname is not valid.\n";
         }
 
         Gender userGender;
@@ -118,39 +101,29 @@ public class SignupMenuController {
                 userGender = Gender.OTHER;
             }
             default -> {
-                this.view.showMessage("Please enter male, female, or other.");
-                return;
+                return "Please enter male, female, or other.\n";
             }
         }
 
         System.out.print("Enter your password again.\n");
         String passwordConfirm = sc.nextLine();
         if (!passwordConfirm.equals(finalPassword)) {
-            this.view.showMessage("Password confirmation doesn't match.");
-            return;
+            return "Password confirmation doesn't match.\n";
         }
 
-        if (!askSecurityQuestion(sc)) {
-            this.view.showMessage("Register failed. Please try again.");
-            return;
-        }
-
+        if (!askSecurityQuestion(sc)) return "Register failed. Please try again.";
         Question userSecurityQuestion;
-        if ((userSecurityQuestion = SecurityQuestions.addSecurityQuestions(sc)) == null) {
-            this.view.showMessage("Register failed. Please try again.");
-            return;
-        }
+        if ((userSecurityQuestion = SecurityQuestions.addSecurityQuestions(sc)) == null) return "Register failed. Please try again.";
 
         try {
             TerminalAnimation.loadingAnimation("Creating your account");
         } catch (InterruptedException e) {
-            this.view.showMessage("Problem creating your account. Please try again later.");
-            return;
+            return "Problem creating your account. Please try again later.";
         }
         User newUser = new User(nickname, finalUsername, finalPassword, email, userGender, userSecurityQuestion);
         App.addUser(finalUsername, newUser);
         App.setCurrentMenu(Menus.PreGameMenus.LOGIN_MENU);
-        this.view.showMessage("Account has been created successfully. You are now in login menu.\n");
+        return "Account has been created successfully. You are now in login menu.\n";
     }
 }
 

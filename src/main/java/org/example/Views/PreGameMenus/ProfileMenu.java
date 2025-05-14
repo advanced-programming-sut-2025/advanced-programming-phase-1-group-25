@@ -1,8 +1,6 @@
 package org.example.Views.PreGameMenus;
 
 import org.example.Controllers.PreGameMenuController.ProfileMenuController;
-import org.example.Enums.GameMenus.Menu;
-import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.PreGameMenuCommands.ProfileMenuCommands;
 import org.example.Models.App;
 import org.example.Models.User;
@@ -30,8 +28,7 @@ public class ProfileMenu implements AppMenu {
             } else if (App.userExists(username)) {
                 System.out.println("Username already exists!");
             } else {
-                controller.changeUsername(username, App.getCurrentUser().getUsername());
-                System.out.println("Username has been changed to " + username + "!");
+                controller.changeUsername(username);
             }
         } else if ((matcher = ProfileMenuCommands.Change_NickName.getMatcher(command)) != null) {
             String nickname = matcher.group("nickname");
@@ -40,7 +37,6 @@ public class ProfileMenu implements AppMenu {
                 System.out.println("Please enter a new nickname!");
             } else {
                 controller.changeNickname(nickname);
-                System.out.println("Nickname has been changed to " + nickname + "!");
             }
         } else if ((matcher = ProfileMenuCommands.Change_Email.getMatcher(command)) != null) {
             String email = matcher.group("email");
@@ -51,7 +47,6 @@ public class ProfileMenu implements AppMenu {
                 System.out.println("Email format is invalid");
             } else {
                 controller.changeEmail(email);
-                System.out.println("Email has been changed to " + email + "!");
             }
         } else if ((matcher = ProfileMenuCommands.Change_Password.getMatcher(command)) != null) {
             String newPassword = matcher.group("newPassword");
@@ -66,7 +61,6 @@ public class ProfileMenu implements AppMenu {
                 System.out.println("Password format is invalid");
             } else {
                 controller.changePassword(newPassword);
-                System.out.println("Password has been changed to " + newPassword + "!");
             }
         } else if (ProfileMenuCommands.User_Info.getMatcher(command) != null) {
             System.out.println("Username: " + App.getCurrentUser().getUsername());
@@ -75,23 +69,11 @@ public class ProfileMenu implements AppMenu {
             System.out.println("Number of games: " + App.getCurrentUser().getGameHistory().size());
         } else if (ProfileMenuCommands.Menu_Exit.getMatcher(command) != null) {
             controller.exitMenu();
-        } else if (ProfileMenuCommands.Go_To_MainMenu.getMatcher(command) != null) {
+        } else if(ProfileMenuCommands.Go_To_MainMenu.getMatcher(command) != null) {
             System.out.println("you can't go to main menu");
-        } else if(ProfileMenuCommands.Menu_Exit.getMatcher(command) != null) {
-            controller.changeMenu(Menus.PreGameMenus.MAIN_MENU, "main menu");
         }
         else {
             System.out.println("Invalid command!");
         }
-    }
-
-    @Override
-    public void showMessage(String message) {
-
-    }
-
-    @Override
-    public String prompt(String message) {
-        return "";
     }
 }

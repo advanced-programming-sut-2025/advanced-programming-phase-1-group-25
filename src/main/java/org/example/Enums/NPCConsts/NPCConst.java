@@ -59,7 +59,6 @@ public class NPCConst {
         BARISTA,
         PET_SELLER,
         WOOD_SELLER,
-        BEING_KIAN,
         ;
     }
 

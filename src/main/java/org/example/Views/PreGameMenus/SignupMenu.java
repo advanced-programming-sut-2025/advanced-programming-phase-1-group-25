@@ -8,14 +8,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 
 
-public class SignupMenuView implements AppMenu {
-
-    Scanner scanner;
-
+public class SignupMenu implements AppMenu {
     @Override
     public void handleInput(Scanner sc) {
-        this.scanner = sc;
-
         String input = sc.nextLine();
         Matcher matcher;
         boolean matched = false;
@@ -26,42 +21,30 @@ public class SignupMenuView implements AppMenu {
             }
         }
         if (!matched) {
-            System.out.print("Invalid command. please try again.\n");
+            System.out.printf("Invalid command. please try again.\n");
         }
     }
 
-    private void executeCommand(SignupMenuCommands command, Matcher matcher, Scanner sc) {
-
-        SignupMenuController controller = new SignupMenuController(this);
-
+    private static void executeCommand(SignupMenuCommands command, Matcher matcher, Scanner sc) {
         switch (command) {
             case CHANGE_MENU:
-                controller.changeMenu(matcher.group("menu"));
+                System.out.printf(SignupMenuController.changeMenu(matcher.group("menu")));
                 break;
             case MENU_EXIT:
-                controller.exitMenu();
+                System.out.printf(SignupMenuController.exitMenu());
                 break;
             case SHOW_CURRENT_MENU:
-                controller.showCurrentMenu();
+                System.out.printf(SignupMenuController.showCurrentMenu());
                 break;
             case REGISTER:
-                controller.register(
+                System.out.printf(SignupMenuController.register(
                         sc
                         , matcher.group("username")
                         , matcher.group("password")
                         , matcher.group("nickname")
                         , matcher.group("email")
-                        , matcher.group("gender"));
+                        , matcher.group("gender")));
                 break;
         }
-    }
-
-    public String prompt(String message) {
-        System.out.println(message);
-        return scanner.nextLine();
-    }
-
-    public void showMessage(String message) {
-        System.out.println(message);
     }
 }

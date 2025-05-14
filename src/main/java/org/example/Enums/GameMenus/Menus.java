@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class Menus {
     public enum PreGameMenus implements Menu {
-        SIGNUP_MENU(new SignupMenuView()),
-        LOGIN_MENU(new LoginMenuView()),
+        SIGNUP_MENU(new SignupMenu()),
+        LOGIN_MENU(new LoginMenu()),
         MAIN_MENU(new MainMenu()),
         PROFILE_MENU(new ProfileMenu()),
         AVATAR_MENU(new AvatarMenu()),
@@ -37,7 +37,7 @@ public class Menus {
         CRAFTING_MENU(new CraftingMenu()),
         COOKING_MENU(new CookingMenu()),
         ACTION_MENU(new ActionMenuView()),
-        SHOP_MENU(new ShopMenuView()),
+        SHOP_MENU(new ShopMenu()),
         EXIT_MENU(new ExitMenu()),
         INVENTORY_MENU(new InventoryMenu()),
         MENU_SWITCHER(new MenuSwitcherView());

@@ -1,11 +1,6 @@
 package org.example.Controllers.InGameMenuController;
 
-import org.example.Controllers.InGameMenuController.Walk.Walk;
-import org.example.Controllers.UpdateMap.UpdateByHour;
 import org.example.Enums.GameConsts.DayOfWeek;
-import org.example.Enums.GameConsts.Seasons;
-import org.example.Enums.GameConsts.WeatherStates;
-
 import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
@@ -13,6 +8,10 @@ import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.MapConsts.AnsiColors;
+import org.example.Enums.NPCConsts.NPCConst;
+import org.example.Models.Animals.Animal;
+import org.example.Models.Animals.Barn;
+import org.example.Models.Animals.Coop;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
@@ -22,10 +21,7 @@ import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
-import org.example.Models.NPC.NPC;
 import org.example.Models.Player.Player;
-import org.example.Models.Player.PlayerRelation;
-import org.example.Models.Player.Wallet;
 import org.example.Models.States.Weather;
 import org.example.Views.InGameMenus.ActionMenuView;
 import org.example.Views.PreGameMenus.TerminalAnimation;
@@ -33,6 +29,7 @@ import org.example.Views.PreGameMenus.TerminalAnimation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ActionMenuController {
@@ -43,13 +40,6 @@ public class ActionMenuController {
     }
 
     public void walk(String yString, String xString) {
-        Game currentGame = App.getCurrentGame();
-        Player currentPlayer = currentGame.getCurrentPlayer();
-
-        if (!currentGame.isPlayerActive(currentPlayer)) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         int y, x;
         try {
             y = Integer.parseInt(yString);
@@ -58,32 +48,16 @@ public class ActionMenuController {
             this.view.showMessage("Please Enter valid Y and X");
             return;
         }
+
         // check whether the player can go to the destination or not
 
+        Game currentGame = App.getCurrentGame();
+        Player currentPlayer = currentGame.getCurrentPlayer();
         GameMap map = currentGame.getGameMap();
         int currentPlayerY = currentPlayer.getPosition().getY();
         int currentPlayerX = currentPlayer.getPosition().getX();
         Tile start = map.getTile(currentPlayerY, currentPlayerX);
-
-        Tile goal;
-        try {
-            goal = map.getTile(y, x);
-            ;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            this.view.showMessage("Please enter a valid position.");
-            return;
-        }
-
-        for (Player player : currentGame.getPlayers()) {
-            PlayerMap playerMap = currentGame.getPlayerMap(player);
-            PlayerRelation relation = currentGame.getPlayerRelation(currentPlayer, player);
-            if (player != currentPlayer
-                    && !relation.areMarried()
-                    && playerMap.hasTile(goal)) {
-                this.view.showMessage("You don't have access to this place.");
-                return;
-            }
-        }
+        Tile goal = map.getTile(y, x);
 
         List<Tile> path = Walk.findPath(start, goal, map);
         if (path == null) {
@@ -133,12 +107,7 @@ public class ActionMenuController {
 
     public void nextTurn() {
         Game currentGame = App.getCurrentGame();
-        currentGame.getCurrentPlayer().setEnergyPerTurn(50);
         Player nextPlayer = currentGame.getNextPlayer();
-
-        if (nextPlayer == currentGame.getPlayers().get(0)) {
-            currentGame.updateByHour();
-        }
         currentGame.setCurrentPlayer(nextPlayer);
         view.showMessage(nextPlayer.getName() + "'s turn!");
     }
@@ -146,35 +115,24 @@ public class ActionMenuController {
     public void buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
         Player currentPlayer = currentGame.getCurrentPlayer();
-        if (!currentGame.isPlayerActive(currentPlayer)) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         Inventory playerInventory = currentPlayer.getInventory();
 
         int playerWood = playerInventory.getItemAmount(ItemIDs.wood);
-        int playerCoin = currentPlayer.getWallet().getCoin();
+        int playerCoin = currentPlayer.getCoin();
 
         if (playerWood < 500) {
             view.showMessage("You don't have enough wood!");
-            return;
         } else if (playerCoin < 1000) {
             view.showMessage("You don't have enough coin!");
-            return;
         } else {
             currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
-            Wallet wallet = currentPlayer.getWallet();
-            wallet.setCoin(wallet.getCoin() - 1000);
+            currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
             currentPlayer.getInventory().trashItem(ItemIDs.wood, 500);
         }
         view.showMessage("Greenhouse has been repaired!");
     }
 
     public void cheatAdvanceTime(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String timeStr = matcher.group("hours");
         int time;
         try {
@@ -188,16 +146,9 @@ public class ActionMenuController {
         }
         int newHour = game.getDateTime().updateTimeByHour(time);
         this.view.showMessage("time is now " + newHour + "!");
-        for(int i = 0; i < time; i++) {
-            game.updateByHour();
-        }
     }
 
     public void cheatAdvanceDate(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String timeStr = matcher.group("day");
         int time;
         try {
@@ -209,35 +160,15 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
-        view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
-        for(int i = 0; i < time; i++) {
-            game.updateByDay();
-        }
+        DayOfWeek newDay = game.getDateTime().updateTimeByDay(time);
+        view.showMessage("day is now " + newDay.toString().toLowerCase() + "!");
     }
 
-    public void weatherForecast(Game game) {
-        view.showMessage("Tomorrow's weather is " + game.getTomorrowWeather().
-                getCurrentWeather().name().toLowerCase() + "!");
-    }
-
-    public void cheatWeather(Matcher matcher, Game game) {
-        String weather = matcher.group("type");
-        for (WeatherStates value : WeatherStates.values()) {
-            if (weather.equalsIgnoreCase(value.name())) {
-                game.getTomorrowWeather().setCurrentWeather(value);
-                view.showMessage("Tomorrow's weather has been set to " + value.name().toLowerCase() + "!");
-                return;
-            }
-        }
-        view.showMessage("Please enter a valid weather!");
-    }
-
+    //    public String cheatWeather(Matcher matcher, Game game) {
+//        String weather = matcher.group("type");
+//    }
     public void printMap(String xStr, String yStr, String sizeStr) {
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         int x, y, size;
         try {
             x = Integer.parseInt(xStr);
@@ -257,13 +188,7 @@ public class ActionMenuController {
     }
 
     public void getMapBySize(Game game, Position position, int size) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         GameMap map = game.getGameMap();
-
-        // show entire map
         String[][] mapArray = new String[2 * size][2 * size];
         for (int i = position.getY() - size; i < position.getY() + size; i++) {
             for (int j = position.getX() - size; j < position.getX() + size; j++) {
@@ -279,8 +204,6 @@ public class ActionMenuController {
             }
         }
 
-
-        // show players
         ArrayList<Player> players = App.getCurrentGame().getPlayers();
         int playerNumber = 1;
         for (Player player : players) {
@@ -290,25 +213,7 @@ public class ActionMenuController {
             if (playerY >= position.getY() - size && playerY < position.getY() + size) {
                 if (playerX >= position.getX() - size && playerX < position.getX() + size) {
                     mapArray[playerY - position.getY() + size][playerX - position.getX() + size] =
-                            AnsiColors.wrap(playerNumber + " ", AnsiColors.BLACK, AnsiColors.RED);
-                }
-            }
-            playerNumber++;
-        }
-
-        // show NPCs
-        for (NPC npc : game.getNPCs()) {
-            int NPcY = npc.getPosition().getY();
-            int NPcX = npc.getPosition().getX();
-
-            if (NPcY >= position.getY() - size && NPcY < position.getY() + size) {
-                if (NPcX >= position.getX() - size && NPcX < position.getX() + size) {
-                    mapArray[NPcY - position.getY() + size][NPcX - position.getX() + size] =
-                            AnsiColors.wrap(npc.getName().toCharArray()[0] + " ", AnsiColors.RED, AnsiColors.WHITE);
-                }
-                if (npc.getName().equalsIgnoreCase("Kian")) {
-                    mapArray[NPcY - position.getY() + size][NPcX - position.getX() + size] =
-                            AnsiColors.wrap(npc.getName().toCharArray()[0] + " ", AnsiColors.BLACK, AnsiColors.WHITE);
+                            AnsiColors.wrap(Integer.toString(playerNumber) + " ", AnsiColors.BLACK, AnsiColors.RED);
                 }
             }
             playerNumber++;
@@ -324,17 +229,7 @@ public class ActionMenuController {
         view.showMessage(output.toString());
     }
 
-    public void helpReadingMap() {
-        for (ItemDisplay value : ItemDisplay.values()) {
-            view.showMessage(value.name() + " : " + value.getDisplay());
-        }
-    }
-
     public void cheatSetEnergy(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String energyStr = matcher.group("value");
         int energy;
         try {
@@ -348,23 +243,14 @@ public class ActionMenuController {
             return;
         }
         if (energy > 200) {
-        view.showMessage("energy must be a less than 200!");
+            view.showMessage("energy must be a less than 200!");
             return;
-                    }
-                    game.getCurrentPlayer().setEnergy(energy);
+        }
+        game.getCurrentPlayer().setEnergy(energy);
         view.showMessage("your energy has been set to " + energy + "!");
     }
 
-    public void cheatRefillTurnEnergy() {
-        Player player = App.getCurrentGame().getCurrentPlayer();
-        player.setEnergyPerTurn(50);
-    }
-
     public void energyUnlimited(Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         game.getCurrentPlayer().setEnergy(Integer.MAX_VALUE);
         view.showMessage("your energy is now unlimited:)");
     }
@@ -375,15 +261,11 @@ public class ActionMenuController {
 
     public void equipTool(Matcher matcher) {
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String toolName = matcher.group("toolName").toLowerCase();
         Inventory inventory = game.getCurrentPlayer().getInventory();
         boolean found = false;
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            if (itemDefinition.getId().name().equalsIgnoreCase(toolName)) {
+            if (itemDefinition.getDisplayName().equalsIgnoreCase(toolName)) {
                 found = true;
             }
         }
@@ -392,11 +274,10 @@ public class ActionMenuController {
             return;
         }
         ItemInstance tool = null;
-
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
             ArrayList<ItemInstance> items = entry.getValue();
             for (ItemInstance item : items) {
-                if (item.getDefinition().getId().name().equalsIgnoreCase(toolName)) {
+                if (item.getDefinition().getDisplayName().equalsIgnoreCase(toolName)) {
                     tool = item;
                 }
             }
@@ -413,10 +294,6 @@ public class ActionMenuController {
 
     public void showCurrentTool() {
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         Player currentPlayer = game.getCurrentPlayer();
         if (currentPlayer.getCurrentTool() == null) {
             view.showMessage("you don't have a current tool!");
@@ -427,10 +304,6 @@ public class ActionMenuController {
 
     public void showInventoryTools() {
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         Inventory inventory = game.getCurrentPlayer().getInventory();
         StringBuilder toolsStr = new StringBuilder();
         for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
@@ -444,11 +317,7 @@ public class ActionMenuController {
         view.showMessage(toolsStr.toString());
     }
 
-    public void craftInfo(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
+    public void craftInfo(Matcher matcher) {
         String name = matcher.group("craftName");
         ItemDefinition itemDefinition = null;
         for (ItemDefinition tmp : App.getItemDefinitions()) {
@@ -471,12 +340,8 @@ public class ActionMenuController {
     }
 
     public void useTool(Matcher matcher) {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String direction = matcher.group("direction").trim();
+        Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         Tile tile = player.getPlayerTile(game);
         ItemInstance tool = player.getCurrentTool();
@@ -506,10 +371,6 @@ public class ActionMenuController {
     }
 
     public void artisanUse(Matcher matcher, Game game, String command) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String artisanName = matcher.group("artisanName").trim().toLowerCase();
         String itemName = matcher.group("item1Name").trim().toLowerCase();
         String ingredient = "";
@@ -557,10 +418,6 @@ public class ActionMenuController {
     }
 
     public void artisanGet(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String machineName = matcher.group("artisanName").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
@@ -575,6 +432,73 @@ public class ActionMenuController {
                     inventory.getArtisan().remove(itemInstance);
                 }
             }
+        }
+    }
+
+    public void fishing(Matcher matcher, Game game) {
+        String fishingPole = matcher.group("fishingPole").trim().toLowerCase();
+        Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getInventory();
+        ItemInstance pole = inventory.getItem(ItemIDs.valueOf(fishingPole));//TODO
+        if (!AnimalController.isNearLake(player, game)) {
+            view.showMessage("You should be near lake to start fishing!");
+            return;
+        }
+        if (pole == null) {
+            view.showMessage("You don't have" + fishingPole + "!");
+            return;
+        }
+        int skill = player.getAbilities().getAbilityLevel(player.getAbilities().getFishingAbility());
+        ArrayList<ItemDefinition> fish = new ArrayList<>();
+        for (ItemDefinition item : App.getItemDefinitions()) {
+            if (skill != 4) {
+                if (item.getType().equals(ItemType.fish) &&
+                        item.getAttribute(ItemAttributes.season).toString().
+                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
+                    fish.add(item);
+                }
+            } else {
+                if ((item.getType().equals(ItemType.fish)
+                        || item.getType().equals(ItemType.legendary_fish)) &&
+                        item.getAttribute(ItemAttributes.season).toString().
+                                equals(game.getDateTime().getSeason().name().toLowerCase())) {
+                    fish.add(item);
+                }
+            }
+        }
+        int R = GenerateRandomNumber.generateRandomNumber(0, 1);
+        double M = AnimalController.getMBasedOnWeather(game);
+        int x = Math.min(6, (int) (R * M * (skill + 2)));
+        ArrayList<ItemDefinition> caughtFish = new ArrayList<>();
+        int temp = x;
+        while (temp > 0) {
+            caughtFish.add(fish.get(temp));
+            temp--;
+        }
+        switch (fishingPole) {
+            case "training_fishing_pole":
+                int quality1 = AnimalController.calculateQuality(R, M, skill, 0.1);
+                AnimalController.printFish(quality1, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality1);
+                break;
+            case "bamboo_fishing_pole":
+                int quality2 = AnimalController.calculateQuality(R, M, skill, 0.5);
+                AnimalController.printFish(quality2, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality2);
+                break;
+            case "fiber_glass_fishing_pole":
+                int quality3 = AnimalController.calculateQuality(R, M, skill, 0.9);
+                AnimalController.printFish(quality3, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality3);
+                break;
+            case "iridium_fishing_pole":
+                int quality4 = AnimalController.calculateQuality(R, M, skill, 1.2);
+                AnimalController.printFish(quality4, x, caughtFish);
+                AnimalController.putFishInInventory(player, caughtFish, quality4);
+                break;
+            default:
+                view.showMessage("Please select a valid pole!");
+                break;
         }
     }
 }

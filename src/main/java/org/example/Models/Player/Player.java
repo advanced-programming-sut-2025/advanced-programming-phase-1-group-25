@@ -8,11 +8,11 @@ import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemInstance;
+import org.example.Models.Item.Refrigerator;
 import org.example.Models.MapElements.GameMap;
 import org.example.Models.MapElements.PlayerMap;
 import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
-import org.example.Models.NPC.Quest;
 import org.example.Models.User;
 
 import java.util.ArrayList;
@@ -27,21 +27,21 @@ public class Player {
     private Gender gender;
     private int energy;
     private int energyLimit;
-    private Wallet wallet;
+    private int coin;
+    private Refrigerator refrigerator;
     private Inventory inventory;
     private PlayerAbilities abilities;
     private Position position;
     private ItemInstance currentTool;
     private ItemInstance trashCan;
     private int energyPerTurn;
-    private ArrayList<Quest> activeQuests;
-    private ArrayList<Gift> giftsReceived;
-    private ArrayList<String> messages;
     private PlayerMap playerMap;
     private ArrayList<Animal> animals;
-    private boolean isFainted;
-    private Position cottagePosition;
-    private Player spouse;
+    private boolean fishingEnable;
+    private boolean miningEnable;
+    private boolean foragingEnable;
+    private boolean farmingEnable;
+    private boolean maxEnergyEnable;
 
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
@@ -49,21 +49,45 @@ public class Player {
         this.gender = gender;
         this.energy = 200; // initial energy
         this.energyLimit = 200;
-        this.wallet = new Wallet(0); // initial coin
+        this.coin = 0; // initial coin
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
-        this.activeQuests = new ArrayList<>();
         this.position = position; // initial position
         this.energyPerTurn = 50;
+        this.refrigerator = new Refrigerator();
         this.trashCan = new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_trash_can")));
-        this.giftsReceived = new ArrayList<>();
-        this.messages = new ArrayList<>();
         animals = new ArrayList<>();
-        this.inventory.setInventoryTools();
-        this.isFainted = false;
-        this.spouse = null;
+        setInventoryTools();
+        this.fishingEnable = false;
+        this.miningEnable = false;
+        this.foragingEnable = false;
+        this.farmingEnable = false;
+        this.maxEnergyEnable = false;
     }
 
+    public void changeToolLevel(ItemInstance tool) {
+        String name = tool.getDefinition().getDisplayName().toLowerCase();
+        if (name.contains("hoe")) {
+            changeInventoryTool(tool, "base_hoe");
+        } else if (name.contains("pickaxe")) {
+            changeInventoryTool(tool, "base_pickaxe");
+        } else if (name.contains("axe")) {
+            changeInventoryTool(tool, "base_axe");
+        } else if (name.contains("watering can")) {
+            changeInventoryTool(tool, "base_watering_can");
+        } else if (name.contains("fishing pole")) {
+            changeInventoryTool(tool, "training_fishing_pole");
+        }
+    }
+
+    public void changeInventoryTool(ItemInstance tool, String newToolName) {
+        this.inventory.getItems().remove(tool);
+        ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
+        ArrayList<ItemInstance> items = new ArrayList<>();
+        items.add(newTool);
+        this.inventory.getItems().put(newTool.getDefinition().getId(), items);
+        this.currentTool = newTool;
+    }
 
     public ItemInstance getCurrentTool() {
         return currentTool;
@@ -85,12 +109,16 @@ public class Player {
         return inventory;
     }
 
-    public Wallet getWallet() {
-        return wallet;
+    public int getCoin() {
+        return coin;
     }
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
+    public void increaseCoin(int coin) {
+        this.coin += coin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
     }
 
     public ItemInstance getTrashCan() {
@@ -129,6 +157,42 @@ public class Player {
         this.energy = energy;
     }
 
+    public Tile getPlayerTile(Game game) {
+        GameMap gameMap = game.getGameMap();
+        return gameMap.getTile(this.position.getY(), this.position.getX());
+    }
+
+    public void reduceEnergy(int ability, ItemInstance tool, Player player, boolean canBeDownGraded, Game game) {
+        double rate = 1;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOW)) rate = 2;
+        if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)) rate = 1.5;
+        if (ability == 4) {
+            this.energy -= (int) (rate * ((int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1));
+        } else {
+            this.energy -= (int) (rate * (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost));
+        }
+        if (canBeDownGraded) {
+            int x = tool.decreaseDurability();
+            if (x == 0)
+                player.changeToolLevel(tool);
+        }
+    }
+
+    public void setInventoryTools() {
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_watering_can"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
+        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
+    }
+
+    public Refrigerator getRefrigerator() {
+        return refrigerator;
+    }
+
     public PlayerMap getPlayerMap() {
         return playerMap;
     }
@@ -145,137 +209,54 @@ public class Player {
         return animals;
     }
 
-    public int getEnergyPerTurn() {
-        return energyPerTurn;
+    public void reduceEnergyWhenCrafting(int amount) {
+        this.energy -= amount;
     }
 
-    public void setEnergyPerTurn(int energyPerTurn) {
-        this.energyPerTurn = energyPerTurn;
+    public void increaseEnergy(int amount) {
+        this.energy += amount;
     }
 
-    public Tile getPlayerTile(Game game) {
-        GameMap gameMap = game.getGameMap();
-        return gameMap.getTile(this.position.getY(), this.position.getX());
+    public boolean isFishingEnable() {
+        return fishingEnable;
     }
 
-    public void decreaseEnergy(int deltaEnergy) {
-        this.energy = Math.max(0, this.energy - deltaEnergy);
-        this.energyPerTurn = Math.max(0, this.energyPerTurn - deltaEnergy);
-        if (this.energy <= 0) {
-            this.isFainted = true;
-        }
+    public boolean isMiningEnable() {
+        return miningEnable;
     }
 
-    public void reduceEnergy(int ability, ItemInstance tool, Player player,
-                             boolean canBeDownGraded, Game game, int energyCost) {
-        double rate = 1;
-        if (game.getWeather().getCurrentWeather().equals(WeatherStates.SNOWY)) rate = 2;
-        if (game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)
-                || game.getWeather().getCurrentWeather().equals(WeatherStates.STORM)) rate = 1.5;
-        if (ability == 4) {
-            decreaseEnergy((int) rate * (energyCost - 1));
-        } else {
-            decreaseEnergy((int) rate * energyCost);
-        }
-        if (canBeDownGraded) {
-            int x = tool.decreaseDurability();
-            if (x == 0)
-                player.changeToolLevel(tool);
-        }
+    public boolean isForagingEnable() {
+        return foragingEnable;
     }
 
-    public void addQuest(Quest quest) {
-        this.activeQuests.add(quest);
+    public boolean isFarmingEnable() {
+        return farmingEnable;
     }
 
-    public ArrayList<Quest> getActiveQuests() {
-        return activeQuests;
+    public boolean isMaxEnergyEnable() {
+        return maxEnergyEnable;
     }
 
-    public Quest getActiveQuest(int number) {
-        try {
-            return this.activeQuests.get(number - 1);
-        } catch (IndexOutOfBoundsException e) {
-            return null;
-        }
+    public void setMaxEnergyEnable(boolean maxEnergyEnable) {
+        this.maxEnergyEnable = maxEnergyEnable;
     }
 
-    public void addGift(Gift gift) {
-        this.giftsReceived.add(gift);
+    public void setFarmingEnable(boolean farmingEnable) {
+        this.farmingEnable = farmingEnable;
     }
 
-    public ArrayList<Gift> getGiftsReceived() {
-        return giftsReceived;
+    public void setForagingEnable(boolean foragingEnable) {
+        this.foragingEnable = foragingEnable;
     }
 
-    public ArrayList<String> getMessages() {
-        return messages;
+    public void setMiningEnable(boolean miningEnable) {
+        this.miningEnable = miningEnable;
     }
 
-    public void addMessage(String message) {
-        this.messages.add(message);
+    public void setFishingEnable(boolean fishingEnable) {
+        this.fishingEnable = fishingEnable;
     }
-    public void setInventoryTools() {
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_axe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_watering_can"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("training_fishing_pole"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
-        this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
-    }
-
-    public void finishQuest(Quest quest) {
-        this.activeQuests.remove(quest);
-    }
-
-
-    public void changeToolLevel(ItemInstance tool) {
-        String name = tool.getDefinition().getDisplayName().toLowerCase();
-        if (name.contains("hoe")) {
-            changeInventoryTool(tool, "base_hoe");
-        } else if (name.contains("pickaxe")) {
-            changeInventoryTool(tool, "base_pickaxe");
-        } else if (name.contains("axe")) {
-            changeInventoryTool(tool, "base_axe");
-        } else if (name.contains("watering can")) {
-            changeInventoryTool(tool, "base_watering_can");
-        } else if (name.contains("fishing pole")) {
-            changeInventoryTool(tool, "training_fishing_pole");
-        }
-    }
-
-    public void changeInventoryTool(ItemInstance tool, String newToolName) {
-        this.inventory.getItems().remove(tool);
-        ItemInstance newTool = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName)));
-        ArrayList<ItemInstance> items = new ArrayList<>();
-        items.add(newTool);
-        this.inventory.getItems().put(newTool.getDefinition().getId(), items);
-        this.currentTool = newTool;
-    }
-
-    public boolean isFainted() {
-        return isFainted;
-    }
-
-    public void setFainted(boolean fainted) {
-        isFainted = fainted;
-    }
-
-    public void setCottagePosition(Position cottagePosition) {
-        this.cottagePosition = cottagePosition;
-    }
-
-    public Position getCottagePosition() {
-        return cottagePosition;
-    }
-
-    public Player getSpouse() {
-        return spouse;
-    }
-
-    public void setSpouse(Player spouse) {
-        this.spouse = spouse;
+    public void setMaxEnergy(int amount){
+        this.energyLimit = amount;
     }
 }

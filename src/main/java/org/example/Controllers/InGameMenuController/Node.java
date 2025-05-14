@@ -1,4 +1,4 @@
-package org.example.Controllers.InGameMenuController.Walk;
+package org.example.Controllers.InGameMenuController;
 
 import org.example.Models.MapElements.Tile;
 

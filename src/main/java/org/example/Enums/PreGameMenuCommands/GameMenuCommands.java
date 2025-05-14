@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 public enum GameMenuCommands implements MenuCommands {
 
-    Exit_Menu("menu\\s+exit"),
     NEW_GAME("^\\s*game\\s+new\\s*$"),
     ;
 

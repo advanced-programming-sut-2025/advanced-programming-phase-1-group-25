@@ -1,13 +1,16 @@
 package org.example.Models.MapElements;
 
+import org.example.Controllers.UpdateMap.RandomEvents;
+import org.example.Controllers.UpdateMap.spawnRandom;
 import org.example.Enums.MapConsts.AnsiColors;
 import org.example.Enums.MapConsts.FarmElementsPosition;
 import org.example.Enums.MapConsts.MapSizes;
-import org.example.Enums.NPCConsts.NPCConst;
 import org.example.Models.App;
 import org.example.Models.Item.ItemInstance;
+import org.example.Models.Player.Player;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Objects;
 
 public class PrepareMap {
@@ -133,23 +136,6 @@ public class PrepareMap {
         playerMaps.add(new PlayerMap(getTiles(gameMap, 4),
                 bottomRightGreenHouse, bottomRightCottage, bottomRightLakes, bottomRightQuarries, new Position(60, 60),
                 new Position(89, 89)));
-
-        // prepare NPC houses
-
-        for (NPCConst.HomePositions homePositions : NPCConst.HomePositions.values()) {
-            Tile tile = gameMap.getTile(homePositions.getY(), homePositions.getX());
-            tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("home"))));
-            tile.setForGroundColor(AnsiColors.BLACK);
-            tile.setBackGroundColor(AnsiColors.BLUE);
-        }
-
-        for (NPCConst.ShopPositions shopPositions : NPCConst.ShopPositions.values()) {
-            Tile tile = gameMap.getTile(shopPositions.getY(), shopPositions.getX());
-            tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shop"))));
-            tile.setForGroundColor(AnsiColors.BLACK);
-            tile.setBackGroundColor(AnsiColors.PURPLE);
-
-        }
 
         return playerMaps;
     }

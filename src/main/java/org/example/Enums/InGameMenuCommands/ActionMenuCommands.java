@@ -16,11 +16,13 @@ public enum ActionMenuCommands {
     CHEAT_ADVANCE_DATE("^\\s*cheat\\s+advance\\s+date\\s+(?<day>.+?)\\s*d\\s*$"),
 
 
+
     SEASON("^\\s*season\\s*$"),
     CHEAT_THOR("^\\s*cheat\\s+Thor\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     WEATHER("^\\s*weather\\s*$"),
     WEATHER_FORECAST("^\\s*weather\\s+forecast\\s*$"),
     CHEAT_WEATHER_SET("^\\s*cheat\\s+weather\\s+set\\s+(?<type>.+?)\\s*$"),
+
 
 
     GREENHOUSE_BUILD("^\\s*greenhouse\\s+build\\s*$"),
@@ -35,8 +37,10 @@ public enum ActionMenuCommands {
 
     ENERGY_SHOW("^\\s*energy\\s+show\\s*$"),
     ENERGY_SET("^\\s*energy\\s+set\\s+-v\\s+(?<value>.+?)\\s*$"),
-    ENERGY_REFILL("^\\s*energy\\s+refill\\s*$"),
     ENERGY_UNLIMITED("^\\s*energy\\s+unlimited\\s*$"),
+
+
+
 
 
     TOOLS_EQUIP("^\\s*tools\\s+equip\\s+(?<toolName>.+?)\\s*$"),
@@ -46,11 +50,13 @@ public enum ActionMenuCommands {
     TOOLS_USE("^\\s*tools\\s+use\\s+-d\\s+(?<direction>.+?)\\s*$"),
 
 
+
+
     CRAFT_INFO("^\\s*craft\\s+info\\s+-n\\s+(?<craftName>.+?)\\s*$"),
     PLANT("^\\s*plant\\s+-s\\s+(?<seed>.+?)\\s+-d\\s+(?<direction>.+?)\\s*$"),
     SHOW_PLANT("^\\s*showplant\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     FERTILIZE("^\\s*fertilize\\s+-f\\s+(?<fertilizer>.+?)\\s+-d\\s+(?<direction>.+?)\\s*$"),
-    HOW_MUCH_WATER("^\\s*howmuch\\s+water\\s*$"),
+    HOW_MUCH_WATER("^\\s*howmuch\\s+wate\\s*$"),
 
 
     CRAFTING_SHOW_RECIPES("^\\s*crafting\\s+show\\s+recipes\\s*$"),
@@ -65,13 +71,17 @@ public enum ActionMenuCommands {
     EAT("^\\s*eat\\s+(?<foodName>.+?)\\s*$"),
 
 
+
+
+
+
     BUILD("^\\s*build\\s+-a\\s+(?<buildingName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     BUY_ANIMAL("^\\s*buy\\s+animal\\s+-a\\s+(?<animal>.+?)\\s+-n\\s+(?<name>.+?)\\s*$"),
     PET("^\\s*pet\\s+-n\\s+(?<name>.+?)\\s*$"),
     ANIMALS("^\\s*animals\\s*$"),
-    SHEPHERD_ANIMALS("^\\s*shepherd\\s+animals\\s+-n\\s+(?<animalName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
+    SHEPHERD_ANIMALS("^\\s*shepherd\\s+animals\\s+-n\\s+(<animalName>.+?)\\s+-l\\s+(?<y>.+?)\\s+(?<x>.+?)\\s*$"),
     FEED_HAY("^\\s*feed\\s+hay\\s+-n\\s+(?<animalName>.+?)\\s*$"),
-    CHEAT_SET_FRIENDSHIP("^\\s*cheat\\s+set\\s+friendship\\s+-n\\s+(?<animalName>.+?)\\s+-c\\s+(?<amount>.+?)\\s*$"),
+    CHEAT_SET_FRIENDSHIP("^\\s*cheat\\s+set\\s+friendship\\s+-n\\s+(?<animalName>.+?)\\s+-c\\s+(<amount>.+?)\\s*$"),
     PRODUCES("^\\s*produces\\s*$"),
     COLLECT_PRODUCE("^\\s*collect\\s+produce\\s+-n\\s+(?<name>.+?)\\s*$"),
     SELL_ANIMAL("^\\s*sell\\s+animal\\s+-n\\s+(?<name>.+?)\\s*$"),
@@ -85,16 +95,16 @@ public enum ActionMenuCommands {
     QUESTS_LIST("^\\s*quests\\s+list\\s*$"),
     FRIENDSHIP_NPC_LIST("^\\s*friendship\\s+NPC\\s+list\\s*$"),
     GIFT_NPC("^\\s*gift\\s+NPC\\s+(?<npcName>.+?)\\s+-i\\s+(?<item>.+?)\\s*$"),
-    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npcName>.+?)\\s*$"),
-    GET_QUEST("^\\s*get\\s+quest\\s+NPC\\s+(?<npcName>.+?)\\s*$"),
+    MEET_NPC("^\\s*meet\\s+NPC\\s+(?<npcName>>+?)\\s*$"),
     ///
     TRADE_HISTORY("^\\s*trade\\s+history\\s*$"),
     TRADE_RESPONSE("^\\s*trade\\s+response\\s+-(accept|reject)\\s+-i\\s+(?<id>.+?)\\s*$"),
     TRADE_LIST("^\\s*trade\\s+list\\s*$"),
     /// TRADE TODO
+    ///
     START_TRADE("^\\s*start\\s+trade\\s*$"),
     RESPOND("^\\s*respond\\s+-(accept|reject)\\s+-u\\s+(?<username>.+?)\\s*$"),
-    ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s*$"),
+    ASK_MARRIAGE("^\\s*ask\\s+marriage\\s+-u\\s+(?<username>.+?)\\s+-r\\s+(?<ring>.+?)\\s*$"),
     FLOWER("^\\s*flower\\s+-u\\s+(?<username>.+?)\\s*$"),
     HUG("^\\s*hug\\s+-u\\s+(?<username>.+?)\\s*"),
     GIFT_HISTORY("^\\s*gift\\s+history\\s+-u\\s+(?<username>.+?)\\s*$"),
@@ -106,14 +116,14 @@ public enum ActionMenuCommands {
     FRIENDSHIPS("^\\s*friendships\\s*$"),
     /// selling and buying
     SELL("^\\s*sell\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
-    CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>.+?)\\s+dollars\\s*$"),
+    CHEAT_ADD_DOLLARS("^\\s*cheat\\s+add\\s+(?<count>>+?)\\s+dollars\\s*$"),
     PURCHASE("^\\s*purchase\\s+(?<productName>.+?)\\s+-n\\s+(?<count>.+?)\\s*$"),
     SHOW_ALL_AVAILABLE_PRODUCTS("^\\s*show\\s+all\\s+available\\s+products\\s*$"),
     SHOW_ALL_PRODUCTS("^\\s*show\\s+all\\s+products\\s*$"),
     /// faravari
     ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>.+?)\\s*$"),
-    ARTISAN_USE("^\\s*artisan\\s+use\\s+-r\\s+(?<artisanName>.+?)\\s+-n\\s+(?<item1Name>.+?)" +
-            "(\\s+-i\\s+(?<ingredient>.+?))?\\s*$");
+    ARTISAN_USE("^\\s*artisan\\s+use\\s+-r\\s+(?<artisanName>.+?)\\s+" +
+            "-n\\s+(?<item1Name>.+?)(\\s+-i\\s+(?<ingredient>.+?))?\\s*$");
     private final String pattern;
 
     ActionMenuCommands(String pattern) {
