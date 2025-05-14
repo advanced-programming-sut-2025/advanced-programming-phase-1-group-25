@@ -204,7 +204,7 @@ public class ActionMenuController {
         view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
         for (int i = 0; i < time; i++) {
             game.updateByDay();
-            
+
         }
     }
 
