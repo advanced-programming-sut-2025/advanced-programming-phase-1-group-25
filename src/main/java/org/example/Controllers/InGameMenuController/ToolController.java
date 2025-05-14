@@ -321,7 +321,7 @@ public class ToolController {
                 view.showMessage("You can't afford to upgrade your backpack!");
                 return;
             }
-            if(toolName.contains("deluxe")) {
+            if (toolName.contains("deluxe")) {
                 view.showMessage("You can't upgrade your backpack anymore!");
                 return;
             }
@@ -351,19 +351,44 @@ public class ToolController {
                 view.showMessage("You can't afford to upgrade your tool!");
                 return;
             }
-            if(toolName.contains("base")) {
-                if(!inventory.hasItem(ItemIDs.valueOf("copper_bar"), 5)) {
+            if (toolName.contains("base")) {
+                if (!inventory.hasItem(ItemIDs.valueOf("copper_bar"), 5)) {
                     view.showMessage("You need copper bar to upgrade your tool!");
                     return;
                 }
+                inventory.trashItemAll(id);
+                inventory.trashItem(ItemIDs.valueOf("copper_bar"), 5);
+                player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                view.showMessage("You've upgraded your tool!");
 
             } else if (toolName.contains("copper")) {
-
+                if (!inventory.hasItem(ItemIDs.valueOf("iron_bar"), 5)) {
+                    view.showMessage("You need copper bar to upgrade your tool!");
+                    return;
+                }
+                inventory.trashItemAll(id);
+                inventory.trashItem(ItemIDs.valueOf("iron_bar"), 5);
+                player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                view.showMessage("You've upgraded your tool!");
             } else if (toolName.contains("iron")) {
-
+                if (!inventory.hasItem(ItemIDs.valueOf("gold_bar"), 5)) {
+                    view.showMessage("You need copper bar to upgrade your tool!");
+                    return;
+                }
+                inventory.trashItemAll(id);
+                inventory.trashItem(ItemIDs.valueOf("gold_bar"), 5);
+                player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                view.showMessage("You've upgraded your tool!");
             } else if (toolName.contains("golden")) {
-
-            } else if(toolName.contains("iridium")) {
+                if (!inventory.hasItem(ItemIDs.valueOf("iridium_bar"), 5)) {
+                    view.showMessage("You need copper bar to upgrade your tool!");
+                    return;
+                }
+                inventory.trashItemAll(id);
+                inventory.trashItem(ItemIDs.valueOf("iridium_bar"), 5);
+                player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                view.showMessage("You've upgraded your tool!");
+            } else if (toolName.contains("iridium")) {
                 view.showMessage("You can't afford to upgrade your tool anymore!");
                 return;
             }
