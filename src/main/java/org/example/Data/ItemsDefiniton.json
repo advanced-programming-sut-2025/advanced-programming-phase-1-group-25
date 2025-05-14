@@ -8,25 +8,6 @@
     }
   },
   {
-    "itemId": "quartz",
-    "name": "Quartz",
-    "type": "foraging_minerals",
-    "baseAttributes": {
-      "quality": "regular",
-      "price": 25,
-      "description": "A clear crystal commonly found in caves and mines."
-    }
-  },
-  {
-    "itemId": "acorns",
-    "name": "Acorns",
-    "type": "foraging_trees",
-    "baseAttributes": {
-      "quality": "regular",
-      "season": "special"
-    }
-  },
-  {
     "itemId": "base_hoe",
     "name": "Base Hoe",
     "type": "tool",
@@ -4674,5 +4655,642 @@
       "description": "A precious ore that can be smelted into bars.",
       "dailyLimit": -1
     }
+  },
+  {
+    "itemId" : "copper_ore",
+    "name" : "Copper Ore",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "shopPrice" : 75,
+      "description":"A common ore that can be smelted into bars.",
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "iron_ore",
+    "name" : "Iron Ore",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "shopPrice" : 150,
+      "description":"A fairly common ore that can be smelted into bars.",
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "gold_ore",
+    "name" : "Gold Ore",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "shopPrice" : 400,
+      "description":"A precious ore that can be smelted into bars.",
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "hay",
+    "name" : "Hay",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Dried grass used as animal food.",
+      "shopPrice" : 50,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId" : "milk_pail",
+    "name" : "Milk Pail",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Gather milk from your animals.",
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId" : "shears",
+    "name" : "Shears",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Use this to collect wool from sheep",
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId" : "chicken",
+    "name" : "Chicken",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description": "Well cared-for chickens lay eggs every day. Lives in the coop.",
+      "shopPrice" : 800,
+      "building" : "coop",
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "hashbrowns_recipe",
+    "name" : "Hashbrowns Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Hashbrowns",
+      "shopPrice" : 50,
+      "ingredients": {
+        "potato": 1,
+        "oil": 1
+      },
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "omelet_recipe",
+    "name" : "Omelet Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "ingredients": {
+        "egg": 1,
+        "milk": 1
+      },
+      "description" : "A recipe to make Omelet",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "pancakes_recipe",
+    "name" : "Pancakes Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "ingredients": {
+        "wheat_flour": 1,
+        "egg": 1
+      },
+      "description" : "A recipe to make Pancakes",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "bread_recipe",
+    "name" : "Bread Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "ingredients": {
+        "wheat_flour": 1
+      },
+      "description" : "A recipe to make Bread",
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "tortilla_recipe",
+    "name" : "Tortilla Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Tortilla",
+      "ingredients": {
+        "corn": 1
+      },
+      "shopPrice" : 100,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "pizza_recipe",
+    "name" : "Pizza Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Pizza",
+      "ingredients": {
+        "wheat_flour": 1,
+        "tomato": 1,
+        "cheese": 1
+      },
+      "shopPrice" : 150,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "maki_roll_recipe",
+    "name" : "Maki Roll Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Maki Roll",
+      "ingredients": {
+        "any_fish": 1,
+        "rice": 1,
+        "fiber": 1
+      },
+      "shopPrice" : 300,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "triple_shot_espresso_recipe",
+    "name" : "Triple Shot Espresso Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Triple Shot Espresso",
+      "ingredients": {
+        "coffee": 3
+      },
+      "shopPrice" : 5000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "cookie_recipe",
+    "name" : "Cookie Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Cookie",
+      "ingredients": {
+        "wheat_flour": 1,
+        "sugar": 1,
+        "egg": 1
+      },
+      "shopPrice" : 300,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "wood",
+    "name" : "Wood",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A sturdy, yet flexible plant material with a wide variety of uses.",
+      "shopPrice" : 10,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "stone",
+    "name" : "Stone",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A common material with many uses in crafting and building.",
+      "shopPrice" : 20,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "barn",
+    "name" : "Barn",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 4 barn-dwelling animals.",
+      "ingredients": {
+        "wood":350,
+        "stone":150,
+        "size": [7,4]
+      },
+      "shopPrice" : 6000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "big_barn",
+    "name" : "Big Barn",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 8 barn-dwelling animals. Unlocks goats.",
+      "ingredients": {
+        "wood":450,
+        "stone":200,
+        "size": [7,4]
+      },
+      "shopPrice" : 12000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_barn",
+    "name" : "Deluxe Barn",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 12 barn-dwelling animals. Unlocks sheep and pigs.",
+      "ingredients": {
+        "wood":550,
+        "stone":300,
+        "size": [7,4]
+      },
+      "shopPrice" : 25000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "coop",
+    "name" : "Coop",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 4 coop-dwelling animals.",
+      "ingredients": {
+        "wood":300,
+        "stone":100,
+        "size": [6,3]
+      },
+      "shopPrice" : 4000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "big_coop",
+    "name" : "Big Coop",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 8 coop-dwelling animals. Unlocks ducks.",
+      "ingredients": {
+        "wood":400,
+        "stone":150,
+        "size": [6,3]
+      },
+      "shopPrice" : 10000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_coop",
+    "name" : "Deluxe Coop",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 12 coop-dwelling animals. Unlocks rabbits.",
+      "ingredients": {
+        "wood":500,
+        "stone":200,
+        "size": [6,3]
+      },
+      "shopPrice" : 20000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "well",
+    "name" : "Well",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Houses 12 coop-dwelling animals. Unlocks rabbits.",
+      "ingredients": {
+        "stone":75,
+        "size": [3,3]
+      },
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "shipping_bin",
+    "name" : "Shipping Bin",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Items placed in it will be included in the nightly shipment.",
+      "ingredients": {
+        "wood":150,
+        "size": [1,1]
+      },
+      "shopPrice" : 250,
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "fish_smoker_recipe",
+    "name" : "Fish Smoker Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Fish Smoker",
+      "ingredients": {
+        "wood": 50,
+        "iron_bar": 3,
+        "coal": 10
+      },
+      "shopPrice" : 10000,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "trout_soup",
+    "name" : "Trout Soup",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Pretty salty.",
+      "shopPrice" : 250,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "bamboo_pole",
+    "name" : "Bamboo Pole",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 500,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "training_rod",
+    "name" : "Training Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "It's a lot easier to use than other rods, but can only catch basic fish.",
+      "shopPrice" : 25,
+      "fishingSkill": 0,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "fiberglass_rod",
+    "name" : "Fiberglass Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 1800,
+      "fishingSkill": 2,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "iridium_rod",
+    "name" : "Iridium Rod",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Use in the water to catch fish.",
+      "shopPrice" : 7500,
+      "fishingSkill": 4,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "joja_cola",
+    "name" : "Joja Cola",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "The flagship product of Joja corporation.",
+      "shopPrice" : 75,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "sugar",
+    "name" : "Sugar",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Adds sweetness to pastries and candies. Too much can be unhealthy.",
+      "shopPrice" : 125,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "wheat_flour",
+    "name" : "Wheat Flour",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A common cooking ingredient made from crushed wheat seeds.",
+      "shopPrice" : 125,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "rice",
+    "name" : "Rice",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A basic grain often served under vegetables.",
+      "shopPrice" : 250,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "bouquet",
+    "name" : "Bouquet",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "A gift that shows your romantic interest.",
+      "shopPrice" : 1000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "wedding_ring",
+    "name" : "Wedding Ring",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "It's used to ask for another farmer's hand in marriage.",
+      "shopPrice" : 10000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 2
+    }
+  },
+  {
+    "itemId": "dehydrator_recipe",
+    "name" : "Dehydrator Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Dehydrator",
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "ingredients": {
+        "wood": 30,
+        "stone": 20,
+        "fiber": 30
+      },
+      "shopPrice" : 10000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "grass_starter_recipe",
+    "name" : "Grape Starter Recipe",
+    "type" : "shop_recipe",
+    "baseAttributes": {
+      "description" : "A recipe to make Grass Starter",
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "ingredients": {
+        "wood": 1,
+        "fiber": 1
+      },
+      "shopPrice" : 1000,
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_retaining_soil",
+    "name" : "Deluxe Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a 100% chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 150,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+
+  {
+    "itemId": "speed_gro",
+    "name" : "Speed Gro",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Makes the plants grow 1 day earlier.",
+      "shopPrice" : 100,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "apple_sapling",
+    "name" : "Apple Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Apple tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 4000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "apricot_sapling",
+    "name" : "Apricot Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Apricot tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 2000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "cherry_sapling",
+    "name" : "Cherry Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Cherry tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 3400,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "orange_sapling",
+    "name" : "Orange Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Orange tree. Bears fruit in the spring. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 4000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "peach_sapling",
+    "name" : "Peach Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Peach tree. Bears fruit in the summer. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 6000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "pomegranate_sapling",
+    "name" : "Pomegranate Sapling",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Takes 28 days to produce a mature Pomegranate tree. Bears fruit in the fall. Only grows if the 8 surrounding \"tiles\" are empty.",
+      "shopPrice" : 6000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "basic_retaining_soil",
+    "name" : "Basic Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 100,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "quality_retaining_soil",
+    "name" : "Quality Retaining Soil",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "This soil has a good chance of staying watered overnight. Mix into tilled soil.",
+      "shopPrice" : 150,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : -1
+    }
+  },
+  {
+    "itemId": "large_pack",
+    "name" : "Large Pack",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Unlocks the 2nd row of inventory (12 more slots, total 24).",
+      "shopPrice" : 2000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 1
+    }
+  },
+  {
+    "itemId": "deluxe_pack",
+    "name" : "Deluxe Pack",
+    "type" : "shop_item",
+    "baseAttributes": {
+      "description" : "Unlocks the 3rd row of inventory (infinite slots).",
+      "shopPrice" : 10000,
+      "season" : ["spring" , "summer" , "fall" , "winter"],
+      "dailyLimit" : 1
+    }
   }
+
 ]

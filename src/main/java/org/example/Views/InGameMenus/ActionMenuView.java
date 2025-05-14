@@ -1,6 +1,7 @@
 package org.example.Views.InGameMenus;
 
 import org.example.Controllers.InGameMenuController.*;
+import org.example.Controllers.UpdateMap.RandomEvents;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Models.App;
 import org.example.Models.Game;
@@ -37,10 +38,9 @@ public class ActionMenuView implements AppMenu {
         AnimalController animalController = new AnimalController(this);
         NPCController npcController = new NPCController(this);
         PlayerRelationController playerRelationController = new PlayerRelationController(this);
-
+        ToolController toolController = new ToolController(this);
         switch (command) {
             case SWITCH_MENU:
-                System.out.println(MenuSwitcher.printMenus());
                 actionController.changeMenu();
                 break;
             case NEXT_TURN:
@@ -107,18 +107,19 @@ public class ActionMenuView implements AppMenu {
                 actionController.energyUnlimited(game);
                 break;
             case TOOLS_EQUIP:
-                actionController.equipTool(matcher);
+                toolController.equipTool(matcher);
                 break;
             case TOOLS_SHOW_CURRENT:
-                actionController.showCurrentTool();
+                toolController.showCurrentTool();
                 break;
             case TOOLS_SHOW_AVAILABLE:
-                actionController.showInventoryTools();
+                toolController.showInventoryTools();
                 break;
             case TOOLS_UPGRADE:
+                toolController.upgradeTool(matcher);
                 break;
             case TOOLS_USE:
-                actionController.useTool(matcher);
+                toolController.useTool(matcher);
                 break;
             case CRAFT_INFO:
                 actionController.craftInfo(matcher, game);

@@ -171,10 +171,6 @@ public class ActionMenuController {
     }
 
     public void cheatAdvanceTime(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String timeStr = matcher.group("hours");
         int time;
         try {
@@ -188,16 +184,12 @@ public class ActionMenuController {
         }
         int newHour = game.getDateTime().updateTimeByHour(time);
         this.view.showMessage("time is now " + newHour + "!");
-        for(int i = 0; i < time; i++) {
+        for (int i = 0; i < time; i++) {
             game.updateByHour();
         }
     }
 
     public void cheatAdvanceDate(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String timeStr = matcher.group("day");
         int time;
         try {
@@ -210,8 +202,9 @@ public class ActionMenuController {
             this.view.showMessage("time must be a positive integer!");
         }
         view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
-        for(int i = 0; i < time; i++) {
+        for (int i = 0; i < time; i++) {
             game.updateByDay();
+            
         }
     }
 
@@ -234,10 +227,6 @@ public class ActionMenuController {
 
     public void printMap(String xStr, String yStr, String sizeStr) {
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         int x, y, size;
         try {
             x = Integer.parseInt(xStr);
@@ -257,10 +246,6 @@ public class ActionMenuController {
     }
 
     public void getMapBySize(Game game, Position position, int size) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         GameMap map = game.getGameMap();
 
         // show entire map
@@ -331,10 +316,6 @@ public class ActionMenuController {
     }
 
     public void cheatSetEnergy(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String energyStr = matcher.group("value");
         int energy;
         try {
@@ -348,10 +329,10 @@ public class ActionMenuController {
             return;
         }
         if (energy > 200) {
-        view.showMessage("energy must be a less than 200!");
+            view.showMessage("energy must be a less than 200!");
             return;
-                    }
-                    game.getCurrentPlayer().setEnergy(energy);
+        }
+        game.getCurrentPlayer().setEnergy(energy);
         view.showMessage("your energy has been set to " + energy + "!");
     }
 
@@ -361,10 +342,6 @@ public class ActionMenuController {
     }
 
     public void energyUnlimited(Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         game.getCurrentPlayer().setEnergy(Integer.MAX_VALUE);
         view.showMessage("your energy is now unlimited:)");
     }
@@ -373,82 +350,8 @@ public class ActionMenuController {
         App.setCurrentMenu(Menus.InGameMenus.MENU_SWITCHER);
     }
 
-    public void equipTool(Matcher matcher) {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        String toolName = matcher.group("toolName").toLowerCase();
-        Inventory inventory = game.getCurrentPlayer().getInventory();
-        boolean found = false;
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            if (itemDefinition.getId().name().equalsIgnoreCase(toolName)) {
-                found = true;
-            }
-        }
-        if (!found) {
-            view.showMessage("please enter a valid tool name!");
-            return;
-        }
-        ItemInstance tool = null;
-
-        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-            ArrayList<ItemInstance> items = entry.getValue();
-            for (ItemInstance item : items) {
-                if (item.getDefinition().getId().name().equalsIgnoreCase(toolName)) {
-                    tool = item;
-                }
-            }
-
-        }
-
-        if (tool == null) {
-            view.showMessage("you don't have " + toolName + " in your inventory!");
-            return;
-        }
-        game.getCurrentPlayer().setCurrentTool(tool);
-        view.showMessage("your current tool has been set to " + toolName + "!");
-    }
-
-    public void showCurrentTool() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Player currentPlayer = game.getCurrentPlayer();
-        if (currentPlayer.getCurrentTool() == null) {
-            view.showMessage("you don't have a current tool!");
-            return;
-        }
-        view.showMessage(currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase());
-    }
-
-    public void showInventoryTools() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Inventory inventory = game.getCurrentPlayer().getInventory();
-        StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-            ArrayList<ItemInstance> items = entry.getValue();
-            for (ItemInstance item : items) {
-                if (item.getDefinition().getType().equals(ItemType.tool)) {
-                    toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
-                }
-            }
-        }
-        view.showMessage(toolsStr.toString());
-    }
 
     public void craftInfo(Matcher matcher, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         String name = matcher.group("craftName");
         ItemDefinition itemDefinition = null;
         for (ItemDefinition tmp : App.getItemDefinitions()) {
@@ -468,41 +371,6 @@ public class ActionMenuController {
             info.append(itemAttributes.toString()).append(": ").append(object.toString()).append("\n");
         }
         view.showMessage(info.toString());
-    }
-
-    public void useTool(Matcher matcher) {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        String direction = matcher.group("direction").trim();
-        Player player = game.getCurrentPlayer();
-        Tile tile = player.getPlayerTile(game);
-        ItemInstance tool = player.getCurrentTool();
-        if (tool == null) {
-            view.showMessage("you don't have a tool in your hand!");
-            return;
-        }
-        switch (direction) {
-            case "up" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player, game);
-            case "down" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player, game);
-            case "left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player, game);
-            case "right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player, game);
-            case "up left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player, game);
-            case "up right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player, game);
-            case "down left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player, game);
-            case "down right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player, game);
-            default -> view.showMessage("please select a valid direction!");
-        }
     }
 
     public void artisanUse(Matcher matcher, Game game, String command) {

@@ -8,10 +8,12 @@ import org.example.Models.Item.Inventory;
 import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.States.DateTime;
+import org.example.Views.InGameMenus.ActionMenuView;
 
 import java.util.ArrayList;
 
 public class ArtisanUpdate {
+    static ActionMenuView view = new ActionMenuView();
 
     public static void artisanWithHour(int hourPassed) {
         Inventory inventory = App.getCurrentGame().getCurrentPlayer().getInventory();
@@ -20,6 +22,7 @@ public class ArtisanUpdate {
             int hour = (int) artisan.getAttribute(ItemAttributes.hour);
             artisan.setAttribute(ItemAttributes.hour, hour - hourPassed);
             if (hour - hourPassed <= 0) {
+                view.showMessage(artisan.getDefinition().getId() + " is now ready! ");
                 artisan.setAttribute(ItemAttributes.isReady, true);
             }
         }
@@ -33,7 +36,9 @@ public class ArtisanUpdate {
         for (ItemInstance artisan : artisans) {
             int day = (int) artisan.getAttribute(ItemAttributes.day);
             artisan.setAttribute(ItemAttributes.day, day - dayPassed);
+            System.out.println(day + " " + dayPassed);
             if (day - dayPassed <= 0) {
+                view.showMessage(artisan.getDefinition().getId() + " is now ready! ");
                 artisan.setAttribute(ItemAttributes.isReady, true);
             }
         }

@@ -9,18 +9,131 @@ import org.example.Models.Animals.Animal;
 import org.example.Models.App;
 import org.example.Models.Game;
 import org.example.Models.Item.Inventory;
+import org.example.Models.Item.ItemDefinition;
 import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 import org.example.Views.InGameMenus.ActionMenuView;
 
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
 public class ToolController {
-    static ActionMenuView view = new ActionMenuView();
+    static ActionMenuView view;
 
-    public static void applyTool(ItemInstance tool, Tile tile, Player player, Game game) {
+    public ToolController(ActionMenuView view) {
+        ToolController.view = view;
+    }
+
+    public void equipTool(Matcher matcher) {
+        Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
+        String toolName = matcher.group("toolName").toLowerCase();
+        Inventory inventory = game.getCurrentPlayer().getInventory();
+        boolean found = false;
+        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
+            if (itemDefinition.getId().name().equalsIgnoreCase(toolName)) {
+                found = true;
+            }
+        }
+        if (!found) {
+            view.showMessage("please enter a valid tool name!");
+            return;
+        }
+        ItemInstance tool = null;
+
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
+            ArrayList<ItemInstance> items = entry.getValue();
+            for (ItemInstance item : items) {
+                if (item.getDefinition().getId().name().equalsIgnoreCase(toolName)) {
+                    tool = item;
+                }
+            }
+
+        }
+
+        if (tool == null) {
+            view.showMessage("you don't have " + toolName + " in your inventory!");
+            return;
+        }
+        game.getCurrentPlayer().setCurrentTool(tool);
+        view.showMessage("your current tool has been set to " + toolName + "!");
+    }
+
+    public void showCurrentTool() {
+        Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
+        Player currentPlayer = game.getCurrentPlayer();
+        if (currentPlayer.getCurrentTool() == null) {
+            view.showMessage("you don't have a current tool!");
+            return;
+        }
+        view.showMessage(currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase());
+    }
+
+    public void showInventoryTools() {
+        Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
+        Inventory inventory = game.getCurrentPlayer().getInventory();
+        StringBuilder toolsStr = new StringBuilder();
+        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
+            ArrayList<ItemInstance> items = entry.getValue();
+            for (ItemInstance item : items) {
+                if (item.getDefinition().getType().equals(ItemType.tool)) {
+                    toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
+                }
+            }
+        }
+        view.showMessage(toolsStr.toString());
+    }
+
+    public void useTool(Matcher matcher) {
+        Game game = App.getCurrentGame();
+        if (!game.isPlayerActive(game.getCurrentPlayer())) {
+            view.showMessage("You are ran out of energy for this turn!");
+            return;
+        }
+        String direction = matcher.group("direction").trim();
+        Player player = game.getCurrentPlayer();
+        Tile tile = player.getPlayerTile(game);
+        ItemInstance tool = player.getCurrentTool();
+        if (tool == null) {
+            view.showMessage("you don't have a tool in your hand!");
+            return;
+        }
+        switch (direction) {
+            case "up" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player, game);
+            case "down" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player, game);
+            case "left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player, game);
+            case "right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player, game);
+            case "up left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player, game);
+            case "up right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player, game);
+            case "down left" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player, game);
+            case "down right" -> applyTool(tool, game.getGameMap().getTile
+                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player, game);
+            default -> view.showMessage("please select a valid direction!");
+        }
+    }
+
+    public void applyTool(ItemInstance tool, Tile tile, Player player, Game game) {
         String name = tool.getDefinition().getDisplayName().toLowerCase();
         ActionMenuController controller = new ActionMenuController(view);
         if (name.contains("hoe")) {
@@ -173,7 +286,7 @@ public class ToolController {
         }
     }
 
-    public static boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool, int ability) {
+    public boolean checkIfPlayerHasEnoughEnergy(Player player, ItemInstance tool, int ability) {
         if (ability == 4 && player.getEnergy() < (int) tool.getDefinition().getAttribute(ItemAttributes.energyCost) - 1) {
             return false;
         }
@@ -183,7 +296,7 @@ public class ToolController {
         return true;
     }
 
-    public static void addWaterToWateringCan(ItemInstance tool) {
+    public void addWaterToWateringCan(ItemInstance tool) {
         int capacity = (int) tool.getDefinition().getAttribute(ItemAttributes.capacity);
         int durability = (int) tool.getDefinition().getAttribute(ItemAttributes.durability);
         if (durability + 1 > capacity) {
@@ -195,20 +308,20 @@ public class ToolController {
         view.showMessage("Your can has " + finalDurability + " water");
     }
 
-    public static void cutFiber(Tile tile, Player player) {
+    public void cutFiber(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         view.showMessage("You've cut fiber!");
     }
 
-    public static void harvestCrop(Tile tile, Player player) {
+    public void harvestCrop(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("You've harvested crop!");
     }
 
-    public static void milkAnimal(ItemInstance tool, Player player, Animal animal) {
+    public void milkAnimal(ItemInstance tool, Player player, Animal animal) {
         tool.setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
@@ -217,7 +330,7 @@ public class ToolController {
         view.showMessage("You've milked the animal!");
     }
 
-    public static void cutWool(Player player, Animal animal) {
+    public void cutWool(Player player, Animal animal) {
         animal.setAttribute(ItemAttributes.isCut, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
@@ -237,7 +350,13 @@ public class ToolController {
         int smithY = NPCConst.ShopPositions.BlackSmith.getY();
         Inventory inventory = player.getInventory();
         String toolName = matcher.group("toolName").trim().toLowerCase();
-        ItemIDs id = ItemIDs.valueOf(toolName);
+        ItemIDs id;
+        try {
+            id = ItemIDs.valueOf(toolName);
+        } catch (IllegalArgumentException e) {
+            view.showMessage("Invalid tool name!");
+            return;
+        }
         if (toolName.contains("backpack")) {
             if (!(pierreX - 1 <= playerX && playerX <= pierreX + 1
                     && playerY - 1 <= playerY && playerY <= pierreY + 1)) {
@@ -291,6 +410,8 @@ public class ToolController {
                 inventory.trashItemAll(id);
                 inventory.trashItem(ItemIDs.valueOf("copper_bar"), 5);
                 player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                String newToolName = toolName.replace("base", "copper");
+                inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName))));
                 view.showMessage("You've upgraded your tool!");
 
             } else if (toolName.contains("copper")) {
@@ -301,6 +422,8 @@ public class ToolController {
                 inventory.trashItemAll(id);
                 inventory.trashItem(ItemIDs.valueOf("iron_bar"), 5);
                 player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                String newToolName = toolName.replace("copper", "iron");
+                inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName))));
                 view.showMessage("You've upgraded your tool!");
             } else if (toolName.contains("iron")) {
                 if (!inventory.hasItem(ItemIDs.valueOf("gold_bar"), 5)) {
@@ -310,6 +433,8 @@ public class ToolController {
                 inventory.trashItemAll(id);
                 inventory.trashItem(ItemIDs.valueOf("gold_bar"), 5);
                 player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                String newToolName = toolName.replace("iron", "golden");
+                inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName))));
                 view.showMessage("You've upgraded your tool!");
             } else if (toolName.contains("golden")) {
                 if (!inventory.hasItem(ItemIDs.valueOf("iridium_bar"), 5)) {
@@ -319,6 +444,8 @@ public class ToolController {
                 inventory.trashItemAll(id);
                 inventory.trashItem(ItemIDs.valueOf("iridium_bar"), 5);
                 player.getWallet().decreaseCoin((int) tool.getAttribute(ItemAttributes.upgradeCost));
+                String newToolName = toolName.replace("golden", "iridium");
+                inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition(newToolName))));
                 view.showMessage("You've upgraded your tool!");
             } else if (toolName.contains("iridium")) {
                 view.showMessage("You can't afford to upgrade your tool anymore!");

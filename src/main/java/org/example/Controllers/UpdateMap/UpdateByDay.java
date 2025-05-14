@@ -1,5 +1,6 @@
 package org.example.Controllers.UpdateMap;
 
+import org.example.Controllers.InGameMenuController.AnimalController;
 import org.example.Models.Game;
 import org.example.Models.Item.ShippingBin;
 import org.example.Models.Player.Player;
@@ -15,9 +16,8 @@ public class UpdateByDay {
     }
 
     public void execute() {
-//        System.out.println(game.getTomorrowWeather().getCurrentWeather().name());
-//        game.setWeather(game.getTomorrowWeather());
-//        game.setTomorrowWeather();
+        game.getWeather().setCurrentWeather(game.getTomorrowWeather().getCurrentWeather());
+        game.setTomorrowWeather();
 
         emptyShippingBin();
         UpdateForaging.deleteForaging();
@@ -27,7 +27,8 @@ public class UpdateByDay {
         RandomEvents.crowAttack();
         RandomEvents.strikeLightning();
         UpdateShops.updateShops();
-
+//        ArtisanUpdate.artisanWithDay(1);
+        AnimalController.addProductToAnimal(game);
         game.getDateTime().updateTimeByDay(1);
     }
 

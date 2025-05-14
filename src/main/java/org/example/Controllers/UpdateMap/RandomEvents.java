@@ -23,8 +23,8 @@ public class RandomEvents {
         int[] tilesY = new int[3];
         int[] tilesX = new int[3];
         for (int i = 0; i < 3; i++) {
-            tilesY[i] = GenerateRandomNumber.generateRandomNumber(0, 30);
-            tilesX[i] = GenerateRandomNumber.generateRandomNumber(0, 30);
+            tilesY[i] = GenerateRandomNumber.generateRandomNumber(0, 29);
+            tilesX[i] = GenerateRandomNumber.generateRandomNumber(0, 29);
         }
         Tile[] tilesToStrike = new Tile[3];
         for (int i = 0; i < 3; i++) {

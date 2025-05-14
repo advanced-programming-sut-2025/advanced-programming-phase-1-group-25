@@ -14,5 +14,6 @@ public class UpdateByHour {
             game.updateByDay();
         }
         game.getDateTime().updateTimeByHour(1);
+//        ArtisanUpdate.artisanWithHour(1);
     }
 }

@@ -166,10 +166,6 @@ public class FarmingController {
     }
 
     public void showPlant(String yStr, String xStr, Game game) {
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         int y, x;
         try {
             y = Integer.parseInt(yStr);
@@ -277,10 +273,6 @@ public class FarmingController {
     }
     public void howMuchWater(){
         Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
         Player player = game.getCurrentPlayer();
         Inventory inventory = player.getInventory();
         for(Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()){

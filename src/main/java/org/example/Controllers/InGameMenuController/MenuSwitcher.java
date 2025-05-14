@@ -10,17 +10,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class MenuSwitcher {
-    public static String printMenus() {
-
-        return "1. action menu\n"
-                + "2. cooking menu\n"
-                + "3. crafting menu\n"
-                + "4. inventory menu\n"
-                + "5. home menu\n"
-                + "6. shop menu\n"
-                + "7. exit menu\n";
-
-    }
 
     public String switchMenu(Matcher matcher) {
         String menu = matcher.group("menu");

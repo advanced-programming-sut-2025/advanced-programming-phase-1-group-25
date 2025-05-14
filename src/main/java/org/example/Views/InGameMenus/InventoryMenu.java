@@ -38,7 +38,6 @@ public class InventoryMenu implements AppMenu {
         this.controller = new InventoryController(this);
         switch (command) {
             case SWITCH_MENU:
-                System.out.println(MenuSwitcher.printMenus());
                 controller.changeMenu();
                 break;
             case INVENTORY_SHOW:

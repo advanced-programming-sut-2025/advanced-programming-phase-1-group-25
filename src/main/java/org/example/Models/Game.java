@@ -24,6 +24,7 @@ public class Game {
     private Player currentPlayer;
     private DateTime dateTime;
     private Weather weather;
+    private Weather tomorrowWeather;
     private GameMap gameMap;
     private ArrayList<NPC> NPCs;
     private ArrayList<Shop> shops;
@@ -32,7 +33,6 @@ public class Game {
     private ShippingBin shippingBin;
     private UpdateByHour updaterByHour;
     private UpdateByDay updaterByDay;
-    private Weather tomorrowWeather;
 
     public Game(ArrayList<Player> gamePlayers, Map<Player, PlayerMap> playerMaps, Player currentPlayer, GameMap gameMap) {
         this.gamePlayers = gamePlayers;
@@ -64,7 +64,7 @@ public class Game {
     }
 
     public Weather getWeather() {
-        return weather;
+        return this.weather;
     }
 
     public PlayerMap getPlayerMap(Player player) {

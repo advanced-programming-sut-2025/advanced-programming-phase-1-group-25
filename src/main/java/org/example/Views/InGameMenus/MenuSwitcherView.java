@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 
 public class MenuSwitcherView implements AppMenu {
     public void handleInput(Scanner sc) {
+        printMenus();
         String input = sc.nextLine();
         Matcher matcher;
         boolean matched = false;
@@ -43,4 +44,16 @@ public class MenuSwitcherView implements AppMenu {
             case MENU_ENTER -> System.out.println(controller.switchMenu(matcher));
         }
     }
+    public String printMenus() {
+
+        return "1. action menu\n"
+                + "2. cooking menu\n"
+                + "3. crafting menu\n"
+                + "4. inventory menu\n"
+                + "5. home menu\n"
+                + "6. shop menu\n"
+                + "7. exit menu\n";
+
+    }
+
 }
