@@ -22,7 +22,6 @@ public class Main {
 
         System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off");
         System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "warn");
-
     // test
         User user1 = new User("ali1", "ali1", "1234", "", Gender.FEMALE, new Question("", ""));
         User user2 = new User("ali2", "ali2", "", "", Gender.FEMALE, new Question("", ""));
