@@ -35,7 +35,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 0
+      "upgradeCost": 2000
     }
   },
   {
@@ -47,7 +47,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 10
+      "upgradeCost": 5000
     }
   },
   {
@@ -59,7 +59,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 20
+      "upgradeCost": 10000
     }
   },
   {
@@ -71,7 +71,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 30
+      "upgradeCost": 250000
     }
   },
   {
@@ -95,7 +95,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 0
+      "upgradeCost": 2000
     }
   },
   {
@@ -107,7 +107,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 10
+      "upgradeCost": 5000
     }
   },
   {
@@ -119,7 +119,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 20
+      "upgradeCost": 10000
     }
   },
   {
@@ -131,7 +131,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 30
+      "upgradeCost": 25000
     }
   },
   {
@@ -155,7 +155,7 @@
       "damage": 1,
       "energyCost": 5,
       "durability": -1,
-      "upgradeCost": 0
+      "upgradeCost": 2000
     }
   },
   {
@@ -167,7 +167,7 @@
       "damage": 2,
       "energyCost": 4,
       "durability": 25,
-      "upgradeCost": 10
+      "upgradeCost": 5000
     }
   },
   {
@@ -179,7 +179,7 @@
       "damage": 3,
       "energyCost": 3,
       "durability": 50,
-      "upgradeCost": 20
+      "upgradeCost": 10000
     }
   },
   {
@@ -191,7 +191,7 @@
       "damage": 4,
       "energyCost": 2,
       "durability": 75,
-      "upgradeCost": 30
+      "upgradeCost": 25000
     }
   },
   {
@@ -215,7 +215,7 @@
       "durability": 0,
       "capacity": 40,
       "energyCost": 5,
-      "upgradeCost": 0
+      "upgradeCost": 2000
     }
   },
   {
@@ -227,7 +227,7 @@
       "durability": 0,
       "capacity": 55,
       "energyCost": 4,
-      "upgradeCost": 10
+      "upgradeCost": 5000
     }
   },
   {
@@ -239,7 +239,7 @@
       "durability": 0,
       "capacity": 70,
       "energyCost": 3,
-      "upgradeCost": 20
+      "upgradeCost": 10000
     }
   },
   {
@@ -251,7 +251,7 @@
       "durability": 0,
       "capacity": 85,
       "energyCost": 2,
-      "upgradeCost": 30
+      "upgradeCost": 25000
     }
   },
   {
@@ -273,7 +273,8 @@
     "baseAttributes": {
       "quality": "regular",
       "price": 25,
-      "energyCost": 8
+      "energyCost": 8,
+      "upgradeCost": 1800
     }
   },
   {
@@ -283,7 +284,8 @@
     "baseAttributes": {
       "quality": "regular",
       "price": 500,
-      "energyCost": 8
+      "energyCost": 8,
+      "upgradeCost": 7500
     }
   },
   {
@@ -342,7 +344,8 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "capacity": 12
+      "capacity": 12,
+      "upgradeCost": 2000
     }
   },
   {
@@ -351,7 +354,9 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "capacity": 24
+      "capacity": 24,
+      "upgradeCost": 10000
+
     }
   },
   {
@@ -369,7 +374,8 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 0
+      "percentage": 0,
+      "upgradeCost": 1000
     }
   },
   {
@@ -378,7 +384,9 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 15
+      "percentage": 15,
+      "upgradeCost": 2500
+
     }
   },
   {
@@ -387,7 +395,8 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 30
+      "percentage": 30,
+      "upgradeCost": 5000
     }
   },
   {
@@ -396,7 +405,8 @@
     "type": "tool",
     "baseAttributes": {
       "quality": "regular",
-      "percentage": 45
+      "percentage": 45,
+      "upgradeCost": 12500
     }
   },
   {

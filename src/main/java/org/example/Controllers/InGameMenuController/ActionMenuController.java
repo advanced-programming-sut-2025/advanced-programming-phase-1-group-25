@@ -1,5 +1,6 @@
 package org.example.Controllers.InGameMenuController;
 
+import org.example.Controllers.UpdateMap.RandomEvents;
 import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Enums.GameMenus.Menus;
 import org.example.Enums.ItemConsts.ItemDisplay;
@@ -120,7 +121,7 @@ public class ActionMenuController {
         Inventory playerInventory = currentPlayer.getInventory();
 
         int playerWood = playerInventory.getItemAmount(ItemIDs.wood);
-        int playerCoin = currentPlayer.getCoin();
+        int playerCoin = currentPlayer.getWallet().getCoin();
 
         if (playerWood < 500) {
             view.showMessage("You don't have enough wood!");
@@ -130,7 +131,7 @@ public class ActionMenuController {
             return;
         } else {
             currentGame.getPlayerMap(currentPlayer).getGreenHouse().repair();
-            currentPlayer.setCoin(currentPlayer.getCoin() - 1000);
+            currentPlayer.getWallet().setCoin(currentPlayer.getWallet().getCoin() - 1000);
             currentPlayer.getInventory().trashItem(ItemIDs.wood, 500);
         }
         view.showMessage("Greenhouse has been repaired!");
@@ -355,38 +356,7 @@ public class ActionMenuController {
         view.showMessage("your current tool has been set to " + toolName + "!");
     }
 
-    public void showCurrentTool() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Player currentPlayer = game.getCurrentPlayer();
-        if (currentPlayer.getCurrentTool() == null) {
-            view.showMessage("you don't have a current tool!");
-            return;
-        }
-        view.showMessage(currentPlayer.getCurrentTool().getDefinition().getDisplayName().toLowerCase());
-    }
 
-    public void showInventoryTools() {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        Inventory inventory = game.getCurrentPlayer().getInventory();
-        StringBuilder toolsStr = new StringBuilder();
-        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-            ArrayList<ItemInstance> items = entry.getValue();
-            for (ItemInstance item : items) {
-                if (item.getDefinition().getType().equals(ItemType.tool)) {
-                    toolsStr.append(item.getDefinition().getDisplayName().toLowerCase()).append("\n");
-                }
-            }
-        }
-        view.showMessage(toolsStr.toString());
-    }
 
     public void craftInfo(Matcher matcher, Game game) {
         if (!game.isPlayerActive(game.getCurrentPlayer())) {
@@ -414,40 +384,6 @@ public class ActionMenuController {
         view.showMessage(info.toString());
     }
 
-    public void useTool(Matcher matcher) {
-        Game game = App.getCurrentGame();
-        if (!game.isPlayerActive(game.getCurrentPlayer())) {
-            view.showMessage("You are ran out of energy for this turn!");
-            return;
-        }
-        String direction = matcher.group("direction").trim();
-        Player player = game.getCurrentPlayer();
-        Tile tile = player.getPlayerTile(game);
-        ItemInstance tool = player.getCurrentTool();
-        if (tool == null) {
-            view.showMessage("you don't have a tool in your hand!");
-            return;
-        }
-        switch (direction) {
-            case "up" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX()), player, game);
-            case "down" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX()), player, game);
-            case "left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() - 1), player, game);
-            case "right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY(), tile.getPosition().getX() + 1), player, game);
-            case "up left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() - 1), player, game);
-            case "up right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() - 1, tile.getPosition().getX() + 1), player, game);
-            case "down left" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() - 1), player, game);
-            case "down right" -> ToolController.applyTool(tool, game.getGameMap().getTile
-                    (tile.getPosition().getY() + 1, tile.getPosition().getX() + 1), player, game);
-            default -> view.showMessage("please select a valid direction!");
-        }
-    }
 
     public void artisanUse(Matcher matcher, Game game, String command) {
         if (!game.isPlayerActive(game.getCurrentPlayer())) {
@@ -520,6 +456,23 @@ public class ActionMenuController {
                 }
             }
         }
+    }
+
+    public void cheatThor(Matcher matcher, Game game) {
+        Player currentPlayer = game.getCurrentPlayer();
+        String xStr = matcher.group("x").trim().toLowerCase();
+        String yStr = matcher.group("y").trim().toLowerCase();
+        int x, y;
+        try {
+            x = Integer.parseInt(xStr);
+            y = Integer.parseInt(yStr);
+        } catch (NumberFormatException e) {
+            view.showMessage("please enter a valid position!");
+            return;
+        }
+        Tile tile = game.getGameMap().getTile(y, x);
+        RandomEvents.strikeTile(tile, currentPlayer);
+        view.showMessage("You've stroke this tile!");
     }
 }
 

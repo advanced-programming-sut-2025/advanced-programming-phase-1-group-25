@@ -1,9 +1,6 @@
 package org.example.Views.InGameMenus;
 
-import org.example.Controllers.InGameMenuController.ActionMenuController;
-import org.example.Controllers.InGameMenuController.AnimalController;
-import org.example.Controllers.InGameMenuController.FarmingController;
-import org.example.Controllers.InGameMenuController.MenuSwitcher;
+import org.example.Controllers.InGameMenuController.*;
 import org.example.Enums.InGameMenuCommands.ActionMenuCommands;
 import org.example.Models.App;
 import org.example.Models.Game;
@@ -14,9 +11,7 @@ import java.util.regex.Matcher;
 
 public class ActionMenuView implements AppMenu {
     Scanner scanner;
-    ActionMenuController actionController;
-    FarmingController farmingController;
-    AnimalController animalController;
+
 
     @Override
     public void handleInput(Scanner sc) {
@@ -37,9 +32,10 @@ public class ActionMenuView implements AppMenu {
 
     private void executeCommand(ActionMenuCommands command, Matcher matcher, String input) {
         Game game = App.getCurrentGame();
-        this.actionController = new ActionMenuController(this);
-        this.farmingController = new FarmingController(this);
-        this.animalController = new AnimalController(this);
+        ActionMenuController actionController = new ActionMenuController(this);
+        FarmingController farmingController = new FarmingController(this);
+        AnimalController animalController = new AnimalController(this);
+        ToolController toolController = new ToolController(this);
         switch (command) {
             case SWITCH_MENU:
                 System.out.println(MenuSwitcher.printMenus());
@@ -74,6 +70,7 @@ public class ActionMenuView implements AppMenu {
                 System.out.println(game.getDateTime().getSeason().toString().toLowerCase());
                 break;
             case CHEAT_THOR:
+                actionController.cheatThor(matcher, game);
                 break;
             case WEATHER:
                 System.out.println(game.getWeather().getCurrentWeather().toString().toLowerCase());
@@ -109,15 +106,16 @@ public class ActionMenuView implements AppMenu {
                 actionController.equipTool(matcher);
                 break;
             case TOOLS_SHOW_CURRENT:
-                actionController.showCurrentTool();
+                toolController.showCurrentTool();
                 break;
             case TOOLS_SHOW_AVAILABLE:
-                actionController.showInventoryTools();
+                toolController.showInventoryTools();
                 break;
             case TOOLS_UPGRADE:
+                toolController.upgradeTool(matcher);
                 break;
             case TOOLS_USE:
-                actionController.useTool(matcher);
+                toolController.useTool(matcher);
                 break;
             case CRAFT_INFO:
                 actionController.craftInfo(matcher, game);

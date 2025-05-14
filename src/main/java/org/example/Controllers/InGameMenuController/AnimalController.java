@@ -251,7 +251,7 @@ public class AnimalController {
         } else {
             view.showMessage("This building doesn't need any source to build!");
         }
-        if (player.getCoin() < (int) building.getAttribute(ItemAttributes.shopPrice)) {
+        if (player.getWallet().getCoin() < (int) building.getAttribute(ItemAttributes.shopPrice)) {
             view.showMessage("You don't have enough coin!");
             return;
         }
@@ -259,10 +259,10 @@ public class AnimalController {
         tile.setItem(item);
         if (buildingName.contains("barn")) {
             playerMap.setBarn(new Barn(building, new Position(y, x)));
-            player.setCoin(player.getCoin() - (int) building.getAttribute(ItemAttributes.shopPrice));
+            player.getWallet().setCoin(player.getWallet().getCoin() - (int) building.getAttribute(ItemAttributes.shopPrice));
         } else if (buildingName.contains("coop")) {
             playerMap.setCoop(new Coop(building, new Position(y, x)));
-            player.setCoin(player.getCoin() - (int) building.getAttribute(ItemAttributes.shopPrice));
+            player.getWallet().setCoin(player.getWallet().getCoin() - (int) building.getAttribute(ItemAttributes.shopPrice));
         }
 
         view.showMessage("you've built " + buildingName + "!");
@@ -306,7 +306,7 @@ public class AnimalController {
             }
         }
         ItemDefinition animalDef = Objects.requireNonNull(App.getItemDefinition(animalStr));
-        if (player.getCoin() < (int) animalDef.getAttribute(ItemAttributes.price)) {
+        if (player.getWallet().getCoin() < (int) animalDef.getAttribute(ItemAttributes.price)) {
             view.showMessage("You don't have enough coin!");
             return;
         }
@@ -316,7 +316,7 @@ public class AnimalController {
                 view.showMessage("You haven't built a coop!");
                 return;
             }
-            player.setCoin(player.getCoin() - (int) animalDef.getAttribute(ItemAttributes.price));
+            player.getWallet().setCoin(player.getWallet().getCoin() - (int) animalDef.getAttribute(ItemAttributes.price));
             Animal animal = new Animal(animalDef, name, player, playerMap.getCoop().getPosition());
             playerMap.getCoop().setAnimal(animal);
             player.setAnimal(animal);
@@ -326,7 +326,7 @@ public class AnimalController {
                 view.showMessage("You haven't built a barn!");
                 return;
             }
-            player.setCoin(player.getCoin() - (int) animalDef.getAttribute(ItemAttributes.price));
+            player.getWallet().setCoin(player.getWallet().getCoin() - (int) animalDef.getAttribute(ItemAttributes.price));
             Animal animal = new Animal(animalDef, name, player, playerMap.getBarn().getPosition());
             playerMap.getBarn().setAnimal(animal);
             player.setAnimal(animal);
@@ -588,7 +588,7 @@ public class AnimalController {
             return;
         }
         int price = (int) ((int) animal.getAttribute(ItemAttributes.price) * ((double) animal.getFriendShip() / 1000 + 0.3));
-        player.increaseCoin(price);
+        player.getWallet().increaseCoin(price);
         player.getAnimals().remove(animal);
         if (animal.getDefinition().getType().equals(ItemType.coop_animal)) {
             playerMap.getCoop().getAnimals().remove(animal);

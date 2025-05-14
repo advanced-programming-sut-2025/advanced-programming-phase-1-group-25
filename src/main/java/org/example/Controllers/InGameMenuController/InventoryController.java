@@ -85,13 +85,13 @@ public class InventoryController {
     }
     public void checkTrashCanLevel(ItemDefinition item, Player player, ItemInstance trashCan, int amount) {
         if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
-            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
+            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
-            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
+            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
-            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
+            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
         } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
-            player.increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
+            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
         }
     }
 }

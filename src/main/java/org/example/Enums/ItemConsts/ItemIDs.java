@@ -371,6 +371,7 @@ public enum ItemIDs {
     maple_syrup,
     pine_tar,
     sap,
-    mystic_syrup
+    mystic_syrup,
+    rabbit_foot
     ;
 }

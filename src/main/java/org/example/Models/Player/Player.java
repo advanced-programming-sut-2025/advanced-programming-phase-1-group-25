@@ -14,6 +14,7 @@ import org.example.Models.MapElements.Position;
 import org.example.Models.MapElements.Tile;
 import org.example.Models.User;
 
+import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -26,7 +27,7 @@ public class Player {
     private Gender gender;
     private int energy;
     private int energyLimit;
-    private int coin;
+    private Wallet wallet;
     private Inventory inventory;
     private PlayerAbilities abilities;
     private Position position;
@@ -35,14 +36,14 @@ public class Player {
     private int energyPerTurn;
     private PlayerMap playerMap;
     private ArrayList<Animal> animals;
-
+    private ArrayList<String> messages;
     public Player(User user, String name, Gender gender, Position position) {
         this.user = user;
         this.name = name;
         this.gender = gender;
         this.energy = 200; // initial energy
         this.energyLimit = 200;
-        this.coin = 0; // initial coin
+        this.wallet = new Wallet(0);
         this.inventory = new Inventory();
         this.abilities = new PlayerAbilities();
         this.position = position; // initial position
@@ -52,6 +53,12 @@ public class Player {
         this.inventory.setInventoryTools();
     }
 
+    public ArrayList<String> getMessages() {
+        return messages;
+    }
+    public void addMessage(String message) {
+        messages.add(message);
+    }
 
     public ItemInstance getCurrentTool() {
         return currentTool;
@@ -73,17 +80,6 @@ public class Player {
         return inventory;
     }
 
-    public int getCoin() {
-        return coin;
-    }
-
-    public void increaseCoin(int coin) {
-        this.coin += coin;
-    }
-
-    public void setCoin(int coin) {
-        this.coin = coin;
-    }
 
     public ItemInstance getTrashCan() {
         return trashCan;
@@ -143,6 +139,10 @@ public class Player {
 
     public void setEnergyPerTurn(int energyPerTurn) {
         this.energyPerTurn = energyPerTurn;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
     }
 
     public Tile getPlayerTile(Game game) {
