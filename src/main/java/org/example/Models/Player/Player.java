@@ -62,6 +62,7 @@ public class Player {
         this.inventory.setInventoryTools();
         this.isFainted = false;
         this.spouse = null;
+        this.wallet.setCoin(Integer.MAX_VALUE);
     }
 
 

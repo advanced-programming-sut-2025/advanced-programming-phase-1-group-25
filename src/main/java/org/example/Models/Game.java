@@ -187,8 +187,8 @@ public class Game {
         return player.getEnergyPerTurn() > 0;
     }
 
-    public void updateByHour() {
-        this.updaterByHour.execute();
+    public void updateByHour(boolean isCheat) {
+        this.updaterByHour.execute(isCheat);
     }
 
     public void updateByDay() {

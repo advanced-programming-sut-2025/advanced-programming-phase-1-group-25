@@ -137,7 +137,7 @@ public class ActionMenuController {
         Player nextPlayer = currentGame.getNextPlayer();
 
         if (nextPlayer == currentGame.getPlayers().get(0)) {
-            currentGame.updateByHour();
+            currentGame.updateByHour(false);
         }
         currentGame.setCurrentPlayer(nextPlayer);
         view.showMessage(nextPlayer.getName() + "'s turn!");
@@ -185,8 +185,9 @@ public class ActionMenuController {
         int newHour = game.getDateTime().updateTimeByHour(time);
         this.view.showMessage("time is now " + newHour + "!");
         for (int i = 0; i < time; i++) {
-            game.updateByHour();
+            game.updateByHour(true);
         }
+        game.getDateTime().setHour(newHour);
     }
 
     public void cheatAdvanceDate(Matcher matcher, Game game) {
@@ -201,10 +202,10 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
-        view.showMessage("day is now " + game.getDateTime().updateTimeByDay(time).name() + "!");
+        int newDay = game.getDateTime().getDay() + time;
+        view.showMessage("day is now " + newDay + "!");
         for (int i = 0; i < time; i++) {
             game.updateByDay();
-
         }
     }
 

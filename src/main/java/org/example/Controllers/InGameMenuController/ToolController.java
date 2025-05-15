@@ -2,7 +2,6 @@ package org.example.Controllers.InGameMenuController;
 
 import org.example.Enums.ItemConsts.ItemAttributes;
 import org.example.Enums.ItemConsts.ItemIDs;
-import org.example.Enums.ItemConsts.ItemLevels;
 import org.example.Enums.ItemConsts.ItemType;
 import org.example.Enums.NPCConsts.NPCConst;
 import org.example.Models.Animals.Animal;
@@ -228,7 +227,13 @@ public class ToolController {
                 return;
             }
             if (tile.getItem().getDefinition().getType().equals(ItemType.all_crops)) {
-                tile.setWatered(true);
+                if (tile.hasGiantPlant()) {
+                    for (Tile giantTile : tile.getGiantGroup()) {
+                        giantTile.setWatered(true);
+                    }
+                } else {
+                    tile.setWatered(true);
+                }
                 return;
             }
             view.showMessage("Use the can for lake or plants!");
@@ -248,7 +253,11 @@ public class ToolController {
             ItemInstance item = tile.getItem();
             if (item.getDefinition().getType().equals(ItemType.all_crops)) {
                 if (((int) item.getAttribute(ItemAttributes.totalHarvestTime)) <= tile.getDayPassedFromPlant()) {
-                    harvestCrop(tile, player);
+                    if (tile.hasGiantPlant()) {
+                        harvestGiantCrop(tile, player);
+                    } else {
+                        harvestCrop(tile, player);
+                    }
                     return;
                 } else {
                     view.showMessage("This plant isn't harvestable yet!");
@@ -321,12 +330,23 @@ public class ToolController {
         view.showMessage("You've harvested crop!");
     }
 
+    public void harvestGiantCrop(Tile tile, Player player) {
+        for (int i = 0; i < 10; i++) {
+            player.getInventory().addItem(tile.getItem());
+        }
+        for (Tile giantTile : tile.getGiantGroup()) {
+            giantTile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+        }
+        player.getAbilities().increaseFarmingAbility();
+        view.showMessage("You've harvested giant crop!");
+    }
+
     public void milkAnimal(ItemInstance tool, Player player, Animal animal) {
         tool.setAttribute(ItemAttributes.isFull, true);
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk"))));
         player.getAbilities().increaseFarmingAbility();
-        animal.setFriendShip(5);
+        animal.increaseFriendShip(5);
         view.showMessage("You've milked the animal!");
     }
 
@@ -335,7 +355,7 @@ public class ToolController {
         player.getInventory().addItem
                 (new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wool"))));
         player.getAbilities().increaseFarmingAbility();
-        animal.setFriendShip(5);
+        animal.increaseFriendShip(5);
         view.showMessage("You've collected sheep wool!");
     }
 

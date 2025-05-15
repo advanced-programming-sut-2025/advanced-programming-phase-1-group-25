@@ -18,12 +18,16 @@ public class Tile {
     private boolean isFertilized;
     private boolean isWatered;
     private ArrayList<ItemInstance> fish;
+    private boolean hasGiantPlant;
+    private ArrayList<Tile> giantGroup;
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
         this.isPlowed = false;
         this.isWatered = false;
+        this.hasGiantPlant = false;
         fish = new ArrayList<>();
+        this.giantGroup = new ArrayList<>();
     }
 
     public boolean getPlowed() {
@@ -102,4 +106,27 @@ public class Tile {
         return isFertilized;
     }
 
+    public ArrayList<ItemInstance> getFish() {
+        return fish;
+    }
+
+    public void setFish(ArrayList<ItemInstance> fish) {
+        this.fish = fish;
+    }
+
+    public boolean hasGiantPlant() {
+        return hasGiantPlant;
+    }
+
+    public void setGiantPlant(boolean hasGiantPlant) {
+        this.hasGiantPlant = hasGiantPlant;
+    }
+
+    public ArrayList<Tile> getGiantGroup() {
+        return giantGroup;
+    }
+
+    public void setGiantGroup(ArrayList<Tile> giantGroup) {
+        this.giantGroup = giantGroup;
+    }
 }

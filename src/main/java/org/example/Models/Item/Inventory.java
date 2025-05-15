@@ -51,31 +51,35 @@ public class Inventory {
     }
 
     public void trashItem(ItemIDs id, int amount) {
-        for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
-            if (entry.getKey() == id) {
-                ArrayList<ItemInstance> itemList = this.items.get(id);
-                for (int i = 0; i < Math.min(amount, itemList.size()); i++) {
-                    itemList.remove(itemList.size() - 1);
+        try {
+
+            for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
+                if (entry.getKey() == id) {
+                    ArrayList<ItemInstance> itemList = this.items.get(id);
+                    for (int i = 0; i < Math.min(amount, itemList.size()); i++) {
+                        itemList.remove(itemList.size() - 1);
+                    }
+                    if (itemList.isEmpty()) {
+                        this.items.remove(entry.getKey());
+                    }
+                    return;
                 }
-                if (itemList.isEmpty()) {
-                    this.items.remove(entry.getKey());
-                }
-                return;
             }
+        } catch (ConcurrentModificationException ignored) {
+
         }
     }
 
     public void trashItemAll(ItemIDs id) {
-        try{
+        try {
             for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
                 if (entry.getKey() == id) {
                     items.remove(id);
                 }
             }
 
-        }
-        catch (ConcurrentModificationException e) {
-            System.out.println(e.getMessage());
+        } catch (ConcurrentModificationException ignored) {
+
         }
     }
 
@@ -217,5 +221,6 @@ public class Inventory {
         for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
             this.addItem(new ItemInstance(itemDefinition));
         }
+
     }
 }

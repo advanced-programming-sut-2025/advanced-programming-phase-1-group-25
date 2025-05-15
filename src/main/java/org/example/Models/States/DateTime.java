@@ -1,6 +1,5 @@
 package org.example.Models.States;
 
-import org.example.Controllers.InGameMenuController.ArtisanController;
 import org.example.Controllers.UpdateMap.ArtisanUpdate;
 import org.example.Enums.GameConsts.DayOfWeek;
 import org.example.Enums.GameConsts.Seasons;
@@ -23,18 +22,18 @@ public class DateTime {
         this.dayOfWeek = DayOfWeek.MONDAY;
     }
 
-    public DayOfWeek updateTimeByDay(int day) {
+    public void updateTimeByDay(int day) {
         ArtisanUpdate.artisanWithDay(day);
-        int seasonPassed = (this.day + day) / 21;
+        int seasonPassed = (this.day + day) / 22;
         int newSeasonNumber = ((this.season.getNumberOfSeason() + seasonPassed) % 4);
-        Seasons newSeason = Seasons.getSeasonByNumber(newSeasonNumber);
-        this.season = newSeason;
+        this.season = Seasons.getSeasonByNumber(newSeasonNumber);
         int newDayOfWeekNumber = ((this.dayOfWeek.getNumberOfDayInWeek() + day) % 7);
-        DayOfWeek newDayOfWeek = DayOfWeek.getDayOfWeekByNumber(newDayOfWeekNumber);
-        this.dayOfWeek = newDayOfWeek;
-        this.day = ((this.day + day) % 21);
+        this.dayOfWeek = DayOfWeek.getDayOfWeekByNumber(newDayOfWeekNumber);
+        this.day = ((this.day + day) % 22);
+        if(this.day == 0) {
+            this.day = 1;
+        }
         this.hour = 9;
-        return this.dayOfWeek;
     }
 
     public int updateTimeByHour(int hour) {

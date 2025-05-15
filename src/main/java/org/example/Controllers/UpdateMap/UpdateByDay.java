@@ -28,7 +28,7 @@ public class UpdateByDay {
         RandomEvents.strikeLightning();
         UpdateShops.updateShops();
 //        ArtisanUpdate.artisanWithDay(1);
-        AnimalController.addProductToAnimal(game);
+        AnimalController.addProductToAnimal();
         game.getDateTime().updateTimeByDay(1);
     }
 

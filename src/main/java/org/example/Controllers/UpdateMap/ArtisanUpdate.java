@@ -37,9 +37,11 @@ public class ArtisanUpdate {
             int day = (int) artisan.getAttribute(ItemAttributes.day);
             artisan.setAttribute(ItemAttributes.day, day - dayPassed);
             System.out.println(day + " " + dayPassed);
-            if (day - dayPassed <= 0) {
+            if (day - dayPassed <= 0
+            && !((boolean) artisan.getAttribute(ItemAttributes.isReady))) {
                 view.showMessage(artisan.getDefinition().getId() + " is now ready! ");
                 artisan.setAttribute(ItemAttributes.isReady, true);
+                inventory.addItem(artisan);
             }
         }
     }

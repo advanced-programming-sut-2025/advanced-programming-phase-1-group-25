@@ -41,4 +41,8 @@ public class ItemDefinition {
     public Object getAttribute(ItemAttributes attributes) {
         return baseAttributes.get(attributes);
     }
+
+    public boolean hasAttribute(ItemAttributes attributes) {
+        return baseAttributes.containsKey(attributes);
+    }
 }

@@ -5,7 +5,6 @@ import org.example.Models.Item.ItemInstance;
 import org.example.Models.MapElements.Position;
 import org.example.Models.Player.Player;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,10 +44,12 @@ public class Animal extends ItemInstance {
         return friendShip;
     }
 
-    public void setFriendShip(int friendShip) {
+    public void increaseFriendShip(int friendShip) {
         this.friendShip = Math.min(1000, this.friendShip + friendShip);
     }
-
+    public void decreaseFriendShip(int friendShip) {
+        this.friendShip = Math.max(0, this.friendShip - friendShip);
+    }
     public Player getOwner() {
         return owner;
     }

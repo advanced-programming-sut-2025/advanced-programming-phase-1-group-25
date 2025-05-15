@@ -33,11 +33,9 @@ public class Main {
         App.addUser("ali3", user3);
         App.addUser("ali4", user4);
         App.setCurrentUser(user1);
-//        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
+        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
     // test
 
-        App.setCurrentUser(user1);
-        App.setCurrentMenu(Menus.PreGameMenus.GAME_MENU);
         AppView appView = new AppView();
         appView.run();
     }

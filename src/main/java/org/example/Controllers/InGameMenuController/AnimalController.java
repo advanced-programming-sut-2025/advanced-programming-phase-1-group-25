@@ -223,30 +223,30 @@ public class AnimalController {
             return;
         }
         Tile tile = game.getGameMap().getTile(y, x);
-        if (!tile.getItem().getDefinition().getId().equals(ItemIDs.VOID)) {
-            view.showMessage("This tile is not empty!");
-            return;
-        }
+//        if (!tile.getItem().getDefinition().getId().equals(ItemIDs.VOID)) {
+//            view.showMessage("This tile is not empty!");
+//            return;
+//        }
         ItemDefinition building = Objects.requireNonNull(App.getItemDefinition(buildingName));
         Object ingredient = building.getAttribute(ItemAttributes.ingredients);
         if (ingredient instanceof Map<?, ?>) {
             Map<String, Object> ingredients = (Map<String, Object>) ingredient;
-            for (Map.Entry<String, Object> entry : ingredients.entrySet()) {
-                String key = entry.getKey();
-                Object value = entry.getValue();
-                if (key.equals("wood")) {
-                    if (!inventory.hasItem(ItemIDs.wood, (int) value)) {
-                        view.showMessage("You don't have enough wood!");
-                        return;
-                    }
-                }
-                if (key.equals("stone")) {
-                    if (!inventory.hasItem(ItemIDs.stone, (int) value)) {
-                        view.showMessage("You don't have enough stone!");
-                        return;
-                    }
-                }
-            }
+//            for (Map.Entry<String, Object> entry : ingredients.entrySet()) {
+//                String key = entry.getKey();
+//                Object value = entry.getValue();
+//                if (key.equals("wood")) {
+//                    if (!inventory.hasItem(ItemIDs.wood, (int) value)) {
+//                        view.showMessage("You don't have enough wood!");
+//                        return;
+//                    }
+//                }
+//                if (key.equals("stone")) {
+//                    if (!inventory.hasItem(ItemIDs.stone, (int) value)) {
+//                        view.showMessage("You don't have enough stone!");
+//                        return;
+//                    }
+//                }
+//            }
         } else {
             view.showMessage("This building doesn't need any source to build!");
         }
@@ -361,9 +361,9 @@ public class AnimalController {
             return;
         }
         animal.setPet(true);
-        animal.setFriendShip(15);
+        animal.increaseFriendShip(15);
         player.decreaseEnergy(5);
-        view.showMessage("You've pet" + animalName + "!");
+        view.showMessage("You've pet " + animalName + "!");
     }
 
     public void setAnimalFriendShip(Matcher matcher, Game game) {
@@ -387,7 +387,7 @@ public class AnimalController {
             view.showMessage("This animal does not exist!");
             return;
         }
-        animal.setFriendShip(amount);
+        animal.increaseFriendShip(amount);
         view.showMessage("Your friendship has been set to " + amount + " with" + animalName + "!");
     }
 
@@ -398,8 +398,8 @@ public class AnimalController {
             return;
         }
         for (Animal animal : player.getAnimals()) {
-            view.showMessage("Name : " + animal.getName() + " friendship : " + animal.getFriendShip()
-                    + " isPet : " + animal.isPet() + " isFed : " + animal.isFed());
+            view.showMessage("Name : " + animal.getName() + "\nfriendship : " + animal.getFriendShip()
+                    + "\nisPet : " + animal.isPet() + "\nisFed : " + animal.isFed());
         }
     }
 
@@ -427,11 +427,15 @@ public class AnimalController {
             view.showMessage("This animal does not exist!");
             return;
         }
+        if (y == animal.getPosition().getY() && x == animal.getPosition().getX()) {
+            view.showMessage("You can't put " + animalName + " on itself!");
+            return;
+        }
+        Tile tile = game.getGameMap().getTile(y, x);
         if (animal.getDefinition().getType().equals(ItemType.coop_animal)) {
             if (y == playerMap.getCoop().getPosition().getY() && x == playerMap.getCoop().getPosition().getX()) {
                 if (animal.isOutside()) {
-                    game.getGameMap().getTile(animal.getPosition().getX(), animal.getPosition().getY()).setItem(
-                            new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+                    tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                     animal.setOutside(false);
                     animal.setPosition(new Position(playerMap.getCoop().getPosition().getY(),
                             playerMap.getCoop().getPosition().getX()));
@@ -445,8 +449,7 @@ public class AnimalController {
         } else if (animal.getDefinition().getType().equals(ItemType.barn_animal)) {
             if (y == playerMap.getBarn().getPosition().getY() && x == playerMap.getBarn().getPosition().getX()) {
                 if (animal.isOutside()) {
-                    game.getGameMap().getTile(animal.getPosition().getX(), animal.getPosition().getY()).setItem(
-                            new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+                    tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                     animal.setOutside(false);
                     animal.setPosition(new Position(playerMap.getBarn().getPosition().getY(),
                             playerMap.getBarn().getPosition().getX()));
@@ -458,9 +461,9 @@ public class AnimalController {
                 }
             }
         }
-        Tile tile = game.getGameMap().getTile(y, x);
+
         if (!tile.getItem().getDefinition().getId().equals(ItemIDs.VOID)) {
-            view.showMessage("You should put" + animalName + " on an empty tile!");
+            view.showMessage("You should put " + animalName + " on an empty tile!");
             return;
         }
         WeatherStates weatherStates = game.getWeather().getCurrentWeather();
@@ -470,16 +473,22 @@ public class AnimalController {
             view.showMessage("Animals must stat inside, the weather is fucked up(" + weatherStates.name() + ")!");
             return;
         }
+        if (animal.isOutside()) {
+            view.showMessage(animalName + " is now on y = " + y + ", x = " + x);
+        }
         tile.setItem(animal);
         animal.setFed(true);
         animal.setPosition(new Position(y, x));
         animal.setOutside(true);
-        animal.setFriendShip(8);
+        animal.increaseFriendShip(8);
+        view.showMessage(animalName + " is now outside!");
     }
 
-    public void feedHay(Matcher matcher, Game game) {//TODO decrease yonjeh
+    public void feedHay(Matcher matcher, Game game) {
         String animalName = matcher.group("animalName").trim().toLowerCase();
         Player player = game.getCurrentPlayer();
+        Inventory inventory = player.getInventory();
+        ItemDefinition hay = Objects.requireNonNull(App.getItemDefinition("hay"));
         Animal animal = null;
         for (Animal playerAnimal : player.getAnimals()) {
             if (playerAnimal.getName().equals(animalName)) {
@@ -494,7 +503,16 @@ public class AnimalController {
             view.showMessage("This animal is outside!");
             return;
         }
+        if (animal.isFed()) {
+            view.showMessage(animalName + " has been fed today!");
+            return;
+        }
+        if (!inventory.hasItem(hay.getId())) {
+            view.showMessage("You do not have enough hay to feed " + animalName + "!");
+            return;
+        }
         animal.setFed(true);
+        inventory.trashItem(hay.getId(), 1);
         view.showMessage("You've fed " + animalName + "!");
     }
 
@@ -505,12 +523,16 @@ public class AnimalController {
             return;
         }
         for (Animal animal : player.getAnimals()) {
+            if(animal.getProducts().isEmpty()) {
+                view.showMessage(animal.getName() + " doesn't have any product!");
+                continue;
+            }
             for (Map.Entry<ItemInstance, Integer> entry : animal.getProducts().entrySet()) {
                 ItemInstance item = entry.getKey();
                 Integer quality = entry.getValue();
                 view.showMessage("Animal Name : " + animal.getName() +
-                        "Product Name : " + item.getDefinition().getDisplayName().toLowerCase()
-                        + "Quality : " + quality);
+                        "\nProduct Name : " + item.getDefinition().getDisplayName().toLowerCase()
+                        + "\nQuality : " + quality);
             }
         }
     }
@@ -530,6 +552,10 @@ public class AnimalController {
         }
         if (animal == null) {
             view.showMessage("This animal does not exist!");
+            return;
+        }
+        if (animal.getProducts().isEmpty()) {
+            view.showMessage(animalName + " doesn't have any product!");
             return;
         }
         ItemIDs id = animal.getDefinition().getId();
@@ -575,9 +601,13 @@ public class AnimalController {
         view.showMessage("You've sold " + animalName + " for " + price + "g!");
     }
 
-    public static void addProductToAnimal(Game game) {
+    public static void addProductToAnimal() {
+        Game game = App.getCurrentGame();
         Player player = game.getCurrentPlayer();
         for (Animal animal : player.getAnimals()) {
+            for (Map.Entry<ItemInstance, Integer> entry : animal.getProducts().entrySet()) {
+                animal.getProducts().remove(entry.getKey());
+            }
             Object product = animal.getAttribute(ItemAttributes.products);
             if (animal.isFed()) {
                 if (product instanceof Map<?, ?>) {
@@ -609,9 +639,11 @@ public class AnimalController {
                         i++;
                     }
                 }
-            } else animal.setFriendShip(-20);
-            if (animal.isOutside()) animal.setFriendShip(-20);
-            if (!animal.isPet()) animal.setFriendShip(-10);
+            } else animal.decreaseFriendShip(20);
+            if (animal.isOutside()) animal.decreaseFriendShip(20);
+            if (!animal.isPet()) animal.decreaseFriendShip(10);
+            animal.setFed(false);
+            animal.setPet(false);
         }
     }
 

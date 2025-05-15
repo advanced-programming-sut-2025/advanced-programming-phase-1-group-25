@@ -12,7 +12,9 @@ import org.example.Models.Item.ItemInstance;
 import org.example.Models.Player.Player;
 import org.example.Views.InGameMenus.InventoryMenu;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 
@@ -60,39 +62,70 @@ public class InventoryController {
                 view.showMessage("please enter a valid number!");
                 return;
             }
+            Map<ItemIDs, Integer> itemToTrash = new HashMap<>();
             for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-                for (ItemInstance item : entry.getValue()) {
-                    if (item.getDefinition().getDisplayName().equals(itemName)) {
-                        checkTrashCanLevel(item.getDefinition(), game.getCurrentPlayer(),
-                                game.getCurrentPlayer().getTrashCan(), number);
-                        inventory.trashItem(item.getDefinition().getId(), number);
-                    }
+                if (entry.getKey().name().equals(itemName)) {
+                    checkTrashCanLevel(entry.getValue().get(0).getDefinition(), game.getCurrentPlayer(),
+                            game.getCurrentPlayer().getTrashCan(), number);
+                    itemToTrash.put(entry.getKey(), number);
                 }
             }
-            view.showMessage(number + "number of " + itemName + " has been trashed!");
+            for (Map.Entry<ItemIDs, Integer> entryToTrash : itemToTrash.entrySet()) {
+                inventory.trashItem(entryToTrash.getKey(), entryToTrash.getValue());
+            }
+            view.showMessage(number + " number of " + itemName + " has been trashed!");
         } else {
+            ArrayList<ItemIDs> itemToTrash = new ArrayList<>();
             for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
-                for (ItemInstance item : entry.getValue()) {
-                    if (item.getDefinition().getDisplayName().equals(itemName)) {
-                        checkTrashCanLevel(item.getDefinition(), game.getCurrentPlayer(),
-                                game.getCurrentPlayer().getTrashCan(), entry.getValue().size());
-                        inventory.trashItemAll(item.getDefinition().getId());
-                    }
+                if (entry.getKey().name().equals(itemName)) {
+                    checkTrashCanLevel(entry.getValue().get(0).getDefinition(), game.getCurrentPlayer(),
+                            game.getCurrentPlayer().getTrashCan(), entry.getValue().size());
+                    itemToTrash.add(entry.getKey());
                 }
             }
+            for (ItemIDs toTrash : itemToTrash) {
+                inventory.trashItemAll(toTrash);
+            }
+            view.showMessage(itemName + " has been removed from your inventory!");
         }
-        view.showMessage(itemName + "has been removed from your inventory!");
+        game.getCurrentPlayer().decreaseEnergy(5);
     }
+
     public void checkTrashCanLevel(ItemDefinition item, Player player, ItemInstance trashCan, int amount) {
-        if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount));
-        } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount));
-        } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount));
-        } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
-            player.getWallet().increaseCoin((int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount));
+        int price = 0;
+        if (item.hasAttribute(ItemAttributes.price)) {
+            if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.price) * 0.15 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.price) * 0.3 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.price) * 0.45 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.price) * 0.6 * amount);
+                player.getWallet().increaseCoin(price);
+            }
+        } else if (item.hasAttribute(ItemAttributes.baseSellPrice)) {
+            if (trashCan.getDefinition().getId().name().equals("copper_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.baseSellPrice) * 0.15 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("iron_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.baseSellPrice) * 0.3 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("golden_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.baseSellPrice) * 0.45 * amount);
+                player.getWallet().increaseCoin(price);
+            } else if (trashCan.getDefinition().getId().name().equals("iridium_trash_can")) {
+                price = (int) ((int) item.getAttribute(ItemAttributes.baseSellPrice) * 0.6 * amount);
+                player.getWallet().increaseCoin(price);
+            }
+        } else {
+            view.showMessage("This item does not have a price!");
+            return;
         }
+        view.showMessage("Your trash can gave you " + price + "g for " + item.getId() + "!");
     }
 }
 
