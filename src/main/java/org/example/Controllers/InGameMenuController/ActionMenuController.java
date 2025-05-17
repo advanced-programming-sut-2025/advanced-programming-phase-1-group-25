@@ -1,6 +1,7 @@
 package org.example.Controllers.InGameMenuController;
 
 import org.example.Controllers.InGameMenuController.Walk.Walk;
+import org.example.Controllers.UpdateMap.ArtisanUpdate;
 import org.example.Controllers.UpdateMap.UpdateByHour;
 import org.example.Enums.GameConsts.DayOfWeek;
 import org.example.Enums.GameConsts.Seasons;
@@ -131,18 +132,6 @@ public class ActionMenuController {
         }
     }
 
-    public void nextTurn() {
-        Game currentGame = App.getCurrentGame();
-        currentGame.getCurrentPlayer().setEnergyPerTurn(50);
-        Player nextPlayer = currentGame.getNextPlayer();
-
-        if (nextPlayer == currentGame.getPlayers().get(0)) {
-            currentGame.updateByHour(false);
-        }
-        currentGame.setCurrentPlayer(nextPlayer);
-        view.showMessage(nextPlayer.getName() + "'s turn!");
-    }
-
     public void buildGreenhouse() {
         Game currentGame = App.getCurrentGame();
         Player currentPlayer = currentGame.getCurrentPlayer();
@@ -170,6 +159,25 @@ public class ActionMenuController {
         view.showMessage("Greenhouse has been repaired!");
     }
 
+    public void nextTurn() {
+        Game currentGame = App.getCurrentGame();
+        currentGame.getCurrentPlayer().setEnergyPerTurn(50);
+        Player nextPlayer = currentGame.getNextPlayer();
+        if (nextPlayer == currentGame.getPlayers().get(0)) {
+            currentGame.updateByHour(false);
+        }
+        if(currentGame.hasAllPlayersFainted()) {
+            currentGame.getDateTime().updateTimeByDay(1);
+            view.showMessage("All players have fainted\nDay is now " + currentGame.getDateTime().getDay() + "!");
+            return;
+        }
+        currentGame.setCurrentPlayer(nextPlayer);
+        while (nextPlayer.isFainted()) {
+            nextPlayer = currentGame.getNextPlayer();
+        }
+        view.showMessage(nextPlayer.getName() + "'s turn!");
+    }
+
     public void cheatAdvanceTime(Matcher matcher, Game game) {
         String timeStr = matcher.group("hours");
         int time;
@@ -183,6 +191,7 @@ public class ActionMenuController {
             this.view.showMessage("time must be a positive integer!");
         }
         int newHour = game.getDateTime().updateTimeByHour(time);
+        ArtisanUpdate.artisanWithHour(time);
         this.view.showMessage("time is now " + newHour + "!");
         for (int i = 0; i < time; i++) {
             game.updateByHour(true);
@@ -202,10 +211,11 @@ public class ActionMenuController {
         if (time < 0) {
             this.view.showMessage("time must be a positive integer!");
         }
+        ArtisanUpdate.artisanWithDay(time);
         int newDay = game.getDateTime().getDay() + time;
         view.showMessage("day is now " + newDay + "!");
         for (int i = 0; i < time; i++) {
-            game.updateByDay();
+            game.updateByDay(true);
         }
     }
 
@@ -325,7 +335,7 @@ public class ActionMenuController {
             view.showMessage("Please enter a valid energy amount!");
             return;
         }
-        if (energy <= 0) {
+        if (energy < 0) {
             view.showMessage("energy must be a positive integer!");
             return;
         }
@@ -334,6 +344,7 @@ public class ActionMenuController {
             return;
         }
         game.getCurrentPlayer().setEnergy(energy);
+        if(energy == 0) game.getCurrentPlayer().setFainted(true);
         view.showMessage("your energy has been set to " + energy + "!");
     }
 

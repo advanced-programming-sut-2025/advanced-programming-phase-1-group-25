@@ -11,11 +11,11 @@ public class UpdateByHour {
 
     public void execute(boolean isCheat) {
         if (game.getDateTime().getHour() == 22) {
-            game.updateByDay();
+            game.updateByDay(isCheat);
         }
         if (!isCheat) {
             game.getDateTime().updateTimeByHour(1);
+            ArtisanUpdate.artisanWithHour(1);
         }
-//        ArtisanUpdate.artisanWithHour(1);
     }
 }

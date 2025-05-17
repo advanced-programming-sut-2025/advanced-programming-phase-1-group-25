@@ -134,7 +134,6 @@ public class ToolController {
 
     public void applyTool(ItemInstance tool, Tile tile, Player player, Game game) {
         String name = tool.getDefinition().getDisplayName().toLowerCase();
-        ActionMenuController controller = new ActionMenuController(view);
         if (name.contains("hoe")) {
             if (!checkIfPlayerHasEnoughEnergy(player, tool, player.getAbilities().getAbilityLevel
                     (player.getAbilities().getFarmingAbility()))) {
@@ -187,6 +186,7 @@ public class ToolController {
                 view.showMessage("This item hasn't been dropped by player!");
                 return;
             }
+            player.getInventory().addItem(tile.getItem());
             tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
             player.getAbilities().increaseMiningAbility();
             view.showMessage("Item has been successfully removed from the tile!");
@@ -210,6 +210,14 @@ public class ToolController {
                 player.getInventory().addItem(tile.getItem());
                 tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
                 view.showMessage("1 wood has been successfully added to the inventory!");
+                return;
+            }
+            if (tile.getItem().getDefinition().getType().equals(ItemType.tree)) {
+                String seedId = tile.getItem().getAttribute(ItemAttributes.source).toString();
+                ItemInstance seed = new ItemInstance(Objects.requireNonNull(App.getItemDefinition(seedId)));
+                player.getInventory().addItem(seed);
+                tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("wood"))));
+                view.showMessage("You've successfully cut the tree and a " + seedId + " is added to your inventory!");
                 return;
             }
 
@@ -252,7 +260,7 @@ public class ToolController {
             }
             ItemInstance item = tile.getItem();
             if (item.getDefinition().getType().equals(ItemType.all_crops)) {
-                if (((int) item.getAttribute(ItemAttributes.totalHarvestTime)) <= tile.getDayPassedFromPlant()) {
+                if (tile.getDayLeftFromPlant() <= tile.getDayPassedFromPlant()) {
                     if (tile.hasGiantPlant()) {
                         harvestGiantCrop(tile, player);
                     } else {
@@ -325,6 +333,14 @@ public class ToolController {
 
     public void harvestCrop(Tile tile, Player player) {
         player.getInventory().addItem(tile.getItem());
+        ItemInstance plant = tile.getItem();
+        if (plant.getDefinition().hasAttribute(ItemAttributes.oneTime)
+                && !(boolean) plant.getAttribute(ItemAttributes.oneTime)) {
+            tile.setItem(new ItemInstance(Objects.requireNonNull(
+                    App.getItemDefinition(plant.getDefinition().getId().name()))));
+            tile.setDayPassedFromPlant(0);
+            tile.setDayLeftFromPlant((int) plant.getAttribute(ItemAttributes.regrowthTime));
+        }
         tile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("You've harvested crop!");
@@ -334,8 +350,19 @@ public class ToolController {
         for (int i = 0; i < 10; i++) {
             player.getInventory().addItem(tile.getItem());
         }
-        for (Tile giantTile : tile.getGiantGroup()) {
-            giantTile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+        ItemInstance plant = tile.getItem();
+        if (plant.getDefinition().hasAttribute(ItemAttributes.oneTime)
+                && !(boolean) plant.getAttribute(ItemAttributes.oneTime)) {
+            for (Tile giantTile : tile.getGiantGroup()) {
+                giantTile.setItem(new ItemInstance(Objects.requireNonNull
+                        (App.getItemDefinition(plant.getDefinition().getId().name()))));
+                tile.setDayPassedFromPlant(0);
+                tile.setDayLeftFromPlant((int) plant.getAttribute(ItemAttributes.regrowthTime));
+            }
+        } else {
+            for (Tile giantTile : tile.getGiantGroup()) {
+                giantTile.setItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("VOID"))));
+            }
         }
         player.getAbilities().increaseFarmingAbility();
         view.showMessage("You've harvested giant crop!");

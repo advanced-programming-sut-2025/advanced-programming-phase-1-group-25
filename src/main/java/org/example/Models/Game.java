@@ -191,8 +191,8 @@ public class Game {
         this.updaterByHour.execute(isCheat);
     }
 
-    public void updateByDay() {
-        this.updaterByDay.execute();
+    public void updateByDay(boolean isCheat) {
+        this.updaterByDay.execute(isCheat);
     }
 
     public void setWeather(Weather weather) {
@@ -230,5 +230,11 @@ public class Game {
                 break;
         }
         this.tomorrowWeather.setCurrentWeather(weatherStates);
+    }
+    public boolean hasAllPlayersFainted() {
+        return getPlayers().get(0).isFainted()
+                && getPlayers().get(1).isFainted()
+                && getPlayers().get(2).isFainted()
+                && getPlayers().get(3).isFainted();
     }
 }

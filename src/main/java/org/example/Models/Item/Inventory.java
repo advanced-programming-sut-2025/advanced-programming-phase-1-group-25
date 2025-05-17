@@ -20,7 +20,6 @@ public class Inventory {
         this.level = ItemLevels.BackPackLevels.BASIC;
         this.items = new LinkedHashMap<>();
         this.artisan = new ArrayList<>();
-        bagaDadanInventoryPlus();
     }
 
     public ArrayList<ItemInstance> getArtisan() {
@@ -43,7 +42,7 @@ public class Inventory {
                 return true;
             }
         }
-//        if(!hasCapacity()) return false;
+        if (!hasCapacity()) return false;
         ArrayList<ItemInstance> newItemsList = new ArrayList<>();
         newItemsList.add(item);
         this.items.put(id, newItemsList);
@@ -52,11 +51,11 @@ public class Inventory {
 
     public void trashItem(ItemIDs id, int amount) {
         try {
-
             for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : this.items.entrySet()) {
                 if (entry.getKey() == id) {
                     ArrayList<ItemInstance> itemList = this.items.get(id);
-                    for (int i = 0; i < Math.min(amount, itemList.size()); i++) {
+                    amount = Math.min(amount, itemList.size());
+                    for (int i = 0; i < amount; i++) {
                         itemList.remove(itemList.size() - 1);
                     }
                     if (itemList.isEmpty()) {
@@ -182,45 +181,5 @@ public class Inventory {
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("scythe"))));
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("milk_pale"))));
         addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("shear"))));
-    }
-
-    public void bagaDadanInventoryPlus() {
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-        for (ItemDefinition itemDefinition : App.getItemDefinitions()) {
-            this.addItem(new ItemInstance(itemDefinition));
-        }
-
     }
 }

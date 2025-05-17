@@ -1,8 +1,10 @@
 package org.example.Controllers.UpdateMap;
 
 import org.example.Controllers.InGameMenuController.AnimalController;
+import org.example.Enums.GameConsts.WeatherStates;
 import org.example.Models.Game;
 import org.example.Models.Item.ShippingBin;
+import org.example.Models.MapElements.Tile;
 import org.example.Models.Player.Player;
 
 import java.util.ArrayList;
@@ -15,10 +17,10 @@ public class UpdateByDay {
         this.game = game;
     }
 
-    public void execute() {
+    public void execute(boolean isCheat) {
         game.getWeather().setCurrentWeather(game.getTomorrowWeather().getCurrentWeather());
         game.setTomorrowWeather();
-
+        waterTiles();
         emptyShippingBin();
         UpdateForaging.deleteForaging();
         UpdateForaging.updateForaging();
@@ -27,7 +29,9 @@ public class UpdateByDay {
         RandomEvents.crowAttack();
         RandomEvents.strikeLightning();
         UpdateShops.updateShops();
-//        ArtisanUpdate.artisanWithDay(1);
+        if (!isCheat) {
+            ArtisanUpdate.artisanWithDay(1);
+        }
         AnimalController.addProductToAnimal();
         game.getDateTime().updateTimeByDay(1);
     }
@@ -55,4 +59,14 @@ public class UpdateByDay {
             player.setFainted(false);
         }
     }
+    public void waterTiles() {
+        if(game.getWeather().getCurrentWeather().equals(WeatherStates.RAIN)) {
+            for (Tile[] tiles : game.getGameMap().getMap()) {
+                for (Tile tile : tiles) {
+                    tile.setWatered(true);
+                }
+            }
+        }
+    }
+
 }

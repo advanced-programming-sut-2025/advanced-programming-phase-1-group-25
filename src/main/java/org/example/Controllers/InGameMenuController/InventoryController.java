@@ -65,6 +65,10 @@ public class InventoryController {
             Map<ItemIDs, Integer> itemToTrash = new HashMap<>();
             for (Map.Entry<ItemIDs, ArrayList<ItemInstance>> entry : inventory.getItems().entrySet()) {
                 if (entry.getKey().name().equals(itemName)) {
+                    if(!inventory.hasItem(entry.getKey(), number)) {
+                        view.showMessage("You don't have enough " + entry.getKey().name() + " to trash!");
+                        return;
+                    }
                     checkTrashCanLevel(entry.getValue().get(0).getDefinition(), game.getCurrentPlayer(),
                             game.getCurrentPlayer().getTrashCan(), number);
                     itemToTrash.put(entry.getKey(), number);
@@ -82,6 +86,9 @@ public class InventoryController {
                             game.getCurrentPlayer().getTrashCan(), entry.getValue().size());
                     itemToTrash.add(entry.getKey());
                 }
+            }
+            if(itemToTrash.isEmpty()) {
+                view.showMessage("You don't have " + itemName + " to trash!");
             }
             for (ItemIDs toTrash : itemToTrash) {
                 inventory.trashItemAll(toTrash);

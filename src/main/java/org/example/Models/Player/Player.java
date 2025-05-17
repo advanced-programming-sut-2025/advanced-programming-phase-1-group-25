@@ -62,7 +62,6 @@ public class Player {
         this.inventory.setInventoryTools();
         this.isFainted = false;
         this.spouse = null;
-        this.wallet.setCoin(Integer.MAX_VALUE);
     }
 
 
@@ -163,6 +162,7 @@ public class Player {
         this.energy = Math.max(0, this.energy - deltaEnergy);
         this.energyPerTurn = Math.max(0, this.energyPerTurn - deltaEnergy);
         if (this.energy <= 0) {
+            System.out.println("@@@@@@@@@@@@");
             this.isFainted = true;
         }
     }
@@ -216,6 +216,7 @@ public class Player {
     public void addMessage(String message) {
         this.messages.add(message);
     }
+
     public void setInventoryTools() {
         this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_hoe"))));
         this.inventory.addItem(new ItemInstance(Objects.requireNonNull(App.getItemDefinition("base_pickaxe"))));

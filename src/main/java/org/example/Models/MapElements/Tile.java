@@ -20,6 +20,7 @@ public class Tile {
     private ArrayList<ItemInstance> fish;
     private boolean hasGiantPlant;
     private ArrayList<Tile> giantGroup;
+    private int dayLeftFromPlant;
     public Tile(Position position, ItemInstance item) {
         this.position = position;
         this.item = item;
@@ -128,5 +129,13 @@ public class Tile {
 
     public void setGiantGroup(ArrayList<Tile> giantGroup) {
         this.giantGroup = giantGroup;
+    }
+
+    public int getDayLeftFromPlant() {
+        return dayLeftFromPlant;
+    }
+
+    public void setDayLeftFromPlant(int dayLeftFromPlant) {
+        this.dayLeftFromPlant = dayLeftFromPlant;
     }
 }

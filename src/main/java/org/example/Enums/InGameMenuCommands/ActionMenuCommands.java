@@ -113,7 +113,8 @@ public enum ActionMenuCommands {
     /// faravari
     ARTISAN_GET("^\\s*artisan\\s+get\\s+(?<artisanName>.+?)\\s*$"),
     ARTISAN_USE("^\\s*artisan\\s+use\\s+-r\\s+(?<artisanName>.+?)\\s+-n\\s+(?<item1Name>.+?)" +
-            "(\\s+-i\\s+(?<ingredient>.+?))?\\s*$");
+            "(\\s+-i\\s+(?<ingredient>.+?))?\\s*$"),
+    SHOW_MONEY("^\\s*show\\s+money\\s*$");
     private final String pattern;
 
     ActionMenuCommands(String pattern) {

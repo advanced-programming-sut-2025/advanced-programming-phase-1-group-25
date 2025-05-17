@@ -806,7 +806,8 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 75,
-      "season": "fall"
+      "season": "fall",
+      "energy": 100
     }
   },
   {
@@ -816,7 +817,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 40,
-      "season": "fall"
+      "season": "fall",
+      "energy": 100
+
     }
   },
   {
@@ -826,7 +829,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 60,
-      "season": "fall"
+      "season": "fall",
+      "energy": 100
+
     }
   },
   {
@@ -836,7 +841,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 120,
-      "season": "fall"
+      "season": "fall",
+      "energy": 100
+
     }
   },
   {
@@ -846,7 +853,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 150,
-      "season": "winter"
+      "season": "winter",
+      "energy": 100
+
     }
   },
   {
@@ -856,7 +865,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 80,
-      "season": "winter"
+      "season": "winter",
+      "energy": 100
+
     }
   },
   {
@@ -866,7 +877,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 100,
-      "season": "winter"
+      "season": "winter",
+      "energy": 100
+
     }
   },
   {
@@ -876,7 +889,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 55,
-      "season": "winter"
+      "season": "winter",
+      "energy": 100
+
     }
   },
   {
@@ -886,7 +901,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 100,
-      "season": "spring"
+      "season": "spring",
+      "energy": 100
+
     }
   },
   {
@@ -896,7 +913,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 100,
-      "season": "spring"
+      "season": "spring",
+      "energy": 100
+
     }
   },
   {
@@ -906,7 +925,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 30,
-      "season": "spring"
+      "season": "spring",
+      "energy": 100
+
     }
   },
   {
@@ -916,7 +937,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 45,
-      "season": "spring"
+      "season": "spring",
+      "energy": 100
+
     }
   },
   {
@@ -926,7 +949,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 75,
-      "season": "summer"
+      "season": "summer",
+      "energy": 100
+
     }
   },
   {
@@ -936,7 +961,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 100,
-      "season": "summer"
+      "season": "summer",
+      "energy": 100
+
     }
   },
   {
@@ -946,7 +973,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 30,
-      "season": "summer"
+      "season": "summer",
+      "energy": 100
+
     }
   },
   {
@@ -956,7 +985,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 65,
-      "season": "summer"
+      "season": "summer",
+      "energy": 100
+
     }
   },
   {
@@ -966,7 +997,8 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 5000,
-      "season": "spring"
+      "season": "spring",
+      "energy": 300
     }
   },
   {
@@ -976,7 +1008,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 1000,
-      "season": "summer"
+      "season": "summer",
+      "energy": 300
+
     }
   },
   {
@@ -986,7 +1020,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 900,
-      "season": "fall"
+      "season": "fall",
+      "energy": 300
+
     }
   },
   {
@@ -996,7 +1032,9 @@
     "baseAttributes": {
       "quality": "regular",
       "baseSellPrice": 1500,
-      "season": "winter"
+      "season": "winter",
+      "energy": 300
+
     }
   },
   {

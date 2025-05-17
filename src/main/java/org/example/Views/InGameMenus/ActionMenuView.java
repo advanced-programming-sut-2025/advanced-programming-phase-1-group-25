@@ -242,6 +242,9 @@ public class ActionMenuView implements AppMenu {
             case ASK_MARRIAGE:
                 playerRelationController.askMarriage(matcher.group("username"));
                 break;
+            case SHOW_MONEY:
+                System.out.println(game.getCurrentPlayer().getWallet().getCoin());
+                break;
         }
     }
 
